@@ -1,0 +1,277 @@
+---
+// Auto-generiert aus 2_Design-Input/templates/T3_category/code.html
+// Category-Template (T3) — 1:1 Stitch-Export.
+// Dieses Layout NICHT manuell ändern — bei Design-Update neu generieren.
+import Base from './Base.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+---
+<Base title={title} description={description} canonical={canonical}>
+  <Fragment set:html={`<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_12px_40px_rgba(25,28,29,0.06)]">
+<div class="font-['Newsreader'] text-2xl font-bold text-[#002046] dark:text-white">The Sentinel</div>
+<nav class="hidden md:flex space-x-8 items-center">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-[#002046] dark:hover:text-white transition-colors duration-300" href="#">Analyses</a>
+<a class="text-[#002046] dark:text-white border-b-2 border-[#002046] dark:border-white pb-1 font-semibold hover:text-[#002046] dark:hover:text-white transition-colors duration-300" href="#">Private Health</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-[#002046] dark:hover:text-white transition-colors duration-300" href="#">Compare</a>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-2 rounded-lg font-medium transition-transform scale-95 duration-150 ease-in-out hover:scale-100">Consultation</button>
+</nav>
+</header>
+<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
+<!-- Breadcrumb -->
+<nav class="flex items-center space-x-2 text-xs uppercase tracking-widest text-on-surface-variant mb-12">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<a class="hover:text-primary" href="#">PKV für Angestellte</a>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-primary font-semibold">Arbeitgeberzuschuss</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Left Column: TOC (Sticky) -->
+<aside class="hidden lg:block lg:col-span-3">
+<div class="sticky top-40 space-y-8">
+<div class="space-y-4">
+<p class="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface-variant">Inhaltsverzeichnis</p>
+<nav class="flex flex-col space-y-4 border-l border-outline-variant/30">
+<a class="pl-4 py-1 text-sm border-l-2 border-amber-custom -ml-[1.5px] font-semibold text-primary" href="#intro">Einführung</a>
+<a class="pl-4 py-1 text-sm text-on-surface-variant hover:text-primary transition-colors" href="#berechnung">Die Berechnung</a>
+<a class="pl-4 py-1 text-sm text-on-surface-variant hover:text-primary transition-colors" href="#maximaler-zuschuss">Maximalbeträge 2026</a>
+<a class="pl-4 py-1 text-sm text-on-surface-variant hover:text-primary transition-colors" href="#faq">Häufige Fragen</a>
+</nav>
+</div>
+<div class="p-6 bg-surface-container-high rounded-xl">
+<p class="serif text-lg leading-snug mb-4">Brauchen Sie eine Analyse?</p>
+<p class="text-xs text-on-surface-variant mb-6">Erhalten Sie einen detaillierten Vergleich basierend auf Ihrem Gehalt.</p>
+<a class="flex items-center text-xs font-bold uppercase tracking-widest text-primary group" href="#">
+                            Rechner öffnen
+                            <span class="material-symbols-outlined ml-2 transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content: Pillar Body -->
+<article class="lg:col-span-9">
+<!-- Hero Section -->
+<section class="max-w-[720px] mb-16">
+<span class="inline-block text-amber-custom font-bold text-xs tracking-widest uppercase mb-4">KAPITEL 02</span>
+<h1 class="serif text-5xl md:text-6xl font-semibold leading-[1.1] mb-6 text-primary">
+                        Arbeitgeberzuschuss zur PKV — so viel zahlt dein Chef wirklich.
+                    </h1>
+<div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-on-surface-variant mb-10">
+<span>Letzte Aktualisierung: April 2026</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span>14 Min. Lesezeit</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<div class="flex items-center gap-2">
+<img alt="Marc-Oliver Neumann" class="w-6 h-6 rounded-full object-cover border border-outline-variant/30" src="https://lh3.googleusercontent.com/aida/ADBb0uidJq9ad5X7_BOC4k6JV7OVjL4nf5FRyKCH_y5CWoUcDZE3zv7H_HVTFiZAqfHHq-i6IEgyatVPosSi8AUW9VRNMQIh7RumMhkO-2TN-v2kjz2k9zA7v6ouTQ6FRbSagJ4nCixRo28AhwyUvjvg1BPx3JCexzQE6KJ4Nj-h7HEOzgvnP9d2TlBZyePtLsE-bqBecTo-bgbAnp3UREI1aQ2ZP3e7_E5-qkCf85lWZkPY_rYPmlPvMwIU"/>
+<span class="italic font-medium">Von Marc-Oliver Neumann</span>
+</div>
+</div>
+<!-- Key Fact Box -->
+<div class="bg-surface-container-low border-l-[3px] border-amber-custom p-8 rounded-r-xl" id="maximaler-zuschuss">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Max. Zuschuss KV</p>
+<p class="text-2xl font-bold text-primary">452,40 €</p>
+<p class="text-[10px] text-on-surface-variant mt-1">pro Monat (2026)</p>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Pflegezuschuss</p>
+<p class="text-2xl font-bold text-primary">87,15 €</p>
+<p class="text-[10px] text-on-surface-variant mt-1">inkl. Umlagen</p>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Anteil AG</p>
+<p class="text-2xl font-bold text-primary">50%</p>
+<p class="text-[10px] text-on-surface-variant mt-1">der Kosten (gedeckelt)</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Intro -->
+<section class="max-w-[680px] space-y-6 mb-20 text-lg leading-relaxed text-on-surface/90" id="intro">
+<p>
+                        Wer als Angestellter in die Private Krankenversicherung (PKV) wechselt, verzichtet nicht auf die finanzielle Unterstützung des Arbeitgebers. Ähnlich wie in der gesetzlichen Krankenversicherung beteiligt sich das Unternehmen an den monatlichen Beiträgen. Doch die Logik dahinter folgt strikten gesetzlichen Grenzen und Berechnungsmodellen.
+                    </p>
+<p>
+                        In diesem Guide entschlüsseln wir, wie sich der Zuschuss zusammensetzt, welche Höchstgrenzen im Jahr 2026 gelten und wie Sie sicherstellen, dass Sie keinen Euro an Fördermitteln verschenken. Wir betrachten dabei nicht nur die Grundtarife, sondern auch Zusatzkomponenten wie Beitragsentlastungstarife.
+                    </p>
+</section>
+<!-- Sub-article Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+<div class="bg-white p-8 border-b-2 border-transparent hover:border-amber-custom transition-all shadow-sm group">
+<h3 class="serif text-2xl mb-4 text-primary">Zuschuss berechnen</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Verstehen Sie die 50%-Regelung und wie Ihr Einkommen den Zuschuss beeinflusst.</p>
+<a class="flex items-center text-xs font-bold uppercase tracking-widest group-hover:text-amber-custom transition-colors" href="#">
+                            Zum Artikel
+                            <span class="material-symbols-outlined ml-1 text-sm">arrow_outward</span>
+</a>
+</div>
+<div class="bg-white p-8 border-b-2 border-transparent hover:border-amber-custom transition-all shadow-sm group">
+<h3 class="serif text-2xl mb-4 text-primary">Höchstwerte 2026</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Die neuen Beitragsbemessungsgrenzen und was sie für Ihren Eigenanteil bedeuten.</p>
+<a class="flex items-center text-xs font-bold uppercase tracking-widest group-hover:text-amber-custom transition-colors" href="#">
+                            Details ansehen
+                            <span class="material-symbols-outlined ml-1 text-sm">arrow_outward</span>
+</a>
+</div>
+<div class="bg-white p-8 border-b-2 border-transparent hover:border-amber-custom transition-all shadow-sm group">
+<h3 class="serif text-2xl mb-4 text-primary">Pflegezuschuss</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Besonderheiten bei der sozialen Pflegepflichtversicherung für Angestellte.</p>
+<a class="flex items-center text-xs font-bold uppercase tracking-widest group-hover:text-amber-custom transition-colors" href="#">
+                            Mehr erfahren
+                            <span class="material-symbols-outlined ml-1 text-sm">arrow_outward</span>
+</a>
+</div>
+<div class="bg-white p-8 border-b-2 border-transparent hover:border-amber-custom transition-all shadow-sm group">
+<h3 class="serif text-2xl mb-4 text-primary">Zuschuss für Selbstständige</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Wann Selbstständige in den Genuss von Förderungen oder Zuschüssen kommen.</p>
+<a class="flex items-center text-xs font-bold uppercase tracking-widest group-hover:text-amber-custom transition-colors" href="#">
+                            Zum Artikel
+                            <span class="material-symbols-outlined ml-1 text-sm">arrow_outward</span>
+</a>
+</div>
+<div class="bg-white p-8 border-b-2 border-transparent hover:border-amber-custom transition-all shadow-sm group">
+<h3 class="serif text-2xl mb-4 text-primary">Kurzarbeit</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Wie Kurzarbeit die Berechnung Ihres PKV-Zuschusses vorübergehend verändert.</p>
+<a class="flex items-center text-xs font-bold uppercase tracking-widest group-hover:text-amber-custom transition-colors" href="#">
+                            Details ansehen
+                            <span class="material-symbols-outlined ml-1 text-sm">arrow_outward</span>
+</a>
+</div>
+<div class="bg-white p-8 border-b-2 border-transparent hover:border-amber-custom transition-all shadow-sm group">
+<h3 class="serif text-2xl mb-4 text-primary">Nachzahlungen</h3>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Anspruch auf rückwirkende Zahlungen bei fehlerhaften Abrechnungen sichern.</p>
+<a class="flex items-center text-xs font-bold uppercase tracking-widest group-hover:text-amber-custom transition-colors" href="#">
+                            Mehr erfahren
+                            <span class="material-symbols-outlined ml-1 text-sm">arrow_outward</span>
+</a>
+</div>
+</section>
+<!-- Deep Content -->
+<section class="max-w-[680px] mb-20" id="berechnung">
+<h2 class="serif text-4xl font-semibold mb-8 text-primary">Die rechtliche Grundlage des AG-Zuschusses</h2>
+<p class="mb-8 leading-relaxed">
+                        Gemäß § 257 SGB V steht jedem privat versicherten Arbeitnehmer ein Zuschuss zu, sofern er auch in der gesetzlichen Krankenversicherung versicherungspflichtig wäre oder aufgrund der Jahresarbeitsentgeltgrenze (JAEG) versicherungsfrei ist. 
+                    </p>
+<!-- Clean Table -->
+<div class="overflow-x-auto mb-10">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant text-[10px] uppercase tracking-widest text-on-surface-variant">
+<th class="py-4 font-semibold">Komponente</th>
+<th class="py-4 font-semibold">Zuschussfähigkeit</th>
+<th class="py-4 font-semibold text-right">Max. Anteil</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="border-b border-outline-variant/30">
+<td class="py-4 text-primary font-medium">PKV-Grundtarif</td>
+<td class="py-4">Vollständig förderfähig</td>
+<td class="py-4 text-right">50%</td>
+</tr>
+<tr class="border-b border-outline-variant/30">
+<td class="py-4 text-primary font-medium">Beitragsentlastung (BE)</td>
+<td class="py-4">Bedingt förderfähig</td>
+<td class="py-4 text-right">50%</td>
+</tr>
+<tr class="border-b border-outline-variant/30">
+<td class="py-4 text-primary font-medium">Krankentagegeld (KT)</td>
+<td class="py-4">Nicht förderfähig</td>
+<td class="py-4 text-right">0%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Prominent Calculator Promotion -->
+<div class="bg-primary overflow-hidden relative p-8 md:p-12 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-10 mb-20 shadow-2xl">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+<div class="relative z-10 max-w-xl">
+<h3 class="serif text-3xl md:text-4xl text-white mb-6 leading-tight">Ihren persönlichen Zuschuss in 60 Sekunden berechnen</h3>
+<ul class="space-y-4 mb-8">
+<li class="flex items-start text-white/90">
+<span class="material-symbols-outlined text-amber-custom mr-3">check_circle</span>
+<span class="text-sm md:text-base font-medium">Präzise Berechnung nach aktuellen 2026er Sätzen</span>
+</li>
+<li class="flex items-start text-white/90">
+<span class="material-symbols-outlined text-amber-custom mr-3">check_circle</span>
+<span class="text-sm md:text-base font-medium">Berücksichtigung von Zusatzbeiträgen</span>
+</li>
+<li class="flex items-start text-white/90">
+<span class="material-symbols-outlined text-amber-custom mr-3">check_circle</span>
+<span class="text-sm md:text-base font-medium">Sofortiges PDF-Ergebnis</span>
+</li>
+</ul>
+</div>
+<div class="relative z-10 shrink-0">
+<a class="bg-white text-primary px-10 py-5 rounded-xl font-bold text-base tracking-tight hover:bg-amber-custom hover:text-white transition-all shadow-[0_20px_50px_rgba(0,0,0,0.2)] flex items-center group" href="#">
+                            Rechner öffnen
+                            <span class="material-symbols-outlined ml-3 transition-transform group-hover:translate-x-1">rocket_launch</span>
+</a>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="max-w-[680px] mb-24" id="faq">
+<h2 class="serif text-4xl font-semibold mb-10 text-primary">Häufige Fragen zum Zuschuss</h2>
+<div class="space-y-6">
+<details class="group bg-white p-6 rounded-lg shadow-sm border-l-2 border-transparent open:border-amber-custom transition-all">
+<summary class="flex justify-between items-center font-semibold cursor-pointer list-none">
+<span>Muss ich den Zuschuss jeden Monat neu beantragen?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-4 text-sm text-on-surface-variant leading-relaxed">
+                                Nein. Sobald Sie Ihrem Arbeitgeber die Bescheinigung Ihrer PKV (nach § 257 SGB V) vorgelegt haben, wird der Zuschuss automatisch mit der Gehaltsabrechnung verrechnet. Nur bei Tarifänderungen müssen Sie eine neue Bescheinigung einreichen.
+                            </p>
+</details>
+<details class="group bg-white p-6 rounded-lg shadow-sm border-l-2 border-transparent open:border-amber-custom transition-all">
+<summary class="flex justify-between items-center font-semibold cursor-pointer list-none">
+<span>Was passiert im Krankheitsfall nach 6 Wochen?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-4 text-sm text-on-surface-variant leading-relaxed">
+                                Endet die Lohnfortzahlung durch den Arbeitgeber, entfällt in der Regel auch der Arbeitgeberzuschuss zur PKV. In dieser Zeit müssen Sie den vollen Beitrag selbst tragen, wofür das Krankentagegeld als Ausgleich dient.
+                            </p>
+</details>
+<details class="group bg-white p-6 rounded-lg shadow-sm border-l-2 border-transparent open:border-amber-custom transition-all">
+<summary class="flex justify-between items-center font-semibold cursor-pointer list-none">
+<span>Gilt der Zuschuss auch für mitversicherte Kinder?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-4 text-sm text-on-surface-variant leading-relaxed">
+                                Ja, sofern der maximale Höchstzuschuss durch Ihren eigenen Beitrag noch nicht ausgeschöpft ist, beteiligt sich der Arbeitgeber auch an den Beiträgen für Ihre Kinder.
+                            </p>
+</details>
+<details class="group bg-white p-6 rounded-lg shadow-sm border-l-2 border-transparent open:border-amber-custom transition-all">
+<summary class="flex justify-between items-center font-semibold cursor-pointer list-none">
+<span>Ist der Zuschuss steuerfrei?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-4 text-sm text-on-surface-variant leading-relaxed">
+                                Der Arbeitgeberzuschuss ist steuerfrei, sofern er den gesetzlichen Höchstbetrag nicht überschreitet. Er mindert jedoch im Gegenzug die als Sonderausgaben abziehbaren Vorsorgeaufwendungen in Ihrer Steuererklärung.
+                            </p>
+</details>
+</div>
+</section>
+</article>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center border-t border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950">
+<div class="mb-8 md:mb-0">
+<div class="font-['Newsreader'] text-xl font-semibold text-[#002046] dark:text-white mb-2">The Sentinel</div>
+<p class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400">© 2024 The Sentinel. Editorial Excellence for the Modern Professional.</p>
+</div>
+<nav class="flex space-x-6">
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-[#00261c] dark:hover:text-emerald-400 underline decoration-2 transition-opacity opacity-80 hover:opacity-100" href="#">Editorial Standards</a>
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-[#00261c] dark:hover:text-emerald-400 underline decoration-2 transition-opacity opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-[#00261c] dark:hover:text-emerald-400 underline decoration-2 transition-opacity opacity-80 hover:opacity-100" href="#">Imprint</a>
+</nav>
+</footer>`} />
+</Base>

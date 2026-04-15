@@ -1,0 +1,281 @@
+---
+// Auto-generiert aus 2_Design-Input/templates/T5_rechner/code.html
+// Rechner-Template (T5) — 1:1 Stitch-Export.
+// Dieses Layout NICHT manuell ändern — bei Design-Update neu generieren.
+import Base from './Base.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+---
+<Base title={title} description={description} canonical={canonical}>
+  <Fragment set:html={`<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0_12px_40px_rgba(25,28,29,0.06)]">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-semibold tracking-tight text-[#002046] dark:text-white">PKV für Angestellte</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#002046] transition-colors" href="#">Tarifvergleich</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#002046] transition-colors" href="#">Vorteile</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#002046] transition-colors" href="#">GKV vs PKV</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#002046] transition-colors" href="#">Ratgeber</a>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-all">Beratung</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-8 max-w-7xl mx-auto">
+<!-- Breadcrumb & Header -->
+<header class="mb-16">
+<nav class="flex items-center gap-2 text-label text-sm text-on-surface-variant mb-6">
+<span>Rechner</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary font-medium">PKV-Beitrag</span>
+</nav>
+<div class="grid md:grid-cols-12 gap-8 items-end">
+<div class="md:col-span-8">
+<h1 class="font-headline text-5xl md:text-6xl text-ink-serif leading-tight mb-4">Dein PKV-Beitrag — <span class="serif-italic">Rechner</span></h1>
+<p class="text-xl text-on-surface-variant max-w-2xl font-light">Ergebnis sofort sichtbar. Keine Adresse, keine E-Mail nötig. Transparenz ist die Basis einer guten Vorsorge.</p>
+</div>
+</div>
+</header>
+<div class="grid lg:grid-cols-12 gap-12 items-start">
+<!-- Calculator Form (Left Column) -->
+<section class="lg:col-span-7 space-y-12">
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 rounded-xl shadow-sm">
+<form class="space-y-10">
+<!-- 01: Bruttogehalt -->
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="bg-amber-100 text-amber-accent text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">01</span>
+<label class="font-medium text-lg text-primary">Bruttogehalt pro Monat</label>
+</div>
+<div class="relative max-w-md">
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-primary transition-colors py-4 px-4 text-2xl font-semibold outline-none appearance-none" type="number" value="5500"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-xl font-bold text-on-surface-variant">€</span>
+</div>
+</div>
+<!-- 02: Alter -->
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="bg-amber-100 text-amber-accent text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">02</span>
+<label class="font-medium text-lg text-primary">Dein Alter</label>
+</div>
+<div class="max-w-md">
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant focus:border-primary transition-colors py-4 px-4 text-2xl font-semibold outline-none appearance-none" placeholder="z.B. 35" type="number"/>
+</div>
+</div>
+<!-- 03: Geschlecht -->
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="bg-amber-100 text-amber-accent text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">03</span>
+<label class="font-medium text-lg text-primary">Geschlecht</label>
+</div>
+<div class="flex p-1 bg-surface-container-low rounded-lg max-w-md">
+<button class="flex-1 py-3 text-sm font-semibold rounded-md bg-white shadow-sm text-primary" type="button">weiblich</button>
+<button class="flex-1 py-3 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors" type="button">männlich</button>
+<button class="flex-1 py-3 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors" type="button">divers</button>
+</div>
+</div>
+<!-- 04: Beruflicher Status -->
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="bg-amber-100 text-amber-accent text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">04</span>
+<label class="font-medium text-lg text-primary">Beruflicher Status</label>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md">
+<label class="flex items-center gap-3 p-4 rounded-lg border border-outline-variant/40 bg-surface hover:bg-surface-container transition-colors cursor-pointer group">
+<input checked="" class="w-4 h-4 text-primary focus:ring-primary border-outline-variant" name="status" type="radio"/>
+<span class="text-sm font-medium group-hover:text-primary transition-colors">Angestellter</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-lg border border-outline-variant/40 bg-surface hover:bg-surface-container transition-colors cursor-pointer group">
+<input class="w-4 h-4 text-primary focus:ring-primary border-outline-variant" name="status" type="radio"/>
+<span class="text-sm font-medium group-hover:text-primary transition-colors">Beamter</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-lg border border-outline-variant/40 bg-surface hover:bg-surface-container transition-colors cursor-pointer group">
+<input class="w-4 h-4 text-primary focus:ring-primary border-outline-variant" name="status" type="radio"/>
+<span class="text-sm font-medium group-hover:text-primary transition-colors">Selbstständig</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-lg border border-outline-variant/40 bg-surface hover:bg-surface-container transition-colors cursor-pointer group">
+<input class="w-4 h-4 text-primary focus:ring-primary border-outline-variant" name="status" type="radio"/>
+<span class="text-sm font-medium group-hover:text-primary transition-colors">Student</span>
+</label>
+</div>
+</div>
+<!-- 05: Familienstatus -->
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="bg-amber-100 text-amber-accent text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">05</span>
+<label class="font-medium text-lg text-primary">Familienstatus</label>
+</div>
+<div class="space-y-4 max-w-md">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg">
+<span class="text-sm font-medium">Kinder mitversichern</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-accent"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="text-xl font-bold w-4 text-center">1</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined">add</span>
+</button>
+<span class="text-sm text-on-surface-variant font-medium ml-2">Kind</span>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20">
+<button class="w-full md:w-auto bg-gradient-to-br from-amber-600 to-amber-700 text-white px-10 py-5 rounded-lg font-bold text-lg shadow-xl shadow-amber-600/20 hover:scale-[1.02] active:scale-95 transition-all" type="button">
+                                Beitrag berechnen
+                            </button>
+<p class="mt-4 text-xs text-on-surface-variant italic">Richtwerte auf Basis Marktdurchschnitt 2026. Stand der Daten: November 2023.</p>
+</div>
+</form>
+</div>
+<!-- Methodology Section -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-6 text-left group">
+<span class="font-headline text-2xl text-primary">Methodik &amp; Annahmen</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">expand_more</span>
+</button>
+<div class="px-6 pb-6 text-sm text-on-surface-variant leading-relaxed space-y-3">
+<p>Unsere Berechnung basiert auf der voraussichtlichen <strong>Jahresarbeitsentgeltgrenze (JAEG) 2026</strong> von ca. 73.800 €. Der Arbeitgeberanteil wird mit dem gesetzlichen Höchstsatz von ca. 344 € (plus Pflegepflicht) kalkuliert.</p>
+<p>Die PKV-Tarifmodelle entsprechen einem gehobenen Angestelltenschutz (Einbettzimmer, Chefarzt, hoher Zahnersatz-Schutz).</p>
+</div>
+</div>
+</section>
+<!-- Result Panel (Right Column, Sticky) -->
+<aside class="lg:col-span-5 sticky top-28">
+<div class="bg-primary text-white p-8 rounded-xl shadow-2xl overflow-hidden relative">
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+<div class="relative z-10">
+<header class="mb-8">
+<h3 class="text-primary-fixed-dim text-xs font-bold uppercase tracking-widest mb-2">Geschätztes Ergebnis</h3>
+<div class="font-headline text-5xl md:text-6xl mb-2">≈ €643,50 <span class="text-2xl font-light opacity-60">/ Mo.</span></div>
+<p class="text-white/70 text-sm leading-relaxed">Dein geschätzter PKV-Nettobeitrag nach Arbeitgeberzuschuss.</p>
+</header>
+<!-- Comparison Bars -->
+<div class="space-y-8 mb-10">
+<!-- PKV Bar -->
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-amber-400">PKV (Private Vorsorge)</span>
+<span>Du: €643,50</span>
+</div>
+<div class="h-10 w-full bg-white/10 rounded-lg flex overflow-hidden">
+<div class="h-full bg-amber- accent bg-amber-600 flex items-center px-3 text-[10px] font-bold" style="width: 65%;">AN: €643</div>
+<div class="h-full bg-amber-800 flex items-center px-3 text-[10px] font-bold" style="width: 35%;">AG: €344</div>
+</div>
+<div class="text-[10px] text-white/50 text-right uppercase">Gesamt: €987,50</div>
+</div>
+<!-- GKV Bar -->
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-surface-variant">GKV (Gesetzlich)</span>
+<span>Du: €546,00</span>
+</div>
+<div class="h-10 w-full bg-white/10 rounded-lg flex overflow-hidden">
+<div class="h-full bg-surface-variant/40 flex items-center px-3 text-[10px] font-bold" style="width: 50%;">AN: €546</div>
+<div class="h-full bg-surface-variant/20 flex items-center px-3 text-[10px] font-bold" style="width: 50%;">AG: €546</div>
+</div>
+<div class="text-[10px] text-white/50 text-right uppercase">Gesamt: €1.092,00</div>
+</div>
+</div>
+<!-- Details Table -->
+<div class="space-y-4 pt-6 border-t border-white/10">
+<h4 class="text-sm font-bold">Was im Beitrag enthalten ist</h4>
+<div class="space-y-3">
+<div class="flex justify-between items-center py-2 text-sm border-b border-white/5">
+<span class="text-white/60">Ambulant &amp; Stationär (Basis)</span>
+<span class="font-medium">€540,00</span>
+</div>
+<div class="flex justify-between items-center py-2 text-sm border-b border-white/5">
+<span class="text-white/60">Zahnerhalt &amp; Prothetik</span>
+<span class="font-medium">€85,00</span>
+</div>
+<div class="flex justify-between items-center py-2 text-sm border-b border-white/5">
+<span class="text-white/60">Pflegepflichtversicherung</span>
+<span class="font-medium">€72,50</span>
+</div>
+<div class="flex justify-between items-center py-2 text-sm">
+<span class="text-white/60">Altersrückstellungen</span>
+<span class="font-medium">€290,00</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 text-amber-400 text-sm font-bold hover:gap-3 transition-all mt-4" href="#">
+                                So berechnen wir das <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-8 p-6 bg-surface-container-low rounded-xl border-l-4 border-tertiary">
+<p class="text-sm text-on-surface-variant leading-relaxed">
+<span class="font-bold text-primary block mb-1">Pro-Tipp:</span>
+                        Als Angestellter mit einem Gehalt über der JAEG profitierst du besonders vom Arbeitgeberzuschuss, der auch deine Altersrückstellungen mitfinanziert.
+                    </p>
+</div>
+</aside>
+</div>
+<!-- Next Steps -->
+<section class="mt-32">
+<div class="flex items-center gap-4 mb-12">
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+<h2 class="font-headline text-3xl text-primary">Wie geht es weiter?</h2>
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<a class="group p-8 bg-surface-container-low hover:bg-surface-container-highest transition-all rounded-xl border border-outline-variant/10" href="#">
+<span class="material-symbols-outlined text-primary text-3xl mb-6 block">menu_book</span>
+<h3 class="font-headline text-2xl mb-4 text-primary">Guide lesen</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Alle Details zum Systemwechsel verständlich aufbereitet für Besserverdiener.</p>
+<span class="text-primary text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 transition-transform inline-block">Mehr erfahren →</span>
+</a>
+<!-- Card 2 -->
+<a class="group p-8 bg-surface-container-low hover:bg-surface-container-highest transition-all rounded-xl border border-outline-variant/10" href="#">
+<span class="material-symbols-outlined text-primary text-3xl mb-6 block">step</span>
+<h3 class="font-headline text-2xl mb-4 text-primary">Wechsel-Anleitung</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Schritt-für-Schritt von der GKV Kündigung bis zum PKV Onboarding.</p>
+<span class="text-primary text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 transition-transform inline-block">Zur Anleitung →</span>
+</a>
+<!-- Card 3 -->
+<a class="group p-8 bg-surface-container-low hover:bg-surface-container-highest transition-all rounded-xl border border-outline-variant/10" href="#">
+<span class="material-symbols-outlined text-primary text-3xl mb-6 block">warning</span>
+<h3 class="font-headline text-2xl mb-4 text-primary">Nachteile verstehen</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Ehrliche Analyse: Wo liegen die Risiken und für wen lohnt sich die PKV nicht?</p>
+<span class="text-primary text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 transition-transform inline-block">Kritik lesen →</span>
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f3f4f5] dark:bg-slate-900 w-full border-t border-slate-200/20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full px-8 py-12 max-w-7xl mx-auto">
+<div>
+<div class="text-lg font-bold text-[#002046] dark:text-white mb-4">PKV für Angestellte</div>
+<p class="text-[#002046] dark:text-[#f8f9fa] font-headline text-xl italic max-w-sm mb-6">"Präzision in der Vorsorge ist kein Luxus, sondern eine Notwendigkeit für Ihre finanzielle Freiheit."</p>
+<p class="text-slate-500 dark:text-slate-400 text-[0.75rem]">© 2024 PKV für Angestellte. Präzision in der Vorsorge.</p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="flex flex-col gap-3">
+<h4 class="text-[0.75rem] font-bold text-slate-400 uppercase tracking-widest">Wissen</h4>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00261c] transition-all text-sm" href="#">Tarifvergleich</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00261c] transition-all text-sm" href="#">GKV vs PKV</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00261c] transition-all text-sm" href="#">Ratgeber</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-[0.75rem] font-bold text-slate-400 uppercase tracking-widest">Rechtliches</h4>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00261c] transition-all text-sm" href="#">Impressum</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00261c] transition-all text-sm" href="#">Datenschutz</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00261c] transition-all text-sm" href="#">Kontakt</a>
+</div>
+</div>
+</div>
+</footer>`} />
+</Base>

@@ -1,0 +1,186 @@
+---
+// Auto-generiert aus 2_Design-Input/templates/T7_other/code.html
+// Other-Template (T7) — 1:1 Stitch-Export.
+// Dieses Layout NICHT manuell ändern — bei Design-Update neu generieren.
+import Base from './Base.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+---
+<Base title={title} description={description} canonical={canonical}>
+  <Fragment set:html={`<!-- TopNavBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#f8f9fa]/80 backdrop-blur-xl shadow-[0_12px_40px_rgba(25,28,29,0.06)]">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="font-serif text-2xl font-semibold tracking-tight text-[#002046]">
+                Financial Architect
+            </div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-[#44474e] hover:text-[#002046] transition-colors" href="#">Analyses</a>
+<a class="text-[#44474e] hover:text-[#002046] transition-colors" href="#">Sectors</a>
+<a class="text-[#44474e] hover:text-[#002046] transition-colors" href="#">Portfolio</a>
+<a class="text-[#002046] font-semibold border-b-2 border-[#00261c] pb-1" href="#">Legal</a>
+<a class="text-[#44474e] hover:text-[#002046] transition-colors" href="#">About</a>
+</nav>
+<div class="flex items-center space-x-6">
+<button class="material-symbols-outlined text-[#44474e] scale-95 active:opacity-80 transition-transform">account_circle</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-5 py-2 rounded-lg text-sm font-medium transition-transform active:scale-95">Subscribe</button>
+</div>
+</div>
+<div class="bg-[#f3f4f5] h-[1px] w-full"></div>
+</header>
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-screen-xl mx-auto">
+<!-- Editorial Header Section -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
+<div class="md:col-span-4">
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4">RECHTLICHER RAHMEN</p>
+<h1 class="text-5xl md:text-6xl font-headline font-semibold text-primary leading-tight">Datenschutz­erklärung</h1>
+<div class="mt-8 h-1 w-12 bg-tertiary"></div>
+</div>
+<div class="md:col-span-7 md:col-start-6 flex flex-col justify-end">
+<p class="text-xl font-headline italic text-on-surface-variant leading-relaxed">
+                    Der Schutz Ihrer persönlichen Daten ist für uns nicht nur eine gesetzliche Pflicht, sondern Ausdruck unserer hanseatischen Geschäftsethik: Diskretion, Verlässlichkeit und Transparenz.
+                </p>
+<p class="mt-6 text-sm text-outline font-label uppercase tracking-wider">Stand: Januar 2024</p>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+<!-- Sidebar Navigation (Sticky) -->
+<aside class="hidden md:block md:col-span-3">
+<div class="sticky top-40 space-y-4">
+<nav class="flex flex-col border-l border-outline-variant/30 pl-6 space-y-4">
+<a class="text-sm font-medium text-primary border-l-2 border-primary -ml-[26px] pl-6 py-1" href="#general">General Information</a>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#collection">Data Collection</a>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#rights">Your Rights</a>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#tracking">Tracking &amp; Cookies</a>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#contact">Privacy Contact</a>
+</nav>
+</div>
+</aside>
+<!-- Editorial Policy Content -->
+<div class="md:col-span-8 md:col-start-5 space-y-16">
+<!-- Section 1 -->
+<section class="scroll-mt-40" id="general">
+<h2 class="text-3xl font-headline font-semibold text-primary mb-8">General Information</h2>
+<div class="prose prose-slate max-w-none space-y-6 text-on-surface-variant leading-relaxed">
+<p>
+                            Wir, die <strong>Financial Architect</strong> (nachfolgend „wir“ oder „uns“), freuen uns über Ihren Besuch auf unserer Website. Die PKV für Angestellte Beratung erfordert ein besonderes Maß an Vertrauen, da hierbei oft sensible Lebens- und Finanzdaten berührt werden.
+                        </p>
+<p>
+                            Diese Datenschutzerklärung informiert Sie darüber, wie wir personenbezogene Daten erheben, verarbeiten und nutzen, wenn Sie unsere Dienste in Anspruch nehmen oder unsere Online-Plattform besuchen. Wir handeln strikt nach den Vorgaben der Datenschutz-Grundverordnung (DSGVO) und des Bundesdatenschutzgesetzes (BDSG).
+                        </p>
+<div class="bg-surface-container-highest border-l-4 border-tertiary p-8 rounded-r-lg">
+<p class="font-headline italic text-lg text-primary">
+                                „Datenschutz ist bei uns kein Nebenprodukt der IT, sondern ein integraler Bestandteil unserer Architektur für gehobene Beratungsstandards.“
+                            </p>
+</div>
+</div>
+</section>
+<!-- Section 2 -->
+<section class="scroll-mt-40" id="collection">
+<h2 class="text-3xl font-headline font-semibold text-primary mb-8">Data Collection</h2>
+<div class="space-y-6 text-on-surface-variant leading-relaxed">
+<p>Bei der Nutzung unserer Website erfassen wir verschiedene Arten von Daten, um Ihnen eine optimale und sichere Nutzererfahrung zu bieten:</p>
+<div class="grid grid-cols-1 gap-6 mt-8">
+<div class="bg-surface-container-low p-8 rounded-xl">
+<h3 class="font-headline text-xl text-primary mb-2">Automatisierte Protokolldaten</h3>
+<p class="text-sm">Jeder Zugriff auf unsere Server wird in Logfiles gespeichert. Dies umfasst IP-Adresse, Browsertyp, Betriebssystem und Zeitstempel. Diese Daten dienen ausschließlich der Sicherheit und Stabilität des Systems.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl">
+<h3 class="font-headline text-xl text-primary mb-2">Beratungsrelevante Angaben</h3>
+<p class="text-sm">Sollten Sie unsere PKV-Vergleichstools nutzen, erheben wir Daten zu Ihrem beruflichen Status, Einkommen und Alter. Diese Angaben sind notwendig, um präzise Kalkulationen für Angestellte im Hochlohnsektor durchzuführen.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3 -->
+<section class="scroll-mt-40" id="rights">
+<h2 class="text-3xl font-headline font-semibold text-primary mb-8">Your Rights</h2>
+<p class="mb-8 text-on-surface-variant">Sie haben jederzeit die volle Kontrolle über Ihre Daten. Gemäß DSGVO stehen Ihnen folgende Rechte zu:</p>
+<div class="overflow-hidden bg-surface-container-lowest">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="p-4 text-xs font-label uppercase tracking-widest text-on-surface-variant">Recht</th>
+<th class="p-4 text-xs font-label uppercase tracking-widest text-on-surface-variant">Beschreibung</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4 font-semibold text-primary">Auskunft</td>
+<td class="p-4 text-sm">Sie können eine Bestätigung darüber verlangen, ob wir Sie betreffende Daten verarbeiten.</td>
+</tr>
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low transition-colors">
+<td class="p-4 font-semibold text-primary">Löschung</td>
+<td class="p-4 text-sm">Das „Recht auf Vergessenwerden“ erlaubt Ihnen die unverzügliche Löschung Ihrer Daten.</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-4 font-semibold text-primary">Übertragbarkeit</td>
+<td class="p-4 text-sm">Sie erhalten Ihre Daten in einem strukturierten, gängigen und maschinenlesbaren Format.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 4 -->
+<section class="scroll-mt-40" id="tracking">
+<h2 class="text-3xl font-headline font-semibold text-primary mb-8">Tracking &amp; Cookies</h2>
+<div class="space-y-6 text-on-surface-variant leading-relaxed">
+<p>
+                            Wir setzen Cookies ein, um die Funktionalität unserer Seite zu gewährleisten. Wir verzichten bewusst auf aggressive Marketing-Pixel von Drittanbietern, um die Vertraulichkeit Ihrer Finanzrecherche zu schützen.
+                        </p>
+<div class="flex items-start gap-4 p-6 bg-surface-container-high/50 rounded-lg">
+<span class="material-symbols-outlined text-tertiary">security</span>
+<div class="text-sm">
+<p class="font-bold text-primary mb-1">Local Identity Protection</p>
+<p>Ihre Analyse-Daten werden primär lokal in Ihrem Browser zwischengespeichert und nur bei expliziter Beratungsanfrage an unsere gesicherten Server übertragen.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5 -->
+<section class="scroll-mt-40 pb-12" id="contact">
+<h2 class="text-3xl font-headline font-semibold text-primary mb-8">Contact for Privacy</h2>
+<div class="bg-primary text-white p-12 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-2xl font-headline mb-6">Datenschutzbeauftragter</h3>
+<div class="space-y-4 font-label text-sm opacity-90">
+<p>Financial Architect GmbH</p>
+<p>Abteilung für Informationssicherheit</p>
+<p>Hanseaten-Allee 12, 20457 Hamburg</p>
+<div class="pt-4 border-t border-white/20">
+<p class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xs">mail</span>
+                                        privacy@financial-architect.de
+                                    </p>
+</div>
+</div>
+</div>
+<!-- Decorative background element -->
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-primary-container rounded-full opacity-50 blur-3xl"></div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-[#f3f4f5] text-[#002046] border-t border-[#c4c6cf]/20">
+<div class="w-full px-12 py-16 flex flex-col md:flex-row justify-between items-center gap-8 max-w-screen-2xl mx-auto">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="font-serif text-lg font-bold">Financial Architect</div>
+<p class="font-sans text-xs uppercase tracking-widest text-[#44474e]">© 2024 Financial Architect. All rights reserved. Member of the Editorial Insurance Group.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-sans text-xs uppercase tracking-widest text-[#44474e] hover:text-[#002046] underline transition-all" href="#">Privacy Policy</a>
+<a class="font-sans text-xs uppercase tracking-widest text-[#44474e] hover:text-[#002046] transition-all" href="#">Imprint</a>
+<a class="font-sans text-xs uppercase tracking-widest text-[#44474e] hover:text-[#002046] transition-all" href="#">Accessibility</a>
+<a class="font-sans text-xs uppercase tracking-widest text-[#44474e] hover:text-[#002046] transition-all" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>`} />
+</Base>

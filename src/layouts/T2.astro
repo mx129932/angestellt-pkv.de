@@ -1,0 +1,239 @@
+---
+// Auto-generiert aus 2_Design-Input/templates/T2_conversion/code.html
+// Conversion-Template (T2) — 1:1 Stitch-Export.
+// Dieses Layout NICHT manuell ändern — bei Design-Update neu generieren.
+import Base from './Base.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+---
+<Base title={title} description={description} canonical={canonical}>
+  <Fragment set:html={`<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur-xl transition-all duration-300">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto">
+<div class="text-2xl font-serif tracking-tight text-[#002046] dark:text-slate-100">
+            Hanseatic Wealth
+        </div>
+<nav class="flex items-center gap-6">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#002046] flex items-center gap-1 transition-all duration-300 hover:opacity-70 active:opacity-80 active:scale-[0.99]" href="#">
+                Zurück zum Portal <span class="material-symbols-outlined text-[1.2rem]">arrow_forward</span>
+</a>
+</nav>
+</div>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="min-h-[750px] flex items-center px-8 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-12">
+<!-- Left Side: Editorial Content -->
+<div class="space-y-8">
+<h1 class="text-5xl md:text-6xl leading-[1.1] text-primary tracking-tight font-medium">
+                    Lohnt sich die PKV in deiner Situation — <span class="italic">wirklich?</span>
+</h1>
+<p class="text-[1.125rem] leading-relaxed text-on-surface-variant max-w-xl">
+                    Vermeiden Sie teure Fehlentscheidungen. Wir erstellen eine unabhängige Analyse Ihrer persönlichen Kennzahlen – in 30 Minuten, ohne Makler-Gespräch und ohne Verkaufsabsicht.
+                </p>
+<ul class="space-y-4 pt-2">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined amber-stroke-check">check_circle</span>
+<span class="font-medium text-primary">Unabhängige Analyse</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined amber-stroke-check">check_circle</span>
+<span class="font-medium text-primary">Echte Zahlen &amp; Fakten</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined amber-stroke-check">check_circle</span>
+<span class="font-medium text-primary">Kein Verkaufsdruck</span>
+</li>
+</ul>
+<div class="pt-4">
+<span class="text-xs uppercase tracking-widest text-slate-400 border-l-2 border-slate-200 pl-4 py-1">
+                        Keine Provisionen. Kein Verkauf.
+                    </span>
+</div>
+</div>
+<!-- Right Side: Consultant Image & CTA -->
+<div class="relative group">
+<!-- Decorative background element -->
+<div class="absolute -inset-4 bg-primary-container/5 rounded-xl -rotate-1 -z-10 group-hover:rotate-0 transition-transform duration-500"></div>
+<div class="bg-surface-container-lowest border border-slate-200 p-8 md:p-10 rounded-lg shadow-sm p-6 md:p-8">
+<div class="">
+<div class="relative overflow-hidden rounded-lg shadow-xl aspect-[3/2]">
+<img alt="Marc-Oliver Neumann" class="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700 object-top" src="https://lh3.googleusercontent.com/aida/ADBb0uidJq9ad5X7_BOC4k6JV7OVjL4nf5FRyKCH_y5CWoUcDZE3zv7H_HVTFiZAqfHHq-i6IEgyatVPosSi8AUW9VRNMQIh7RumMhkO-2TN-v2kjz2k9zA7v6ouTQ6FRbSagJ4nCixRo28AhwyUvjvg1BPx3JCexzQE6KJ4Nj-h7HEOzgvnP9d2TlBZyePtLsE-bqBecTo-bgbAnp3UREI1aQ2ZP3e7_E5-qkCf85lWZkPY_rYPmlPvMwIU"/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/80 to-transparent p-6 text-white">
+<p class="text-xs uppercase tracking-[0.2em] font-semibold opacity-80">Ihr Berater</p>
+<p class="font-headline text-2xl">Marc-Oliver Neumann</p>
+</div>
+</div>
+<div class="space-y-3 mt-6">
+<a class="block w-full text-center py-5 bg-gradient-to-br from-[#D4A373] to-[#BC8E5C] text-white font-bold text-lg rounded-md shadow-lg shadow-amber-900/20 hover:brightness-105 transition-all active:scale-[0.98]" href="#">
+                                Anfrage absenden
+                            </a>
+<p class="text-center text-[0.7rem] text-slate-400 font-medium uppercase tracking-wider">
+                                Antwort in ≤ 24 Stunden werktags.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Key Facts Section -->
+<section class="max-w-7xl mx-auto px-8 mb-24">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-slate-200 pt-16">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-amber-accent text-3xl shrink-0">verified_user</span>
+<div>
+<h3 class="font-bold text-primary mb-2">100% Unabhängig</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Wir erhalten keine Provisionen von Versicherern.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-amber-accent text-3xl shrink-0">database</span>
+<div>
+<h3 class="font-bold text-primary mb-2">Datengestützte Analyse</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Über 1.2 Mio. Datenpunkte aus offiziellen Quellen.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-amber-accent text-3xl shrink-0">groups</span>
+<div>
+<h3 class="font-bold text-primary mb-2">Erfahrene Experten</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Beratung durch spezialisierte Finanzanalysten.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Section -->
+<section class="bg-surface-container-low py-24 px-8 overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16">
+<h2 class="text-4xl text-primary mb-4">Warum Menschen uns ihre Fragen stellen</h2>
+<div class="h-1 w-24 bg-amber-accent"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-surface-container-lowest p-8 border-l-4 border-amber-accent">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 bg-primary text-white flex items-center justify-center rounded-full font-serif text-lg">M</div>
+<div class="text-sm font-medium text-on-surface">M., 38</div>
+</div>
+<p class="font-headline italic text-lg leading-snug text-primary">
+                        "Hat mir die zwei Fragen beantwortet, die mein Makler nicht wollte. Endlich Klarheit über die Beitragsstabilität im Alter."
+                    </p>
+<div class="mt-4 text-xs font-semibold text-slate-400 uppercase tracking-widest">IT-Projektleiter</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-surface-container-lowest p-8 border-l-4 border-amber-accent">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 bg-primary text-white flex items-center justify-center rounded-full font-serif text-lg">S</div>
+<div class="text-sm font-medium text-on-surface">S., 42</div>
+</div>
+<p class="font-headline italic text-lg leading-snug text-primary">
+                        "Die Analyse war absolut nüchtern und sachlich. Kein Vergleich zu den bunten Prospekten, die man sonst bekommt."
+                    </p>
+<div class="mt-4 text-xs font-semibold text-slate-400 uppercase tracking-widest">Unternehmensberaterin</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-surface-container-lowest p-8 border-l-4 border-amber-accent">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 bg-primary text-white flex items-center justify-center rounded-full font-serif text-lg">L</div>
+<div class="text-sm font-medium text-on-surface">L., 35</div>
+</div>
+<p class="font-headline italic text-lg leading-snug text-primary">
+                        "Für mich als Gutverdiener war die GKV-PKV-Gegenüberstellung Gold wert. Jetzt weiß ich, wo ich stehe."
+                    </p>
+<div class="mt-4 text-xs font-semibold text-slate-400 uppercase tracking-widest">Senior Developer</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-24 px-8 max-w-4xl mx-auto">
+<h2 class="text-3xl text-primary text-center mb-16">Häufige Fragen zur PKV-Analyse</h2>
+<div class="space-y-4">
+<!-- Accordion Item 1 -->
+<details class="group bg-surface-container-low rounded-lg overflow-hidden border-b border-transparent">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="text-lg font-medium text-primary">Kostet das etwas?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-6 pt-0 text-on-surface-variant leading-relaxed">
+                    Die Erst-Analyse ist für qualifizierte Angestellte kostenfrei. Wir refinanzieren uns über tiefergehende Beratungsmodule für Unternehmen, nicht über den Verkauf von Versicherungen an Einzelpersonen.
+                </div>
+</details>
+<!-- Accordion Item 2 -->
+<details class="group bg-surface-container-low rounded-lg overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="text-lg font-medium text-primary">Bekomme ich Werbung?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-6 pt-0 text-on-surface-variant leading-relaxed">
+                    Nein. Wir hassen Spam genauso wie Sie. Ihre Daten werden ausschließlich für diese spezifische Analyse verwendet. Kein Newsletter-Opt-in ohne Ihre explizite Anfrage.
+                </div>
+</details>
+<!-- Accordion Item 3 -->
+<details class="group bg-surface-container-low rounded-lg overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="text-lg font-medium text-primary">Werden meine Daten an Versicherer weitergegeben?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-6 pt-0 text-on-surface-variant leading-relaxed">
+                    Definitiv nicht. Wir sind keine Lead-Börse. Ihre Daten bleiben in unserem geschützten System in Deutschland.
+                </div>
+</details>
+<!-- Accordion Item 4 -->
+<details class="group bg-surface-container-low rounded-lg overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="text-lg font-medium text-primary">Muss ich telefonieren?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-6 pt-0 text-on-surface-variant leading-relaxed">
+                    Nur wenn Sie es ausdrücklich wünschen. Die Basis-Analyse erfolgt schriftlich per E-Mail als PDF-Dokument.
+                </div>
+</details>
+<!-- Accordion Item 5 -->
+<details class="group bg-surface-container-low rounded-lg overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="text-lg font-medium text-primary">Wie unabhängig sind Sie wirklich?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-6 pt-0 text-on-surface-variant leading-relaxed">
+                    Wir arbeiten nach dem Honorarberater-Prinzip. Unser Ziel ist Informationstiefe, nicht Abschlussquote. Wir prüfen Tarife aller großen deutschen Anbieter objektiv.
+                </div>
+</details>
+</div>
+</section>
+<!-- Final CTA Bar -->
+<section class="bg-primary py-20 px-8 text-center">
+<div class="max-w-4xl mx-auto space-y-8">
+<h2 class="text-3xl md:text-4xl text-white font-serif italic">Bereit für eine fundierte Entscheidung?</h2>
+<p class="text-on-primary-container text-lg">Erhalten Sie Ihre Analyse bequem per E-Mail.</p>
+<div class="flex justify-center space-y-3 mt-6">
+<a class="px-10 py-5 bg-[#D4A373] text-white font-bold rounded-md hover:brightness-110 transition-all shadow-xl shadow-black/20" href="#">
+                    Anfrage absenden
+                </a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200/20 dark:border-slate-800/20 mt-24">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-7xl mx-auto gap-4">
+<div class="font-sans text-[0.75rem] uppercase tracking-widest text-slate-400 dark:text-slate-500">
+            © 2024 Hanseatic Wealth Management. Licensed Insurance Brokerage.
+        </div>
+<div class="flex gap-8">
+<a class="font-sans text-[0.75rem] uppercase tracking-widest text-slate-400 dark:text-slate-500 hover:text-slate-900 transition-colors" href="#">Imprint</a>
+<a class="font-sans text-[0.75rem] uppercase tracking-widest text-slate-400 dark:text-slate-500 hover:text-slate-900 transition-colors" href="#">Privacy Policy</a>
+<a class="font-sans text-[0.75rem] uppercase tracking-widest text-slate-400 dark:text-slate-500 hover:text-slate-900 transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>`} />
+</Base>

@@ -1,0 +1,308 @@
+---
+// Auto-generiert aus 2_Design-Input/templates/T1_home/code.html
+// Home-Template (T1) — 1:1 Stitch-Export.
+// Dieses Layout NICHT manuell ändern — bei Design-Update neu generieren.
+import Base from './Base.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+---
+<Base title={title} description={description} canonical={canonical}>
+  <Fragment set:html={`<!-- TopNavBar Implementation from JSON -->
+<header class="bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur-md docked full-width top-0 sticky z-50 shadow-[0_12px_40px_rgba(25,28,29,0.06)]">
+<nav class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-serif italic text-blue-900 dark:text-blue-200">PKV Insight</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-300" href="#">Analyses</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-300" href="#">Private Health</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-300" href="#">Compare</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-300" href="#">Company Ratings</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-300" href="#">Policyholder Rights</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium hover:scale-95 duration-150 ease-in-out">Consultation</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- HERO SECTION -->
+<section class="relative min-h-[800px] flex items-center bg-[#FAF7F2] overflow-hidden py-20">
+<div class="max-w-7xl mx-auto px-8 w-full grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+<div class="md:col-span-6 flex flex-col justify-center">
+<span class="inline-block py-1 px-3 bg-white text-on-surface-variant text-[0.75rem] font-medium tracking-wider mb-8 rounded-sm border border-outline-variant/20 uppercase">Independent Review 2026</span>
+<h1 class="text-5xl md:text-[5.5rem] font-serif text-primary leading-[1] mb-8">
+                        Echte Klarheit für Ihre <span class="italic text-primary-container">Private Krankenversicherung.</span>
+</h1>
+<p class="text-xl text-secondary mb-12 max-w-lg leading-relaxed">
+                        Wann die PKV sich für dich lohnt, was sie wirklich kostet, wie du wechselst. Klare Fakten für Gutverdiener.
+                    </p>
+<div class="flex flex-wrap gap-4 mb-10">
+<button class="bg-[#D4A017] hover:bg-[#B8860B] text-white px-8 py-4 rounded-md font-semibold transition-all shadow-lg shadow-amber-900/10">
+                            Beitrag berechnen
+                        </button>
+<button class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-md font-semibold transition-all">
+                            Guide lesen
+                        </button>
+</div>
+<p class="text-[0.75rem] text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+                        Unabhängig. Keine Provisionen. Daten aus offiziellen Quellen 2026.
+                    </p>
+</div>
+<div class="md:col-span-6 relative h-full flex items-center justify-end">
+<div class="relative w-full aspect-square md:aspect-[4/5] lg:aspect-square flex items-center">
+<div class="absolute -inset-4 bg-white/40 blur-3xl rounded-full"></div>
+<img alt="PKV-Preisentwicklung Chart" class="relative z-10 w-full h-auto object-contain shadow-[0_32px_64px_-16px_rgba(0,32,70,0.12)] border border-white/50 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoi7c0xuEfJsqrpgzC14PC0kzWtcE6ST739kSdeAMZo-A-zlow8twZsN1L-TZo632pnYMwo6iX9rQx_N3TzNb_Lp4p4NU7bjGdnfncKx92_sQ0Kz2io9Rs8toZ8SxIJaWoCq-rmKsH1LFVbuSjLRcfJRQM6qqgpqJcnUD6Z0YLJKL9W3OuGq1ItyAxVIHxnx5JyE5OWWCB52z0vCawRFhl7Rwu0CPJXnq49r0oB_WMIixPAoaHrWcKvNU-OhEwOLHZDuW6tO-7"/>
+</div>
+</div>
+</div>
+</section>
+<!-- TRUST BAR -->
+<section class="bg-surface-container-low py-8 border-y border-outline-variant/10">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-primary" data-icon="manage_search">manage_search</span>
+<span class="text-sm font-medium">2838 geprüfte Keywords</span>
+</div>
+<div class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance">account_balance</span>
+<span class="text-sm font-medium">Zahlen aus BMG &amp; BMAS</span>
+</div>
+<div class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-primary" data-icon="shield_with_heart">shield_with_heart</span>
+<span class="text-sm font-medium">Unabhängig vom Versicherer</span>
+</div>
+<div class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-primary" data-icon="no_tracking">no_encryption</span>
+<span class="text-sm font-medium">Datenschutz: keine Tracker</span>
+</div>
+</div>
+</div>
+</section>
+<!-- TOPIC GRID -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div class="max-w-2xl">
+<h2 class="text-4xl font-serif text-primary mb-4">Navigieren Sie durch die PKV-Landschaft</h2>
+<p class="text-on-surface-variant">Strukturierte Analysen zu den wichtigsten Themen für festangestellte High-Performer.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:shadow-xl transition-all group">
+<span class="material-symbols-outlined text-3xl text-amber-accent mb-6" data-icon="payments">payments</span>
+<h3 class="text-2xl font-serif text-primary mb-4">Arbeitgeberzuschuss</h3>
+<p class="text-on-surface-variant mb-8 text-sm leading-relaxed">Wie viel Ihr Chef zu Ihrer privaten Versicherung wirklich beisteuert und wie die Verrechnung erfolgt.</p>
+<a class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all" href="#">Mehr erfahren <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span></a>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:shadow-xl transition-all group">
+<span class="material-symbols-outlined text-3xl text-amber-accent mb-6" data-icon="gavel">gavel</span>
+<h3 class="text-2xl font-serif text-primary mb-4">Versicherungspflichtgrenze (JAEG)</h3>
+<p class="text-on-surface-variant mb-8 text-sm leading-relaxed">Ab welchem Bruttojahresgehalt Sie in die PKV wechseln dürfen und was die neuen Grenzen für 2026 bedeuten.</p>
+<a class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all" href="#">Mehr erfahren <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span></a>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:shadow-xl transition-all group">
+<span class="material-symbols-outlined text-3xl text-amber-accent mb-6" data-icon="calculate">calculate</span>
+<h3 class="text-2xl font-serif text-primary mb-4">Kosten &amp; Beiträge</h3>
+<p class="text-on-surface-variant mb-8 text-sm leading-relaxed">Transparente Aufschlüsselung der Beitragsentwicklung, Altersrückstellungen und Risikozuschläge.</p>
+<a class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all" href="#">Mehr erfahren <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span></a>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:shadow-xl transition-all group">
+<span class="material-symbols-outlined text-3xl text-amber-accent mb-6" data-icon="swap_horiz">swap_horiz</span>
+<h3 class="text-2xl font-serif text-primary mb-4">Wechsel GKV → PKV</h3>
+<p class="text-on-surface-variant mb-8 text-sm leading-relaxed">Der Schritt-für-Schritt Prozess, Fristen und worauf Sie bei der Kündigung Ihrer gesetzlichen Kasse achten müssen.</p>
+<a class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all" href="#">Mehr erfahren <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span></a>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:shadow-xl transition-all group">
+<span class="material-symbols-outlined text-3xl text-amber-accent mb-6" data-icon="star">star</span>
+<h3 class="text-2xl font-serif text-primary mb-4">Beste PKV im Vergleich</h3>
+<p class="text-on-surface-variant mb-8 text-sm leading-relaxed">Unabhängige Bewertung der Top-Anbieter basierend auf Leistungsstärke und Beitragsstabilität.</p>
+<a class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all" href="#">Mehr erfahren <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span></a>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:shadow-xl transition-all group">
+<span class="material-symbols-outlined text-3xl text-amber-accent mb-6" data-icon="family_restroom">family_restroom</span>
+<h3 class="text-2xl font-serif text-primary mb-4">Elternzeit &amp; Rente</h3>
+<p class="text-on-surface-variant mb-8 text-sm leading-relaxed">Langzeitstrategien: Wie sich die PKV in Lebensphasen mit geringerem Einkommen verhält.</p>
+<a class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all" href="#">Mehr erfahren <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</section>
+<!-- CALCULATOR TEASER -->
+<section class="bg-primary py-24 overflow-hidden relative">
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="text-white">
+<h2 class="text-4xl md:text-5xl font-serif leading-tight mb-8">In 60 Sekunden: Was kostet dich die PKV wirklich?</h2>
+<p class="text-primary-fixed-dim text-lg mb-10 max-w-md">Keine Verkaufsgespräche. Nur ein präzises Modell basierend auf aktuellen Branchendaten.</p>
+<button class="bg-[#D4A017] hover:bg-[#B8860B] text-primary font-bold px-10 py-5 rounded-md transition-all shadow-xl shadow-black/20">
+                            Jetzt Beitrag berechnen
+                        </button>
+</div>
+<div class="relative">
+<div class="bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-2xl shadow-2xl">
+<div class="grid grid-cols-1 gap-6">
+<div>
+<label class="text-white/60 text-xs font-semibold uppercase tracking-wider mb-2 block">Bruttogehalt (jährlich)</label>
+<div class="flex items-center border-b border-white/20 pb-2">
+<span class="text-white text-2xl font-serif">€</span>
+<input class="bg-transparent border-none focus:ring-0 text-white text-2xl font-serif w-full pl-2" type="text" value="78.500"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<label class="text-white/60 text-xs font-semibold uppercase tracking-wider mb-2 block">Alter</label>
+<input class="bg-transparent border-b border-white/20 focus:ring-0 text-white text-2xl font-serif w-full pb-2" type="text" value="32"/>
+</div>
+<div>
+<label class="text-white/60 text-xs font-semibold uppercase tracking-wider mb-2 block">Geschlecht</label>
+<div class="flex gap-4 mt-2">
+<button class="text-white border border-white/40 px-4 py-1 text-sm rounded-full bg-white/10">M</button>
+<button class="text-white/40 border border-white/10 px-4 py-1 text-sm rounded-full">W</button>
+<button class="text-white/40 border border-white/10 px-4 py-1 text-sm rounded-full">D</button>
+</div>
+</div>
+</div>
+<div class="mt-4 p-4 bg-white/10 rounded-lg border border-white/5">
+<p class="text-white/60 text-sm">Geschätzter PKV-Anteil (Arbeitnehmer)</p>
+<p class="text-amber-accent text-3xl font-serif mt-1">€ 312,40 / Monat</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-tertiary-container/30 rounded-full blur-[100px]"></div>
+</section>
+<!-- LATEST EDITORIAL -->
+<section class="py-24 bg-[#FAF7F2]">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex justify-between items-end mb-12">
+<h2 class="text-3xl font-serif text-primary">Aktuelle Dossiers &amp; Analysen</h2>
+<a class="text-primary font-semibold border-b border-primary/20 hover:border-primary pb-1 transition-all" href="#">Alle Beiträge</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Article 1 -->
+<article class="flex flex-col">
+<span class="text-amber-accent font-bold text-xs uppercase tracking-widest mb-4">Marktanalyse</span>
+<h3 class="text-2xl font-serif text-primary mb-4 leading-snug">Die Entwicklung der Altersrückstellungen: Werden Beiträge im Alter wirklich unbezahlbar?</h3>
+<p class="text-on-surface-variant text-sm mb-6 line-clamp-3">Eine datenbasierte Untersuchung der letzten 20 Jahre zeigt, wie die PKV das Problem der steigenden Gesundheitskosten im Alter adressiert.</p>
+<div class="mt-auto flex items-center gap-4 text-xs text-secondary font-medium">
+<span>12 Min Lesezeit</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span>14. Jan 2026</span>
+</div>
+</article>
+<!-- Article 2 -->
+<article class="flex flex-col">
+<span class="text-amber-accent font-bold text-xs uppercase tracking-widest mb-4">Rechtliches</span>
+<h3 class="text-2xl font-serif text-primary mb-4 leading-snug">Beitragsentlastungstarife im Check: Lohnt sich die Vorauszahlung für Angestellte?</h3>
+<p class="text-on-surface-variant text-sm mb-6 line-clamp-3">Wie Sie den Steuervorteil maximieren und gleichzeitig Ihre Fixkosten im Ruhestand effektiv senken können.</p>
+<div class="mt-auto flex items-center gap-4 text-xs text-secondary font-medium">
+<span>8 Min Lesezeit</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span>09. Jan 2026</span>
+</div>
+</article>
+<!-- Article 3 -->
+<article class="flex flex-col">
+<span class="text-amber-accent font-bold text-xs uppercase tracking-widest mb-4">Vergleich</span>
+<h3 class="text-2xl font-serif text-primary mb-4 leading-snug">Stationäre Zusatzleistung vs. PKV-Vollversicherung: Ein Systemvergleich.</h3>
+<p class="text-on-surface-variant text-sm mb-6 line-clamp-3">Warum der Status "Privatpatient" in der GKV oft teurer erkauft wird als man durch einen echten Wechsel sparen würde.</p>
+<div class="mt-auto flex items-center gap-4 text-xs text-secondary font-medium">
+<span>15 Min Lesezeit</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span>02. Jan 2026</span>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- FAQ TEASER -->
+<section class="py-24 bg-white">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16">
+<div class="lg:col-span-5">
+<h2 class="text-4xl font-serif text-primary mb-6">Die häufigsten Fragen</h2>
+<p class="text-on-surface-variant text-lg mb-8">Wir haben die komplexesten Sachverhalte einfach und rechtssicher für Sie aufbereitet.</p>
+<div class="p-6 bg-surface-container-low rounded-lg border-l-4 border-amber-accent">
+<p class="italic text-primary font-serif">"Die PKV ist kein Produkt, das man kauft, sondern eine finanzielle Entscheidung, die man für den Rest seines Lebens plant."</p>
+</div>
+</div>
+<div class="lg:col-span-7 space-y-4">
+<!-- FAQ Item 1 -->
+<div class="bg-[#FAF7F2] p-6 rounded-md">
+<div class="flex justify-between items-center cursor-pointer">
+<h4 class="text-lg font-serif text-primary">Kann ich jederzeit zurück in die gesetzliche Krankenkasse?</h4>
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="bg-[#FAF7F2] p-6 rounded-md">
+<div class="flex justify-between items-center cursor-pointer">
+<h4 class="text-lg font-serif text-primary">Wie wirken sich Gehaltssprünge auf meinen PKV-Beitrag aus?</h4>
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="bg-[#FAF7F2] p-6 rounded-md">
+<div class="flex justify-between items-center cursor-pointer">
+<h4 class="text-lg font-serif text-primary">Sind meine Kinder automatisch mitversichert?</h4>
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="bg-[#FAF7F2] p-6 rounded-md">
+<div class="flex justify-between items-center cursor-pointer">
+<h4 class="text-lg font-serif text-primary">Was passiert bei Arbeitslosigkeit oder Sabbatical?</h4>
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ABOUT TEASER -->
+<section class="py-24 border-t border-outline-variant/10">
+<div class="max-w-[640px] mx-auto px-8 text-center">
+<div class="w-24 h-24 mx-auto mb-8 rounded-full overflow-hidden border-2 border-amber-accent p-1">
+<img alt="portrait of a professional financial expert in a dark suit with a calm authoritative expression" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxPfjuQoOZ5YMfKuZZt7AaNHK62oo76EomJVWFu-8Wa4KCoVehrSXkZgEhhqs9_2ds5EwXTRZb-tYqW1QXCY2T9LLcwsnwVCw-PuYLc4arq110LsqZcCeL_U8g-FuqwN1OMlEx9LD3aCzymn0HZeCKdAwFV3LBPsuguQvYkcIo5FYEi5uKG8Sj64A_BkAwW29fJziqSYVlzT7kOcdVPmG7Wh6SZOrYBWFse89v1vk3YR4sAfY7iiJIHIW3gCo5p-6YCDHphgve"/>
+</div>
+<h3 class="text-3xl font-serif text-primary mb-6">Warum dieses Portal existiert</h3>
+<p class="text-on-surface-variant leading-relaxed mb-8">
+                    Nach 15 Jahren in der Finanzjournalistik habe ich gesehen, wie viel Intransparenz im PKV-Market herrscht. 'PKV Insight' ist mein Versuch, Angestellten eine unabhängige Plattform zu bieten, die keine Leads verkauft, sondern Wissen vermittelt. Wir sind der Kompass im Tarifdschungel.
+                </p>
+<div class="flex justify-center gap-2 italic font-serif text-primary">
+<span>— Marc-Oliver Neumann,</span>
+<span class="text-on-surface-variant">Chefredakteur</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Implementation from JSON -->
+<footer class="bg-slate-100 dark:bg-slate-900 full-width mt-12 py-12">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div>
+<div class="text-xl font-serif text-blue-900 dark:text-blue-300 mb-4">PKV Insight</div>
+<p class="text-slate-500 dark:text-slate-500 text-[0.75rem]">© 2024 PKV Insight Editorial. Independent Financial Journalism.</p>
+</div>
+<div class="flex flex-wrap justify-end gap-6">
+<a class="text-slate-500 dark:text-slate-500 hover:text-blue-700 dark:hover:text-blue-200 transition-opacity opacity-80 hover:opacity-100 text-sm" href="#">Editorial Standards</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-blue-700 dark:hover:text-blue-200 transition-opacity opacity-80 hover:opacity-100 text-sm" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-blue-700 dark:hover:text-blue-200 transition-opacity opacity-80 hover:opacity-100 text-sm" href="#">Imprint</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-blue-700 dark:hover:text-blue-200 transition-opacity opacity-80 hover:opacity-100 text-sm" href="#">Methodology</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-blue-700 dark:hover:text-blue-200 transition-opacity opacity-80 hover:opacity-100 text-sm" href="#">Contact</a>
+</div>
+</div>
+</footer>`} />
+</Base>
