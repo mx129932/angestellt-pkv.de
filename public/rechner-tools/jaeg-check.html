@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JAEG-Check 2026 · PKV für Angestellte</title>
+<style>
+  :root {
+    --primary: #002046;
+    --amber: #D4A017;
+    --amber-dark: #B8860B;
+    --surface: #FAF7F2;
+    --on-surface: #1a1f2e;
+    --on-surface-variant: #515a6b;
+    --outline: #cfd2d8;
+    --success: #1f7a3a;
+    --error: #c5192d;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--on-surface);
+    background: var(--surface);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
+  h1 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.6rem; margin: 0 0 4px; }
+  .lead { color: var(--on-surface-variant); font-size: .95rem; margin: 0 0 20px; }
+  .card {
+    background: #fff;
+    border: 1px solid rgba(0,32,70,.08);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+    margin-bottom: 20px;
+  }
+  .card h2 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.15rem; margin: 0 0 14px; }
+  .input-row { position: relative; margin-bottom: 16px; }
+  .input-row label { display: block; font-size: .85rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
+  .input-row input[type="number"] {
+    width: 100%; padding: 11px 90px 11px 14px; border: 1px solid var(--outline);
+    border-radius: 8px; background: #fff; font-size: 1.05rem; font-weight: 600;
+    color: var(--on-surface); outline: none; transition: border-color .15s;
+    -moz-appearance: textfield;
+  }
+  .input-row input::-webkit-outer-spin-button, .input-row input::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+  }
+  .input-row input:focus { border-color: var(--primary); }
+  .input-row .suffix {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--on-surface-variant); font-weight: 600; font-size: .9rem; pointer-events: none;
+  }
+  .result { margin-top: 20px; padding: 20px; border-radius: 12px; text-align: center; font-size: 1.1rem; font-weight: 600; }
+  .result.yes { background: #d4edda; color: var(--success); border: 1px solid #c3e6cb; }
+  .result.no { background: #f8d7da; color: var(--error); border: 1px solid #f5c6cb; }
+  .result .big { display: block; font-size: 1.8rem; margin: 8px 0; font-family: "Playfair Display", Georgia, serif; }
+  .hint { font-size: .85rem; color: var(--on-surface-variant); margin-top: 8px; }
+  .cta-box {
+    margin-top: 24px; background: var(--primary); color: #fff;
+    padding: 30px; border-radius: 12px; text-align: center;
+  }
+  .cta-box .text p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.82); }
+  .cta-box .text strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; color: #fff; margin-bottom: 8px; }
+  .cta-buttons {
+    display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--amber); color: #fff; font-weight: 600; font-size: .95rem;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none;
+    transition: background .15s; cursor: pointer; flex: 1; min-width: 200px;
+  }
+  @media (max-width: 600px) { .cta-buttons { flex-direction: column; } .cta-btn { min-width: 100%; } }
+  .cta-btn:hover { background: var(--amber-dark); }
+  .cta-btn#cta-termin {
+    background: transparent; color: #fff; border: 2px solid var(--amber); font-weight: 600;
+  }
+  .cta-btn#cta-termin:hover { background: rgba(212,160,23,.1); border-color: var(--amber-dark); }
+  .trust-badges {
+    margin-top: 14px; display: flex; gap: 16px; justify-content: center;
+    flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.85);
+  }
+  .trust-badges span { display: flex; align-items: center; gap: 4px; }
+  .trust-badges span::before { content: "✓"; font-weight: bold; color: #4ade80; }
+  .note { margin-top: 20px; font-size: .78rem; color: var(--on-surface-variant); line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>✅ JAEG-Check 2026</h1>
+  <p class="lead">Liegst du über der Versicherungspflichtgrenze? Finde es in 10 Sekunden heraus – und erfahre, ob PKV für dich möglich ist.</p>
+
+  <div class="card">
+    <h2>Jahresgehalt eingeben</h2>
+    <div class="input-row">
+      <label for="gehalt">Ihr Brutto-Jahresgehalt</label>
+      <div style="position: relative;">
+        <input type="number" id="gehalt" min="0" step="100" value="60000" />
+        <span class="suffix">€ / Jahr</span>
+      </div>
+      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
+        Auf dem Gehaltszettel: Jahresgehalt × 12 oder jährliche Summe
+      </div>
+    </div>
+
+    <div id="result" class="result yes">
+      <span style="font-size: .85rem; opacity: .9;">Status:</span>
+      <div class="big" id="result-text">✓ Über der JAEG</div>
+      <div class="hint">Sie können in die PKV wechseln — vorausgesetzt, andere Voraussetzungen sind erfüllt.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📊 Die JAEG 2026</h2>
+    <p style="margin: 0; font-size: .95rem; color: var(--on-surface-variant); line-height: 1.6;">
+      <strong>Versicherungspflichtgrenze (JAEG):</strong> 77.400 €/Jahr<br>
+      <strong style="color: var(--primary);">Das bedeutet:</strong><br>
+      ✓ Über 77.400 €: Sie können die PKV wählen (Angestellte, Beamte)<br>
+      ✓ Darunter: Versicherungspflicht in der GKV bleibt bestehen<br>
+      ℹ️ Spezialfall: Beamte und Richter sind immer versicherungsfrei<br>
+      ℹ️ Spezialfall: Vor 2003 in PKV Versicherte: besondere JAEG 69.750 €
+    </p>
+  </div>
+
+  <div class="cta-box">
+    <div class="text">
+      <strong>Noch Fragen zur PKV?</strong>
+      <p>Gerne analysieren wir Ihre Situation und melden uns bei Ihnen.</p>
+    </div>
+    <div class="cta-buttons">
+      <button class="cta-btn" id="send-result">
+        → Ergebnis per E-Mail senden
+      </button>
+      <button class="cta-btn" id="cta-termin">
+        → Termin buchen
+      </button>
+    </div>
+    <div class="trust-badges">
+      <span>Kostenfrei</span>
+      <span>Unverbindlich</span>
+      <span>Vertraulich</span>
+    </div>
+  </div>
+
+  <p class="note">
+    Quelle: § 6 Absatz 1 SGB V. Die JAEG wird jährlich angepasst. 2026: 77.400 € / Jahr = 6.450 € / Monat.
+    Besondere JAEG für vor 2003 in PKV Versicherte: 69.750 € / Jahr.
+  </p>
+</div>
+
+<script>
+const SHEET_ID = "1IWqUutBKGfV4zw-a07aRbmeN3UvKxqfcGtV3rzUC4u8";
+const GID_ANGESTELLT = "350834983";
+
+const DEFAULTS = {
+  versicherungspflichtgrenze_jahr: 77400,
+  jaeg_besondere_jahr: 69750,
+};
+let DATA = { ...DEFAULTS };
+
+async function loadSheet() {
+  try {
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID_ANGESTELLT}`;
+    const text = await fetch(url).then(r => r.text());
+    const rows = text.trim().split("\n").slice(1);
+    const parsed = {};
+    rows.forEach(line => {
+      const cols = [];
+      let cur = "", inQ = false;
+      for (const ch of line) {
+        if (ch === '"') { inQ = !inQ; continue; }
+        if (ch === ',' && !inQ) { cols.push(cur.trim()); cur = ""; continue; }
+        cur += ch;
+      }
+      cols.push(cur.trim());
+      const key = cols[0] || "";
+      const rawVal = (cols[1] || "").replace(",", ".");
+      const val = parseFloat(rawVal);
+      if (key && !isNaN(val)) parsed[key] = val;
+    });
+    DATA = { ...DEFAULTS, ...parsed };
+  } catch(e) {
+    // Fallback
+  }
+}
+
+function calc() {
+  const gehalt = parseFloat(document.getElementById("gehalt").value) || 0;
+  const jaeg = DATA.versicherungspflichtgrenze_jahr;
+  const result = document.getElementById("result");
+  const resultText = document.getElementById("result-text");
+
+  if (gehalt >= jaeg) {
+    result.className = "result yes";
+    resultText.innerHTML = `✓ PKV-Wechsel möglich<div class="hint" style="margin-top: 6px;">Bei ${new Intl.NumberFormat("de-DE").format(Math.round(gehalt))} €/Jahr liegen Sie über der JAEG (${new Intl.NumberFormat("de-DE").format(jaeg)} €).</div>`;
+  } else {
+    result.className = "result no";
+    resultText.innerHTML = `✗ Versicherungspflicht GKV<div class="hint" style="margin-top: 6px;">Bei ${new Intl.NumberFormat("de-DE").format(Math.round(gehalt))} €/Jahr liegen Sie unter der JAEG. GKV-Versicherungspflicht bleibt bestehen.</div>`;
+  }
+}
+
+function sendResults(e) {
+  e.preventDefault();
+  const gehalt = document.getElementById("gehalt").value || "—";
+  const result = document.getElementById("result-text").textContent;
+
+  const lines = [];
+  lines.push("Rechner: JAEG-Check 2026");
+  lines.push("");
+  lines.push("Mein Gehalt: " + gehalt + " €/Jahr");
+  lines.push("");
+  lines.push("Ergebnis:");
+  lines.push(result);
+  lines.push("");
+  lines.push("Ich möchte mein Ergebnis gerne mit einem Experten besprechen.");
+
+  const subject = encodeURIComponent("Rechner-Ergebnis: JAEG-Check");
+  const body = encodeURIComponent(lines.join("\n"));
+  const mailtoUrl = "mailto:beratung@angestellt-pkv.de?subject=" + subject + "&body=" + body;
+
+  const a = document.createElement("a");
+  a.href = mailtoUrl;
+  a.target = "_top";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+document.getElementById("gehalt").addEventListener("input", calc);
+document.getElementById("send-result").addEventListener("click", sendResults);
+document.getElementById("cta-termin").addEventListener("click", () => {
+  window.open("https://calendly.com/pkv-welt/", "_blank");
+});
+
+loadSheet();
+calc();
+</script>
+</body>
+</html>

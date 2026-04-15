@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKV Selbstbehalt-Optimierer – Optimaler Selbstbehalt berechnen</title>
+<style>
+  :root {
+    --bd: #0C4A6E; --bm: #0369A1; --bl: #DEEAF1; --or: #EA580C;
+    --bg: #F7F9FC; --tx: #4A4A4A; --mu: #666; --bo: #C8DCF0;
+    --gr: #1E7D4B; --gb: #EAF7EF; --wb: #FFF8EC; --wr: #E8B84B;
+    --pu: #0C4A6E; --pub: #DEEAF1;
+    --r: 8px; --sh: 0 2px 12px rgba(31,78,121,.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--tx); line-height: 1.6; }
+
+  
+
+  /* Mobile responsive */
+  @media (max-width: 520px) {
+    .wrap { padding: 12px 8px 32px !important; }
+    .hdr { padding: 18px 14px !important; }
+    .hdr h1 { font-size: 1.15rem !important; }
+    .wrap .card { padding: 14px 10px !important; }
+    .wrap .rval { min-width: 72px !important; font-size: .92rem !important; }
+    .wrap .f label span { display: block !important; margin-left: 0 !important; margin-top: 2px !important; }
+    .wrap .grid3 { grid-template-columns: 1fr !important; }
+    .wrap .grid2 { grid-template-columns: 1fr !important; }
+    .cta { padding: 14px 10px !important; }
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; }
+  .hdr { background: linear-gradient(135deg, var(--bd) 0%, var(--bm) 100%);
+    border-radius: var(--r); padding: 26px 30px; color: #fff; margin-bottom: 20px; }
+  .hdr h1 { font-size: 1.45rem !important; font-weight: 700 !important; margin-bottom: 5px !important; color: #fff !important; line-height: 1.3 !important; }
+  .hdr p  { font-size: .88rem !important; opacity: .88; color: #fff !important; line-height: 1.5 !important; }
+  .card { background: #fff; border: 1px solid var(--bo); border-radius: var(--r);
+    padding: 22px; margin-bottom: 14px; box-shadow: var(--sh); }
+  .card h2 { font-size: .95rem; font-weight: 700; color: var(--bd); margin-bottom: 14px;
+    padding-bottom: 7px; border-bottom: 2px solid var(--bl); }
+  .f { margin-bottom: 16px; }
+  .f label { display: block; font-size: .83rem; font-weight: 600; color: var(--bd); margin-bottom: 5px; }
+  .f label span { font-weight: 400; color: var(--mu); font-size: .78rem; margin-left: 4px; }
+  .rrow { display: flex; align-items: center; gap: 10px; }
+  .rval { min-width: 90px; text-align: right; font-size: 1.08rem; font-weight: 700;
+    color: var(--bd); background: var(--bl); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--bo); }
+  input[type=range] { width: 100%; accent-color: var(--bm); cursor: pointer; min-height: 44px; }
+  select { width: 100%; padding: 11px 12px; border: 1px solid var(--bo);
+    border-radius: 6px; font-size: 1rem; background: #fff; color: var(--tx); cursor: pointer; min-height: 44px; }
+
+  /* Vergleichstabelle */
+  .res { display: none; }
+  .res.on { display: block; }
+
+  .opt-table { width: 100%; border-collapse: collapse; margin: 0 0 14px; font-size: .85rem; }
+  .opt-table th { background: var(--bd); color: #fff; padding: 9px 10px; text-align: center; font-size: .82rem; }
+  .opt-table th:first-child { text-align: left; }
+  .opt-table td { padding: 9px 10px; border-bottom: 1px solid #E8F0F8; text-align: center; }
+  .opt-table td:first-child { text-align: left; font-weight: 600; color: var(--bd); }
+  .opt-table tr.current td { background: #FEFCE8; font-style: italic; }
+  .opt-table tr.best td { background: #C6F4D6 !important; font-weight: 700; }
+  .opt-table .tag { font-size: .7rem; font-weight: 700; padding: 2px 7px;
+    border-radius: 10px; display: inline-block; }
+  .opt-table .tag.cur { background: var(--bd); color: #fff; }
+  .opt-table .tag.rec { background: var(--gr); color: #fff; }
+  .opt-table .save { color: var(--gr); font-weight: 700; }
+  .opt-table .cost { color: #C0392B; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .box { background: #fff; border: 1px solid var(--bo); border-radius: 6px; padding: 14px; }
+  .box .lbl { font-size: .74rem; color: var(--mu); font-weight: 600; text-transform: uppercase; letter-spacing: .4px; margin-bottom: 3px; }
+  .box .val { font-size: 1.2rem; font-weight: 800; color: var(--bd); }
+  .box.pu { border-color: var(--bm); } .box.pu .val { color: var(--bd); }
+  .box.gr { border-color: #81C784; } .box.gr .val { color: var(--gr); }
+
+  .ber-box { background: var(--pub); border: 1px solid var(--bo); border-radius: 6px;
+    padding: 14px 16px; margin-bottom: 14px; }
+  .ber-box h3 { font-size: .85rem; font-weight: 700; color: var(--pu); margin-bottom: 8px; }
+  .ber-box p { font-size: .83rem; color: #4A235A; }
+
+  .hint { background: var(--wb); border: 1px solid var(--wr); border-radius: 6px;
+    padding: 12px 14px; font-size: .81rem; color: #7A5500; margin-bottom: 14px; }
+
+  .cta { background: linear-gradient(135deg, var(--bd), var(--bm));
+    border-radius: var(--r); padding: 18px 22px; text-align: center; color: #fff; }
+  .cta p { font-size: .87rem; opacity: .9; margin-bottom: 10px; }
+  .cbtn { display: inline-block; background: var(--or); color: #fff; padding: 14px 28px;
+    border-radius: 6px; font-weight: 700; text-decoration: none; font-size: .95rem; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  .note { font-size: .73rem; color: var(--mu); text-align: center; margin-top: 10px; }
+
+  @media (max-width: 520px) { .grid2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hdr">
+  <h1>🎯 Selbstbeteiligung optimal wählen</h1>
+  <p>Welcher Selbstbehalt passt zu dir? Finde die richtige Balance zwischen niedrigerem Monatsbeitrag und Eigenrisiko – mit realistischen Kostenszenarien.</p>
+</div>
+
+<div class="card">
+  <h2>Ihr aktueller PKV-Tarif</h2>
+  <div class="f">
+    <label>Aktueller PKV-Monatsbeitrag</label>
+    <div class="rrow">
+      <input type="range" id="beitrag" min="200" max="1500" step="10" value="700"
+             oninput="v('beitrag_v', feur(this.value)); calc()">
+      <span class="rval" id="beitrag_v">700 €</span>
+    </div>
+  </div>
+  <div class="f">
+    <label>Aktueller jährlicher Selbstbehalt</label>
+    <select id="sb_aktuell" onchange="calc()">
+      <option value="0">0 € (kein Selbstbehalt)</option>
+      <option value="300">300 €</option>
+      <option value="600" selected>600 €</option>
+      <option value="1000">1.000 €</option>
+      <option value="1500">1.500 €</option>
+      <option value="2000">2.000 €</option>
+    </select>
+  </div>
+  <div class="f">
+    <label>Beitragsentlastungstarif vorhanden? <span>(BER – Erstattung bei leistungsfreiem Jahr)</span></label>
+    <select id="ber" onchange="calc()">
+      <option value="0">Nein</option>
+      <option value="1" selected>Ja – 1 Monatsbeitrag BER</option>
+      <option value="2">Ja – 2 Monatsbeiträge BER</option>
+      <option value="3">Ja – 3 Monatsbeiträge BER</option>
+    </select>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Ihr Gesundheitsverhalten</h2>
+  <div class="f">
+    <label>Durchschnittliche Arztbesuche pro Jahr <span>(alle Behandlungen, Medikamente, Untersuchungen)</span></label>
+    <div class="rrow">
+      <input type="range" id="arzt" min="0" max="30" step="1" value="6"
+             oninput="v('arzt_v', this.value + 'x / Jahr'); calc()">
+      <span class="rval" id="arzt_v">6x / Jahr</span>
+    </div>
+  </div>
+  <div class="f">
+    <label>Durchschnittliche Kosten pro Arztbesuch / Behandlung <span>(Schätzung)</span></label>
+    <div class="rrow">
+      <input type="range" id="arzt_kosten" min="20" max="500" step="10" value="80"
+             oninput="v('arzt_k_v', feur(this.value)); calc()">
+      <span class="rval" id="arzt_k_v">80 €</span>
+    </div>
+  </div>
+  <div class="f">
+    <label>Alter <span>(beeinflusst Break-even und Risikoeinschätzung)</span></label>
+    <div class="rrow">
+      <input type="range" id="alter" min="20" max="65" step="1" value="38"
+             oninput="v('alter_v', this.value + ' Jahre'); calc()">
+      <span class="rval" id="alter_v">38 Jahre</span>
+    </div>
+  </div>
+</div>
+
+<!-- Ergebnis -->
+<div id="res" class="res">
+  <div class="card" style="padding: 0; overflow: hidden;">
+    <div style="padding: 14px 20px 0; font-size: .95rem; font-weight: 700; color: var(--bd);">Selbstbehalt-Vergleich</div>
+    <div style="overflow-x:auto; padding: 12px;">
+      <table class="opt-table" id="opt_table">
+        <thead>
+          <tr>
+            <th>Selbstbehalt</th>
+            <th>Beitragsersparnis / Mon.</th>
+            <th>Max. Eigenrisiko / Jahr</th>
+            <th>Jahres-Netto-Vorteil</th>
+            <th>Break-even</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="opt_tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="box pu">
+      <div class="lbl">Empfohlener Selbstbehalt</div>
+      <div class="val" id="r_empf">–</div>
+    </div>
+    <div class="box gr">
+      <div class="lbl">Jährl. Beitragsersparnis</div>
+      <div class="val" id="r_spar">–</div>
+    </div>
+    <div class="box">
+      <div class="lbl">Ihre jährl. Arztkosten (Schätzung)</div>
+      <div class="val" id="r_arzt">–</div>
+    </div>
+    <div class="box">
+      <div class="lbl">Netto-Vorteil nach SB & Arztkosten</div>
+      <div class="val" id="r_netto">–</div>
+    </div>
+  </div>
+
+  <div class="ber-box" id="ber_box"></div>
+
+  <div class="hint" id="hint_box"></div>
+
+  <div class="cta">
+    <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:6px;">Ergebnis mit einem Experten besprechen?</h3>
+    <p>Gerne analysieren wir Ihr Ergebnis und melden uns bei Ihnen - klären Sie offene Fragen einfach mit unseren Experten.</p>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <a id="mailto_cta" href="#" class="cbtn" onclick="sendResults(event)">→ Ergebnis per E-Mail senden</a>
+      <a href="https://calendly.com/pkv-welt/" target="_blank" rel="noopener" class="cbtn" style="background:var(--bm);">→ Termin buchen</a>
+    </div>
+    <div style="display:flex;gap:16px;justify-content:center;margin-top:12px;font-size:.78rem;opacity:.85;">
+      <span>✓ Kostenfrei</span><span>✓ Unverbindlich</span><span>✓ Vertraulich</span>
+    </div>
+  </div>
+</div>
+
+<div class="note">Beitragsersparnisse sind Schätzwerte (Marktdurchschnitt). Tatsächliche Werte hängen von Ihrem Tarif und Versicherer ab. Keine Beratung.</div>
+</div>
+
+<script>
+function feur(v,d=0) { return new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR",maximumFractionDigits:d}).format(v); }
+function v(id, t) { document.getElementById(id).textContent = t; }
+
+function sendResults(e) {
+  e.preventDefault();
+  const lines = [];
+  lines.push('Rechner: Selbstbehalt-Optimierer');
+  lines.push('');
+  lines.push('Meine Eingaben:');
+  const beitrag = parseFloat(document.getElementById("beitrag").value);
+  const sb_aktuell = parseInt(document.getElementById("sb_aktuell").value);
+  const ber = parseInt(document.getElementById("ber").value);
+  const arzt = parseFloat(document.getElementById("arzt").value);
+  const arzt_kosten = parseFloat(document.getElementById("arzt_kosten").value);
+  const alter = parseInt(document.getElementById("alter").value);
+  lines.push('- Aktueller PKV-Monatsbeitrag: ' + feur(beitrag));
+  lines.push('- Aktueller jährlicher Selbstbehalt: ' + feur(sb_aktuell));
+  const ber_label = ber === 0 ? 'Nein' : ber + ' Monatsbeiträge';
+  lines.push('- Beitragsentlastungstarif: ' + ber_label);
+  lines.push('- Durchschnittliche Arztbesuche/Jahr: ' + arzt);
+  lines.push('- Kosten pro Arztbesuch: ' + feur(arzt_kosten));
+  lines.push('- Alter: ' + alter + ' Jahre');
+  lines.push('');
+  lines.push('Ergebnis:');
+  const r_empf = document.getElementById("r_empf").textContent;
+  const r_spar = document.getElementById("r_spar").textContent;
+  const r_arzt = document.getElementById("r_arzt").textContent;
+  const r_netto = document.getElementById("r_netto").textContent;
+  lines.push('- Empfohlener Selbstbehalt: ' + r_empf);
+  lines.push('- Jährliche Beitragsersparnis: ' + r_spar);
+  lines.push('- Geschätzte jährliche Arztkosten: ' + r_arzt);
+  lines.push('- Netto-Vorteil: ' + r_netto);
+  lines.push('');
+  lines.push('Ich möchte mein Ergebnis gerne mit einem Experten besprechen.');
+  const subject = encodeURIComponent('Rechner-Ergebnis: Selbstbehalt-Optimierer');
+  const body = encodeURIComponent(lines.join('\n'));
+  var mailtoUrl = 'mailto:beratung@angestellt-pkv.de?subject=' + subject + '&body=' + body;
+  var a = document.createElement('a');
+  a.href = mailtoUrl;
+  a.target = '_top';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+// Beitragsersparnis-Faktoren (Marktdurchschnitt – % des aktuellen Beitrags bei Erhöhung des SB)
+// Verglichen mit SB=0
+const SB_LEVELS = [
+  { sb: 0,    ersparnis_von_0: 0.00, label: "0 €" },
+  { sb: 300,  ersparnis_von_0: 0.06, label: "300 €" },
+  { sb: 600,  ersparnis_von_0: 0.11, label: "600 €" },
+  { sb: 1000, ersparnis_von_0: 0.17, label: "1.000 €" },
+  { sb: 1500, ersparnis_von_0: 0.22, label: "1.500 €" },
+  { sb: 2000, ersparnis_von_0: 0.27, label: "2.000 €" },
+];
+
+function basisBeitrag(beitrag, sbAktuell) {
+  // Beitrag ohne Selbstbehalt = beitrag / (1 - aktueller SB-Faktor)
+  const cur = SB_LEVELS.find(x => x.sb === sbAktuell) || SB_LEVELS[0];
+  return beitrag / (1 - cur.ersparnis_von_0);
+}
+
+function calc() {
+  const beitrag   = parseFloat(document.getElementById("beitrag").value);
+  const sbAktuell = parseInt(document.getElementById("sb_aktuell").value);
+  const berMonate = parseInt(document.getElementById("ber").value);
+  const arzt      = parseFloat(document.getElementById("arzt").value);
+  const arztK     = parseFloat(document.getElementById("arzt_kosten").value);
+  const alter     = parseInt(document.getElementById("alter").value);
+
+  const beitragBase = basisBeitrag(beitrag, sbAktuell);
+  const arztKostenJahr = arzt * arztK;
+
+  // BER-Wert = Monatsbeträge × Beitrag (nur wenn kein SB-Verbrauch)
+  // Je höher SB, desto eher keine Leistungen in Anspruch → BER realistischer
+  const berWert = berMonate * beitrag;
+
+  // Wahrscheinlichkeit, SB zu erreichen (grob geschätzt nach Alter und Arztbesuchen)
+  const p_sb_300  = Math.min(0.95, 0.15 + arzt * 0.04 + (alter - 25) * 0.005);
+  const p_sb_600  = Math.min(0.85, 0.08 + arzt * 0.03 + (alter - 25) * 0.004);
+  const p_sb_1000 = Math.min(0.70, 0.05 + arzt * 0.02 + (alter - 25) * 0.003);
+  const p_sb_1500 = Math.min(0.55, 0.03 + arzt * 0.015 + (alter - 25) * 0.002);
+  const p_sb_2000 = Math.min(0.45, 0.02 + arzt * 0.01  + (alter - 25) * 0.002);
+  const p_map = { 0: 1.0, 300: p_sb_300, 600: p_sb_600, 1000: p_sb_1000, 1500: p_sb_1500, 2000: p_sb_2000 };
+
+  const tbody = document.getElementById("opt_tbody");
+  tbody.innerHTML = "";
+
+  let bestRow = null, bestScore = -Infinity;
+
+  SB_LEVELS.forEach(lvl => {
+    const beitragNeu   = beitragBase * (1 - lvl.ersparnis_von_0);
+    const sparMon      = beitrag - beitragNeu;
+    const sparJahr     = sparMon * 12;
+    const erwSBKosten  = lvl.sb * (p_map[lvl.sb] ?? 0.5);
+    const nettoVorteil = sparJahr - erwSBKosten;
+    const breakeven    = sparMon > 0 ? (lvl.sb / sparMon).toFixed(1) + " Mon." : "—";
+    const isCurrentSB  = lvl.sb === sbAktuell;
+
+    // Score: Netto-Vorteil + BER-Bonus wenn SB hoch
+    const berBonus = lvl.sb >= 600 ? berWert * (1 - p_map[lvl.sb]) : 0;
+    const score = nettoVorteil + berBonus;
+    if (!isCurrentSB && score > bestScore && lvl.sb !== 0) {
+      bestScore = score;
+      bestRow = lvl;
+    }
+
+    const tr = document.createElement("tr");
+    if (isCurrentSB) tr.className = "current";
+    else if (bestRow && lvl.sb === bestRow.sb && !isCurrentSB) {} // will mark after loop
+
+    tr.innerHTML = `
+      <td>${lvl.label} ${isCurrentSB ? '<span class="tag cur">Aktuell</span>' : ''}</td>
+      <td class="${sparMon > 0 ? 'save' : ''}">${sparMon !== 0 ? (sparMon > 0 ? "+" : "") + feur(sparMon) : "Basis"}</td>
+      <td class="cost">${lvl.sb > 0 ? feur(lvl.sb) : "—"}</td>
+      <td class="${nettoVorteil > 0 ? 'save' : 'cost'}">${lvl.sb > 0 ? feur(nettoVorteil) : "Basis"}</td>
+      <td>${breakeven}</td>
+      <td></td>
+    `;
+    tr.dataset.sb = lvl.sb;
+    tbody.appendChild(tr);
+  });
+
+  // Best-Row markieren
+  if (bestRow) {
+    Array.from(tbody.querySelectorAll("tr")).forEach(tr => {
+      if (parseInt(tr.dataset.sb) === bestRow.sb) {
+        tr.className = "best";
+        tr.querySelector("td:last-child").innerHTML = '<span class="tag rec">✓ Empfohlen</span>';
+      }
+    });
+  }
+
+  const empfSB    = bestRow ? bestRow.label : SB_LEVELS.find(x => x.sb === sbAktuell)?.label ?? "—";
+  const empfSpar  = bestRow ? (beitragBase * (1 - (SB_LEVELS.find(x=>x.sb===sbAktuell)?.ersparnis_von_0??0)) -
+                               beitragBase * (1 - bestRow.ersparnis_von_0)) * 12 : 0;
+
+  document.getElementById("r_empf").textContent = empfSB;
+  document.getElementById("r_spar").textContent = bestRow ? feur(empfSpar) + " / Jahr" : "—";
+  document.getElementById("r_arzt").textContent = feur(arztKostenJahr) + " / Jahr";
+
+  const beitragEmpf = bestRow ? beitragBase * (1 - bestRow.ersparnis_von_0) : beitrag;
+  const nettoGes = empfSpar - (bestRow ? (bestRow.sb * (p_map[bestRow.sb] ?? 0.5)) : 0);
+  document.getElementById("r_netto").textContent = bestRow ? feur(nettoGes) + " / Jahr" : "—";
+
+  // BER Info
+  const berBox = document.getElementById("ber_box");
+  if (berMonate > 0) {
+    berBox.innerHTML = `<h3>🎁 Beitragsrückerstattung (BER)</h3>
+      <p>Bei leistungsfreiem Jahr erhalten Sie ${feur(berWert)} zurück (${berMonate} × ${feur(beitrag)}).
+      Mit einem höheren Selbstbehalt (${empfSB}) wird es wahrscheinlicher, die BER voll zu erhalten,
+      da Kleinleistungen selbst getragen werden. Mögliche BER bei ${empfSB} SB: ca. ${feur(berWert * (1-(p_map[bestRow?.sb??sbAktuell]??0.5)))} / Jahr (Schätzung).</p>`;
+    berBox.style.display = "block";
+  } else {
+    berBox.style.display = "none";
+  }
+
+  // Hints
+  const hints = [];
+  if (arzt * arztK > (bestRow?.sb ?? 0)) {
+    hints.push("⚠️ Ihre jährlichen Arztkosten (" + feur(arztKostenJahr) + ") übersteigen den empfohlenen Selbstbehalt. Prüfen Sie ob ein niedrigerer SB trotzdem sinnvoll ist, wenn die Beitragsersparnis die Mehrkosten überwiegt.");
+  }
+  if (alter > 50) {
+    hints.push("ℹ️ Ab 50 steigt die Wahrscheinlichkeit, den Selbstbehalt zu erreichen. Ein sehr hoher SB (1.500+) kann im fortgeschrittenen Alter riskant sein. Der §204 VVG Tarifwechsel kann eine bessere Alternative sein.");
+  }
+  const h = document.getElementById("hint_box");
+  h.innerHTML = hints.join("<br><br>");
+  h.style.display = hints.length ? "block" : "none";
+
+  document.getElementById("res").classList.add("on");
+}
+
+calc();
+</script>
+</body>
+</html>

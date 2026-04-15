@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GKV-Beitragsrechner 2026 – Selbstständige & Freiberufler</title>
+<style>
+  :root {
+    --blue-dark: #0C4A6E;
+    --blue-mid:  #0369A1;
+    --blue-light:#DEEAF1;
+    --orange:    #EA580C;
+    --bg:        #F7F9FC;
+    --text:      #4A4A4A;
+    --muted:     #666;
+    --border:    #C8DCF0;
+    --green:     #1E7D4B;
+    --green-bg:  #EAF7EF;
+    --warn-bg:   #FFF8EC;
+    --warn-border:#E8B84B;
+    --radius:    8px;
+    --shadow:    0 2px 12px rgba(31,78,121,.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+  
+
+  /* Mobile responsive */
+  @media (max-width: 480px) {
+    .calc-wrap { padding: 12px 8px 32px !important; }
+    .calc-header { padding: 20px 16px !important; }
+    .calc-header h1 { font-size: 1.2rem !important; }
+    .calc-wrap .card { padding: 16px 12px !important; }
+    .calc-wrap .radio-btn { min-width: 100px !important; }
+    .calc-wrap .radio-btn label { padding: 8px 6px !important; font-size: .78rem !important; }
+    .calc-wrap .range-val { min-width: 72px !important; font-size: .95rem !important; }
+    .calc-wrap .field label span { display: block !important; margin-left: 0 !important; margin-top: 2px !important; }
+    .calc-wrap .res-grid { grid-template-columns: 1fr !important; }
+  }
+
+  .calc-wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; }
+
+  .calc-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+    border-radius: var(--radius); padding: 28px 32px; color: #fff; margin-bottom: 24px; }
+  .calc-header h1 { font-size: 1.5rem !important; font-weight: 700 !important; margin-bottom: 6px !important; color: #fff !important; line-height: 1.3 !important; }
+  .calc-header p  { font-size: .9rem !important; opacity: .88; color: #fff !important; line-height: 1.5 !important; }
+  .badge { display: inline-block; background: var(--orange); color: #fff; font-size: .72rem;
+    font-weight: 700; padding: 2px 8px; border-radius: 12px; margin-left: 10px; vertical-align: middle; letter-spacing: .5px; }
+
+  .card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 24px; margin-bottom: 16px; box-shadow: var(--shadow); }
+  .card h2 { font-size: 1rem; font-weight: 700; color: var(--blue-dark); margin-bottom: 16px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--blue-light); }
+
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue-dark); margin-bottom: 6px; }
+  .field label span { font-weight: 400; color: var(--muted); margin-left: 4px; font-size: .8rem; }
+  .field input[type=range] { width: 100%; accent-color: var(--blue-mid); cursor: pointer; min-height: 44px; }
+  .field .range-row { display: flex; align-items: center; gap: 12px; }
+  .field .range-val { min-width: 88px; text-align: right; font-size: 1.1rem; font-weight: 700;
+    color: var(--blue-dark); background: var(--blue-light); padding: 4px 10px;
+    border-radius: 6px; border: 1px solid var(--border); }
+
+  .field input[type=number] { width: 100%; padding: 12px 14px; border: 1px solid var(--border);
+    border-radius: 6px; font-size: 1rem; color: var(--text); transition: border .2s; min-height: 44px; }
+  .field input[type=number]:focus { outline: none; border-color: var(--blue-mid); box-shadow: 0 0 0 3px rgba(46,117,182,.15); }
+
+  .field select { width: 100%; padding: 12px 14px; border: 1px solid var(--border);
+    border-radius: 6px; font-size: 1rem; background: #fff; color: var(--text); cursor: pointer; min-height: 44px; }
+  .field select:focus { outline: none; border-color: var(--blue-mid); }
+
+  .radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
+  .radio-btn { flex: 1; min-width: 120px; }
+  .radio-btn input { display: none; }
+  .radio-btn label { display: block; text-align: center; padding: 10px 12px; border: 2px solid var(--border);
+    border-radius: 6px; cursor: pointer; font-size: .85rem; font-weight: 600; color: var(--muted);
+    transition: all .18s; background: #fafcff; }
+  .radio-btn input:checked + label { border-color: var(--blue-mid); background: var(--blue-light);
+    color: var(--blue-dark); }
+
+  .btn-calc { width: 100%; padding: 14px; background: var(--blue-dark); color: #fff;
+    border: none; border-radius: var(--radius); font-size: 1.05rem; font-weight: 700;
+    cursor: pointer; transition: background .2s; letter-spacing: .3px; margin-top: 4px; }
+  .btn-calc:hover { background: var(--blue-mid); }
+
+  .result-card { background: var(--green-bg); border: 2px solid var(--green); border-radius: var(--radius);
+    padding: 24px; margin-top: 16px; display: none; }
+  .result-card.visible { display: block; }
+  .result-card h2 { color: var(--green); font-size: 1.1rem; margin-bottom: 16px; }
+
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .result-item { background: #fff; border: 1px solid #C3E6CB; border-radius: 6px; padding: 14px 16px; }
+  .result-item .label { font-size: .78rem; color: var(--muted); font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .4px; }
+  .result-item .value { font-size: 1.4rem; font-weight: 800; color: var(--blue-dark); line-height: 1.2; }
+  .result-item .value.main { font-size: 1.6rem; color: var(--green); }
+  .result-item.full { grid-column: 1 / -1; }
+
+  .breakdown { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; margin-top: 12px; }
+  .breakdown h3 { font-size: .85rem; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; }
+  .breakdown-row { display: flex; justify-content: space-between; font-size: .85rem;
+    padding: 4px 0; border-bottom: 1px solid #f0f0f0; }
+  .breakdown-row:last-child { border-bottom: none; font-weight: 700; color: var(--blue-dark); }
+  .breakdown-row .lbl { color: var(--muted); }
+
+  .hint-box { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 6px;
+    padding: 14px 16px; margin-top: 16px; font-size: .82rem; color: #7A5500; }
+  .hint-box strong { display: block; margin-bottom: 4px; }
+
+  .cta-box { background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+    border-radius: var(--radius); padding: 20px 24px; margin-top: 16px; text-align: center; color: #fff; }
+  .cta-box p { font-size: .9rem; opacity: .9; margin-bottom: 12px; }
+  .cta-btn { display: inline-block; background: var(--orange); color: #fff; padding: 14px 28px;
+    border-radius: 6px; font-weight: 700; text-decoration: none; font-size: .95rem; transition: opacity .2s; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  .cta-btn:hover { opacity: .88; }
+
+  .data-info { font-size: .75rem; color: var(--muted); text-align: center; margin-top: 12px; }
+  .data-info a { color: var(--blue-mid); text-decoration: none; }
+
+  .spinner { text-align: center; padding: 8px; color: var(--muted); font-size: .8rem; }
+  .spinner::before { content: "⟳ "; }
+
+  @media (max-width: 520px) {
+    .result-grid { grid-template-columns: 1fr; }
+    .calc-header { padding: 20px; }
+    .card { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="calc-wrap">
+
+  <div class="calc-header">
+    <h1>💰 PKV-Beitragsrechner 2026 <span class="badge">AKTUELL</span></h1>
+    <p>Dein monatlicher Beitrag zur privaten Krankenversicherung – schnell & präzise basierend auf Einkommen, Alter und Familienstand berechnet.</p>
+  </div>
+
+  <div class="card">
+    <h2>Ihre Angaben</h2>
+
+    <div class="field">
+      <label>Monatliches Bruttoeinkommen <span>(aus selbstständiger Tätigkeit + alle weiteren Einnahmen)</span></label>
+      <div class="range-row">
+        <input type="range" id="einkommen" min="0" max="8000" step="50" value="3500"
+               oninput="document.getElementById('einkommen_val').textContent = formatEur(this.value); calc()">
+        <span class="range-val" id="einkommen_val">3.500 €</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Anzahl eigener Kinder <span>(für Pflegeversicherungs-Beitragssatz)</span></label>
+      <select id="kinder" onchange="calc()">
+        <option value="0">Keine Kinder (kinderlos, ab 23 J.)</option>
+        <option value="1" selected>1 Kind</option>
+        <option value="2">2 Kinder</option>
+        <option value="3">3 Kinder</option>
+        <option value="4">4 Kinder</option>
+        <option value="5">5 oder mehr Kinder</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Tarif / Krankengeld-Anspruch</label>
+      <div class="radio-group">
+        <div class="radio-btn">
+          <input type="radio" id="tarif_kg" name="tarif" value="mit" checked onchange="calc()">
+          <label for="tarif_kg">Mit Krankengeld<br><small style="font-weight:400;color:#777">+0,6% Beitrag</small></label>
+        </div>
+        <div class="radio-btn">
+          <input type="radio" id="tarif_okg" name="tarif" value="ohne" onchange="calc()">
+          <label for="tarif_okg">Ohne Krankengeld<br><small style="font-weight:400;color:#777">−0,6% Beitrag</small></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Zusatzbeitrag Ihrer Krankenkasse <span>(Ø 2026: 2,9% – je nach Kasse 2,18–4,39%)</span></label>
+      <div class="range-row">
+        <input type="range" id="zusatz" min="0.5" max="4.5" step="0.1" value="2.9"
+               oninput="document.getElementById('zusatz_val').textContent = parseFloat(this.value).toFixed(1) + ' %'; calc()">
+        <span class="range-val" id="zusatz_val">2,9 %</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="result-card" class="result-card">
+    <h2>✓ Ihr geschätzter GKV-Monatsbeitrag</h2>
+
+    <div class="result-grid">
+      <div class="result-item full">
+        <div class="label">Monatsbeitrag gesamt (KV + PV)</div>
+        <div class="value main" id="res_gesamt">–</div>
+      </div>
+      <div class="result-item">
+        <div class="label">KV-Beitrag / Monat</div>
+        <div class="value" id="res_kv">–</div>
+      </div>
+      <div class="result-item">
+        <div class="label">PV-Beitrag / Monat</div>
+        <div class="value" id="res_pv">–</div>
+      </div>
+      <div class="result-item">
+        <div class="label">Jahreskosten gesamt</div>
+        <div class="value" id="res_jahr">–</div>
+      </div>
+      <div class="result-item">
+        <div class="label">Beitragsbasis</div>
+        <div class="value" id="res_basis">–</div>
+      </div>
+    </div>
+
+    <div class="breakdown">
+      <h3>Aufschlüsselung</h3>
+      <div class="breakdown-row"><span class="lbl">Beitragssatz KV</span><span id="bd_kvrate">–</span></div>
+      <div class="breakdown-row"><span class="lbl">Davon Grundbeitrag</span><span id="bd_grund">–</span></div>
+      <div class="breakdown-row"><span class="lbl">Davon Zusatzbeitrag</span><span id="bd_zusatz">–</span></div>
+      <div class="breakdown-row"><span class="lbl">Pflegeversicherung (Satz)</span><span id="bd_pvrate">–</span></div>
+      <div class="breakdown-row"><span class="lbl">PV-Beitrag</span><span id="bd_pv">–</span></div>
+      <div class="breakdown-row"><span class="lbl">Gesamtbeitrag / Monat</span><span id="bd_total">–</span></div>
+    </div>
+
+    <div id="hint_box" class="hint-box" style="display:none"></div>
+
+    <div class="cta-box">
+      <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:6px;color:#fff;">Ergebnis mit einem Experten besprechen?</h3>
+      <p style="color:#fff;">Gerne analysieren wir Ihr Ergebnis und melden uns bei Ihnen - klären Sie offene Fragen einfach mit unseren Experten.</p>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;">
+        <a id="mailto_cta" href="#" class="cta-btn" onclick="sendResults(event)" style="background:var(--orange);">→ Ergebnis per E-Mail senden</a>
+        <a href="https://calendly.com/pkv-welt/" target="_blank" rel="noopener" class="cta-btn" style="background:#0369A1;">→ Termin buchen</a>
+      </div>
+      <div style="display:flex;gap:16px;justify-content:center;font-size:.78rem;opacity:.85;color:#fff;">
+        <span>✓ Kostenfrei</span><span>✓ Unverbindlich</span><span>✓ Vertraulich</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-info">
+    Alle Werte basieren auf den gesetzlichen Beitragssätzen 2026.
+    Datenquelle: GKV-Spitzenverband, BMG. Kein Ersatz für individuelle Beratung.
+    <span id="data_status"></span>
+  </div>
+
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════
+// KONFIGURATION – Ihre Google Sheets CSV-URL hier eintragen
+// Anleitung: Datei "Rechner-Datenbasis-GoogleSheets.xlsx" in Google
+// Drive hochladen → als Google Tabelle öffnen → Datei > Im Web
+// veröffentlichen → Blatt "GKV_Daten" → CSV → URL hier eintragen
+// ══════════════════════════════════════════════════════════════════════
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/1IWqUutBKGfV4zw-a07aRbmeN3UvKxqfcGtV3rzUC4u8/export?format=csv&gid=1425641980"; // GKV_Daten
+
+// Fallback-Werte (werden verwendet wenn Google Sheets nicht erreichbar)
+const DEFAULTS = {
+  beitragssatz_allgemein:        14.6,
+  beitragssatz_ermaessigt:       14.0,
+  zusatzbeitrag_durchschnitt:     2.9,
+  bbg_monat:                   5812.50,
+  mindestbemessungsgrundlage:  1318.33,
+  pv_satz_basis:                  3.6,
+  pv_kinderlos_zuschlag:          0.6,
+  pv_abschlag_ab_2_kind:          0.25,
+  pv_satz_kinderlos:              4.2,
+  pv_satz_1_kind:                 3.6,
+  pv_satz_2_kinder:               3.35,
+  pv_satz_3_kinder:               3.10,
+  pv_satz_4_kinder:               2.85,
+  pv_satz_5plus_kinder:           2.60,
+};
+
+let DATA = { ...DEFAULTS };
+let dataLoaded = false;
+const CACHE_KEY  = "pkv_gkv_data";
+const CACHE_DAYS = 7;
+
+// Daten aus Google Sheets laden
+async function loadData() {
+  if (!SHEET_URL) {
+    document.getElementById("data_status").textContent = " · Werte: Festkodiert 2026";
+    return;
+  }
+  const cached = localStorage.getItem(CACHE_KEY);
+  if (cached) {
+    try {
+      const obj = JSON.parse(cached);
+      if (Date.now() - obj.ts < CACHE_DAYS * 86400000) {
+        DATA = { ...DEFAULTS, ...obj.data };
+        dataLoaded = true;
+        document.getElementById("data_status").textContent = " · Daten: Cache vom " + new Date(obj.ts).toLocaleDateString("de");
+        calc();
+        return;
+      }
+    } catch(e) {}
+  }
+  try {
+    const r = await fetch(SHEET_URL);
+    const text = await r.text();
+    const rows = text.trim().split("\n").slice(1); // skip header
+    const parsed = {};
+    rows.forEach(line => {
+      // CSV-Parser mit Anführungszeichen-Support (deutsches Komma-Format)
+      const cols = [];
+      let cur = "", inQ = false;
+      for (const ch of line) {
+        if (ch === '"') { inQ = !inQ; continue; }
+        if (ch === ',' && !inQ) { cols.push(cur.trim()); cur = ""; continue; }
+        cur += ch;
+      }
+      cols.push(cur.trim());
+      const key = cols[0] || "";
+      // Deutsche Dezimalkommas in Punkt umwandeln für parseFloat
+      const rawVal = (cols[1] || "").replace(",", ".");
+      const val = parseFloat(rawVal);
+      if (key && !isNaN(val)) parsed[key] = val;
+    });
+    DATA = { ...DEFAULTS, ...parsed };
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: DATA }));
+    dataLoaded = true;
+    document.getElementById("data_status").textContent = " · Daten: Live aus Google Sheets";
+    calc();
+  } catch(e) {
+    document.getElementById("data_status").textContent = " · Daten: Fallback-Werte 2026 (Google Sheets nicht erreichbar)";
+    calc();
+  }
+}
+
+// ── Formatierungshelfer ────────────────────────────────────────────────
+function formatEur(v) {
+  return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(v);
+}
+function formatEurDec(v) {
+  return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+}
+function pct(v) { return v.toFixed(1).replace(".", ",") + " %"; }
+
+// ── Pflegeversicherungs-Satz ───────────────────────────────────────────
+function pvSatz(kinder) {
+  const k = parseInt(kinder);
+  const map = {
+    0: DATA.pv_satz_kinderlos    ?? 4.2,
+    1: DATA.pv_satz_1_kind       ?? 3.6,
+    2: DATA.pv_satz_2_kinder     ?? 3.35,
+    3: DATA.pv_satz_3_kinder     ?? 3.10,
+    4: DATA.pv_satz_4_kinder     ?? 2.85,
+    5: DATA.pv_satz_5plus_kinder ?? 2.60,
+  };
+  return map[Math.min(k, 5)] ?? 3.6;
+}
+
+// ── Hauptberechnung ────────────────────────────────────────────────────
+function calc() {
+  const einkommen = parseFloat(document.getElementById("einkommen").value);
+  const kinder    = document.getElementById("kinder").value;
+  const tarif     = document.querySelector('input[name="tarif"]:checked').value;
+  const zusatz    = parseFloat(document.getElementById("zusatz").value);
+
+  const bbg    = DATA.bbg_monat               ?? 5812.50;
+  const mindst = DATA.mindestbemessungsgrundlage ?? 1318.33;
+  const bsAllg = DATA.beitragssatz_allgemein   ?? 14.6;
+  const bsErm  = DATA.beitragssatz_ermaessigt  ?? 14.0;
+
+  // Beitragsbasis: max(MindestBG, min(Einkommen, BBG))
+  const basis = Math.max(mindst, Math.min(einkommen, bbg));
+
+  // KV-Beitragssatz
+  const kvRate = (tarif === "mit" ? bsAllg : bsErm) + zusatz;
+  const kv = basis * kvRate / 100;
+
+  // PV
+  const pvRate = pvSatz(kinder);
+  const pv = basis * pvRate / 100;
+
+  const gesamt = kv + pv;
+  const jahr   = gesamt * 12;
+
+  // UI befüllen
+  document.getElementById("res_gesamt").textContent = formatEurDec(gesamt);
+  document.getElementById("res_kv").textContent     = formatEurDec(kv);
+  document.getElementById("res_pv").textContent     = formatEurDec(pv);
+  document.getElementById("res_jahr").textContent   = formatEur(jahr);
+  document.getElementById("res_basis").textContent  = formatEurDec(basis);
+
+  document.getElementById("bd_kvrate").textContent  = pct(kvRate);
+  document.getElementById("bd_grund").textContent   = formatEurDec(basis * (tarif === "mit" ? bsAllg : bsErm) / 100);
+  document.getElementById("bd_zusatz").textContent  = formatEurDec(basis * zusatz / 100);
+  document.getElementById("bd_pvrate").textContent  = pct(pvRate);
+  document.getElementById("bd_pv").textContent      = formatEurDec(pv);
+  document.getElementById("bd_total").textContent   = formatEurDec(gesamt);
+
+  // Hinweise
+  const hintBox = document.getElementById("hint_box");
+  const hints = [];
+  if (einkommen < mindst) {
+    hints.push("⚠️ <strong>Mindestbemessungsgrundlage greift:</strong> Ihr Einkommen (" + formatEurDec(einkommen) + ") liegt unter der Mindestbemessungsgrundlage (" + formatEurDec(mindst) + " / Monat). Der Beitrag wird auf dieser Mindestgrundlage berechnet – auch wenn Sie weniger verdienen.");
+  }
+  if (einkommen >= bbg) {
+    hints.push("ℹ️ <strong>Beitragsbemessungsgrenze erreicht:</strong> Ihr Einkommen überschreitet die BBG (" + formatEurDec(bbg) + " / Monat). Mehr Einkommen erhöht den GKV-Beitrag nicht weiter. Hier kann die PKV besonders attraktiv sein.");
+  }
+  if (kinder === "0") {
+    hints.push("ℹ️ <strong>Kinderlosenzuschlag PV:</strong> Als Person ohne Kinder zahlen Sie ab 23 Jahren +0,6% Pflegeversicherungs-Zuschlag (" + pct(DATA.pv_kinderlos_zuschlag ?? 0.6) + ").");
+  }
+  hintBox.innerHTML = hints.join("<br><br>");
+  hintBox.style.display = hints.length ? "block" : "none";
+
+  document.getElementById("result-card").classList.add("visible");
+}
+
+function sendResults(e) {
+  e.preventDefault();
+  const lines = [];
+  lines.push('Rechner: GKV-Beitragsrechner');
+  lines.push('');
+  lines.push('Meine Eingaben:');
+  lines.push('Monatliches Bruttoeinkommen: ' + document.getElementById('einkommen_val').textContent);
+  lines.push('Anzahl Kinder: ' + document.getElementById('kinder').value);
+  lines.push('Tarif: ' + document.querySelector('input[name="tarif"]:checked').parentElement.textContent.trim());
+  lines.push('Zusatzbeitrag Ihrer Krankenkasse: ' + document.getElementById('zusatz_val').textContent);
+  lines.push('');
+  lines.push('Ergebnis:');
+  lines.push('Monatsbeitrag gesamt (KV + PV): ' + document.getElementById('res_gesamt').textContent);
+  lines.push('KV-Beitrag / Monat: ' + document.getElementById('res_kv').textContent);
+  lines.push('PV-Beitrag / Monat: ' + document.getElementById('res_pv').textContent);
+  lines.push('Jahreskosten gesamt: ' + document.getElementById('res_jahr').textContent);
+  lines.push('Beitragsbasis: ' + document.getElementById('res_basis').textContent);
+  lines.push('');
+  lines.push('Ich möchte mein Ergebnis gerne mit einem Experten besprechen.');
+
+  const subject = encodeURIComponent('Rechner-Ergebnis: GKV-Beitragsrechner');
+  const body = encodeURIComponent(lines.join('\n'));
+  var mailtoUrl = 'mailto:beratung@angestellt-pkv.de?subject=' + subject + '&body=' + body;
+  var a = document.createElement('a');
+  a.href = mailtoUrl;
+  a.target = '_top';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+// ── Init ──────────────────────────────────────────────────────────────
+loadData();
+calc();
+</script>
+</body>
+</html>

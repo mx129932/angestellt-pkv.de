@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Arbeitgeberzuschuss-Rechner · PKV 2026</title>
+<style>
+  :root {
+    --primary: #002046;
+    --amber: #D4A017;
+    --amber-dark: #B8860B;
+    --surface: #FAF7F2;
+    --on-surface: #1a1f2e;
+    --on-surface-variant: #515a6b;
+    --outline: #cfd2d8;
+    --card: #ffffff;
+    --success: #1f7a3a;
+    --info: #1e5fb8;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--on-surface);
+    background: var(--surface);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
+  h1 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.6rem; margin: 0 0 4px; }
+  .lead { color: var(--on-surface-variant); font-size: .95rem; margin: 0 0 20px; }
+  .data-status {
+    font-size: .72rem; color: var(--on-surface-variant);
+    margin: 0 0 18px; padding: 6px 10px;
+    background: #f0edee; border-left: 3px solid var(--outline); border-radius: 2px;
+    display: inline-block;
+  }
+  .data-status.live { border-left-color: var(--success); color: var(--success); }
+  .data-status.cache { border-left-color: var(--info); }
+  .data-status.fallback { border-left-color: var(--amber-dark); }
+
+  .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 820px) { .grid { grid-template-columns: 1.2fr 1fr; } }
+
+  .card {
+    background: var(--card);
+    border: 1px solid rgba(0,32,70,.08);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+  }
+  .card h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    color: var(--primary); font-size: 1.15rem; margin: 0 0 14px;
+  }
+
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block; font-size: .85rem; font-weight: 600;
+    color: var(--primary); margin-bottom: 6px;
+  }
+  .field .hint { font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px; }
+  .input-row { position: relative; }
+  .input-row input[type="number"] {
+    width: 100%;
+    padding: 11px 90px 11px 14px;
+    border: 1px solid var(--outline); border-radius: 8px;
+    background: #fff; font-size: 1.05rem; font-weight: 600;
+    color: var(--on-surface);
+    outline: none;
+    transition: border-color .15s;
+    -moz-appearance: textfield;
+  }
+  .input-row input[type="number"]::-webkit-outer-spin-button,
+  .input-row input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+  }
+  .input-row input[type="number"]:focus { border-color: var(--primary); }
+  .input-row .suffix {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--on-surface-variant); font-weight: 600; font-size: .9rem;
+    pointer-events: none;
+  }
+
+  .radio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .radio-grid label {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 12px; border: 1px solid var(--outline);
+    background: #fff; border-radius: 8px; cursor: pointer;
+    font-size: .88rem; font-weight: 500; color: var(--on-surface);
+    transition: all .12s;
+  }
+  .radio-grid label:has(input:checked) {
+    border-color: var(--primary); background: #eef2f8;
+  }
+  .radio-grid input { accent-color: var(--primary); }
+
+  /* Result */
+  .result {
+    background: var(--primary); color: #fff; border-radius: 12px;
+    padding: 24px; position: relative; overflow: hidden;
+  }
+  .result::after {
+    content: ""; position: absolute; right: -40px; bottom: -40px;
+    width: 180px; height: 180px; background: rgba(212,160,23,.18);
+    border-radius: 50%; filter: blur(50px); pointer-events: none;
+  }
+  .result .label {
+    text-transform: uppercase; letter-spacing: .1em; font-size: .7rem;
+    color: rgba(255,255,255,.72); margin-bottom: 6px;
+  }
+  .result .big-amount {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 2.2rem; font-weight: 600; line-height: 1.05;
+    margin-bottom: 2px;
+  }
+  .result .per { font-size: .85rem; color: rgba(255,255,255,.75); }
+
+  .result .breakdown {
+    margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.15);
+    font-size: .9rem; display: grid; gap: 8px;
+  }
+  .result .row { display: flex; justify-content: space-between; gap: 12px; }
+  .result .row .key { color: rgba(255,255,255,.72); }
+  .result .row .val { font-weight: 600; }
+  .result .row.total { padding-top: 10px; border-top: 1px solid rgba(255,255,255,.12); }
+
+  .badge-cap {
+    display: inline-block; margin-top: 12px; padding: 4px 10px;
+    background: rgba(212,160,23,.2); color: var(--amber); font-size: .72rem;
+    border-radius: 100px; font-weight: 600;
+  }
+
+  /* Tips & Assessment */
+  .tips {
+    margin-top: 14px; background: #fff; border: 1px solid rgba(0,32,70,.08);
+    border-radius: 12px; padding: 20px;
+  }
+  .tips h3 {
+    font-family: "Playfair Display", Georgia, serif;
+    color: var(--primary); font-size: 1.05rem; margin: 0 0 12px;
+  }
+  .tips ul { margin: 0; padding: 0 0 0 18px; }
+  .tips li { margin-bottom: 8px; font-size: .92rem; }
+  .tips li strong { color: var(--primary); }
+
+  .assessment {
+    margin-top: 14px; background: #eef4ee; border-left: 4px solid var(--success);
+    padding: 14px 18px; border-radius: 8px; font-size: .92rem;
+  }
+  .assessment.warn { background: #fff5e6; border-left-color: var(--amber-dark); }
+
+  /* CTA */
+  .cta-box {
+    margin-top: 24px; background: var(--primary); color: #fff;
+    padding: 30px; border-radius: 12px;
+    text-align: center;
+  }
+  .cta-box .text p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.82); }
+  .cta-box .text strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; color: #fff; margin-bottom: 8px; }
+  .cta-buttons {
+    display: flex; gap: 12px; justify-content: center; margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--amber); color: #fff; font-weight: 600; font-size: .95rem;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none;
+    transition: background .15s; cursor: pointer;
+    flex: 1; min-width: 200px;
+  }
+  @media (max-width: 600px) {
+    .cta-buttons { flex-direction: column; }
+    .cta-btn { min-width: 100%; }
+  }
+  .cta-btn:hover { background: var(--amber-dark); }
+  .cta-btn#cta-termin {
+    background: transparent;
+    color: #fff;
+    border: 2px solid var(--amber);
+    font-weight: 600;
+  }
+  .cta-btn#cta-termin:hover {
+    background: rgba(212,160,23,.1);
+    border-color: var(--amber-dark);
+  }
+  .trust-badges {
+    margin-top: 14px; display: flex; gap: 16px; justify-content: center;
+    flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.85);
+  }
+  .trust-badges span { display: flex; align-items: center; gap: 4px; }
+  .trust-badges span::before { content: "✓"; font-weight: bold; color: #4ade80; }
+
+  .note {
+    margin-top: 20px; font-size: .78rem; color: var(--on-surface-variant);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Arbeitgeberzuschuss-Rechner</h1>
+  <p class="lead">Wie viel zahlt dein Arbeitgeber zur PKV dazu? Gib deinen tatsächlichen PKV-Monatsbeitrag ein — der Rechner ermittelt den Zuschuss nach § 257 SGB V mit Kappung am gesetzlichen Höchstwert 2026.</p>
+
+  <div id="data_status" class="data-status">· Werte werden geladen …</div>
+
+  <div class="grid">
+    <!-- Form -->
+    <div class="card">
+      <h2>Eingabe</h2>
+
+      <div class="field">
+        <label for="pkv_kv">Dein PKV-Beitrag Krankenversicherung</label>
+        <div class="input-row">
+          <input type="number" id="pkv_kv" min="0" step="10" value="650" />
+          <span class="suffix">€ / Monat</span>
+        </div>
+        <div class="hint">Reiner Kranken­versicherungs­anteil — ohne Pflege­pflicht (PPV).</div>
+      </div>
+
+      <div class="field">
+        <label for="pkv_pv">Dein PPV-Beitrag (private Pflegepflicht)</label>
+        <div class="input-row">
+          <input type="number" id="pkv_pv" min="0" step="5" value="115" />
+          <span class="suffix">€ / Monat</span>
+        </div>
+        <div class="hint">Steht als eigene Position auf deiner Tarif-Police.</div>
+      </div>
+
+      <div class="field">
+        <label>Beschäftigungsstatus</label>
+        <div class="radio-grid">
+          <label><input type="radio" name="status" value="vollzeit" checked /> Vollzeit</label>
+          <label><input type="radio" name="status" value="teilzeit" /> Teilzeit</label>
+          <label><input type="radio" name="status" value="geringfuegig" /> Minijob</label>
+          <label><input type="radio" name="status" value="elternzeit" /> Elternzeit</label>
+        </div>
+        <div class="hint">Minijob + Elternzeit: in der Regel kein Zuschuss (siehe Hinweise unten).</div>
+      </div>
+
+    </div>
+
+    <!-- Result -->
+    <div>
+      <div class="result">
+        <div class="label">Arbeitgeberzuschuss gesamt</div>
+        <div class="big-amount"><span id="ag_total">—</span><span class="per"> / Monat</span></div>
+        <div class="breakdown">
+          <div class="row"><span class="key">Zuschuss KV</span><span class="val" id="ag_kv">—</span></div>
+          <div class="row"><span class="key">Zuschuss PPV</span><span class="val" id="ag_pv">—</span></div>
+          <div class="row total"><span class="key">Jahreswert</span><span class="val" id="ag_jahr">—</span></div>
+          <div class="row"><span class="key">Dein Eigenanteil</span><span class="val" id="eigen">—</span></div>
+        </div>
+        <div id="cap_badge"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips">
+    <h3>🧭 Einordnung & Tipps</h3>
+    <ul id="tips_list">
+      <li>Der Arbeitgeber zahlt <strong>die Hälfte deines PKV-Beitrags</strong>, maximal aber den Zuschuss, den er auch einem GKV-Versicherten mit BBG-Einkommen zahlen würde.</li>
+      <li>Höchstgrenze 2026: <strong id="tip_max_kv">—</strong> KV + <strong id="tip_max_pv">—</strong> PPV (= <strong id="tip_max_total">—</strong> insgesamt).</li>
+      <li>Gilt auch bei niedrigerem Gehalt — entscheidend ist nur, dass du über der Versicherungs­pflicht­grenze (2026: <strong id="tip_jaeg">77 400 €/Jahr</strong>) liegst.</li>
+      <li>Ändert sich dein PKV-Beitrag, zieht der Zuschuss anteilig nach — bis zur Kappung.</li>
+    </ul>
+  </div>
+
+  <div id="assessment" class="assessment">
+    <strong>Dein Fall:</strong> <span id="assessment_text">—</span>
+  </div>
+
+  <!-- CTA -->
+  <!-- CTA Section: Email Result + Termin -->
+  <div class="cta-box">
+    <div class="text">
+      <strong>Ergebnis mit einem Experten besprechen?</strong>
+      <p>Gerne analysieren wir Ihr Ergebnis und melden uns bei Ihnen — klären Sie offene Fragen einfach mit unseren Experten.</p>
+    </div>
+    <div class="cta-buttons">
+      <button class="cta-btn" id="send-result">
+        → Ergebnis per E-Mail senden
+      </button>
+      <button class="cta-btn" id="cta-termin">
+        → Termin buchen
+      </button>
+    </div>
+    <div class="trust-badges">
+      <span>Kostenfrei</span>
+      <span>Unverbindlich</span>
+      <span>Vertraulich</span>
+    </div>
+  </div>
+
+  <p class="note">
+    Berechnung nach § 257 SGB V. Werte gültig 2026. Rechner liefert Richtwerte; für den verbindlichen Zuschuss zählt die Abrechnung deines Arbeitgebers.
+  </p>
+
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════
+// KONFIGURATION — Google Sheet (PKV-Angestellt, nur dieses Sheet)
+// ══════════════════════════════════════════════════════════════════════
+const SHEET_ID = "1IWqUutBKGfV4zw-a07aRbmeN3UvKxqfcGtV3rzUC4u8";
+const GID_GKV        = "1425641980"; // Tab: GKV-Daten
+const GID_ANGESTELLT = "350834983";  // Tab: PKV-Angestellt
+
+// Fallback-Werte (Stand 2026-04-15, werden von Sheet überschrieben)
+const DEFAULTS = {
+  beitragssatz_allgemein: 14.6,
+  zusatzbeitrag_durchschnitt: 2.9,
+  bbg_monat: 5812.50,
+  versicherungspflichtgrenze_jahr: 77400,
+  pv_satz_basis: 3.6,
+  ag_zuschuss_kv_max_monat: 508.59,
+  ag_zuschuss_pv_max_monat: 104.63,
+  ag_zuschuss_kv_max_jahr: 6103.08,
+  ag_zuschuss_anteil: 0.5
+};
+let DATA = { ...DEFAULTS };
+const CACHE_KEY = "pkv_angestellt_sheet";
+const CACHE_DAYS = 1/24; // 1 Stunde Cache für schnelle Updates während Entwicklung
+
+// CSV-Parser: Key-Wert-Struktur aus einem Tab
+function parseCsvToKv(text) {
+  const out = {};
+  text.trim().split("\n").forEach(line => {
+    const cols = [];
+    let cur = "", inQ = false;
+    for (const ch of line) {
+      if (ch === '"') { inQ = !inQ; continue; }
+      if (ch === ',' && !inQ) { cols.push(cur.trim()); cur = ""; continue; }
+      cur += ch;
+    }
+    cols.push(cur.trim());
+    const key = (cols[0] || "").trim();
+    if (!key || key.startsWith("#") || key === "schluessel") return;
+    const raw = (cols[1] || "").replace(",", ".");
+    const val = parseFloat(raw);
+    if (!isNaN(val)) out[key] = val;
+  });
+  return out;
+}
+
+async function loadSheet() {
+  const statusEl = document.getElementById("data_status");
+  const fmt = (d) => new Intl.DateTimeFormat("de-DE",{day:"2-digit",month:"2-digit",year:"numeric"}).format(d);
+  // Cache prüfen
+  const cached = localStorage.getItem(CACHE_KEY);
+  if (cached) {
+    try {
+      const obj = JSON.parse(cached);
+      if (Date.now() - obj.ts < CACHE_DAYS * 86400000) {
+        DATA = { ...DEFAULTS, ...obj.data };
+        statusEl.className = "data-status live";
+        statusEl.textContent = "Stand: " + fmt(new Date(obj.ts));
+        calc(); return;
+      }
+    } catch(e) {}
+  }
+  try {
+    const urls = [
+      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID_GKV}`,
+      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID_ANGESTELLT}`
+    ];
+    const [gkv, ang] = await Promise.all(urls.map(u => fetch(u).then(r => r.text())));
+    const merged = { ...parseCsvToKv(gkv), ...parseCsvToKv(ang) };
+    DATA = { ...DEFAULTS, ...merged };
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: merged }));
+    statusEl.className = "data-status live";
+    statusEl.textContent = "Stand: " + fmt(new Date());
+  } catch(e) {
+    statusEl.className = "data-status fallback";
+    statusEl.textContent = "Stand: 2026 (Fallback-Werte)";
+  }
+  calc();
+}
+
+// ─────────────────────────────────────────────────
+// Formatierung
+// ─────────────────────────────────────────────────
+const eur = (v, d=2) => new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR",minimumFractionDigits:d,maximumFractionDigits:d}).format(v);
+
+// ─────────────────────────────────────────────────
+// E-Mail Versand
+// ─────────────────────────────────────────────────
+function sendResults(e) {
+  e.preventDefault();
+  const pkvKv = document.getElementById("pkv_kv").value || "—";
+  const pkvPv = document.getElementById("pkv_pv").value || "—";
+  const status = document.querySelector('input[name="status"]:checked').value;
+  const agTotal = document.getElementById("ag_total").textContent;
+  const agKv = document.getElementById("ag_kv").textContent;
+  const agPv = document.getElementById("ag_pv").textContent;
+  const agJahr = document.getElementById("ag_jahr").textContent;
+  const eigen = document.getElementById("eigen").textContent;
+
+  const lines = [];
+  lines.push("Rechner: Arbeitgeberzuschuss-Rechner PKV 2026");
+  lines.push("");
+  lines.push("Meine Eingaben:");
+  lines.push("PKV-Beitrag KV: " + pkvKv + " €/Monat");
+  lines.push("PPV-Beitrag: " + pkvPv + " €/Monat");
+  lines.push("Beschäftigungsstatus: " + status);
+  lines.push("");
+  lines.push("Ergebnis:");
+  lines.push("Arbeitgeberzuschuss (gesamt): " + agTotal);
+  lines.push("  - KV-Anteil: " + agKv);
+  lines.push("  - PPV-Anteil: " + agPv);
+  lines.push("  - Jahreswert: " + agJahr);
+  lines.push("Mein Eigenanteil: " + eigen);
+  lines.push("");
+  lines.push("Ich möchte mein Ergebnis gerne mit einem Experten besprechen.");
+
+  const subject = encodeURIComponent("Rechner-Ergebnis: Arbeitgeberzuschuss PKV");
+  const body = encodeURIComponent(lines.join("\n"));
+  const mailtoUrl = "mailto:beratung@angestellt-pkv.de?subject=" + subject + "&body=" + body;
+
+  const a = document.createElement("a");
+  a.href = mailtoUrl;
+  a.target = "_top";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+// ─────────────────────────────────────────────────
+// Berechnung
+// ─────────────────────────────────────────────────
+function calc() {
+  const pkvKv = Math.max(0, parseFloat(document.getElementById("pkv_kv").value) || 0);
+  const pkvPv = Math.max(0, parseFloat(document.getElementById("pkv_pv").value) || 0);
+  const status = document.querySelector('input[name="status"]:checked').value;
+
+  const maxKv = DATA.ag_zuschuss_kv_max_monat;
+  const maxPv = DATA.ag_zuschuss_pv_max_monat;
+  const anteil = DATA.ag_zuschuss_anteil || 0.5;
+
+  // Minijob/Elternzeit: in der Regel kein Zuschuss
+  const kein_zuschuss = (status === "geringfuegig" || status === "elternzeit");
+
+  let agKv = 0, agPv = 0, capped = false;
+  if (!kein_zuschuss) {
+    const halbKv = pkvKv * anteil;
+    const halbPv = pkvPv * anteil;
+    agKv = Math.min(halbKv, maxKv);
+    agPv = Math.min(halbPv, maxPv);
+    capped = (halbKv > maxKv) || (halbPv > maxPv);
+  }
+  const agGesamt = agKv + agPv;
+  const eigen = (pkvKv + pkvPv) - agGesamt;
+
+  // Ausgabe
+  document.getElementById("ag_total").textContent = eur(agGesamt);
+  document.getElementById("ag_kv").textContent = eur(agKv);
+  document.getElementById("ag_pv").textContent = eur(agPv);
+  document.getElementById("ag_jahr").textContent = eur(agGesamt * 12, 0);
+  document.getElementById("eigen").textContent = eur(eigen);
+
+  const cap = document.getElementById("cap_badge");
+  cap.innerHTML = "";
+  if (kein_zuschuss) {
+    cap.innerHTML = '<span class="badge-cap">Kein Zuschuss bei ' + (status === "geringfuegig" ? "Minijob" : "Elternzeit") + '</span>';
+  } else if (capped) {
+    cap.innerHTML = '<span class="badge-cap">Kappung am Höchstbetrag wirksam</span>';
+  }
+
+  // Tipps befüllen
+  document.getElementById("tip_max_kv").textContent = eur(maxKv);
+  document.getElementById("tip_max_pv").textContent = eur(maxPv);
+  document.getElementById("tip_max_total").textContent = eur(maxKv + maxPv);
+  document.getElementById("tip_jaeg").textContent = new Intl.NumberFormat("de-DE").format(DATA.versicherungspflichtgrenze_jahr) + " €/Jahr";
+
+  // Assessment
+  const a = document.getElementById("assessment");
+  const at = document.getElementById("assessment_text");
+  a.classList.remove("warn");
+  if (kein_zuschuss) {
+    a.classList.add("warn");
+    at.textContent = status === "geringfuegig"
+      ? "Im Minijob besteht kein gesetzlicher Zuschussanspruch zur PKV. Du trägst die vollen " + eur(pkvKv + pkvPv) + " / Monat selbst. Prüfe, ob du über eine Haupt­beschäftigung zuschuss­berechtigt werden kannst."
+      : "In der Elternzeit ruht der AG-Zuschuss in der Regel. Du trägst die vollen " + eur(pkvKv + pkvPv) + " / Monat selbst. Nach Rückkehr lebt der Anspruch wieder auf.";
+  } else if (capped) {
+    at.textContent = "Dein PKV-Beitrag liegt über der Beitrags­bemessungs­grenze — der Arbeitgeber zahlt den gedeckelten Höchstzuschuss von " + eur(agGesamt) + "/Monat. Dein Eigenanteil beträgt " + eur(eigen) + "/Monat, jährlich " + eur(eigen * 12, 0) + ".";
+  } else {
+    const quote = Math.round((agGesamt / (pkvKv + pkvPv)) * 100);
+    at.textContent = "Dein Arbeitgeber übernimmt " + quote + "% deiner PKV-Kosten (" + eur(agGesamt) + "/Monat, " + eur(agGesamt * 12, 0) + "/Jahr). Keine Kappung — du bist unter dem Höchstzuschuss.";
+  }
+}
+
+// Events — Calc
+document.querySelectorAll("#pkv_kv, #pkv_pv").forEach(el => {
+  el.addEventListener("input", calc);
+});
+document.querySelectorAll('input[name="status"]').forEach(el => {
+  el.addEventListener("change", calc);
+});
+
+// Events — CTA
+document.getElementById("send-result").addEventListener("click", sendResults);
+document.getElementById("cta-termin").addEventListener("click", () => {
+  window.open("https://calendly.com/pkv-welt/", "_blank");
+});
+
+// Start
+loadSheet();
+</script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKV vs GKV Langfrist-Rechner 2026 – Gesamtaufwand bis zur Rente</title>
+<style>
+  :root {
+    --bd: #0C4A6E; --bm: #0369A1; --bl: #DEEAF1; --or: #EA580C;
+    --bg: #F7F9FC; --tx: #4A4A4A; --mu: #666; --bo: #C8DCF0;
+    --gr: #1E7D4B; --gb: #EAF7EF; --rd: #C0392B; --rb: #FDEDEC;
+    --r: 8px; --sh: 0 2px 12px rgba(31,78,121,.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--tx); line-height: 1.6; }
+
+  .wrap, .wrap * { line-height: 1.6 !important; box-sizing: border-box !important; }
+  .wrap h1 { font-size: 1.5rem !important; font-weight: 700 !important; color: #fff !important; opacity: 1 !important; margin: 0 0 6px 0 !important; padding: 0 !important; }
+  .wrap h2 { font-size: 1rem !important; font-weight: 700 !important; margin-bottom: 14px !important; }
+  .wrap p { margin: 0 !important; }
+  .wrap label { line-height: 1.5 !important; display: block !important; font-size: .85rem !important; }
+  .wrap .rb label { display: block !important; text-align: center !important; padding: 10px 8px !important; line-height: 1.4 !important; margin-bottom: 0 !important; cursor: pointer !important; }
+  .wrap .f { margin-bottom: 16px !important; }
+  .wrap .f label { margin-bottom: 5px !important; }
+  .wrap .rrow { display: flex !important; align-items: center !important; gap: 10px !important; }
+  .wrap .card { background: #fff !important; }
+  .wrap a { text-decoration: none !important; }
+  .wrap .radio-group { display: flex !important; gap: 8px !important; flex-wrap: wrap !important; }
+  .wrap .rb { flex: 1 !important; min-width: 80px !important; }
+  .wrap .rb input { display: none !important; }
+  .wrap .hdr p { color: #fff !important; }
+  .wrap .cta p { color: #fff !important; }
+
+  @media (max-width: 520px) {
+    .wrap { padding: 12px 8px 32px !important; }
+    .hdr { padding: 20px 16px !important; }
+    .hdr h1 { font-size: 1.2rem !important; }
+    .wrap .card { padding: 16px 12px !important; }
+    .wrap .rb { min-width: 70px !important; }
+    .wrap .rb label { padding: 8px 4px !important; font-size: .75rem !important; }
+    .wrap .rval { min-width: 72px !important; font-size: .95rem !important; }
+    .wrap .f label span { display: block !important; margin-left: 0 !important; margin-top: 2px !important; }
+    .sum-grid { grid-template-columns: 1fr !important; }
+    .cta { padding: 14px 10px !important; }
+    canvas { height: 250px !important; }
+  }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+  .hdr { background: linear-gradient(135deg, var(--bd) 0%, var(--bm) 100%);
+    border-radius: var(--r); padding: 28px 32px; color: #fff; margin-bottom: 20px; }
+  .hdr h1 { font-size: 1.5rem !important; font-weight: 700 !important; margin-bottom: 6px !important; color: #fff !important; line-height: 1.3 !important; }
+  .hdr p  { font-size: .9rem !important; opacity: .88; color: #fff !important; line-height: 1.5 !important; }
+  .badge { display: inline-block; background: var(--or); color: #fff; font-size: .72rem;
+    font-weight: 700; padding: 2px 8px; border-radius: 12px; margin-left: 10px; letter-spacing: .5px; }
+
+  .card { background: #fff; border: 1px solid var(--bo); border-radius: var(--r);
+    padding: 22px; margin-bottom: 14px; box-shadow: var(--sh); }
+  .card h2 { font-size: 1rem; font-weight: 700; color: var(--bd); margin-bottom: 14px;
+    padding-bottom: 7px; border-bottom: 2px solid var(--bl); }
+
+  .f { margin-bottom: 16px; }
+  .f label { display: block; font-size: .85rem; font-weight: 600; color: var(--bd); margin-bottom: 5px; }
+  .f label span { font-weight: 400; color: var(--mu); font-size: .78rem; margin-left: 4px; }
+  .rrow { display: flex; align-items: center; gap: 10px; }
+  .rval { min-width: 90px; text-align: right; font-size: 1.05rem; font-weight: 700;
+    color: var(--bd); background: var(--bl); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--bo); }
+  input[type=range] { width: 100%; accent-color: var(--bm); cursor: pointer; height: 8px; }
+  input[type=range]::-webkit-slider-thumb { width: 20px; height: 20px; }
+
+  .radio-group { display: flex; gap: 8px; flex-wrap: wrap; }
+  .rb { flex: 1; min-width: 80px; }
+  .rb input { display: none; }
+  .rb label { display: block; text-align: center; padding: 10px 8px; border: 2px solid var(--bo);
+    border-radius: 6px; cursor: pointer; font-size: .82rem; font-weight: 600; color: var(--mu); transition: all .18s; }
+  .rb input:checked + label { border-color: var(--bm); background: var(--bl); color: var(--bd); }
+
+  .sum-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .sbox { border-radius: 6px; padding: 16px; text-align: center; }
+  .sbox .lbl { font-size: .73rem; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; margin-bottom: 4px; }
+  .sbox .val { font-size: 1.4rem; font-weight: 900; }
+  .sbox .sub { font-size: .72rem; color: var(--mu); margin-top: 4px; }
+  .sbox.pkv { background: var(--gb); border: 2px solid var(--gr); }
+  .sbox.pkv .lbl { color: var(--gr); } .sbox.pkv .val { color: var(--gr); }
+  .sbox.gkv { background: var(--bl); border: 2px solid var(--bm); }
+  .sbox.gkv .lbl { color: var(--bd); } .sbox.gkv .val { color: var(--bd); }
+  .sbox.diff { background: #FFF8EC; border: 2px solid var(--or); }
+  .sbox.diff .lbl { color: var(--or); } .sbox.diff .val { color: var(--or); }
+
+  .chart-wrap { background: #fff; border: 1px solid var(--bo); border-radius: var(--r);
+    padding: 16px; margin-bottom: 14px; }
+  canvas { width: 100%; height: 320px; }
+
+  .proj-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+  .proj-table th { background: var(--bd); color: #fff; padding: 6px 8px; text-align: right; }
+  .proj-table th:first-child { text-align: left; }
+  .proj-table td { padding: 5px 8px; border-bottom: 1px solid #eef3f8; text-align: right; }
+  .proj-table td:first-child { text-align: left; }
+  .proj-table tr:nth-child(even) td { background: #f8fbfe; }
+  .proj-table tr.break td { background: #FFF8EC; font-weight: 700; }
+
+  .cta { background: linear-gradient(135deg, var(--bd), var(--bm));
+    border-radius: var(--r); padding: 20px 24px; text-align: center; color: #fff; margin-top: 14px; }
+  .cta p { font-size: .87rem !important; opacity: .9; margin-bottom: 10px; color: #fff !important; }
+  .cbtn { display: inline-block; background: var(--or); color: #fff; padding: 14px 28px; min-height: 44px; display: flex; align-items: center; justify-content: center;
+    border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 1rem; }
+  .note { font-size: .73rem; color: var(--mu); text-align: center; margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hdr">
+  <h1>📈 Langfristvergleich: PKV vs. GKV bis zur Rente</h1>
+  <p>Deine Gesamtkosten hochgerechnet: Was kostet dich PKV versus GKV wirklich über 20, 30 oder bis zum Renteneintritt? Mit Beitragssteigerung, Altersrückstellungen und Steuerersparnis.</p>
+</div>
+
+<div class="card">
+  <h2>Ihre Angaben</h2>
+
+  <div class="f">
+    <label>Ihr Alter <span>(heute)</span></label>
+    <div class="rrow">
+      <input type="range" id="alter" min="25" max="55" step="1" value="35" oninput="calc()">
+      <span class="rval" id="alter_v">35 Jahre</span>
+    </div>
+  </div>
+
+  <div class="f">
+    <label>Monatliches Bruttoeinkommen</label>
+    <div class="rrow">
+      <input type="range" id="einkommen" min="1500" max="12000" step="100" value="5000" oninput="calc()">
+      <span class="rval" id="einkommen_v">5.000 €</span>
+    </div>
+  </div>
+
+  <div class="f">
+    <label>PKV-Bruttobeitrag <span>(inkl. KT, PV, GZ)</span></label>
+    <div class="rrow">
+      <input type="range" id="pkv" min="300" max="1200" step="10" value="600" oninput="calc()">
+      <span class="rval" id="pkv_v">600 €</span>
+    </div>
+  </div>
+
+  <div class="f">
+    <label>Kinder</label>
+    <div class="radio-group">
+      <div class="rb"><input type="radio" id="k0" name="kinder" value="0" onchange="calc()"><label for="k0">Keine</label></div>
+      <div class="rb"><input type="radio" id="k1" name="kinder" value="1" checked onchange="calc()"><label for="k1">1</label></div>
+      <div class="rb"><input type="radio" id="k2" name="kinder" value="2" onchange="calc()"><label for="k2">2</label></div>
+      <div class="rb"><input type="radio" id="k3" name="kinder" value="3" onchange="calc()"><label for="k3">3+</label></div>
+    </div>
+  </div>
+
+  <div class="f">
+    <label>Grenzsteuersatz</label>
+    <div class="rrow">
+      <input type="range" id="steuer" min="20" max="45" step="1" value="42" oninput="calc()">
+      <span class="rval" id="steuer_v">42 %</span>
+    </div>
+  </div>
+
+  <div class="f">
+    <label>Geschätzte PKV-Beitragserhöhung p.a. <span>(Marktdurchschnitt: 3,3 %)</span></label>
+    <div class="rrow">
+      <input type="range" id="bap_pkv" min="1" max="6" step="0.1" value="3.3" oninput="calc()">
+      <span class="rval" id="bap_pkv_v">3,3 %</span>
+    </div>
+  </div>
+
+  <div class="f">
+    <label>Geschätzte GKV-Beitragserhöhung p.a. <span>(durch Zusatzbeitrag + BBG-Anstieg)</span></label>
+    <div class="rrow">
+      <input type="range" id="bap_gkv" min="1" max="6" step="0.1" value="3.5" oninput="calc()">
+      <span class="rval" id="bap_gkv_v">3,5 %</span>
+    </div>
+  </div>
+</div>
+
+<div id="result">
+  <div class="sum-grid">
+    <div class="sbox pkv">
+      <div class="lbl">Gesamtaufwand PKV</div>
+      <div class="val" id="s_pkv">–</div>
+      <div class="sub">netto, bis Alter 67</div>
+    </div>
+    <div class="sbox gkv">
+      <div class="lbl">Gesamtaufwand GKV</div>
+      <div class="val" id="s_gkv">–</div>
+      <div class="sub">netto, bis Alter 67</div>
+    </div>
+    <div class="sbox diff">
+      <div class="lbl" id="s_diff_lbl">Ersparnis mit PKV</div>
+      <div class="val" id="s_diff">–</div>
+      <div class="sub" id="s_diff_sub">über die gesamte Laufzeit</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Jahresprojektion (netto nach Steuern)</h2>
+    <div style="max-height:400px; overflow-y:auto;">
+      <table class="proj-table">
+        <thead><tr><th>Jahr</th><th>PKV/Monat</th><th>GKV/Monat</th><th>Ersparnis/Jahr</th><th>Kumuliert</th></tr></thead>
+        <tbody id="proj_body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:6px;">Ergebnis mit einem Experten besprechen?</h3>
+    <p>Gerne analysieren wir Ihr Ergebnis und melden uns bei Ihnen - klären Sie offene Fragen einfach mit unseren Experten.</p>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <a id="mailto_cta" href="#" class="cbtn" onclick="sendResults(event)">→ Ergebnis per E-Mail senden</a>
+      <a href="https://calendly.com/pkv-welt/" target="_blank" rel="noopener" class="cbtn" style="background:var(--bm);">→ Termin buchen</a>
+    </div>
+    <div style="display:flex;gap:16px;justify-content:center;margin-top:12px;font-size:.78rem;opacity:.85;">
+      <span>✓ Kostenfrei</span><span>✓ Unverbindlich</span><span>✓ Vertraulich</span>
+    </div>
+  </div>
+</div>
+
+<div class="note">Modellrechnung auf Basis der Beitragssätze 2026. Beitragsentwicklung geschätzt. Kein Ersatz für individuelle Beratung.</div>
+</div>
+
+<script>
+const BBG = 5812.50, GKV_RATE = 17.5, GKV_MINDST = 1318.33;
+const PV = { 0: 4.2, 1: 3.6, 2: 3.35, 3: 3.1 };
+const RENTE = 67;
+
+function fmt(n) { return Math.round(n).toLocaleString('de-DE') + ' €'; }
+function fmtD(n) { return n.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' €'; }
+
+function sendResults(e) {
+  e.preventDefault();
+  const lines = [];
+  lines.push('Rechner: PKV vs GKV Langfrist-Rechner 2026');
+  lines.push('');
+  lines.push('Meine Eingaben:');
+
+  const alter = document.getElementById('alter').value;
+  const einkommen = document.getElementById('einkommen').value;
+  const pkv = document.getElementById('pkv').value;
+  const kinder = document.querySelector('input[name="kinder"]:checked').value;
+  const steuer = document.getElementById('steuer').value;
+  const bap_pkv = document.getElementById('bap_pkv').value;
+  const bap_gkv = document.getElementById('bap_gkv').value;
+
+  lines.push('  Alter: ' + alter + ' Jahre');
+  lines.push('  Monatliches Bruttoeinkommen: ' + fmt(einkommen));
+  lines.push('  PKV-Bruttobeitrag: ' + fmt(pkv));
+  lines.push('  Kinder: ' + kinder);
+  lines.push('  Grenzsteuersatz: ' + steuer + '%');
+  lines.push('  PKV-Beitragserhöhung p.a.: ' + bap_pkv + '%');
+  lines.push('  GKV-Beitragserhöhung p.a.: ' + bap_gkv + '%');
+
+  lines.push('');
+  lines.push('Ergebnis:');
+  const sPkv = document.getElementById('s_pkv').textContent;
+  const sGkv = document.getElementById('s_gkv').textContent;
+  const sDiffLbl = document.getElementById('s_diff_lbl').textContent;
+  const sDiff = document.getElementById('s_diff').textContent;
+  const sDiffSub = document.getElementById('s_diff_sub').textContent;
+
+  lines.push('  Gesamtaufwand PKV (netto): ' + sPkv);
+  lines.push('  Gesamtaufwand GKV (netto): ' + sGkv);
+  lines.push('  ' + sDiffLbl + ': ' + sDiff + ' (' + sDiffSub + ')');
+
+  lines.push('');
+  lines.push('Ich möchte mein Ergebnis gerne mit einem Experten besprechen.');
+
+  const subject = encodeURIComponent('Rechner-Ergebnis: PKV vs GKV Langfrist-Rechner 2026');
+  const body = encodeURIComponent(lines.join('\n'));
+  var mailtoUrl = 'mailto:beratung@angestellt-pkv.de?subject=' + subject + '&body=' + body;
+  var a = document.createElement('a');
+  a.href = mailtoUrl;
+  a.target = '_top';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+function calc() {
+  const alter = parseInt(document.getElementById('alter').value);
+  const einkommen = parseFloat(document.getElementById('einkommen').value);
+  const pkvStart = parseFloat(document.getElementById('pkv').value);
+  const kinder = parseInt(document.querySelector('input[name="kinder"]:checked').value);
+  const steuersatz = parseFloat(document.getElementById('steuer').value) / 100;
+  const bapPKV = parseFloat(document.getElementById('bap_pkv').value) / 100;
+  const bapGKV = parseFloat(document.getElementById('bap_gkv').value) / 100;
+
+  document.getElementById('alter_v').textContent = alter + ' Jahre';
+  document.getElementById('einkommen_v').textContent = fmt(einkommen);
+  document.getElementById('pkv_v').textContent = fmt(pkvStart);
+  document.getElementById('steuer_v').textContent = Math.round(steuersatz * 100) + ' %';
+  document.getElementById('bap_pkv_v').textContent = (bapPKV * 100).toFixed(1).replace('.', ',') + ' %';
+  document.getElementById('bap_gkv_v').textContent = (bapGKV * 100).toFixed(1).replace('.', ',') + ' %';
+
+  const jahre = RENTE - alter;
+  const pvSatz = PV[Math.min(kinder, 3)];
+
+  // GKV heute (netto)
+  const gkvBasis = Math.max(GKV_MINDST, Math.min(einkommen, BBG));
+  const gkvBruttoStart = gkvBasis * (GKV_RATE + pvSatz) / 100;
+  const gkvAbsetzStart = gkvBasis * GKV_RATE / 100 * 0.96 + gkvBasis * pvSatz / 100;
+  const gkvNettoStart = gkvBruttoStart - gkvAbsetzStart * steuersatz;
+
+  // PKV heute (netto)
+  const pkvAbsetzStart = pkvStart * 0.79;
+  const pkvNettoStart = pkvStart - pkvAbsetzStart * steuersatz;
+
+  // Projection
+  let rows = [];
+  let cumPKV = 0, cumGKV = 0, cumDiff = 0;
+  let breakYear = null;
+  let pkvData = [], gkvData = [], labels = [];
+
+  for (let y = 0; y < jahre; y++) {
+    const year = 2026 + y;
+    const pkvNetto = pkvNettoStart * Math.pow(1 + bapPKV, y);
+    const gkvNetto = gkvNettoStart * Math.pow(1 + bapGKV, y);
+    const diff = (gkvNetto - pkvNetto) * 12;
+    cumPKV += pkvNetto * 12;
+    cumGKV += gkvNetto * 12;
+    cumDiff += diff;
+
+    if (breakYear === null && diff > 0 && y > 0) breakYear = year;
+
+    rows.push({ year, pkvNetto, gkvNetto, diff, cumDiff });
+    pkvData.push(Math.round(pkvNetto));
+    gkvData.push(Math.round(gkvNetto));
+    labels.push(year);
+  }
+
+  // Summary
+  document.getElementById('s_pkv').textContent = fmt(cumPKV);
+  document.getElementById('s_gkv').textContent = fmt(cumGKV);
+  const totalDiff = cumGKV - cumPKV;
+  if (totalDiff > 0) {
+    document.getElementById('s_diff').textContent = fmt(totalDiff);
+    document.getElementById('s_diff_lbl').textContent = 'Ersparnis mit PKV';
+    document.getElementById('s_diff_sub').textContent = 'über ' + jahre + ' Jahre (netto)';
+  } else {
+    document.getElementById('s_diff').textContent = fmt(Math.abs(totalDiff));
+    document.getElementById('s_diff_lbl').textContent = 'GKV ist günstiger';
+    document.getElementById('s_diff_sub').textContent = 'über ' + jahre + ' Jahre (netto)';
+  }
+
+  // Table
+  let html = '';
+  for (const r of rows) {
+    const isBreak = r.year === breakYear;
+    html += `<tr class="${isBreak ? 'break' : ''}">
+      <td>${r.year}</td>
+      <td>${fmtD(r.pkvNetto)}</td>
+      <td>${fmtD(r.gkvNetto)}</td>
+      <td style="color:${r.diff > 0 ? 'var(--gr)' : 'var(--rd)'}">${r.diff > 0 ? '+' : ''}${fmtD(r.diff)}</td>
+      <td style="color:${r.cumDiff > 0 ? 'var(--gr)' : 'var(--rd)'}">${r.cumDiff > 0 ? '+' : ''}${fmtD(r.cumDiff)}</td>
+    </tr>`;
+  }
+  document.getElementById('proj_body').innerHTML = html;
+
+  // Chart (simple canvas)
+  drawChart(labels, pkvData, gkvData);
+}
+
+function drawChart(labels, pkv, gkv) {
+  const canvas = document.getElementById('chart');
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  ctx.scale(dpr, dpr);
+  const W = rect.width, H = rect.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const all = [...pkv, ...gkv];
+  const maxVal = Math.max(...all) * 1.1;
+  const minVal = Math.min(...all) * 0.9;
+  const padL = 60, padR = 20, padT = 20, padB = 40;
+  const cW = W - padL - padR, cH = H - padT - padB;
+
+  // Grid
+  ctx.strokeStyle = '#e8f0f8'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = padT + (cH / 4) * i;
+    ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W - padR, y); ctx.stroke();
+    ctx.fillStyle = '#999'; ctx.font = '11px Inter'; ctx.textAlign = 'right';
+    const val = Math.round(maxVal - (maxVal - minVal) * (i / 4));
+    ctx.fillText(val + ' €', padL - 8, y + 4);
+  }
+
+  // X labels
+  ctx.fillStyle = '#999'; ctx.font = '10px Inter'; ctx.textAlign = 'center';
+  const step = Math.max(1, Math.floor(labels.length / 8));
+  for (let i = 0; i < labels.length; i += step) {
+    const x = padL + (i / (labels.length - 1)) * cW;
+    ctx.fillText(labels[i], x, H - 10);
+  }
+
+  // Lines
+  function drawLine(data, color) {
+    ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.beginPath();
+    for (let i = 0; i < data.length; i++) {
+      const x = padL + (i / (data.length - 1)) * cW;
+      const y = padT + cH - ((data[i] - minVal) / (maxVal - minVal)) * cH;
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+
+  drawLine(gkv, '#0369A1');
+  drawLine(pkv, '#1E7D4B');
+
+  // Legend
+  ctx.font = '12px Inter'; ctx.fillStyle = '#1E7D4B';
+  ctx.fillText('● PKV (netto)', padL + 20, padT + 14);
+  ctx.fillStyle = '#0369A1';
+  ctx.fillText('● GKV (netto)', padL + 120, padT + 14);
+}
+
+calc();
+window.addEventListener('resize', calc);
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Elternzeit-Rechner · PKV für Angestellte</title>
+<style>
+  :root {
+    --primary: #002046;
+    --amber: #D4A017;
+    --amber-dark: #B8860B;
+    --surface: #FAF7F2;
+    --on-surface: #1a1f2e;
+    --on-surface-variant: #515a6b;
+    --outline: #cfd2d8;
+    --info: #0369A1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--on-surface);
+    background: var(--surface);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
+  h1 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.6rem; margin: 0 0 4px; }
+  .lead { color: var(--on-surface-variant); font-size: .95rem; margin: 0 0 20px; }
+  .card {
+    background: #fff;
+    border: 1px solid rgba(0,32,70,.08);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+    margin-bottom: 20px;
+  }
+  .card h2 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.15rem; margin: 0 0 14px; }
+  .info-box { background: #e0f2fe; border-left: 4px solid var(--info); padding: 14px 18px; border-radius: 8px; font-size: .92rem; margin-bottom: 16px; }
+  .info-box strong { color: var(--info); }
+  .summary { background: #f0f9ff; border: 1px solid rgba(3,105,161,.2); border-radius: 12px; padding: 18px; font-size: .95rem; }
+  .summary > div { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .summary .label { font-weight: 600; color: var(--primary); }
+  .summary .value { color: var(--on-surface-variant); }
+  .cta-box {
+    margin-top: 24px; background: var(--primary); color: #fff;
+    padding: 30px; border-radius: 12px; text-align: center;
+  }
+  .cta-box .text p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.82); }
+  .cta-box .text strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; color: #fff; margin-bottom: 8px; }
+  .cta-buttons {
+    display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--amber); color: #fff; font-weight: 600; font-size: .95rem;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none;
+    transition: background .15s; cursor: pointer; flex: 1; min-width: 200px;
+  }
+  @media (max-width: 600px) { .cta-buttons { flex-direction: column; } .cta-btn { min-width: 100%; } }
+  .cta-btn:hover { background: var(--amber-dark); }
+  .cta-btn#cta-termin {
+    background: transparent; color: #fff; border: 2px solid var(--amber); font-weight: 600;
+  }
+  .cta-btn#cta-termin:hover { background: rgba(212,160,23,.1); border-color: var(--amber-dark); }
+  .trust-badges {
+    margin-top: 14px; display: flex; gap: 16px; justify-content: center;
+    flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.85);
+  }
+  .trust-badges span { display: flex; align-items: center; gap: 4px; }
+  .trust-badges span::before { content: "✓"; font-weight: bold; color: #4ade80; }
+  .note { margin-top: 20px; font-size: .78rem; color: var(--on-surface-variant); line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>👨‍👩‍👧 Elternzeit-Planer für PKV</h1>
+  <p class="lead">Was passiert mit deiner PKV während der Elternzeit? Deine Optionen, Rechte und wie du versichert bleibst oder wechselst.</p>
+
+  <div class="card">
+    <h2>Ihre Situation</h2>
+
+    <div class="info-box">
+      <strong>⚠️ Wichtig:</strong> In der Elternzeit ruht die Versicherungspflicht in der PKV. Sie müssen sich selbst versichern oder zur GKV wechseln.
+    </div>
+
+    <div class="summary">
+      <div>
+        <div class="label">Während Elternzeit:</div>
+        <div class="value">Beitrag wird fällig</div>
+      </div>
+      <div>
+        <div class="label">AG-Zuschuss:</div>
+        <div class="value">entfällt</div>
+      </div>
+      <div style="grid-column: 1 / -1; margin-top: 0;">
+        <div class="label">Ihre Optionen:</div>
+        <div class="value">
+          <strong>Option 1:</strong> Beitrag selbst zahlen (voller Betrag)<br>
+          <strong>Option 2:</strong> Zur GKV wechseln (keine Rückfinanzierung)<br>
+          <strong>Option 3:</strong> PKV ruhen lassen (nur bei Tarif möglich)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Elternzeitdauer</h2>
+    <p style="font-size: .92rem; color: var(--on-surface-variant); margin: 0;">
+      Elternzeit kann bis zu 3 Jahre pro Kind genommen werden (ab Geburt bis 8. Geburtstag teilbar).<br>
+      <strong>Wichtig für PKV:</strong> Beiträge müssen Sie selbst tragen, wenn Sie versichert bleiben wollen.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>❓ Häufige Fragen</h2>
+    <p style="font-size: .92rem; color: var(--on-surface-variant); margin: 0; line-height: 1.8;">
+      <strong>Q: Kann ich die PKV pausieren?</strong><br>
+      A: Nein, PKV kann nicht pausiert werden. Aber: Manche Tarife erlauben temporäre Beitragskündigungen oder Sie wechseln zur GKV.
+      <br><br>
+      <strong>Q: Kann ich nach Elternzeit zurück in die PKV?</strong><br>
+      A: Ja, sofern Sie die Versicherungspflichtgrenze überschreiten. Neue Gesundheitsprüfung ist nötig.
+      <br><br>
+      <strong>Q: GKV Kosten während Elternzeit?</strong><br>
+      A: Bei Elterngeld (kein reguläres Einkommen): Manche GKV nehmen reduzierte Beiträge oder Pauschalen.
+    </p>
+  </div>
+
+  <div class="cta-box">
+    <div class="text">
+      <strong>Planen Sie Elternzeit?</strong>
+      <p>Gerne helfen wir Ihnen, die beste Versicherungslösung für diese Zeit zu finden.</p>
+    </div>
+    <div class="cta-buttons">
+      <button class="cta-btn" id="send-result">
+        → Ergebnis per E-Mail senden
+      </button>
+      <button class="cta-btn" id="cta-termin">
+        → Termin buchen
+      </button>
+    </div>
+    <div class="trust-badges">
+      <span>Kostenfrei</span>
+      <span>Unverbindlich</span>
+      <span>Vertraulich</span>
+    </div>
+  </div>
+
+  <p class="note">
+    Quelle: § 6 SGB V (Versicherungspflicht), § 3 BEEG (Bundeselterngeldgesetz). Regelungen können zwischen Bundesländern und Versicherern unterscheiden. Konsultieren Sie Ihren Versicherer vor Elternzeitantritt.
+  </p>
+</div>
+
+<script>
+function sendResults(e) {
+  e.preventDefault();
+  const lines = [];
+  lines.push("Rechner: Elternzeit-Rechner");
+  lines.push("");
+  lines.push("Ich plane Elternzeit und möchte meine PKV-Optionen besprechen.");
+  lines.push("");
+  lines.push("Optionen:");
+  lines.push("- Beitrag selbst zahlen");
+  lines.push("- Zur GKV wechseln");
+  lines.push("- PKV-Status nach Elternzeit klären");
+
+  const subject = encodeURIComponent("Rechner-Ergebnis: Elternzeit-Planung");
+  const body = encodeURIComponent(lines.join("\n"));
+  const mailtoUrl = "mailto:beratung@angestellt-pkv.de?subject=" + subject + "&body=" + body;
+
+  const a = document.createElement("a");
+  a.href = mailtoUrl;
+  a.target = "_top";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+document.getElementById("send-result").addEventListener("click", sendResults);
+document.getElementById("cta-termin").addEventListener("click", () => {
+  window.open("https://calendly.com/pkv-welt/", "_blank");
+});
+</script>
+</body>
+</html>
