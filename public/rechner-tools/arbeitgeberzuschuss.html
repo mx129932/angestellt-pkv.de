@@ -199,8 +199,8 @@
 <body>
 <div class="wrap">
 
-  <h1>Arbeitgeberzuschuss-Rechner</h1>
-  <p class="lead">Wie viel zahlt dein Arbeitgeber zur PKV dazu? Gib deinen tatsächlichen PKV-Monatsbeitrag ein — der Rechner ermittelt den Zuschuss nach § 257 SGB V mit Kappung am gesetzlichen Höchstwert 2026.</p>
+  <h1>💼 Was zahlt dein Chef dazu?</h1>
+  <p class="lead">Der Arbeitgeberzuschuss ist oft großzügiger als gedacht — oder kleiner. Finde hier raus, wie viel dein Arbeitgeber wirklich zahlen MUSS (und darf) nach deutschem Recht.</p>
 
   <div id="data_status" class="data-status">· Werte werden geladen …</div>
 
@@ -210,21 +210,21 @@
       <h2>Eingabe</h2>
 
       <div class="field">
-        <label for="pkv_kv">Dein PKV-Beitrag Krankenversicherung</label>
+        <label for="pkv_kv">Wie viel kostet dich die Versicherung? (ohne Pflege)</label>
         <div class="input-row">
           <input type="number" id="pkv_kv" min="0" step="10" value="650" />
           <span class="suffix">€ / Monat</span>
         </div>
-        <div class="hint">Reiner Kranken­versicherungs­anteil — ohne Pflege­pflicht (PPV).</div>
+        <div class="hint">Schau auf deine Police: Nur der Krankenversicherungs-Beitrag, nicht die Pflege-Versicherung.</div>
       </div>
 
       <div class="field">
-        <label for="pkv_pv">Dein PPV-Beitrag (private Pflegepflicht)</label>
+        <label for="pkv_pv">Und wie viel für Pflegepflicht? (optional)</label>
         <div class="input-row">
           <input type="number" id="pkv_pv" min="0" step="5" value="115" />
           <span class="suffix">€ / Monat</span>
         </div>
-        <div class="hint">Steht als eigene Position auf deiner Tarif-Police.</div>
+        <div class="hint">Oft eine separate Zeile auf der Police. Wenn nicht vorhanden: 0 eintragen.</div>
       </div>
 
       <div class="field">

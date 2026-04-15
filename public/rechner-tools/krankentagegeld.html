@@ -1,474 +1,221 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Krankentagegeld-Bedarfsrechner 2026 – Selbstständige</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Krankentagegeld-Rechner 2026 · PKV für Angestellte</title>
 <style>
   :root {
-    --blue-dark: #0C4A6E;
-    --blue-mid:  #0369A1;
-    --blue-light:#DEEAF1;
-    --orange:    #EA580C;
-    --bg:        #F7F9FC;
-    --text:      #4A4A4A;
-    --muted:     #666;
-    --border:    #C8DCF0;
-    --red:       #C0392B;
-    --red-bg:    #FDEDEC;
-    --green:     #1E7D4B;
-    --green-bg:  #EAF7EF;
-    --warn-bg:   #FFF8EC;
-    --warn-border:#E8B84B;
-    --radius:    8px;
-    --shadow:    0 2px 12px rgba(31,78,121,.10);
+    --primary: #002046;
+    --accent: #1b365d;
+    --accent-light: #87a0cd;
+    --surface: #FAF7F2;
+    --on-surface: #1a1f2e;
+    --on-surface-variant: #515a6b;
+    --outline: #cfd2d8;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-
-  
-
-  /* Mobile responsive */
-  @media (max-width: 520px) {
-    .calc-wrap { padding: 12px 8px 32px !important; }
-    .calc-header { padding: 20px 16px !important; }
-    .calc-header h1 { font-size: 1.15rem !important; }
-    .calc-wrap .card { padding: 16px 12px !important; }
-    .calc-wrap .radio-btn { min-width: 90px !important; }
-    .calc-wrap .radio-btn label { padding: 8px 4px !important; font-size: .75rem !important; }
-    .calc-wrap .range-val { min-width: 72px !important; font-size: .95rem !important; }
-    .calc-wrap .field label span { display: block !important; margin-left: 0 !important; margin-top: 2px !important; }
-    .calc-wrap .shock-grid { grid-template-columns: 1fr !important; }
-    .calc-wrap .result-grid { grid-template-columns: 1fr !important; }
-    .calc-wrap .karenz-table { font-size: .75rem !important; }
-    .calc-wrap .karenz-table th, .calc-wrap .karenz-table td { padding: 6px 6px !important; }
-    .calc-wrap .cta-box { padding: 16px 12px !important; }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--on-surface);
+    background: var(--surface);
+    line-height: 1.55;
   }
-
-  .calc-wrap { max-width: 740px; margin: 0 auto; padding: 24px 16px 48px; }
-
-  .calc-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
-    border-radius: var(--radius); padding: 28px 32px; color: #fff; margin-bottom: 24px; }
-  .calc-header h1 { font-size: 1.5rem !important; font-weight: 700 !important; margin-bottom: 6px !important; color: #fff !important; line-height: 1.3 !important; }
-  .calc-header p  { font-size: .9rem !important; opacity: .88; color: #fff !important; line-height: 1.5 !important; }
-  .badge { display: inline-block; background: var(--orange); color: #fff; font-size: .72rem;
-    font-weight: 700; padding: 2px 8px; border-radius: 12px; margin-left: 10px; vertical-align: middle; letter-spacing: .5px; }
-
-  .card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 24px; margin-bottom: 16px; box-shadow: var(--shadow); }
-  .card h2 { font-size: 1rem; font-weight: 700; color: var(--blue-dark); margin-bottom: 16px;
-    padding-bottom: 8px; border-bottom: 2px solid var(--blue-light); }
-
-  .field { margin-bottom: 18px; }
-  .field label { display: block; font-size: .85rem; font-weight: 600; color: var(--blue-dark); margin-bottom: 6px; }
-  .field label span { font-weight: 400; color: var(--muted); margin-left: 4px; font-size: .8rem; }
-  .field input[type=range] { width: 100%; accent-color: var(--blue-mid); cursor: pointer; height: 8px; }
-  .field input[type=range]::-webkit-slider-thumb { width: 20px; height: 20px; }
-  .field .range-row { display: flex; align-items: center; gap: 12px; }
-  .field .range-val { min-width: 92px; text-align: right; font-size: 1.1rem; font-weight: 700;
-    color: var(--blue-dark); background: var(--blue-light); padding: 8px 12px;
-    border-radius: 6px; border: 1px solid var(--border); }
-
-  .field select { width: 100%; padding: 12px 14px; border: 1px solid var(--border);
-    border-radius: 6px; font-size: 1rem; background: #fff; color: var(--text); cursor: pointer; min-height: 44px; }
-
-  .radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
-  .radio-btn { flex: 1; min-width: 110px; }
-  .radio-btn input { display: none; }
-  .radio-btn label { display: block; text-align: center; padding: 10px 8px; border: 2px solid var(--border);
-    border-radius: 6px; cursor: pointer; font-size: .82rem; font-weight: 600; color: var(--muted);
-    transition: all .18s; background: #fafcff; }
-  .radio-btn input:checked + label { border-color: var(--blue-mid); background: var(--blue-light); color: var(--blue-dark); }
-
-  .shock-box { background: var(--red-bg); border: 2px solid var(--red); border-radius: var(--radius);
-    padding: 20px 24px; margin-top: 16px; display: none; }
-  .shock-box.visible { display: block; }
-  .shock-box h2 { color: var(--red); font-size: 1rem; margin-bottom: 14px; }
-
-  .shock-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
-  .shock-item { background: #fff; border: 1px solid #F5B7B1; border-radius: 6px; padding: 12px 14px; text-align: center; }
-  .shock-item .duration { font-size: .75rem; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
-  .shock-item .loss { font-size: 1.2rem; font-weight: 800; color: var(--red); }
-  .shock-item .sub { font-size: .73rem; color: var(--muted); margin-top: 2px; }
-
-  .result-card { background: var(--green-bg); border: 2px solid var(--green); border-radius: var(--radius);
-    padding: 24px; margin-top: 12px; display: none; }
-  .result-card.visible { display: block; }
-  .result-card h2 { color: var(--green); font-size: 1rem; margin-bottom: 14px; }
-
-  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
-  .result-item { background: #fff; border: 1px solid #C3E6CB; border-radius: 6px; padding: 14px 16px; }
-  .result-item .label { font-size: .78rem; color: var(--muted); font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .4px; }
-  .result-item .value { font-size: 1.3rem; font-weight: 800; color: var(--blue-dark); }
-  .result-item .value.main { font-size: 1.55rem; color: var(--green); }
-  .result-item.full { grid-column: 1 / -1; }
-
-  .karenz-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: .85rem; }
-  .karenz-table th { background: var(--blue-dark); color: #fff; padding: 8px 10px; text-align: left; }
-  .karenz-table td { padding: 8px 10px; border-bottom: 1px solid #e8f0f8; }
-  .karenz-table tr:nth-child(even) td { background: var(--blue-light); }
-  .karenz-table .recommended td { background: #C6F4D6 !important; font-weight: 700; }
-
-  .disclaimer { font-size: .78rem; color: var(--muted); background: var(--warn-bg);
-    border: 1px solid var(--warn-border); border-radius: 6px; padding: 12px 14px; margin-top: 16px; }
-
-  .cta-box { background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
-    border-radius: var(--radius); padding: 20px 24px; margin-top: 16px; text-align: center; color: #fff; }
-  .cta-box p { font-size: .9rem !important; opacity: .92; margin-bottom: 12px; color: #fff !important; }
-  .cta-btn { display: inline-block; background: var(--orange); color: #fff; padding: 14px 28px;
-    border-radius: 6px; font-weight: 700; text-decoration: none; font-size: .95rem; transition: opacity .2s; min-height: 44px; display: flex; align-items: center; justify-content: center; }
-  .cta-btn:hover { opacity: .88; }
-
-  .data-info { font-size: .75rem; color: var(--muted); text-align: center; margin-top: 12px; }
-
-  @media (max-width: 520px) {
-    .shock-grid { grid-template-columns: 1fr; }
-    .result-grid { grid-template-columns: 1fr; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
+  h1 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.6rem; margin: 0 0 4px; }
+  .lead { color: var(--on-surface-variant); font-size: .95rem; margin: 0 0 20px; }
+  .card {
+    background: #fff;
+    border: 1px solid rgba(0,32,70,.08);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+    margin-bottom: 20px;
   }
+  .card h2 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.15rem; margin: 0 0 14px; }
+  .input-row { position: relative; margin-bottom: 16px; }
+  .input-row label { display: block; font-size: .85rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
+  input[type="number"], input[type="range"] {
+    width: 100%; padding: 11px 14px; border: 1px solid var(--outline);
+    border-radius: 8px; background: #fff; font-size: 1rem;
+    color: var(--on-surface); outline: none; transition: border-color .15s;
+  }
+  input[type="number"] { -moz-appearance: textfield; font-weight: 600; }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+  }
+  input:focus { border-color: var(--primary); }
+  .suffix {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--on-surface-variant); font-weight: 600; font-size: .9rem; pointer-events: none;
+  }
+  .result { margin-top: 20px; padding: 16px; border-radius: 8px; font-size: .95rem; background: var(--accent-light); color: #fff; text-align: center; }
+  .result .big { display: block; font-size: 1.6rem; font-weight: 700; margin: 6px 0; }
+  .result.hidden { display: none; }
+  .cta-box {
+    margin-top: 24px; background: var(--primary); color: #fff;
+    padding: 30px; border-radius: 12px; text-align: center;
+  }
+  .cta-box .text p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.82); }
+  .cta-box .text strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; color: #fff; margin-bottom: 8px; }
+  .cta-buttons {
+    display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--accent); color: #fff; font-weight: 600; font-size: .95rem;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none;
+    transition: background .15s; cursor: pointer; flex: 1; min-width: 200px;
+  }
+  @media (max-width: 600px) { .cta-buttons { flex-direction: column; } .cta-btn { min-width: 100%; } }
+  .cta-btn:hover { background: var(--primary); }
+  .trust-badges {
+    margin-top: 14px; display: flex; gap: 16px; justify-content: center;
+    flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.85);
+  }
+  .trust-badges span { display: flex; align-items: center; gap: 4px; }
+  .trust-badges span::before { content: "✓"; font-weight: bold; color: #4ade80; }
+  .note { margin-top: 20px; font-size: .78rem; color: var(--on-surface-variant); line-height: 1.5; }
 </style>
 </head>
 <body>
-<div class="calc-wrap">
+<div class="wrap">
+  <h1>🏥 Krankentagegeld: Lohnfortzahlung absichern</h1>
+  <p class="lead">Wer zahlt wenn du krank bist und nicht arbeiten kannst? Mit Krankentagegeld in der PKV sicherst du dein Einkommen ab — und das zahlt sich oft aus.</p>
 
-  <div class="calc-header">
-    <h1>🏥 Krankentagegeld-Planer für PKV</h1>
-    <p>Absicherung im Krankheitsfall: Wie viel Krankentagegeld brauchst du? Berechne deine finanzielle Lücke und die richtige Deckung für deine Situation.</p>
+  <div class="card">
+    <h2>Deine Zahlen</h2>
+
+    <div class="input-row">
+      <label for="gehalt">Dein Nettogehalt (monatlich)</label>
+      <div style="position: relative;">
+        <input type="number" id="gehalt" min="0" step="100" value="3000" />
+        <span class="suffix">€ / Monat</span>
+      </div>
+      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
+        Was kommt bei dir am Ende an (nach Steuern & Versicherung)
+      </div>
+    </div>
+
+    <div class="input-row">
+      <label for="tage">Wie lange brauchst du Absicherung?</label>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <input type="range" id="tage" min="14" max="365" step="1" value="30" style="flex:1;" />
+        <span style="min-width: 60px; text-align: right; font-weight: 600; color: var(--primary);" id="tage-label">30 Tage</span>
+      </div>
+      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
+        Krankentagegeld springt ein, wenn die Lohnfortzahlung vom Arbeitgeber endet
+      </div>
+    </div>
+
+    <div id="result" class="result hidden">
+      <span style="font-size: .85rem; opacity: .95;">Krankentagegeld bei Bedarf:</span>
+      <div class="big" id="result-text">—</div>
+      <div style="font-size: .85rem; opacity: .88; margin-top: 8px;">Diesen Betrag zahlt die PKV pro Tag — steuerfrei!</div>
+    </div>
   </div>
 
   <div class="card">
-    <h2>Ihre Einnahmen & Ausgaben</h2>
+    <h2>💡 Was ist Krankentagegeld?</h2>
+    <p style="margin: 0; font-size: .95rem; color: var(--on-surface-variant); line-height: 1.6;">
+      <strong>Situation:</strong> Du wirst krank, kannst nicht arbeiten. Dein Chef zahlt den Lohn 6 Wochen lang (gesetzlich garantiert).<br><br>
+      <strong>Nach 6 Wochen:</strong> Der Lohn endet, deine Miete läuft aber weiter. Hier springt Krankentagegeld ein.<br><br>
+      <strong>Der Deal:</strong> Du zahlst einen Zusatzbeitrag zur PKV. Im Krankheitsfall erhältst du Tagesentschädigungen — meist 50-75% des Nettos.<br><br>
+      <strong>Wichtig:</strong> Angestellte im öffentlichen Dienst oder mit besonderer Sicherung durch den Arbeitgeber brauchen Krankentagegeld oft nicht.
+    </p>
+  </div>
 
-    <div class="field">
-      <label>Monatliches Nettoeinkommen <span>(was tatsächlich auf Ihrem Konto ankommt)</span></label>
-      <div class="range-row">
-        <input type="range" id="netto" min="500" max="12000" step="100" value="4000"
-               oninput="document.getElementById('netto_val').textContent = formatEur(this.value); calc()">
-        <span class="range-val" id="netto_val">4.000 €</span>
-      </div>
+  <div class="card">
+    <h2>❓ Häufige Fragen</h2>
+    <p style="margin: 0; font-size: .92rem; color: var(--on-surface-variant); line-height: 1.7;">
+      <strong>Q: Brauchst du wirklich Krankentagegeld?</strong><br>
+      A: Kommt drauf an. Wenn du GKV mit Krankentagegeld-Leistung hast oder dein Arbeitgeber über 6 Wochen hinaus zahlt: nein. Sonst: Ja, es sichert dich ab.<br><br>
+      <strong>Q: Wie lang dauert es, bis es ausgezahlt wird?</strong><br>
+      A: Nach ärztlicher Diagnose und Meldung in der Regel 3-5 Werktage auf dem Konto.<br><br>
+      <strong>Q: Kann ich unterschiedliche Beträge pro Tag wählen?</strong><br>
+      A: Ja, oft zwischen 30-100 € täglich. Je höher, desto höher der Zusatzbeitrag.
+    </p>
+  </div>
+
+  <div class="cta-box">
+    <div class="text">
+      <strong>Die richtige Absicherung wählen</strong>
+      <p>Krankentagegeld kann überraschend sinnvoll sein. Wir zeigen dir, ob und wie du es brauchst.</p>
     </div>
-
-    <div class="field">
-      <label>Monatliche Fixkosten <span>(Miete, Versicherungen, Kredite, Lebenshaltung)</span></label>
-      <div class="range-row">
-        <input type="range" id="fixkosten" min="500" max="6000" step="50" value="2500"
-               oninput="document.getElementById('fix_val').textContent = formatEur(this.value); calc()">
-        <span class="range-val" id="fix_val">2.500 €</span>
-      </div>
+    <div class="cta-buttons">
+      <button class="cta-btn" id="send-result">
+        → Ergebnis per E-Mail senden
+      </button>
+      <button class="cta-btn" id="cta-termin">
+        → Termin buchen
+      </button>
     </div>
-
-    <div class="field">
-      <label>Vorhandene Rücklage <span>(wie viele Monatsgehälter haben Sie als Reserve?)</span></label>
-      <select id="ruecklage" onchange="calc()">
-        <option value="0">Keine Rücklage</option>
-        <option value="1">Ca. 1 Monatsgehalt</option>
-        <option value="3" selected>Ca. 3 Monatsgehälter</option>
-        <option value="6">Ca. 6 Monatsgehälter</option>
-        <option value="12">Mehr als 6 Monatsgehälter</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label>Haben Sie GKV-Krankengeld? <span>(§ 46 SGB V – ab dem 43. Krankheitstag)</span></label>
-      <div class="radio-group">
-        <div class="radio-btn">
-          <input type="radio" id="gkv_kg_ja" name="kv_status" value="gkv_kg" onchange="calc()">
-          <label for="gkv_kg_ja">GKV mit Krankengeld</label>
-        </div>
-        <div class="radio-btn">
-          <input type="radio" id="gkv_okg" name="kv_status" value="gkv_okg" onchange="calc()">
-          <label for="gkv_okg">GKV ohne Krankengeld</label>
-        </div>
-        <div class="radio-btn">
-          <input type="radio" id="pkv_kt" name="kv_status" value="pkv" checked onchange="calc()">
-          <label for="pkv_kt">PKV versichert</label>
-        </div>
-      </div>
+    <div class="trust-badges">
+      <span>Kostenfrei</span>
+      <span>Unverbindlich</span>
+      <span>Vertraulich</span>
     </div>
   </div>
 
-  <!-- Shock-Szenarien -->
-  <div id="shock-box" class="shock-box">
-    <h2>⚠️ Ihre finanzielle Lücke ohne Krankentagegeld</h2>
-    <div class="shock-grid">
-      <div class="shock-item">
-        <div class="duration">4 Wochen krank</div>
-        <div class="loss" id="loss_4w">–</div>
-        <div class="sub">Einkommensverlust</div>
-      </div>
-      <div class="shock-item">
-        <div class="duration">8 Wochen krank</div>
-        <div class="loss" id="loss_8w">–</div>
-        <div class="sub">Einkommensverlust</div>
-      </div>
-      <div class="shock-item">
-        <div class="duration">12 Wochen krank</div>
-        <div class="loss" id="loss_12w">–</div>
-        <div class="sub">Einkommensverlust</div>
-      </div>
-    </div>
-    <p id="shock_text" style="font-size:.85rem;color:#7B241C;"></p>
-  </div>
-
-  <!-- Empfehlung -->
-  <div id="result-card" class="result-card">
-    <h2>✓ Ihre KTG-Empfehlung</h2>
-
-    <div class="result-grid">
-      <div class="result-item full">
-        <div class="label">Empfohlener KTG-Tagessatz</div>
-        <div class="value main" id="res_tagessatz">–</div>
-      </div>
-      <div class="result-item">
-        <div class="label">KTG-Monatsbetrag</div>
-        <div class="value" id="res_monat">–</div>
-      </div>
-      <div class="result-item">
-        <div class="label">Empfohlene Karenzzeit</div>
-        <div class="value" id="res_karenz">–</div>
-      </div>
-    </div>
-
-    <table class="karenz-table">
-      <thead>
-        <tr>
-          <th>Karenzzeit</th>
-          <th>Monatliche KTG-Prämie (ca.)</th>
-          <th>Eigenrisiko (Wartezeit)</th>
-          <th>Empfehlung</th>
-        </tr>
-      </thead>
-      <tbody id="karenz_tbody"></tbody>
-    </table>
-
-    <div class="disclaimer">
-      <strong>Hinweis:</strong> Die Prämienangaben sind Schätzwerte auf Basis von Marktdurchschnittswerten 2026 (Alter 35, männlich, Nichtraucher). Tatsächliche Prämien variieren stark je nach Alter, Gesundheitszustand und Versicherer. Diese Berechnung ist kein Versicherungsangebot und keine Rechtsberatung.
-    </div>
-
-    <div class="cta-box">
-      <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:6px;color:#fff;">Ergebnis mit einem Experten besprechen?</h3>
-      <p>Gerne analysieren wir Ihr Ergebnis und melden uns bei Ihnen - klären Sie offene Fragen einfach mit unseren Experten.</p>
-      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
-        <a id="mailto_cta" href="#" class="cta-btn" onclick="sendResults(event)">→ Ergebnis per E-Mail senden</a>
-        <a href="https://calendly.com/pkv-welt/" target="_blank" rel="noopener" class="cta-btn" style="background:var(--blue-light);color:#0C4A6E;">→ Termin buchen</a>
-      </div>
-      <div style="display:flex;gap:16px;justify-content:center;margin-top:12px;font-size:.78rem;opacity:.85;">
-        <span>✓ Kostenfrei</span><span>✓ Unverbindlich</span><span>✓ Vertraulich</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="data-info">
-    Berechnungsgrundlage: gesetzliche Regelungen 2026 (§§ 44 ff. SGB V), Prämien-Schätzwerte Marktdurchschnitt.
-    <span id="data_status"></span>
-  </div>
-
+  <p class="note">
+    Quelle: § 44 SGB V (Anspruch auf Krankengeld), § 199 VVG (Versicherungsvertragsgesetz).
+    Leistungen sind Richtwerte und hängen von der Tarifwahl ab.
+  </p>
 </div>
 
 <script>
-// ══════════════════════════════════════════════════════════════════════
-// KONFIGURATION – KTG_Daten nicht in PKV-Angestellt Sheet verfügbar
-// Fallback: DEFAULTS werden verwendet (Marktdurchschnitte 2026)
-// ══════════════════════════════════════════════════════════════════════
-const SHEET_URL = ""; // KTG_Daten nicht konfiguriert – DEFAULTS werden genutzt
-
-const DEFAULTS = {
-  praemie_faktor_karenz14:  0.42,
-  praemie_faktor_karenz21:  0.36,
-  praemie_faktor_karenz28:  0.32,
-  praemie_faktor_karenz42:  0.22,
-  gkv_krankengeld_anteil:   0.70,
-  gkv_krankengeld_wartezeit_tage: 42,
-  karenz_empfehlung_schwelle_kurz:   1,
-  karenz_empfehlung_schwelle_mittel: 3,
-  karenz_empfehlung_schwelle_lang:   6,
-};
-
-let DATA = { ...DEFAULTS };
-const CACHE_KEY = "pkv_ktg_data";
-
-async function loadData() {
-  if (!SHEET_URL) {
-    document.getElementById("data_status").textContent = " · Werte: Festkodiert 2026";
-    return;
-  }
-  const cached = localStorage.getItem(CACHE_KEY);
-  if (cached) {
-    try {
-      const obj = JSON.parse(cached);
-      if (Date.now() - obj.ts < 7 * 86400000) {
-        DATA = { ...DEFAULTS, ...obj.data };
-        calc();
-        return;
-      }
-    } catch(e) {}
-  }
-  try {
-    const r = await fetch(SHEET_URL);
-    const text = await r.text();
-    const parsed = {};
-    text.trim().split("\n").slice(1).forEach(line => {
-      // CSV-Parser mit Anführungszeichen-Support (deutsches Komma-Format)
-      const cols = [];
-      let cur = "", inQ = false;
-      for (const ch of line) {
-        if (ch === '"') { inQ = !inQ; continue; }
-        if (ch === ',' && !inQ) { cols.push(cur.trim()); cur = ""; continue; }
-        cur += ch;
-      }
-      cols.push(cur.trim());
-      const key = cols[0] || "";
-      // Deutsche Dezimalkommas in Punkt umwandeln für parseFloat
-      const rawVal = (cols[1] || "").replace(",", ".");
-      const val = parseFloat(rawVal);
-      if (key && !isNaN(val)) parsed[key] = val;
-    });
-    DATA = { ...DEFAULTS, ...parsed };
-    localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: DATA }));
-    calc();
-    document.getElementById("data_status").textContent = " · Daten: Live aus Google Sheets";
-  } catch(e) {
-    document.getElementById("data_status").textContent = " · Daten: Fallback-Werte";
-    calc();
-  }
+function updateTageLabel() {
+  const val = document.getElementById('tage').value;
+  document.getElementById('tage-label').textContent = val + ' Tage';
+  calcResult();
 }
 
-function formatEur(v) {
-  return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(v);
-}
-function formatEurDec(v) {
-  return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+function calcResult() {
+  const gehalt = parseFloat(document.getElementById('gehalt').value) || 3000;
+  const tage = parseInt(document.getElementById('tage').value) || 30;
+
+  const tagessatz = Math.round((gehalt * 0.6) / 30);
+  const totalschutz = tagessatz * tage;
+
+  const result = document.getElementById('result');
+  document.getElementById('result-text').innerHTML = `${tagessatz} € / Tag<span style="font-size: .6em; display: block; margin-top: 4px;">→ insgesamt ${totalschutz} € bei ${tage} Tagen Krankheit</span>`;
+  result.classList.remove('hidden');
 }
 
 function sendResults(e) {
   e.preventDefault();
+  const gehalt = document.getElementById('gehalt').value;
+  const tage = document.getElementById('tage').value;
+
   const lines = [];
-  lines.push('Rechner: Krankentagegeld-Bedarfsrechner 2026');
-  lines.push('');
-  lines.push('Meine Eingaben:');
-  const netto = parseFloat(document.getElementById("netto").value);
-  const fixkosten = parseFloat(document.getElementById("fixkosten").value);
-  const ruecklage = parseInt(document.getElementById("ruecklage").value);
-  const kvStatus = document.querySelector('input[name="kv_status"]:checked').value;
-  lines.push('- Monatliches Nettoeinkommen: ' + formatEur(netto));
-  lines.push('- Monatliche Fixkosten: ' + formatEur(fixkosten));
-  const rl_label = ruecklage === 0 ? 'Keine' : ruecklage === 1 ? '1 Monatsgehalt' : ruecklage === 3 ? '3 Monatsgehälter' : ruecklage === 6 ? '6 Monatsgehälter' : 'Mehr als 6 Monatsgehälter';
-  lines.push('- Rücklage: ' + rl_label);
-  const kv_label = kvStatus === 'gkv_kg' ? 'GKV mit Krankengeld' : kvStatus === 'gkv_okg' ? 'GKV ohne Krankengeld' : 'PKV versichert';
-  lines.push('- KV-Status: ' + kv_label);
-  lines.push('');
-  lines.push('Ergebnis:');
-  const res_tagessatz = document.getElementById("res_tagessatz").textContent;
-  const res_monat = document.getElementById("res_monat").textContent;
-  const res_karenz = document.getElementById("res_karenz").textContent;
-  lines.push('- Empfohlener KTG-Tagessatz: ' + res_tagessatz);
-  lines.push('- KTG-Monatsbetrag: ' + res_monat);
-  lines.push('- Empfohlene Karenzzeit: ' + res_karenz);
-  lines.push('');
-  lines.push('Ich möchte mein Ergebnis gerne mit einem Experten besprechen.');
-  const subject = encodeURIComponent('Rechner-Ergebnis: Krankentagegeld-Bedarfsrechner');
-  const body = encodeURIComponent(lines.join('\n'));
-  var mailtoUrl = 'mailto:beratung@angestellt-pkv.de?subject=' + subject + '&body=' + body;
-  var a = document.createElement('a');
+  lines.push("Rechner: Krankentagegeld-Planer");
+  lines.push("");
+  lines.push("Mein Nettogehalt: " + gehalt + " €/Monat");
+  lines.push("Wunsch-Absicherung: " + tage + " Tage");
+  lines.push("");
+  lines.push("Ich möchte wissen, ob und wie Krankentagegeld für mich Sinn macht.");
+
+  const subject = encodeURIComponent("Rechner-Ergebnis: Krankentagegeld");
+  const body = encodeURIComponent(lines.join("\n"));
+  const mailtoUrl = "mailto:beratung@angestellt-pkv.de?subject=" + subject + "&body=" + body;
+
+  const a = document.createElement("a");
   a.href = mailtoUrl;
-  a.target = '_top';
+  a.target = "_top";
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
 }
 
-function calc() {
-  const netto     = parseFloat(document.getElementById("netto").value);
-  const fixkosten = parseFloat(document.getElementById("fixkosten").value);
-  const ruecklage = parseInt(document.getElementById("ruecklage").value);
-  const kvStatus  = document.querySelector('input[name="kv_status"]:checked').value;
+document.getElementById('tage').addEventListener('input', updateTageLabel);
+document.getElementById('gehalt').addEventListener('input', calcResult);
+document.getElementById('send-result').addEventListener('click', sendResults);
+document.getElementById('cta-termin').addEventListener('click', () => {
+  window.open('https://calendly.com/pkv-welt/', '_blank');
+});
 
-  // Täglicher Bedarf
-  const tagessatz = netto / 30;
-
-  // GKV-Krankengeld ermitteln (fließt in Lückenberechnung ein)
-  let vorhandenerSchutz = 0;
-  if (kvStatus === "gkv_kg") {
-    // GKV-KG: 70% des Netto, aber erst ab Tag 43 (vorher: 0)
-    // Für Selbstständige ohne KG-Anspruch aus Haupttätigkeit: oft 0
-    vorhandenerSchutz = netto * (DATA.gkv_krankengeld_anteil ?? 0.7) / 30;
-  }
-
-  // Netto-Tageslücke
-  const tagesluecke = Math.max(0, tagessatz - vorhandenerSchutz);
-
-  // Schaden-Szenarien (Einkommensverlust = Tageslücke × Tage)
-  // Rücklage reduziert Lücke (aber schützt nur begrenzt)
-  const rR = ruecklage * netto; // Reserve in Euro
-  const loss4w  = Math.max(0, tagesluecke * 28  - rR * 0.5);
-  const loss8w  = Math.max(0, tagesluecke * 56  - rR * 0.7);
-  const loss12w = Math.max(0, tagesluecke * 84  - rR);
-
-  // Shock-Anzeige
-  document.getElementById("loss_4w").textContent  = formatEur(tagesluecke * 28);
-  document.getElementById("loss_8w").textContent  = formatEur(tagesluecke * 56);
-  document.getElementById("loss_12w").textContent = formatEur(tagesluecke * 84);
-
-  let shockText = "";
-  if (tagesluecke * 56 > 5000) {
-    shockText = `Ohne Krankentagegeld würden Sie bei 8 Wochen Krankheit ${formatEur(tagesluecke * 56)} verlieren – und Ihre laufenden Kosten (${formatEur(fixkosten)}/Monat) müssen trotzdem bezahlt werden.`;
-  } else if (tagesluecke * 28 > 0) {
-    shockText = `Bereits 4 Wochen Krankenstand bedeuten einen Einkommensverlust von ${formatEur(tagesluecke * 28)}.`;
-  }
-  document.getElementById("shock_text").textContent = shockText;
-  document.getElementById("shock-box").classList.toggle("visible", tagesluecke > 0);
-
-  // Empfohlener Tagessatz
-  const empfTagessatz = Math.ceil(tagesluecke);
-
-  // Karenzzeit-Empfehlung
-  let empfKarenz = "14 Tage";
-  let empfKarenzNum = 14;
-  if (ruecklage >= (DATA.karenz_empfehlung_schwelle_lang ?? 6)) {
-    empfKarenz = "42 Tage";
-    empfKarenzNum = 42;
-  } else if (ruecklage >= (DATA.karenz_empfehlung_schwelle_mittel ?? 3)) {
-    empfKarenz = "28 Tage";
-    empfKarenzNum = 28;
-  } else if (ruecklage >= (DATA.karenz_empfehlung_schwelle_kurz ?? 1)) {
-    empfKarenz = "21 Tage";
-    empfKarenzNum = 21;
-  }
-
-  document.getElementById("res_tagessatz").textContent = formatEurDec(empfTagessatz) + " / Tag";
-  document.getElementById("res_monat").textContent     = formatEur(empfTagessatz * 30);
-  document.getElementById("res_karenz").textContent    = empfKarenz;
-
-  // Karenz-Tabelle
-  const karenzOptions = [
-    { tage: 14,  faktor: DATA.praemie_faktor_karenz14 ?? 0.42, label: "14 Tage" },
-    { tage: 21,  faktor: DATA.praemie_faktor_karenz21 ?? 0.36, label: "21 Tage" },
-    { tage: 28,  faktor: DATA.praemie_faktor_karenz28 ?? 0.32, label: "28 Tage" },
-    { tage: 42,  faktor: DATA.praemie_faktor_karenz42 ?? 0.22, label: "42 Tage" },
-  ];
-
-  const tbody = document.getElementById("karenz_tbody");
-  tbody.innerHTML = "";
-  karenzOptions.forEach(opt => {
-    const praemie = empfTagessatz * opt.faktor;
-    const isRec = opt.tage === empfKarenzNum;
-    const tr = document.createElement("tr");
-    if (isRec) tr.className = "recommended";
-    tr.innerHTML = `
-      <td>${opt.label}</td>
-      <td>${formatEurDec(praemie)} / Monat</td>
-      <td>Keine Zahlung in den ersten ${opt.tage} Krankheitstagen</td>
-      <td>${isRec ? "✓ Empfohlen für Sie" : ""}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-
-  document.getElementById("result-card").classList.add("visible");
-}
-
-loadData();
-calc();
+calcResult();
 </script>
 </body>
 </html>
