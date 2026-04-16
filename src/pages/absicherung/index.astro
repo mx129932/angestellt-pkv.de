@@ -1,7 +1,30 @@
 ---
-import T3 from '../../layouts/T3.astro';
+import CategoryHub from '../../layouts/CategoryHub.astro';
+
+const faq = [
+  {
+    q: 'Brauche ich als Angestellter in der PKV ein Krankentagegeld?',
+    a: 'Ja, fast immer. Der Arbeitgeber zahlt im Krankheitsfall 6 Wochen lang das volle Gehalt weiter. Danach springt in der GKV das Krankengeld ein. In der PKV gibt es diese Leistung nur, wenn du sie aktiv vereinbarst. Ohne Krankentagegeld entsteht ab Woche 7 eine echte Einkommenslücke.',
+  },
+  {
+    q: 'Wie wird das Krankentagegeld richtig kalkuliert?',
+    a: 'Der Tagessatz sollte das Nettogehalt abdecken, abzüglich gesparter Abgaben. Faustregel: etwa 80% des Nettos. Zu hoch wirkt verdächtig gegenüber Versicherern (Verdachts-Simulation), zu niedrig lässt eine Lücke. Wichtig: Karenzzeit (z.B. ab Tag 43) passend zur Lohnfortzahlung setzen.',
+  },
+  {
+    q: 'Ersetzt die PKV eine Berufsunfähigkeitsversicherung?',
+    a: 'Nein, ausdrücklich nicht. Die PKV übernimmt Behandlungskosten, das Krankentagegeld ersetzt Einkommen bei vorübergehender Krankheit. Dauerhafte Berufsunfähigkeit braucht eine separate BU-Versicherung. Beide Versicherungen ergänzen sich, überschneiden sich aber nicht.',
+  },
+  {
+    q: 'Wie ist Mutterschutz in der PKV geregelt?',
+    a: 'Während des Mutterschutzes gibt es Zuschüsse vom Arbeitgeber und Mutterschaftsgeld aus dem Bundesamt für Soziale Sicherung (13 Euro pro Tag). Die PKV zahlt kein gesondertes Mutterschaftsgeld, aber Krankenhauskosten, ambulante Hebammenleistungen und Entbindung werden regulär erstattet.',
+  },
+];
 ---
-<T3
+<CategoryHub
+  kategorieSlug='absicherung'
   title='Absicherung rund um die PKV'
-  description='Krankentagegeld, BU-Abgrenzung, Mutterschutz.'
+  description='Krankentagegeld, Abgrenzung zur Berufsunfähigkeit und Mutterschutz. Die PKV im Zusammenspiel mit anderen Absicherungen gegen Einkommensausfall.'
+  keyword='Absicherung'
+  intro='Die PKV deckt Behandlungskosten, nicht Einkommensausfall. Dieser Bereich zeigt, welche zusätzlichen Absicherungen du als Angestellter in der PKV brauchst, wo die Grenze zur Berufsunfähigkeitsversicherung verläuft und was im Mutterschutz wirklich aus der PKV kommt.'
+  faq={faq}
 />

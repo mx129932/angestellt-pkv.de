@@ -1,345 +1,408 @@
 ---
-// Auto-generiert aus 2_Design-Input/templates/T6_article/code.html
-// Article-Template (T6) — 1:1 Stitch-Export.
-// Dieses Layout NICHT manuell ändern — bei Design-Update neu generieren.
+/**
+ * Beitrag-Template (T6) — Artikel-Layout.
+ * Harmonisiert mit CategoryHub (gleiche Container-Breite, Breadcrumb-Position, H1-Position).
+ *
+ * Sidebar: Desktop LINKS (lg:order-1), Mobile linear im Fluss.
+ * Mobile-Reihenfolge: Hero → TOC → Artikel (mit "Für dich zusammengefasst" als erstem
+ * Block) → Beliebte Rechner → Related → Sidebar-CTA.
+ *
+ * Props:
+ *  - title, description, canonical (SEO)
+ *  - breadcrumb: { kategorie: string, kategorieHref: string }
+ *  - toc: Array<{ id: string, label: string }>
+ *  - author, date, readingTime (Meta-Zeile)
+ *  - heroAlt, heroSrc (Hero-Bild)
+ *  - popularRechner: Array<{ href, title, icon }>
+ *  - related: Array<{ href, kategorie, title, teaser, icon }>
+ *
+ * Content kommt via <slot /> — der gesamte Artikeltext als HTML.
+ */
 import Base from './Base.astro';
+import altTexts from '../data/image-alt-texts.json';
 
 interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  breadcrumb?: { kategorie: string; kategorieHref: string };
+  toc?: Array<{ id: string; label: string }>;
+  author?: string;
+  date?: string;
+  readingTime?: string;
+  heroAlt?: string;
+  heroSrc?: string;
+  popularRechner?: Array<{ href: string; title: string; icon: string }>;
+  related?: Array<{ href: string; kategorie: string; title: string; teaser: string; icon: string }>;
+  /** FAQ-Daten fuer Schema.org JSON-LD (Question/Answer-Paare) */
+  faqItems?: Array<{ question: string; answer: string }>;
+  /** ISO-Datum fuer Schema.org datePublished, z.B. "2026-04-15" */
+  publishDate?: string;
+  /** ISO-Datum fuer Schema.org dateModified */
+  updateDate?: string;
 }
 
-const { title, description, canonical } = Astro.props;
+const {
+  title = 'GKV vs. PKV: Die Analyse für Angestellte',
+  description,
+  canonical,
+  breadcrumb = { kategorie: 'Grundlagen', kategorieHref: '/grundlagen/' },
+  toc = [
+    { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+    { id: 'systemvergleich', label: 'Systemvergleich im Detail' },
+    { id: 'altersrueckstellungen', label: 'Altersrückstellungen' },
+    { id: 'vorteile-risiken', label: 'Vorteile & Risiken' },
+    { id: 'fazit', label: 'Fazit' },
+  ],
+  author = 'Tim Bökemeier',
+  date = 'Update April 2026',
+  readingTime = '12 Min. Lesezeit',
+  heroAlt: heroAltProp,
+  heroSrc: heroSrcProp,
+  popularRechner = [
+    { href: '/rechner/pkv-beitrag/', title: 'PKV-Beitragsrechner', icon: 'calculate' },
+    { href: '/rechner/pkv-gkv-vergleich/', title: 'GKV vs. PKV Vergleich', icon: 'compare_arrows' },
+    { href: '/rechner/arbeitgeberzuschuss/', title: 'Arbeitgeberzuschuss', icon: 'business_center' },
+  ],
+  related = [
+    {
+      href: '/grundlagen/lohnt-sich-pkv/',
+      kategorie: 'Grundlagen',
+      title: 'Lohnt sich die PKV für Angestellte?',
+      teaser: 'Datenbasierte Entscheidungshilfe: Wann der Wechsel sich rechnet und wann nicht.',
+      icon: 'trending_up',
+    },
+    {
+      href: '/grundlagen/vor-und-nachteile/',
+      kategorie: 'Grundlagen',
+      title: 'Vor- und Nachteile der PKV',
+      teaser: 'Objektive Gegenüberstellung jenseits von Hochglanzprospekten und Verkaufsrhetorik.',
+      icon: 'balance',
+    },
+    {
+      href: '/kosten/beitragsanpassung/',
+      kategorie: 'Kosten',
+      title: 'Beitragsanpassung verstehen',
+      teaser: 'Warum Beiträge steigen, nach welchen Regeln und wie du stabile Tarife erkennst.',
+      icon: 'trending_up',
+    },
+  ],
+  faqItems,
+  publishDate = '2026-04-16',
+  updateDate = '2026-04-16',
+} = Astro.props;
+
+// Hero-Bild Auto-Erkennung aus URL wenn nicht explizit uebergeben
+const urlParts = Astro.url.pathname.replace(/\/$/, '').split('/').filter(Boolean);
+const autoHeroId = urlParts.length >= 2 ? `hero-${urlParts[0]}-${urlParts[urlParts.length - 1]}` : '';
+const autoHero = autoHeroId ? (altTexts as Record<string, { alt: string; size: string }>)[autoHeroId] : undefined;
+const heroSrc = heroSrcProp || (autoHero ? `/img/${autoHeroId}.webp` : '');
+const heroAlt = heroAltProp || autoHero?.alt || '';
+
+const hasSlotContent = Astro.slots.has('default');
 ---
-<Base title={title} description={description} canonical={canonical}>
-  <Fragment set:html={`<!-- Top Navigation Bar -->
-<nav class="bg-[#f8f9fa] dark:bg-slate-900 backdrop-blur-md opacity-95 docked full-width top-0 z-50 shadow-[0_12px_40px_rgba(25,28,29,0.06)] dark:shadow-none">
-<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
-<div class="text-2xl font-serif italic text-[#002046] dark:text-blue-200">The Financial Architect</div>
-<div class="hidden md:flex items-center space-x-8">
-<a class="text-[#002046] dark:text-white font-semibold border-b-2 border-[#00261c] pb-1 hover:text-[#00261c] dark:hover:text-emerald-400 transition-colors duration-300" href="#">Analysis</a>
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-[#00261c] dark:hover:text-emerald-400 transition-colors duration-300" href="#">Guides</a>
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-[#00261c] dark:hover:text-emerald-400 transition-colors duration-300" href="#">Comparison</a>
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-[#00261c] dark:hover:text-emerald-400 transition-colors duration-300" href="#">About Us</a>
-</div>
-<div class="flex items-center space-x-6">
-<span class="material-symbols-outlined text-[#002046] cursor-pointer">search</span>
-<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 hover:shadow-lg active:opacity-80">
-                    Consultation
-                </button>
-</div>
-</div>
-</nav>
-<main class="max-w-7xl mx-auto pt-12">
-<!-- Hero Section: Restructured Split Layout -->
-<section class="px-8 mb-20">
-<div class="grid grid-cols-12 gap-12 items-center">
-<div class="col-span-12 lg:col-span-7">
-<nav class="flex items-center space-x-2 text-on-surface-variant text-xs mb-8 tracking-widest uppercase font-semibold">
-<span>Versicherung</span>
-<span class="material-symbols-outlined text-[10px]">chevron_right</span>
-<span class="text-hanseatic-amber">PKV</span>
-</nav>
-<h1 class="font-headline text-5xl md:text-6xl text-primary leading-[1.1] font-bold mb-8">
-                        GKV vs. PKV: Die ultimative Analyse für Besserverdiener
-                    </h1>
-<div class="flex flex-wrap items-center gap-6 text-on-surface-variant border-t border-outline-variant/20 pt-8">
-<div class="flex items-center gap-3">
-<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/30">
-<img alt="Marc-Oliver Neumann" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE4ciy9kBlE7NvDVZYQORx-6dcIQevO_dRXM2OBptZ9SG97Fty-uOW0V8P50TPNWtyRcYCIMqh77kXflbTCRIHBQDgrYKcCwaM7R3Z00bq9FuAYffv6DF0hn5rQVkv2xhbD6EBeItOMop4QkDFc-xrVYLBBltHKOT2V4mBZIShKFl6avCZfqqu0qy8JugNlgD4DEk1WqLabZJWYDbdeupoQZDbdBVv62RGeCq1BXJmuelOPR_00URbH6AgNTDJ0Jt3MSLps4NP"/>
-</div>
-<div class="flex flex-col">
-<span class="text-xs font-bold uppercase tracking-wider text-outline-variant mb-0.5">Autor</span>
-<span class="text-sm font-semibold text-primary">Marc-Oliver Neumann</span>
-</div>
-</div>
-<div class="h-10 w-px bg-outline-variant/30 hidden sm:block"></div>
-<div class="flex flex-col">
-<span class="text-xs font-bold uppercase tracking-wider text-outline-variant mb-0.5">Letztes Update</span>
-<time class="text-sm text-primary font-medium">14. Mai 2024</time>
-</div>
-<div class="h-10 w-px bg-outline-variant/30 hidden sm:block"></div>
-<div class="flex flex-col">
-<span class="text-xs font-bold uppercase tracking-wider text-outline-variant mb-0.5">Lesezeit</span>
-<span class="text-sm text-primary font-medium">12 Min. Lesezeit</span>
-</div>
-</div>
-</div>
-<div class="col-span-12 lg:col-span-5">
-<div class="relative h-[450px] w-full rounded-xl overflow-hidden group shadow-2xl">
-<img alt="Modern Architecture Office" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPYLHCTqcCMvaNGjL8zZiGHoIvUYn_ckX9Lw-Wr3k6e1dCVifWEAJqao9E_ecGtkIWpcjOjaCv2o7sQYMrtQ_xpvSmhya3GevYB3eMXCycoOPDpOl5qT23zJ-5ujoWwYSw6jMEooMVqVGTJUIiLoRlx9Tg8bI3rEV63h690do_WKbbsqb5Y2oWAkF7sPPGBykeTB8to4zs7qhdTxFyQ-GAb_-DSeI2JvMdm3hQJ-PcGaeFlyZi9cs-xGFUJOSgShZHDs627lrx"/>
-<div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300"></div>
-<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-primary/80 to-transparent">
-<p class="text-white/90 text-xs font-medium italic">Präzision in der Vorsorge: Moderne Versicherungskonzepte für anspruchsvolle Profile.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Article Content -->
-<article class="px-8 grid grid-cols-12 gap-16">
-<!-- Sidebar Left (Moved from Right + TOC) -->
-<aside class="hidden lg:block lg:col-span-4">
-<div class="sticky top-32 space-y-10">
-<!-- Table of Contents -->
-<div class="p-8 bg-surface-container-low rounded-xl border border-outline-variant/10">
-<h4 class="font-headline text-xl font-bold text-primary mb-6">Inhalt</h4>
-<nav class="flex flex-col space-y-4">
-<a class="toc-link pl-4 border-l-2 border-outline-variant/20 text-sm text-on-surface-variant font-medium transition-all" href="#systemvergleich">Systemvergleich im Detail</a>
-<a class="toc-link pl-4 border-l-2 border-outline-variant/20 text-sm text-on-surface-variant font-medium transition-all" href="#altersrueckstellungen">Entwicklung der Rückstellungen</a>
-<a class="toc-link pl-4 border-l-2 border-outline-variant/20 text-sm text-on-surface-variant font-medium transition-all" href="#vorteile-risiken">Vorteile &amp; Risiken</a>
-<a class="toc-link pl-4 border-l-2 border-outline-variant/20 text-sm text-on-surface-variant font-medium transition-all" href="#video-analyse">Experten-Analyse Video</a>
-</nav>
-</div>
-<!-- Meistgelesen -->
-<div class="p-8 border-l-2 border-hanseatic-amber/30 bg-surface-container-low/30">
-<h4 class="font-label text-xs uppercase tracking-widest font-bold text-on-surface-variant mb-8">Meistgelesen</h4>
-<div class="space-y-8">
-<a class="block group" href="#">
-<span class="text-xs text-hanseatic-amber font-bold mb-1 block">01</span>
-<h5 class="font-headline text-md font-bold group-hover:text-primary transition-colors leading-snug">Steuervorteile der PKV im Detail</h5>
-</a>
-<a class="block group" href="#">
-<span class="text-xs text-hanseatic-amber font-bold mb-1 block">02</span>
-<h5 class="font-headline text-md font-bold group-hover:text-primary transition-colors leading-snug">Beitragsentlastung im Alter</h5>
-</a>
-<a class="block group" href="#">
-<span class="text-xs text-hanseatic-amber font-bold mb-1 block">03</span>
-<h5 class="font-headline text-md font-bold group-hover:text-primary transition-colors leading-snug">Krankentagegeld für High-Performer</h5>
-</a>
-</div>
-</div>
-<!-- Sidebar CTA -->
-<div class="p-8 bg-primary rounded-xl text-center shadow-lg">
-<p class="text-primary-fixed-dim text-sm mb-6">Berechnen Sie jetzt Ihren individuellen Tarif.</p>
-<button class="w-full py-3 bg-hanseatic-amber text-primary text-sm font-bold rounded hover:bg-[#e6a300] transition-colors">
-                            Beitrag berechnen
-                        </button>
-</div>
-<!-- Whitepaper -->
-</div>
-</aside>
-<!-- Main Body -->
-<div class="col-span-12 lg:col-span-8 space-y-12">
-<section class="prose prose-slate max-w-none">
-<p class="text-xl md:text-2xl font-headline italic leading-relaxed text-secondary mb-12 border-l-4 border-hanseatic-amber/20 pl-8">
-                        Für Arbeitnehmer mit einem Bruttoeinkommen oberhalb der Versicherungspflichtgrenze (69.300 € im Jahr 2024) stellt sich nicht mehr die Frage nach der gesetzlichen Pflicht, sondern nach der strategischen Wahl. Es geht um den Wechsel zwischen einem umlagefinanzierten Solidarsystem und einem kapitalgedeckten Versorgungsmodell.
-                    </p>
-<div class="space-y-6 text-on-surface leading-loose text-lg">
-<p>Die Entscheidung für eine Private Krankenversicherung (PKV) ist oft weniger eine Kostenfrage, sondern eine Investition in die eigene Leistungsfähigkeit. Während die Gesetzliche Krankenversicherung (GKV) durch das Wirtschaftlichkeitsgebot gebunden ist – Behandlungen müssen "ausreichend, zweckmäßig und wirtschaftlich" sein –, bietet die PKV den Zugang zum medizinischen Fortschritt ohne bürokratische Hürden.</p>
-<p>Doch der Wechsel ist keine Einbahnstraße. Wer sich für die PKV entscheidet, wählt ein System, das auf individuellen Risiken und Altersrückstellungen basiert. Für Besserverdiener bedeutet dies oft: Höhere Leistungen bei anfänglich niedrigeren Beiträgen, jedoch mit der Verantwortung, für das Alter vorzusorgen.</p>
-</div>
-</section>
-<!-- Für Sie zusammengefasst (Renamed from Key Takeaways) -->
-<div class="bg-surface-container-low p-10 rounded-xl border-l-4 border-hanseatic-amber/40 relative overflow-hidden">
-<div class="absolute -right-12 -top-12 opacity-5">
-<span class="material-symbols-outlined text-[160px]">lightbulb</span>
-</div>
-<h3 class="font-headline text-2xl font-bold text-primary mb-6">Für Sie zusammengefasst</h3>
-<ul class="space-y-4">
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined text-tertiary mt-1" data-weight="fill">check_circle</span>
-<span class="text-on-surface">Der Wechsel zur PKV ist ab einem Einkommen von 69.300 € p.a. möglich.</span>
-</li>
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined text-tertiary mt-1" data-weight="fill">check_circle</span>
-<span class="text-on-surface">Altersrückstellungen sind der wichtigste Hebel gegen steigende Beiträge im Ruhestand.</span>
-</li>
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined text-tertiary mt-1" data-weight="fill">check_circle</span>
-<span class="text-on-surface">Arbeitgeber beteiligen sich an den PKV-Kosten bis zum GKV-Höchstbetrag.</span>
-</li>
-</ul>
-</div>
-<!-- Comparison Table -->
-<div class="py-12 scroll-mt-32" id="systemvergleich">
-<h3 class="font-headline text-3xl font-bold text-primary mb-8">Systemvergleich im Detail</h3>
-<div class="overflow-x-auto rounded-xl bg-surface-container-low p-1 border border-outline-variant/10">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-surface-container-high">
-<th class="px-6 py-4 font-label text-xs uppercase tracking-wider text-on-surface-variant">Leistungsmerkmal</th>
-<th class="px-6 py-4 font-label text-xs uppercase tracking-wider text-on-surface-variant">Gesetzlich (GKV)</th>
-<th class="px-6 py-4 font-label text-xs uppercase tracking-wider text-on-surface-variant">Privat (PKV)</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-outline-variant/10">
-<tr class="bg-surface">
-<td class="px-6 py-5 font-semibold text-primary">Beitragshöhe</td>
-<td class="px-6 py-5 text-on-surface-variant">Prozentual vom Einkommen</td>
-<td class="px-6 py-5 text-on-surface-variant">Risiko- &amp; altersabhängig</td>
-</tr>
-<tr class="bg-surface-container-lowest">
-<td class="px-6 py-5 font-semibold text-primary">Leistungsumfang</td>
-<td class="px-6 py-5 text-on-surface-variant">Basisversorgung, änderbar</td>
-<td class="px-6 py-5 text-on-surface-variant">Vertraglich garantiert</td>
-</tr>
-<tr class="bg-surface">
-<td class="px-6 py-5 font-semibold text-primary">Familie</td>
-<td class="px-6 py-5 text-on-surface-variant">Beitragsfreie Mitversicherung</td>
-<td class="px-6 py-5 text-on-surface-variant">Einzelbeitrag pro Person</td>
-</tr>
-<tr class="bg-surface-container-lowest">
-<td class="px-6 py-5 font-semibold text-primary">Arztwahl</td>
-<td class="px-6 py-5 text-on-surface-variant">Kassenzulassung nötig</td>
-<td class="px-6 py-5 text-on-surface-variant">Freie Wahl (Privatärzte)</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<!-- Pull Quote -->
-<blockquote class="py-12 border-y border-outline-variant/20 relative">
-<span class="absolute -top-6 left-0 text-8xl font-headline text-hanseatic-amber/20 leading-none italic">"</span>
-<p class="font-headline text-3xl italic text-primary leading-snug">
-                        Die PKV ist kein Produkt von der Stange, sondern ein maßgeschneidertes Fundament für die eigene Gesundheitsbiografie.
-                    </p>
-<footer class="mt-6 flex items-center gap-4">
-<div class="h-px w-8 bg-hanseatic-amber"></div>
-<span class="font-label text-sm uppercase tracking-widest font-bold text-on-surface-variant">Editorial Team Analysis</span>
-</footer>
-</blockquote>
-<!-- Data Visualization Section -->
-<div class="space-y-6 scroll-mt-32" id="altersrueckstellungen">
-<h4 class="font-headline text-2xl font-bold text-primary">Entwicklung der Alterungsrückstellungen</h4>
-<p class="text-on-surface-variant italic text-sm">Simulation der Beitragsstabilität über 30 Jahre (Beispielrechnung).</p>
-<div class="bg-surface-container-highest rounded-xl p-8 aspect-video flex items-end justify-between gap-4 border border-outline-variant/10">
-<div class="flex-1 bg-primary/10 h-[20%] rounded-t-sm relative group">
-<div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Year 5</div>
-</div>
-<div class="flex-1 bg-primary/20 h-[35%] rounded-t-sm"></div>
-<div class="flex-1 bg-primary/40 h-[50%] rounded-t-sm"></div>
-<div class="flex-1 bg-primary/60 h-[70%] rounded-t-sm"></div>
-<div class="flex-1 bg-primary/80 h-[85%] rounded-t-sm"></div>
-<div class="flex-1 bg-primary h-[95%] rounded-t-sm relative">
-<div class="absolute -top-8 left-1/2 -translate-x-1/2 text-primary font-bold text-xs italic">Zielwert</div>
-</div>
-</div>
-<div class="flex justify-between text-[10px] font-label text-outline uppercase tracking-tighter pt-2">
-<span>Eintritt (35J)</span>
-<span>Renteneintritt (67J)</span>
-</div>
-</div>
-<!-- Pro/Contra List -->
-<div class="grid md:grid-cols-2 gap-8 py-12 scroll-mt-32" id="vorteile-risiken">
-<div class="space-y-6">
-<h5 class="flex items-center gap-2 font-bold text-tertiary">
-<span class="material-symbols-outlined" data-weight="fill">add_circle</span>
-                            Vorteile der PKV
-                        </h5>
-<ul class="space-y-4 text-sm text-on-surface-variant">
-<li class="pl-4 border-l border-tertiary/30">Kürzere Wartezeiten bei Fachärzten.</li>
-<li class="pl-4 border-l border-tertiary/30">Weltweiter Versicherungsschutz.</li>
-<li class="pl-4 border-l border-tertiary/30">Chefarztbehandlung &amp; Einbettzimmer.</li>
-</ul>
-</div>
-<div class="space-y-6">
-<h5 class="flex items-center gap-2 font-bold text-error">
-<span class="material-symbols-outlined" data-weight="fill">do_not_disturb_on</span>
-                            Wichtige Risiken
-                        </h5>
-<ul class="space-y-4 text-sm text-on-surface-variant">
-<li class="pl-4 border-l border-error/30">Beiträge steigen im Alter (ohne Vorsorge).</li>
-<li class="pl-4 border-l border-error/30">Rückkehr in die GKV ist ab 55 Jahren erschwert.</li>
-<li class="pl-4 border-l border-error/30">Kinder müssen separat versichert werden.</li>
-</ul>
-</div>
-</div>
-<!-- Video Module -->
-<div class="rounded-xl overflow-hidden bg-primary aspect-video relative group cursor-pointer shadow-2xl scroll-mt-32" id="video-analyse">
-<img alt="Video Thumbnail" class="w-full h-full object-cover opacity-50 transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADvp5Oh4eXSRbTvkZQFNrl7WJRmid0pZLFkqY6kH3--1J_TyzA0obCVJ0NRIImljrBzADGM47Zvq9AJijfJBM_vTc5C_Gvz2irWwjIAGhhyDWc5xwxxcyXMzoggJmF5FlJiL9m-lHpkOcmMvNWD842NdbY-uDGyvrMDCHmnUXlsz_ULnjW4QdsV21XKcLmaoxrx2gmdqY7YhyfMHBlgUSXaNONWy0jXORB78vqmQiT_iWPMOGVVZzm-2LUhEGS1HqB2KtfEBYu"/>
-<div class="absolute inset-0 flex items-center justify-center">
-<div class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center transition-transform group-hover:scale-110 border border-white/20">
-<span class="material-symbols-outlined text-white text-5xl" data-weight="fill">play_arrow</span>
-</div>
-</div>
-<div class="absolute bottom-6 left-6 right-6">
-<h5 class="text-white font-headline text-2xl font-bold">Experten-Video: Die Top 5 Fallstricke beim PKV-Wechsel</h5>
-</div>
-</div>
-<!-- Inline CTA -->
-<div class="bg-[#f0f2f5] p-12 rounded-xl text-center border border-outline-variant/20">
-<h3 class="font-headline text-3xl text-primary mb-6">Planen Sie Ihren Status-Wechsel?</h3>
-<p class="text-on-surface-variant mb-8 text-lg">Nutzen Sie unseren kostenfreien Prämien-Rechner für eine erste Orientierung.</p>
-<a class="inline-flex items-center gap-3 bg-primary text-white px-10 py-4 rounded font-bold hover:bg-primary-container transition-all group" href="#">
-                        Jetzt Beitrag berechnen
-                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-</div>
-</div>
-</article>
-<!-- Related Articles -->
-<section class="px-8 py-24 bg-surface-container-low mt-24">
-<div class="flex justify-between items-end mb-12">
-<h2 class="font-headline text-4xl font-bold text-primary">Weiterführende Analysen</h2>
-<a class="text-sm font-bold text-hanseatic-amber border-b border-hanseatic-amber/20 pb-1 hover:border-hanseatic-amber transition-all" href="#">Alle Artikel anzeigen</a>
-</div>
-<div class="grid md:grid-cols-3 gap-8">
-<!-- Card 1 -->
-<div class="group cursor-pointer">
-<div class="aspect-[16/10] overflow-hidden rounded mb-6 shadow-sm border border-outline-variant/10">
-<img alt="Consultation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXfT2JmPc4A25wK6jBdQFcH1OId_D5VJXUJng0kFXmUpE5wGZ0ERtK_e1iwWIfuOYAR-GtcKiKEueYWkLmosNqe8_vONvPPATl-hB64RnhYY10v8ZhEVPavCqf97Xhw5LhMjYvMO1_XPNFi7JOzdKj1P_pu1Xyf9I2tPG0Ihzad0piITU-pXbcDhxX6Bb_szuqYt7YdBRHGwOqUmay0csI2mte6iNueQfe4aoy6vnS0wvmMqB8ms-OV9M1hXaJrgJrlGrJ31Qz"/>
-</div>
-<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 block">Recht &amp; Steuern</span>
-<h3 class="font-headline text-xl font-bold text-primary group-hover:text-secondary transition-colors mb-4">So setzen Sie Ihre PKV-Beiträge steuerlich ab</h3>
-<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">Ein Leitfaden zur Maximierung Ihrer Rückerstattungen durch das Bürgerentlastungsgesetz.</p>
-</div>
-<!-- Card 2 -->
-<div class="group cursor-pointer">
-<div class="aspect-[16/10] overflow-hidden rounded mb-6 shadow-sm border border-outline-variant/10">
-<img alt="Family Planning" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtxqEEoi20M5o-i5Xmf8K2bWSg-mahoaTC1QcXxgi-_-fE4Iu_QnZecIv1iZriEyKiuPtiC4or-SaVVjJ9MzXPAARcUaOq8ODJTFdXOBxOONzjxI0Cu-coXAAj97C2fKgw-eitZp-WTPQUolwqA9pg6JhxWN2g5TYlpGAtRvjqo1apwE0E5djk0s0f-4YHAeAMeGGWApZcDprpTOD2MWeFEL0PsglElw5FzPDaveEMdN6tVWCJshbb_jGlo-06DBtraTPGbrL8"/>
-</div>
-<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 block">Familienplanung</span>
-<h3 class="font-headline text-xl font-bold text-primary group-hover:text-secondary transition-colors mb-4">PKV für Familien: Wann lohnt sich der Wechsel?</h3>
-<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">Wir analysieren die Kosten für Partner und Kinder im Vergleich zum GKV-Solidarsystem.</p>
-</div>
-<!-- Card 3 -->
-<div class="group cursor-pointer">
-<div class="aspect-[16/10] overflow-hidden rounded mb-6 shadow-sm border border-outline-variant/10">
-<img alt="Executive" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcLYUFdPP_LpBWQC7luY11B6QkKZK_94HaWTuXzNi52FyPK-EGq6i1mTe8IJcWtft0vNH9wJa_iSrGE_n7hL8tGxS76kcEwdZW-7aba6bf7_8p2Y804-5rkqzf_aEPgEElk0ZxX1aJ642EU5jOMPRSQ-rzmLL6VPN_scZON5YEI2UdqqkNFzqHCEqbPX-dxqn1fGkozwFYNaUHIlg9apxupO3LTRm_KQuciKoasYbHo6F0NZhubvPIRC1VAw46YuiZqIoJ-GZE"/>
-</div>
-<span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 block">Karriere</span>
-<h3 class="font-headline text-xl font-bold text-primary group-hover:text-secondary transition-colors mb-4">Sabbatical &amp; Auszeit: Was passiert mit der PKV?</h3>
-<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">So bleiben Sie während einer beruflichen Pause optimal abgesichert ohne Beiträge zu verlieren.</p>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-[#f3f4f5] dark:bg-slate-950 full-width mt-20">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 py-16 max-w-7xl mx-auto">
-<div>
-<span class="text-xl font-serif text-[#002046] dark:text-blue-200 mb-4 block">The Financial Architect</span>
-<p class="text-sm text-slate-500 dark:text-slate-500 leading-relaxed">Präzision in der Versicherungsredaktion. Wir analysieren Märkte für anspruchsvolle Entscheider.</p>
-</div>
-<div>
-<h6 class="font-label text-xs uppercase tracking-widest font-bold text-primary mb-6">Kategorien</h6>
-<ul class="space-y-4">
-<li><a class="text-slate-500 dark:text-slate-500 hover:underline decoration-hanseatic-amber underline-offset-4 text-sm" href="#">PKV Analyse</a></li>
-<li><a class="text-slate-500 dark:text-slate-500 hover:underline decoration-hanseatic-amber underline-offset-4 text-sm" href="#">GKV Vergleich</a></li>
-<li><a class="text-slate-500 dark:text-slate-500 hover:underline decoration-hanseatic-amber underline-offset-4 text-sm" href="#">Altersvorsorge</a></li>
-</ul>
-</div>
-<div>
-<h6 class="font-label text-xs uppercase tracking-widest font-bold text-primary mb-6">Unternehmen</h6>
-<ul class="space-y-4">
-<li><a class="text-slate-500 dark:text-slate-500 hover:underline decoration-hanseatic-amber underline-offset-4 text-sm" href="#">Über Uns</a></li>
-<li><a class="text-slate-500 dark:text-slate-500 hover:underline decoration-hanseatic-amber underline-offset-4 text-sm" href="#">Karriere</a></li>
-<li><a class="text-slate-500 dark:text-slate-500 hover:underline decoration-hanseatic-amber underline-offset-4 text-sm" href="#">Presse</a></li>
-</ul>
-</div>
-<div>
-<h6 class="font-label text-xs uppercase tracking-widest font-bold text-primary mb-6">Rechtliches</h6>
-<ul class="space-y-4">
-<li><a class="text-slate-500 dark:text-slate-500 hover:underline decoration-hanseatic-amber underline-offset-4 text-sm" href="#">Legal Notice</a></li>
-<li><a class="text-slate-500 dark:text-slate-500 hover:underline decoration-hanseatic-amber underline-offset-4 text-sm" href="#">Privacy Policy</a></li>
-<li><a class="text-slate-500 dark:text-slate-500 hover:underline decoration-hanseatic-amber underline-offset-4 text-sm" href="#">Cookie Settings</a></li>
-</ul>
-</div>
-</div>
-<div class="px-8 py-8 border-t border-outline-variant/10 max-w-7xl mx-auto text-center md:text-left">
-<span class="text-xs text-slate-500">© 2024 The Financial Architect. Precision in Insurance Editorial.</span>
-</div>
-</footer>`} />
+<Base
+  title={title + ' | PKV für Angestellte'}
+  description={description}
+  canonical={canonical}
+  schemaType='Article'
+  publishDate={publishDate}
+  updateDate={updateDate}
+  author={author}
+  breadcrumbs={[
+    { label: 'Start', href: '/' },
+    { label: breadcrumb.kategorie, href: breadcrumb.kategorieHref },
+    { label: title ?? '', href: '' }
+  ]}
+  faqItems={faqItems}
+>
+  <main class='bg-[#FAF7F2]'>
+    <!-- Breadcrumbs -->
+    <nav class='max-w-6xl mx-auto pt-6 md:pt-10 px-6 md:px-8 flex items-center gap-2 text-xs uppercase tracking-widest text-on-surface-variant' aria-label='Breadcrumb'>
+      <a class='hover:text-primary transition-colors' href='/'>Home</a>
+      <span class='material-symbols-outlined text-[14px]'>chevron_right</span>
+      <a class='hover:text-primary transition-colors' href={breadcrumb.kategorieHref}>{breadcrumb.kategorie}</a>
+      <span class='material-symbols-outlined text-[14px]'>chevron_right</span>
+      <span class='text-primary font-semibold truncate'>Beitrag</span>
+    </nav>
+
+    <div class='max-w-6xl mx-auto px-6 md:px-8 py-8 md:py-12'>
+      <!-- HERO: H1 + Meta + kleines Bild -->
+      <section class='grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-10 md:mb-14'>
+        <div class='lg:col-span-8 min-w-0'>
+          <h1 class='font-serif text-primary font-semibold leading-[1.1] break-words text-3xl sm:text-4xl md:text-5xl lg:text-[52px] mb-6'>
+            {title}
+          </h1>
+          <div class='flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-on-surface-variant border-t border-outline-variant/30 pt-4'>
+            <div class='flex items-center gap-2'>
+              <span class='material-symbols-outlined text-[18px] text-amber-accent-dark'>person</span>
+              <span>{author}</span>
+            </div>
+            <div class='flex items-center gap-2'>
+              <span class='material-symbols-outlined text-[18px] text-amber-accent-dark'>update</span>
+              <span>{date}</span>
+            </div>
+            <div class='flex items-center gap-2'>
+              <span class='material-symbols-outlined text-[18px] text-amber-accent-dark'>schedule</span>
+              <span>{readingTime}</span>
+            </div>
+          </div>
+        </div>
+        {heroSrc && (
+          <div class='lg:col-span-4 min-w-0'>
+            <div class='relative aspect-[4/3] w-full rounded-xl overflow-hidden shadow-lg shadow-primary/10'>
+              <img alt={heroAlt} class='w-full h-full object-cover' src={heroSrc} loading='eager' />
+            </div>
+          </div>
+        )}
+      </section>
+
+      <!-- Body + Sidebar. Desktop: Sidebar LINKS (order-1), Article rechts (order-2). -->
+      <div class='grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16'>
+        <!-- DESKTOP-SIDEBAR (nur lg+) -->
+        <aside class='hidden lg:block lg:col-span-4 lg:order-1'>
+          <div class='lg:sticky lg:top-28 space-y-8'>
+            <!-- TOC -->
+            <section>
+              <p class='text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-4'>Inhalt</p>
+              <nav class='flex flex-col toc-root'>
+                {toc.map((t) => (
+                  <a
+                    href={`#${t.id}`}
+                    data-toc-id={t.id}
+                    class='toc-link block pl-4 py-2 border-l-2 border-outline-variant/30 text-sm text-on-surface-variant hover:text-primary hover:border-amber-accent transition-colors'
+                  >{t.label}</a>
+                ))}
+              </nav>
+            </section>
+
+            <!-- Beliebte Rechner -->
+            <section>
+              <p class='text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-4'>Beliebte Rechner</p>
+              <ul class='space-y-2'>
+                {popularRechner.map((r) => (
+                  <li>
+                    <a href={r.href} class='flex items-center gap-3 p-3 bg-white border border-outline-variant/20 rounded-md hover:border-amber-accent/60 hover:shadow-sm transition-all group'>
+                      <span class='shrink-0 w-9 h-9 rounded-md bg-gradient-to-br from-[#FAF7F2] to-amber-accent/10 border border-outline-variant/20 flex items-center justify-center'>
+                        <span class='material-symbols-outlined text-amber-accent-dark text-[18px]' aria-hidden='true'>{r.icon}</span>
+                      </span>
+                      <span class='text-sm font-medium text-primary leading-snug group-hover:text-amber-accent-dark transition-colors'>{r.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <!-- Beratung CTA -->
+            <section>
+              <p class='text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-4'>Beratung</p>
+              <a href='/beratung/' class='block bg-primary text-white rounded-xl p-6 hover:brightness-110 transition-all group'>
+                <p class='font-serif text-lg leading-tight mb-2'>Unsicher beim Wechsel?</p>
+                <p class='text-primary-fixed-dim text-xs mb-4'>Kostenloses Erstgespräch, unabhängig, ohne Provision.</p>
+                <span class='inline-flex items-center gap-1 bg-amber-accent group-hover:bg-amber-accent-dark text-white font-semibold text-sm px-4 py-2 rounded-md transition-all'>
+                  Termin anfragen
+                  <span class='material-symbols-outlined text-[16px]'>arrow_forward</span>
+                </span>
+              </a>
+            </section>
+          </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <article class='lg:col-span-8 lg:order-2 min-w-0'>
+          <!-- MOBILE-TOC (direkt unter dem Bild) -->
+          <section class='lg:hidden mb-12'>
+            <p class='font-serif text-2xl text-primary mb-4'>Inhalt</p>
+            <nav class='flex flex-col toc-root'>
+              {toc.map((t) => (
+                <a
+                  href={`#${t.id}`}
+                  data-toc-id={t.id}
+                  class='toc-link block pl-4 py-2 border-l-2 border-outline-variant/30 text-sm text-on-surface-variant hover:text-primary hover:border-amber-accent transition-colors'
+                >{t.label}</a>
+              ))}
+            </nav>
+          </section>
+
+          {hasSlotContent ? (
+            <slot />
+          ) : (
+            <!-- FALLBACK: Dummy-Content für Seiten ohne eigenen Inhalt -->
+            <Fragment>
+              <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+                <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+                <ul class='space-y-3 text-on-surface'>
+                  <li class='flex items-start gap-3'>
+                    <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+                    <span>Wechsel ist ab einem Bruttoeinkommen von 77.400 Euro (2026) möglich.</span>
+                  </li>
+                  <li class='flex items-start gap-3'>
+                    <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+                    <span>Altersrückstellungen sind der wichtigste Hebel gegen Beitragsanstieg im Ruhestand.</span>
+                  </li>
+                  <li class='flex items-start gap-3'>
+                    <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+                    <span>Der Arbeitgeber beteiligt sich an den PKV-Kosten bis zum GKV-Höchstbetrag.</span>
+                  </li>
+                </ul>
+              </section>
+
+              <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+                <p>Die Entscheidung für eine Private Krankenversicherung ist oft weniger eine Kostenfrage, sondern eine Investition in die eigene Leistungsfähigkeit. Während die gesetzliche Krankenversicherung durch das Wirtschaftlichkeitsgebot gebunden ist, bietet die PKV den Zugang zum medizinischen Fortschritt ohne bürokratische Hürden.</p>
+                <p>Doch der Wechsel ist keine Einbahnstraße. Wer sich für die PKV entscheidet, wählt ein System, das auf individuellen Risiken und Altersrückstellungen basiert.</p>
+              </div>
+
+              <section id='systemvergleich' class='scroll-mt-28 mb-12'>
+                <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Systemvergleich im Detail</h2>
+                <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white'>
+                  <table class='w-full text-left border-collapse min-w-[520px]'>
+                    <thead>
+                      <tr class='bg-[#FAF7F2]'>
+                        <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Merkmal</th>
+                        <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>GKV</th>
+                        <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>PKV</th>
+                      </tr>
+                    </thead>
+                    <tbody class='divide-y divide-outline-variant/20'>
+                      <tr><td class='px-5 py-4 font-semibold text-primary'>Beitragshöhe</td><td class='px-5 py-4 text-on-surface-variant'>Prozent vom Einkommen</td><td class='px-5 py-4 text-on-surface-variant'>Risiko- & altersabhängig</td></tr>
+                      <tr><td class='px-5 py-4 font-semibold text-primary'>Leistungsumfang</td><td class='px-5 py-4 text-on-surface-variant'>Basisversorgung, gesetzlich änderbar</td><td class='px-5 py-4 text-on-surface-variant'>Vertraglich garantiert</td></tr>
+                      <tr><td class='px-5 py-4 font-semibold text-primary'>Familie</td><td class='px-5 py-4 text-on-surface-variant'>Beitragsfreie Mitversicherung</td><td class='px-5 py-4 text-on-surface-variant'>Einzelbeitrag pro Person</td></tr>
+                      <tr><td class='px-5 py-4 font-semibold text-primary'>Arztwahl</td><td class='px-5 py-4 text-on-surface-variant'>Kassenzulassung nötig</td><td class='px-5 py-4 text-on-surface-variant'>Freie Wahl</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <blockquote class='my-12 py-6 md:py-8 border-y border-outline-variant/30'>
+                <p class='font-serif text-xl md:text-2xl italic text-primary leading-snug'>
+                  Die PKV ist kein Produkt von der Stange, sondern ein maßgeschneidertes Fundament für die eigene Gesundheitsbiografie.
+                </p>
+              </blockquote>
+
+              <section id='altersrueckstellungen' class='scroll-mt-28 mb-12'>
+                <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Altersrückstellungen</h2>
+                <p class='text-base md:text-[17px] text-on-surface leading-[1.75]'>Ein Teil jedes PKV-Beitrags fließt in eine Alterungsrückstellung. Dieser Baustein federt den Beitragsanstieg im Ruhestand ab. Ohne diese Rückstellungen wäre die PKV im hohen Alter für die meisten unbezahlbar.</p>
+              </section>
+
+              <section id='vorteile-risiken' class='scroll-mt-28 mb-12'>
+                <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Vorteile und Risiken</h2>
+                <div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                  <div class='bg-white border border-outline-variant/20 rounded-lg p-6'>
+                    <h3 class='flex items-center gap-2 font-semibold text-primary mb-4'>
+                      <span class='material-symbols-outlined text-amber-accent-dark'>add_circle</span>Vorteile
+                    </h3>
+                    <ul class='space-y-3 text-sm text-on-surface-variant'>
+                      <li class='pl-4 border-l-2 border-amber-accent/40'>Kürzere Wartezeiten bei Fachärzten.</li>
+                      <li class='pl-4 border-l-2 border-amber-accent/40'>Weltweiter Versicherungsschutz.</li>
+                      <li class='pl-4 border-l-2 border-amber-accent/40'>Chefarzt-Behandlung und Einbettzimmer.</li>
+                    </ul>
+                  </div>
+                  <div class='bg-white border border-outline-variant/20 rounded-lg p-6'>
+                    <h3 class='flex items-center gap-2 font-semibold text-primary mb-4'>
+                      <span class='material-symbols-outlined text-error'>do_not_disturb_on</span>Risiken
+                    </h3>
+                    <ul class='space-y-3 text-sm text-on-surface-variant'>
+                      <li class='pl-4 border-l-2 border-error/30'>Beiträge steigen im Alter ohne Vorsorge.</li>
+                      <li class='pl-4 border-l-2 border-error/30'>Rückkehr in die GKV ab 55 Jahren erschwert.</li>
+                      <li class='pl-4 border-l-2 border-error/30'>Kinder separat zu versichern.</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section id='fazit' class='scroll-mt-28 mb-12'>
+                <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+                <p class='text-base md:text-[17px] text-on-surface leading-[1.75]'>Die PKV lohnt sich für Angestellte mit stabilem Einkommen über der JAEG, guter Gesundheit und langfristigem Planungshorizont. Sie lohnt sich nicht als kurzfristiger Sparmove oder für Lebenssituationen mit hoher Unsicherheit. Entscheidend sind nicht der Einstiegsbeitrag, sondern Tarifqualität, Anbieterstabilität und eine saubere Antragsstrecke.</p>
+              </section>
+            </Fragment>
+          )}
+
+          <!-- MOBILE: Beliebte Rechner nach Artikel -->
+          <section class='lg:hidden mt-12 mb-12'>
+            <p class='font-serif text-2xl text-primary mb-6'>Beliebte Rechner</p>
+            <ul class='space-y-2'>
+              {popularRechner.map((r) => (
+                <li>
+                  <a href={r.href} class='flex items-center gap-3 p-3 bg-white border border-outline-variant/20 rounded-md hover:border-amber-accent/60 hover:shadow-sm transition-all group'>
+                    <span class='shrink-0 w-9 h-9 rounded-md bg-gradient-to-br from-[#FAF7F2] to-amber-accent/10 border border-outline-variant/20 flex items-center justify-center'>
+                      <span class='material-symbols-outlined text-amber-accent-dark text-[18px]' aria-hidden='true'>{r.icon}</span>
+                    </span>
+                    <span class='text-sm font-medium text-primary leading-snug group-hover:text-amber-accent-dark transition-colors'>{r.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <!-- Related — full width -->
+      <section class='mt-16 md:mt-20 border-t border-outline-variant/30 pt-12 md:pt-16'>
+        <p class='font-serif text-2xl md:text-3xl text-primary mb-6 md:mb-8'>Weitere Beiträge</p>
+        <ul class='grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6'>
+          {related.map((r) => (
+            <li>
+              <a href={r.href} class='h-full flex flex-col bg-white border border-outline-variant/20 rounded-lg p-5 hover:border-amber-accent/60 hover:shadow-md hover:shadow-primary/5 transition-all group'>
+                <span class='shrink-0 w-11 h-11 rounded-md bg-gradient-to-br from-[#FAF7F2] to-amber-accent/10 border border-outline-variant/20 flex items-center justify-center mb-4'>
+                  <span class='material-symbols-outlined text-amber-accent-dark text-[22px]' aria-hidden='true'>{r.icon}</span>
+                </span>
+                <span class='text-[10px] uppercase tracking-widest font-semibold text-on-surface-variant mb-2'>{r.kategorie}</span>
+                <h3 class='font-serif text-lg text-primary leading-snug group-hover:text-amber-accent-dark transition-colors mb-2'>{r.title}</h3>
+                <p class='text-sm text-on-surface-variant leading-relaxed'>{r.teaser}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- MOBILE: Sidebar-CTA ganz am Ende -->
+      <section class='lg:hidden mt-16'>
+        <p class='font-serif text-2xl text-primary mb-6'>Beratung</p>
+        <a href='/beratung/' class='block bg-primary text-white rounded-xl p-6 hover:brightness-110 transition-all group'>
+          <p class='font-serif text-lg leading-tight mb-2'>Unsicher beim Wechsel?</p>
+          <p class='text-primary-fixed-dim text-xs mb-4'>Kostenloses Erstgespräch, unabhängig, ohne Provision.</p>
+          <span class='inline-flex items-center gap-1 bg-amber-accent group-hover:bg-amber-accent-dark text-white font-semibold text-sm px-4 py-2 rounded-md transition-all'>
+            Termin anfragen
+            <span class='material-symbols-outlined text-[16px]'>arrow_forward</span>
+          </span>
+        </a>
+      </section>
+    </div>
+  </main>
+
+  <!-- Scrollspy: markiert aktiven TOC-Link in ALLEN .toc-root-Listen (Desktop + Mobile) -->
+  <script is:inline>
+    (function () {
+      const links = Array.from(document.querySelectorAll('.toc-root .toc-link'));
+      if (links.length === 0) return;
+      const sectionIds = Array.from(new Set(links.map((l) => l.dataset.tocId)));
+      const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+      if (sections.length === 0) return;
+
+      const activate = (id) => {
+        links.forEach((l) => {
+          const on = l.dataset.tocId === id;
+          l.classList.toggle('border-amber-accent', on);
+          l.classList.toggle('border-l-4', on);
+          l.classList.toggle('border-l-2', !on);
+          l.classList.toggle('text-primary', on);
+          l.classList.toggle('font-semibold', on);
+          l.classList.toggle('bg-amber-accent/5', on);
+          l.classList.toggle('text-on-surface-variant', !on);
+        });
+      };
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+          if (visible[0]) activate(visible[0].target.id);
+        },
+        { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
+      );
+      sections.forEach((s) => io.observe(s));
+      activate(sections[0].id);
+    })();
+  </script>
 </Base>

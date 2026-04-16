@@ -1,0 +1,160 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'was-ist', label: 'Was ein Risikozuschlag ist' },
+  { id: 'typische-höhen', label: 'Typische Zuschlagshöhen' },
+  { id: 'strategien-reduzierung', label: 'Strategien zur Reduzierung' },
+  { id: 'leistungsausschluss-alternative', label: 'Alternative: Leistungsausschluss statt Zuschlag' },
+  { id: 'tarifwechsel', label: 'Risikozuschlag und Tarifwechsel' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const related = [
+  {
+    href: '/aufnahme/risikovoranfrage/',
+    kategorie: 'Aufnahme',
+    title: 'PKV-Risikovoranfrage: Anonym und ohne Risiko',
+    teaser: 'Mit einer anonymen Voranfrage erfährst du vorab, zu welchen Konditionen ein Versicherer dich aufnimmt.',
+    icon: 'shield',
+  },
+  {
+    href: '/aufnahme/leistungsausschluesse/',
+    kategorie: 'Aufnahme',
+    title: 'PKV-Leistungsausschluss bei Vorerkrankungen',
+    teaser: 'Ein Leistungsausschluss schliesst bestimmte Diagnosen dauerhaft aus. Wann er sinnvoll ist.',
+    icon: 'description',
+  },
+  {
+    href: '/wechsel/tarifwechsel-204/',
+    kategorie: 'Wechsel',
+    title: 'Tarifwechsel in der PKV nach Paragraph 204',
+    teaser: 'Dein Recht auf Tarifwechsel und seine Grenzen bei Zuschlägen.',
+    icon: 'swap_horiz',
+  },
+];
+---
+
+<T6
+  title='PKV-Risikozuschlag: Ursachen, Höhe, Strategien'
+  description='Ein PKV-Risikozuschlag von 5 bis 50 Prozent droht bei Vorerkrankungen. Wie hoch er ausfällt und welche Strategien die Kosten senken.'
+  breadcrumb={{ kategorie: 'Aufnahme', kategorieHref: '/aufnahme/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='8 Min. Lesezeit'
+  related={related}
+>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Ein Risikozuschlag ist ein Aufpreis auf deinen normalen Beitrag, weil dein Gesundheitsprofil ein erhöhtes Risiko darstellt.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Typische Zuschläge liegen bei 5 bis 50 Prozent des Grundbeitrags, im Einzelfall auch höher.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Etwa 20 bis 25 Prozent aller Anträge erhalten einen Zuschlag oder Leistungsausschluss.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Du kannst den Zuschlag durch Verhandlung, Zweitmeinung oder wartet auf Besserung senken.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Der Zuschlag bleibt bei Tarifwechsel bestehen. Das ist einer der Nachteile.</span></li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Ein Risikozuschlag ist eines der Aufnahmeergebnisse in der PKV, mit dem viele Antragsteller rechnen müssen. Der Zuschlag kompensiert das erhöhte Risiko für den Versicherer. Dieser Artikel erklärt dir, warum Zuschläge entstehen, wie hoch sie typischerweise sind und mit welchen Strategien du sie reduzieren kannst.</p>
+  </div>
+
+  <section id='was-ist' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was ein Risikozuschlag ist</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Ein Risikozuschlag ist ein prozentualer Aufschlag auf deinen regulären Versicherungsbeitrag. Der Versicherer nimmt dich auf, aber berechnet dir einen höheren Monatsbeitrag, weil deine Gesundheit ein erhöhtes Kostenrisiko darstellt.</p>
+      <p>Praktisches Beispiel: Dein Grundbeitrag für einen Tarif wäre 450 Euro. Der Versicherer bewertet dein Profil (zum Beispiel Bluthochdruck, aktuell aber stabil) und sagt: "Wir geben dir einen 20 Prozent Zuschlag". Dann zahlst du 450 Euro plus 90 Euro (20 Prozent) = 540 Euro im Monat.</p>
+      <p>Der Zuschlag ist dauerhaft. Er bleibt während deiner ganzen Versicherungszeit bestehen, es sei denn, du verhandelst später die Aufhebung.</p>
+      <p>Das Gegenteil zu einem Zuschlag ist der Leistungsausschluss (die Diagnose wird komplett ausgeschlossen) oder die Ablehnung (du wirst gar nicht aufgenommen). Ein Zuschlag bedeutet: Der Versicherer nimmt dich mit, aber mit höheren Kosten.</p>
+    </div>
+  </section>
+
+  <section id='typische-höhen' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Typische Zuschlagshöhen</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Risikozuschläge sind nicht standardisiert. Jeder Versicherer hat seine eigene Risikoeinschätzung. Aber es gibt typische Bandbreiten, die sich aus Marktpraxis herauskristallisiert haben.</p>
+      <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+        <table class='w-full text-left border-collapse min-w-[520px]'>
+          <thead>
+            <tr class='bg-[#FAF7F2]'>
+              <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Diagnose / Situation</th>
+              <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Typischer Zuschlag</th>
+            </tr>
+          </thead>
+          <tbody class='divide-y divide-outline-variant/20'>
+            <tr><td class='px-5 py-4 font-semibold text-primary'>Bluthochdruck, medikamentös stabil</td><td class='px-5 py-4 text-on-surface-variant'>5 bis 15 Prozent</td></tr>
+            <tr><td class='px-5 py-4 font-semibold text-primary'>Diabetes Typ 2, gut eingestellt</td><td class='px-5 py-4 text-on-surface-variant'>10 bis 25 Prozent</td></tr>
+            <tr><td class='px-5 py-4 font-semibold text-primary'>Arthrose, leichte Form</td><td class='px-5 py-4 text-on-surface-variant'>5 bis 15 Prozent</td></tr>
+            <tr><td class='px-5 py-4 font-semibold text-primary'>Rückenschmerzen, chronisch</td><td class='px-5 py-4 text-on-surface-variant'>10 bis 20 Prozent</td></tr>
+            <tr><td class='px-5 py-4 font-semibold text-primary'>Leichte psychische Erkrankung (behandelt)</td><td class='px-5 py-4 text-on-surface-variant'>15 bis 30 Prozent</td></tr>
+            <tr><td class='px-5 py-4 font-semibold text-primary'>Nach Herzinfarkt (3+ Jahre stabil)</td><td class='px-5 py-4 text-on-surface-variant'>20 bis 50 Prozent</td></tr>
+            <tr><td class='px-5 py-4 font-semibold text-primary'>Übergewicht (BMI über 35)</td><td class='px-5 py-4 text-on-surface-variant'>5 bis 30 Prozent</td></tr>
+            <tr><td class='px-5 py-4 font-semibold text-primary'>Mehrere Erkrankungen kombiniert</td><td class='px-5 py-4 text-on-surface-variant'>Addiert sich, oft 30 bis 50+ Prozent</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Diese Werte sind ungefähre Orientierungen. Der echte Zuschlag hängt davon ab, welcher Versicherer prüft, wie die Erkrankung aktuell kontrolliert ist und welche anderen Faktoren noch hinzukommen.</p>
+      <p>Generell gilt: Je älter du bist, je schwächer die Krankheitskontrolle und je mehr weitere Erkrankungen du hast, desto höher der Zuschlag. Ein 30-jähriger mit gut kontrolliertem Bluthochdruck kriegt eher 5 bis 10 Prozent, ein 55-jähriger mit schlecht eingestelltem Zucker und Bluthochdruck kriegt eher 30 bis 50 Prozent.</p>
+    </div>
+  </section>
+
+  <section id='strategien-reduzierung' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Strategien zur Reduzierung</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Strategie 1: Verhandlung.</strong> Der angebotene Zuschlag ist nicht in Stein gemeißelt. Du kannst mit dem Versicherer verhandeln. Ein Satz wie "Der Zuschlag ist mir zu hoch. Könnt ihr es auf 15 statt 20 Prozent senken?" funktioniert manchmal. Der Versicherer muss nicht zustimmen, aber manche tun es, besonders wenn deine Krankengeschichte unkompliziert ist.</p>
+      <p><strong>Strategie 2: Zweitmeinung vom Arzt.</strong> Wenn der Versicherer einen hohen Zuschlag verlangt, kannst du eine aktuelle ärztliche Stellungnahme beschaffen, die deine Prognose besser darstellt. Beispiel: Dein Hausarzt schreibt "Patient hat Herzrhythmusstörungen, diese sind seit 2 Jahren symptomlos und unter Kontrolle mit minimaler medikamentöser Therapie." Das kann den Versicherer zu Milde bewegen.</p>
+      <p><strong>Strategie 3: Wechsel zu einem besseren Versicherer.</strong> Verschiedene Versicherer bewerten Risiken unterschiedlich. Manche sind bei Bluthochdruck gnädig, andere bei Rückenschmerzen. Mit Risikovoranfragen testest du mehrere Versicherer. Nimm den mit dem niedrigsten Zuschlag.</p>
+      <p><strong>Strategie 4: Später Aufhebung verhandeln.</strong> Manche Versicherer sagen vom Start: "Wir geben dir den Zuschlag jetzt, aber wenn du 5 Jahre symptomfrei bist, verhandeln wir die Aufhebung." Das ist nicht garantiert, aber es schafft eine Tür für späteren Rückgang.</p>
+      <p><strong>Strategie 5: Besserung der Erkrankung.</strong> Wenn dein Bluthochdruck später besser wird, dein Gewicht sinkt oder deine Rückenschmerzen weg sind, kannst du beim Versicherer einen Antrag auf Aufhebung des Zuschlags stellen. Du brauchst einen aktuellen Arztbericht, aber es funktioniert oft.</p>
+    </div>
+  </section>
+
+  <section id='leistungsausschluss-alternative' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Alternative: Leistungsausschluss statt Zuschlag</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Manchmal bietet dir der Versicherer an, einen Leistungsausschluss zu nehmen statt eines Zuschlags. Das heisst: Du zahlst den normalen Beitrag, aber die Diagnose wird ausgeschlossen.</p>
+      <p>Ob das besser ist, musst du durchrechnen. Ein Ausschluss ist wirtschaftlich sinnvoll, wenn die Erkrankung selten Behandlungen braucht. Ein Zuschlag ist besser, wenn die Diagnose regelmäßig zum Arzt führt.</p>
+      <p>Beispiel: Du hast Arthrose im Knie. Der Versicherer bietet dir "20 Prozent Zuschlag" oder "Leistungsausschluss für Knieerkrankungen" an. Dein Grundbeitrag ist 500 Euro.</p>
+      <p>Mit 20 Prozent Zuschlag: 600 Euro monatlich = 7.200 Euro pro Jahr.</p>
+      <p>Mit Ausschluss: 500 Euro monatlich, aber Knietherapie kostet dich privat. Wenn du 2 bis 3 Mal im Jahr einen Orthopäden aufbesuchst (200 Euro), ist das insgesamt günstiger.</p>
+      <p>Verhandel beide Optionen aus und vergleiche langfristig.</p>
+    </div>
+  </section>
+
+  <section id='tarifwechsel' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Risikozuschlag und Tarifwechsel</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Das ist ein großer Nachteil von Risikozuschlägen: Sie bleiben bei Tarifwechsel bestehen. Wenn du mit einem 20 Prozent Zuschlag einen Vertrag hast und später zu einem besseren Tarif innerhalb des gleichen Versicherers wechselst (sogenannter Paragraph 204-Wechsel), wird der Zuschlag auf den neuen Tarif übertragen. Du spülst ihn nicht weg.</p>
+      <p>Das ist anders als in der GKV. Das macht dich langfristig an den Versicherer gebunden. Du kannst nicht einfach zu besseren Konditionen wechseln, weil der Zuschlag dich verfolgt.</p>
+      <p>Leistungsausschlüsse sind hier ähnlich problematisch. Sie sind oft noch schwerer loszuwerden als Zuschläge.</p>
+      <p>Das unterstreicht, wie wichtig es ist, bei der Aufnahme vorab mit Risikovoranfragen die beste Quote zu finden.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Ein Risikozuschlag ist nicht das Ende deiner PKV-Chancen. Mit Verhandlung, ärztlichen Stellungnahmen oder dem Wechsel zu besseren Versicherern kannst du ihn oft senken. Langfristig solltest du aber beachten: Der Zuschlag bleibt bei Tarifwechsel bestehen und bindet dich an deinen Versicherer.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann der Risikozuschlag später wegfallen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, aber nicht automatisch. Du musst aktiv beim Versicherer einen Antrag auf Aufhebung stellen. Normalerweise dauert es mindestens 3 bis 5 Jahre, bis ein Versicherer auch nur verhandlungsbereit ist. Und dann brauchst du einen aktuellen ärztlichen Bericht, der zeigt, dass die Erkrankung stabil ist oder abgeheilt ist. Der Versicherer kann immer noch "Nein" sagen.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie verhandle ich den Zuschlag?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Direkt mit dem Versicherer oder über deinen Makler. Sag sachlich, dass der Zuschlag dir zu hoch ist, und biete eine Alternative. Manchmal funktioniert "Können Sie den Zuschlag auf 15 Prozent senken?" Manchmal kannst du auch ein paar Wochen Bedenkzeit nehmen und dann einen neuen Antrag stellen, wenn sich deine Situation verbessert hat (z.B. nach erfolgreicher Blutdruck-Einstellung). Die Verhandlung ist nicht garantiert erfolgreich, aber es lohnt sich zu versuchen.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ist Leistungsausschluss besser als Risikozuschlag?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Das ist unterschiedlich und muss in jedem Fall durchgerechnet werden. Ein Ausschluss ist besser, wenn die ausgeschlossene Diagnose selten Behandlungen braucht. Ein Zuschlag ist besser, wenn du regelmäßig Therapien brauchst. Durchrechnen, beide Optionen einholen vom Versicherer und dann vergleichen. Generell gilt: Ein Ausschluss bindet dich langfristig an den Versicherer, weil er auch bei Tarifwechsel bestehen bleibt.</div>
+      </details>
+    </div>
+  </section>
+</T6>

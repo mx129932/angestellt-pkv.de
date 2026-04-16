@@ -1,0 +1,42 @@
+---
+/**
+ * TopicCard.astro — Kategorie/Themen-Einstiegskarte (nicht einzelner Beitrag).
+ * Wird auf Hub-Seiten und Home verwendet.
+ */
+export interface Props {
+  href: string;
+  title: string;
+  summary?: string;
+  icon?: string;
+  count?: number;
+}
+
+const { href, title, summary, icon = 'article', count } = Astro.props;
+---
+
+<a
+  href={href}
+  class='group relative flex flex-col h-full p-8 bg-surface-container-lowest border border-outline-variant/20 hover:border-amber-accent/60 rounded-lg transition-all hover:shadow-xl hover:shadow-primary/5'
+>
+  <span
+    class='material-symbols-outlined text-3xl text-amber-accent mb-6 transition-transform group-hover:scale-110'
+    aria-hidden='true'
+  >
+    {icon}
+  </span>
+  <h3 class='text-2xl font-serif text-primary mb-3 leading-tight group-hover:text-amber-accent-dark transition-colors'>
+    {title}
+  </h3>
+  {summary && (
+    <p class='text-on-surface-variant text-sm leading-relaxed mb-6'>{summary}</p>
+  )}
+  <div class='mt-auto flex items-center justify-between pt-4'>
+    {count !== undefined && (
+      <span class='text-xs text-on-surface-variant'>{count} {count === 1 ? 'Beitrag' : 'Beiträge'}</span>
+    )}
+    <span class='inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all ml-auto'>
+      Entdecken
+      <span class='material-symbols-outlined text-[16px]'>arrow_forward</span>
+    </span>
+  </div>
+</a>

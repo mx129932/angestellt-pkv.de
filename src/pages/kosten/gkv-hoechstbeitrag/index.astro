@@ -1,7 +1,262 @@
 ---
 import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'höchstbeitrag-2026', label: 'Der GKV-Höchstbeitrag 2026' },
+  { id: 'berechnung', label: 'So wird der Höchstbeitrag berechnet' },
+  { id: 'entwicklung', label: '10-Jahres-Entwicklung: Von 789 auf 1.229 Euro' },
+  { id: 'prognose', label: 'Prognose: Wohin geht der GKV-Beitrag' },
+  { id: 'vergleich', label: 'GKV-Höchstbeitrag als PKV-Vergleichswert' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const related = [
+  {
+    href: '/kosten/gkv-zusatzbeitrag/',
+    kategorie: 'Kosten',
+    title: 'GKV-Zusatzbeitrag 2026: Höhe und Entwicklung',
+    teaser: 'Der Zusatzbeitrag ist der neue Kostenblock der GKV.',
+    icon: 'trending_up',
+  },
+  {
+    href: '/grundlagen/gkv-vs-pkv/',
+    kategorie: 'Grundlagen',
+    title: 'GKV vs. PKV: Vergleich für Angestellte 2026',
+    teaser: 'Beitrag, Leistung und Langzeitkosten im Direktvergleich.',
+    icon: 'swap_horiz',
+  },
+  {
+    href: '/kosten/pkv-kosten-uebersicht/',
+    kategorie: 'Kosten',
+    title: 'PKV-Kosten für Angestellte: Komplett-Übersicht',
+    teaser: 'Alle Kostenbestandteile der PKV auf einen Blick.',
+    icon: 'balance',
+  },
+];
 ---
 <T6
-  title='GKV-Höchstbeitrag 2026 als Referenzwert'
-  description='Der GKV-Höchstbeitrag als wichtige Vergleichsgröße.'
-/>
+  title='GKV-Höchstbeitrag 2026: Betrag und Entwicklung'
+  description='Der GKV-Höchstbeitrag 2026 liegt bei 1.229,35 Euro monatlich inklusive Pflege. Die 10-Jahres-Entwicklung und was das für PKV-Ueberlegungen bedeutet.'
+  breadcrumb={{ kategorie: 'Kosten', kategorieHref: '/kosten/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='8 Min. Lesezeit'
+  related={related}
+  popularRechner={[
+    { href: '/rechner/pkv-gkv-vergleich/', title: 'GKV vs. PKV Vergleich', icon: 'compare_arrows' },
+    { href: '/rechner/nettobelastung/', title: 'Nettobelastung berechnen', icon: 'account_balance' },
+    { href: '/rechner/arbeitgeberzuschuss/', title: 'Arbeitgeberzuschuss', icon: 'business_center' },
+  ]}
+  faqItems={[
+    { question: `Zahle ich als Angestellter den vollen Höchstbeitrag?`, answer: `Nein. Du zahlst etwa die Haelfte (ca. 614 Euro), dein Arbeitgeber die andere Haelfte. Der Höchstbeitrag von 1.229,35 Euro ist die Gesamtbelastung für die Gesellschaft. Dein Eigenanteil ist deutlich niedriger.` },
+    { question: `Wie stark ist der GKV-Beitrag in den letzten Jahren gestiegen?`, answer: `2017 bis 2026 um 56 Prozent, durchschnittlich 6,9 Prozent pro Jahr. Die letzten 3 Jahre (2023 bis 2026) waren besonders steil: +10,9 % (2025) und +8,8 % (2026). Das ist deutlich schneller als frueher.` },
+    { question: `Gilt der Höchstbeitrag auch für freiwillig Versicherte?`, answer: `Für freiwillig Versicherte (Angestellte über der Versicherungspflichtgrenze, die GKV waehlen) gibt es einen gesonderten Höchstbeitrag, der für freiwillige Mitglieder gilt. Dieser ist meist ähnlich hoch, aber nicht identisch.` }
+  ]}
+>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der <strong>GKV-Höchstbeitrag 2026</strong> liegt bei <strong>1.229,35 Euro monatlich</strong>, inklusive Krankenversicherung und Pflegepflichtversicherung.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der Beitragssatz ist <strong>14,6 % (allgemeiner Satz) plus durchschnittlich 2,9 % Zusatzbeitrag = 17,5 %</strong>, dazu kommt die Pflegepflichtversicherung.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Von 2017 bis 2026 ist der Höchstbeitrag von 789,53 Euro um <strong>56 Prozent</strong> gestiegen. Das ist ca. 6,9 Prozent pro Jahr im Durchschnitt.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Nach Sachverstaendigenrat Prognosen liegt der GKV-Beitragssatz 2050 zwischen 19 und 30 Prozent (Worst Case Szenario).</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Arbeitgeber und Arbeitnehmer teilen die GKV-Belastung haeIftIg. Du zahlst selbst etwa 614 Euro, dein Arbeitgeber trägt etwa ebenso viel.</span>
+      </li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Der GKV-Höchstbeitrag ist ein zentraler Vergleichswert für die <a href='/grundlagen/lohnt-sich-pkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-Entscheidung</a>. Viele Angestellte denken: "Wenn die PKV günstiger ist als der Höchstbeitrag, lohnt sich der Wechsel." Das ist ein naiver Vergleich, aber nicht ganz falsch. Dieser Artikel erklaert, wie hoch der Höchstbeitrag 2026 ist, wie er berechnet wird und wohin die Entwicklung führt.</p>
+  </div>
+
+  <section id='höchstbeitrag-2026' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Der GKV-Höchstbeitrag 2026</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Die zentrale Zahl:</strong> Der maximale GKV-Beitrag, den du als Angestellter in 2026 zahlst, liegt bei <strong>1.229,35 Euro monatlich</strong>. Das ist die Obergrenze, egal ob dein Gehalt 80.000 oder 180.000 Euro im Jahr beträgt. Darüber zahlst du keinen GKV-Beitrag mehr.</p>
+      <p>Dieser Beitrag setzt sich zusammen aus:</p>
+      <p>• Krankenversicherung: 14,6 % des Höchstbeitrags (Regelbeitrag) plus durchschnittlich 2,9 % Zusatzbeitrag, je nach Krankenkasse zwischen 2,18 und 4,39 %</p>
+      <p>• Pflegepflichtversicherung: 3,6 % (oder 4,2 % für Kinderlose ab 23 Jahren)</p>
+      <p><strong>Was zahlst du selbst?</strong> Das ist die Verwirrung: In der GKV zahlst du etwa die Haelfte, der Arbeitgeber die andere Haelfte. Als Arbeitnehmer sind deine direkten Beiträge etwa 614 Euro (gerundet), die Arbeitgeberhälfte kommt hinzu. Der Höchstbeitrag ist die Gesamtbelastung für die Gesellschaft, nicht nur für dich.</p>
+    </div>
+  </section>
+
+  <section id='berechnung' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>So wird der Höchstbeitrag berechnet</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Die Formel ist einfach:</strong></p>
+      <p>Beitragsbemessungsgrenze (BBG) × Beitragssatz (GKV-Prozentsaetze) = Höchstbeitrag</p>
+      <p><strong>Mit 2026-Zahlen:</strong></p>
+      <p>• BBG monatlich: 5.812,50 Euro</p>
+      <p>• Krankenversicherung: 5.812,50 × (14,6 % + 2,9 %) = 5.812,50 × 17,5 % = 1.016,19 Euro</p>
+      <p>• Pflegepflichtversicherung: 5.812,50 × 3,6 % = 209,25 Euro (ohne Kinderlosenzuschlag)</p>
+      <p>• Gesamt: 1.016,19 + 209,25 = 1.225,44 Euro (rundungsfehler erklaeren kleine Abweichungen zur offiziellen 1.229,35 Euro)</p>
+      <p><strong>Was ändert sich jährlich?</strong> Die Beitragsbemessungsgrenze wird jährlich angehoben, basierend auf der Lohnentwicklung. Der Beitragssatz (14,6 %) ist stabil, aber der <a href='/kosten/gkv-zusatzbeitrag/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Zusatzbeitrag</a> kann sich ändern. Das ist der Haupthebelzu Erhöhungen: Zusatzbeitrag erhöhen = Höchstbeitrag erhöhung.</p>
+    </div>
+  </section>
+
+  <section id='entwicklung' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>10-Jahres-Entwicklung: Von 789 auf 1.229 Euro</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Entwicklung des GKV-Höchstbeitrags über die letzten 10 Jahre ist dramatisch:</p>
+      <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+        <table class='w-full text-left border-collapse min-w-[520px]'>
+          <thead>
+            <tr class='bg-[#FAF7F2]'>
+              <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Jahr</th>
+              <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Höchstbeitrag</th>
+              <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Veränderung vs. Vorjahr</th>
+            </tr>
+          </thead>
+          <tbody class='divide-y divide-outline-variant/20'>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>2017</td>
+              <td class='px-5 py-4 text-on-surface-variant'>789,53 Euro</td>
+              <td class='px-5 py-4 text-on-surface-variant'>, </td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>2018</td>
+              <td class='px-5 py-4 text-on-surface-variant'>803,14 Euro</td>
+              <td class='px-5 py-4 text-on-surface-variant'>+1,7 %</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>2019</td>
+              <td class='px-5 py-4 text-on-surface-variant'>841,71 Euro</td>
+              <td class='px-5 py-4 text-on-surface-variant'>+4,8 %</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>2020</td>
+              <td class='px-5 py-4 text-on-surface-variant'>878,91 Euro</td>
+              <td class='px-5 py-4 text-on-surface-variant'>+4,4 %</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>2021</td>
+              <td class='px-5 py-4 text-on-surface-variant'>916,71 Euro</td>
+              <td class='px-5 py-4 text-on-surface-variant'>+4,3 %</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>2022</td>
+              <td class='px-5 py-4 text-on-surface-variant'>916,71 Euro</td>
+              <td class='px-5 py-4 text-on-surface-variant'>0,0 %</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>2023</td>
+              <td class='px-5 py-4 text-on-surface-variant'>960,10 Euro</td>
+              <td class='px-5 py-4 text-on-surface-variant'>+4,7 %</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>2024</td>
+              <td class='px-5 py-4 text-on-surface-variant'>1.019,48 Euro</td>
+              <td class='px-5 py-4 text-on-surface-variant'>+6,2 %</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>2025</td>
+              <td class='px-5 py-4 text-on-surface-variant'>1.130,07 Euro</td>
+              <td class='px-5 py-4 text-on-surface-variant'>+10,9 %</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>2026</td>
+              <td class='px-5 py-4 text-on-surface-variant'>1.229,35 Euro</td>
+              <td class='px-5 py-4 text-on-surface-variant'>+8,8 %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Die Kennzahlen:</strong></p>
+      <p>• Anstieg 2017 bis 2026: Von 789,53 auf 1.229,35 Euro = plus 439,82 Euro oder plus 55,7 Prozent</p>
+      <p>• Durchschnittliche jährliche Steigerung: ca. 6,9 Prozent pro Jahr</p>
+      <p>• Zwischen 2021 und 2026: Von 916,71 auf 1.229,35 Euro = plus 34,3 Prozent in 5 Jahren</p>
+      <p><strong>Was führt zu Erhöhungen?</strong> BBG-Erhöhung durch Lohnentwicklung, Zusatzbeitrag-Erhöhungen (wegen GKV-Defiziten und Altersstruktur). 2025 und 2026 waren besonders stark wegen BBG-Sprungs und Zusatzbeitrag auf 2,9 %.</p>
+    </div>
+  </section>
+
+  <section id='prognose' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Prognose: Wohin geht der GKV-Beitrag</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Sachverstaendigenrat zur Begutachtung der gesamtwirtschaftlichen Entwicklung (SVR) und andere Forschungsinstitute haben Prognosen für 2050 erstellt. Die Ergebnisse sind alarmierend:</p>
+      <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+        <table class='w-full text-left border-collapse min-w-[520px]'>
+          <thead>
+            <tr class='bg-[#FAF7F2]'>
+              <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Szenario / Quelle</th>
+              <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Prognostizierter Beitragssatz 2050</th>
+            </tr>
+          </thead>
+          <tbody class='divide-y divide-outline-variant/20'>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>SVR Best Case</td>
+              <td class='px-5 py-4 text-on-surface-variant'>ca. 19 %</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>SVR Worst Case</td>
+              <td class='px-5 py-4 text-on-surface-variant'>ca. 30 %</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>Durchschnitt Forschungsinstitute</td>
+              <td class='px-5 py-4 text-on-surface-variant'>22 bis 36 %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Die Treiber dieser Prognosen:</strong></p>
+      <p>• Demografischer Wandel: 2025 sind noch 3/4 der Baby-Boomer (Jahrgaenge 1955 bis 1968) nicht in Rente. Mit jedem Rentner fällt ein Beitragszahler weg. Das drückt auf die Umlagequote.</p>
+      <p>• Steigende Gesundheitskosten: Mit älteren Versicherten steigen Behandlungskosten ueberproportional.</p>
+      <p>• Finanzlage: GKV-Defizite 2024 betrugen 38,6 Mrd Euro, 2025 bereits 46,7 Mrd Euro. Das ist nicht nachhaltig ohne Erhöhungen.</p>
+      <p><strong>Was das bedeutet:</strong> Selbst im optimistischen Szenario zählt die GKV 2050 etwa 19 % (heute 17,5 %). Im schlechtesten Fall 30 % oder mehr. Das ist eine Steigerung zwischen 22 und 71 Prozent gegenüber heute.</p>
+    </div>
+  </section>
+
+  <section id='vergleich' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>GKV-Höchstbeitrag als PKV-Vergleichswert</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Der klassische Vergleich:</strong> "Wenn meine PKV unter 1.229 Euro liegt, bin ich günstiger dran als GKV."</p>
+      <p>Das ist zahlenmig nicht falsch, aber logisch unvollständig:</p>
+      <p>• Der GKV-Höchstbeitrag ist für dich plus Ehegatten plus unbegrenzt Kinder, alle beitragsfrei zusammen in einem Beitrag. Die PKV verlangt einzelne Verträge.</p>
+      <p>• Der GKV-Höchstbeitrag sinkt im Alter (Rente ist niedrig), die PKV-Praemie mit <a href='/kosten/arbeitgeberzuschuss/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>AG-Zuschuss</a> nicht, obwohl Altersrückstellungen mildernd wirken.</p>
+      <p>• Der GKV-Beitrag hat Maßnahmen der Solidargemeinschaft (Kostenbremsungen, Leistungskuerze), die PKV nicht.</p>
+      <p><strong>Für wen ist dieser Vergleich relevant?</strong> Hauptsaechlich für junge, gesunde, alleinstehende oder partnerlose Angestellte ohne Kinder. Wenn du deutlich unter 1.229 Euro PKV bezahlst, ist es wirtschaftlich sinnvoll. Für Familien ist der Vergleich kaum aussagekraeftig.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der GKV-Höchstbeitrag 2026 von 1.229,35 Euro ist das Resultat von 10 Jahren kontinuierlicher Steigerung bei ca. 7 Prozent jährlich. Diese Quote ist nicht nachhaltig.</p>
+      <p>Die Prognosen für 2050 sind duestere: Mit demographischem Wandel und steigenden Kosten rechnen Forschungsinstitute mit Beitragssaetzen zwischen 19 und 30 Prozent. Das wäre eine Steigerung zwischen 22 und 71 Prozent gegenüber heute.</p>
+      <p>Dies unterstreicht die Bedeutung der PKV-Entscheidung: Mit Altersrückstellungen und Kapitaldeckung ist die PKV strukturell besser gewappnet gegen diese demografischen Herausforderungen. Aber nur für diejenigen, die sich die Praemien leisten können.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Zahle ich als Angestellter den vollen Höchstbeitrag?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein. Du zahlst etwa die Haelfte (ca. 614 Euro), dein Arbeitgeber die andere Haelfte. Der Höchstbeitrag von 1.229,35 Euro ist die Gesamtbelastung für die Gesellschaft. Dein Eigenanteil ist deutlich niedriger.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie stark ist der GKV-Beitrag in den letzten Jahren gestiegen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>2017 bis 2026 um 56 Prozent, durchschnittlich 6,9 Prozent pro Jahr. Die letzten 3 Jahre (2023 bis 2026) waren besonders steil: +10,9 % (2025) und +8,8 % (2026). Das ist deutlich schneller als frueher.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Gilt der Höchstbeitrag auch für freiwillig Versicherte?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Für freiwillig Versicherte (Angestellte über der Versicherungspflichtgrenze, die GKV waehlen) gibt es einen gesonderten Höchstbeitrag, der für freiwillige Mitglieder gilt. Dieser ist meist ähnlich hoch, aber nicht identisch.</div>
+      </details>
+    </div>
+  </section>
+</T6>

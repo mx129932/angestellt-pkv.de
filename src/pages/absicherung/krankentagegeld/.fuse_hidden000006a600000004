@@ -1,0 +1,180 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'warum-wichtig', label: 'Warum Krankentagegeld wichtig ist' },
+  { id: 'berechnung', label: 'So berechnest du die richtige Höhe' },
+  { id: 'karenzzeit', label: 'Karenzzeit: Ab wann wird gezahlt' },
+  { id: 'progressionsvorbehalt', label: 'Progressionsvorbehalt beachten' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const related = [
+  {
+    href: '/absicherung/berufsunfaehigkeit/',
+    kategorie: 'Absicherung',
+    title: 'Berufsunfähigkeitsversicherung',
+    teaser: 'Warum eine BU für PKV-Versicherte besonders wichtig ist und worauf du achten solltest.',
+    icon: 'shield',
+  },
+  {
+    href: '/absicherung/mutterschutz/',
+    kategorie: 'Absicherung',
+    title: 'Mutterschutz und PKV',
+    teaser: 'Was sich für PKV-versicherte Angestellte bei Schwangerschaft und Mutterschutz ändert.',
+    icon: 'pregnancy',
+  },
+  {
+    href: '/kosten/pkv-kosten-uebersicht/',
+    kategorie: 'Kosten',
+    title: 'PKV-Kosten für Angestellte',
+    teaser: 'Alle Kostenbestandteile der PKV auf einen Blick: Grundbeitrag, Pflege, Zusatzbausteine.',
+    icon: 'payments',
+  },
+];
+---
+<T6
+  title='Krankentagegeld in der PKV: Berechnung und Höhe'
+  description='Krankentagegeld sichert dein Einkommen bei langer Krankheit ab. Für PKV-versicherte Angestellte gibt es wichtige Besonderheiten zu beachten.'
+  breadcrumb={{ kategorie: 'Absicherung', kategorieHref: '/absicherung/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='8 Min. Lesezeit'
+  related={related}
+>
+  <!-- Zusammenfassung -->
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Als Angestellter erhältst du bei Krankheit <strong>6 Wochen Lohnfortzahlung</strong> vom Arbeitgeber. Ab dem 43. Tag springt das Krankentagegeld ein.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die richtige Höhe berechnest du aus deinem <strong>Nettoeinkommen abzüglich PKV-Beitrag</strong>. Bei längerer Krankheit entfällt der AG-Zuschuss von 508,59 Euro.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die <strong>Karenzzeit</strong> ist wählbar: 15, 22, 43 oder 92 Tage. Für Angestellte mit Lohnfortzahlung ist die 43-Tage-Karenz der Standardfall.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Das Krankentagegeld ist <strong>steuerfrei</strong>, unterliegt aber dem Progressionsvorbehalt. Es kann deinen Steuersatz auf das übrige Einkommen erhöhen.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Einleitung -->
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Wer privat versichert ist und länger als sechs Wochen krank wird, steht ohne Krankentagegeld plötzlich ohne Einkommen da. In der GKV gibt es Krankengeld als gesetzliche Pflichtleistung. In der PKV muss diese Absicherung separat vereinbart werden. Für Angestellte, deren Lebenshaltung auf einem stabilen Monatseinkommen basiert, ist das Krankentagegeld deshalb ein unverzichtbarer Baustein.</p>
+  </div>
+
+  <!-- Warum wichtig -->
+  <section id='warum-wichtig' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Warum Krankentagegeld für PKV-Versicherte wichtig ist</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Als Angestellter hast du bei Arbeitsunfähigkeit einen gesetzlichen Anspruch auf Lohnfortzahlung durch deinen Arbeitgeber. Diese Pflicht endet nach 42 Tagen (§ 3 EntgFG). Danach zahlt die GKV automatisch Krankengeld. In der PKV passiert ohne vertragliche Vereinbarung: nichts.</p>
+      <p>Der PKV-Beitrag läuft aber weiter. Auch der Arbeitgeberzuschuss von bis zu 508,59 Euro monatlich (2026) kann entfallen, wenn du kein Entgelt mehr beziehst. Das heißt: Deine Einnahmen sinken auf null, deine Versicherungskosten bleiben bestehen. Ohne Krankentagegeld musst du diese Lücke aus Ersparnissen decken.</p>
+      <p>Das Krankentagegeld schließt genau diese Lücke. Es wird als Tagessatz vereinbart und ab dem Ende der Karenzzeit ausgezahlt, solange die Arbeitsunfähigkeit andauert.</p>
+    </div>
+  </section>
+
+  <!-- Berechnung -->
+  <section id='berechnung' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>So berechnest du die richtige Höhe</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Faustregel für die Berechnung: Dein Krankentagegeld sollte deine laufenden Kosten decken, die trotz Krankheit weiterlaufen. Das sind vor allem dein Nettogehalt und dein PKV-Beitrag (inklusive Pflegepflichtversicherung), abzüglich des Arbeitgeberzuschusses, der bei Wegfall der Vergütung entfällt.</p>
+    </div>
+
+    <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+      <table class='w-full text-left border-collapse min-w-[520px]'>
+        <thead>
+          <tr class='bg-surface-container'>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Position</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Beispielwert</th>
+          </tr>
+        </thead>
+        <tbody class='text-sm text-on-surface'>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4'>Nettoeinkommen (monatlich)</td>
+            <td class='p-4'>3.800 Euro</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4'>PKV-Beitrag (KV + PV)</td>
+            <td class='p-4'>650 Euro</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4'>Abzüglich AG-Zuschuss (entfällt)</td>
+            <td class='p-4'>0 Euro</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4 font-medium'>Monatlicher Bedarf</td>
+            <td class='p-4 font-medium'>4.450 Euro</td>
+          </tr>
+          <tr>
+            <td class='p-4 font-medium'>Tagesbedarf (÷ 30)</td>
+            <td class='p-4 font-medium'>ca. 148 Euro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>In diesem Beispiel wäre ein Krankentagegeld von 150 Euro pro Tag sinnvoll. Der Beitrag für das Krankentagegeld hängt von deinem Alter, der Karenzzeit und der vereinbarten Tageshöhe ab. Typisch für einen 35-jährigen Angestellten mit 43-Tage-Karenz: 30 bis 80 Euro monatlich, je nach Anbieter und Tarif.</p>
+      <p>Wichtig: Das Krankentagegeld darf dein letztes Nettoeinkommen nicht übersteigen. Versicherer prüfen dies bei Vertragsabschluss und im Leistungsfall. Eine Überversicherung wird nicht ausgezahlt.</p>
+    </div>
+  </section>
+
+  <!-- Karenzzeit -->
+  <section id='karenzzeit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Karenzzeit: Ab wann wird gezahlt</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Karenzzeit ist die Wartezeit zwischen dem Beginn deiner Arbeitsunfähigkeit und dem Beginn der Krankentagegeld-Zahlung. Du kannst sie beim Vertragsabschluss wählen. Übliche Varianten sind 15, 22, 43 oder 92 Tage.</p>
+      <p>Für Angestellte mit gesetzlichem Anspruch auf Lohnfortzahlung ist die <strong>43-Tage-Karenz</strong> die naheliegende Wahl. Du erhältst 42 Tage lang dein volles Gehalt vom Arbeitgeber. Ab dem 43. Tag greift das Krankentagegeld. Es gibt keine Lücke.</p>
+      <p>Eine kürzere Karenz (15 oder 22 Tage) ist teurer und für die meisten Angestellten nicht nötig. Sie kann sinnvoll sein, wenn dein Arbeitsvertrag eine kürzere oder gar keine Lohnfortzahlung vorsieht, etwa in der Probezeit oder bei befristeten Verträgen.</p>
+      <p>Eine längere Karenz (92 Tage) senkt den Beitrag, lässt aber eine Lücke von 50 Tagen ohne Einnahmen. Das kann bei hohen laufenden Kosten riskant sein.</p>
+    </div>
+  </section>
+
+  <!-- Progressionsvorbehalt -->
+  <section id='progressionsvorbehalt' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Progressionsvorbehalt beachten</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Das Krankentagegeld aus der PKV ist nach § 3 Nr. 1a EStG steuerfrei. Du musst es nicht als Einkommen versteuern. Allerdings unterliegt es dem Progressionsvorbehalt (§ 32b EStG).</p>
+      <p>In der Praxis bedeutet das: Das Krankentagegeld wird zu deinem übrigen zu versteuernden Einkommen addiert, um den Steuersatz zu ermitteln. Dieser höhere Steuersatz wird dann auf dein reguläres Einkommen angewendet. Das Krankentagegeld selbst bleibt steuerfrei, aber dein Steuersatz auf das restliche Einkommen steigt.</p>
+      <p>Bei einer längeren Krankheit (mehrere Monate) kann das spürbar werden. Wer das ganze Jahr Krankentagegeld bezieht und daneben noch andere Einkünfte hat (z. B. Mieteinnahmen), sollte die steuerliche Wirkung mit dem Steuerberater durchrechnen.</p>
+      <p>Für die Absicherung bei dauerhafter Arbeitsunfähigkeit ist nicht das Krankentagegeld, sondern die Berufsunfähigkeitsversicherung zuständig. Mehr dazu unter <a href='/absicherung/berufsunfaehigkeit/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Berufsunfähigkeitsversicherung</a>.</p>
+    </div>
+  </section>
+
+  <!-- Fazit -->
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Krankentagegeld ist für PKV-versicherte Angestellte kein optionaler Baustein, sondern eine notwendige Absicherung. Ohne diese Leistung stehst du ab dem 43. Krankheitstag ohne Einkommen da, während der volle PKV-Beitrag weiterläuft.</p>
+      <p>Berechne die Höhe aus deinem Nettoeinkommen plus dem vollen PKV-Beitrag (weil der Arbeitgeberzuschuss entfällt). Für Angestellte mit Lohnfortzahlung ist die 43-Tage-Karenz der sinnvolle Standard. Beachte den Progressionsvorbehalt bei der Steuererklärung, wenn du längere Zeit Krankentagegeld beziehst. Für Schwangere gelten besondere Regeln, die unter <a href='/absicherung/mutterschutz/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Mutterschutz und PKV</a> erklärt werden.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie hoch sollte das Krankentagegeld sein?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Das Krankentagegeld sollte dein Nettoeinkommen plus den vollen PKV-Beitrag (ohne Arbeitgeberzuschuss) abdecken. Teile den Monatsbedarf durch 30, um den Tagessatz zu ermitteln. Beispiel: Bei 3.800 Euro Netto und 650 Euro PKV-Beitrag ergibt sich ein Tagesbedarf von rund 148 Euro.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ab wann wird Krankentagegeld gezahlt?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ab dem Ende der vereinbarten Karenzzeit. Für Angestellte mit gesetzlicher Lohnfortzahlung ist die 43-Tage-Karenz üblich: 42 Tage zahlt der Arbeitgeber, ab dem 43. Tag das Krankentagegeld. Die Karenzzeit (15, 22, 43 oder 92 Tage) wählst du beim Vertragsabschluss.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ist Krankentagegeld steuerfrei?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, Krankentagegeld aus der PKV ist nach § 3 Nr. 1a EStG steuerfrei. Es unterliegt aber dem Progressionsvorbehalt: Das Krankentagegeld wird bei der Steuererklärung herangezogen, um den Steuersatz auf dein übriges Einkommen zu bestimmen. Dadurch kann der Steuersatz steigen, obwohl das Krankentagegeld selbst nicht versteuert wird.</div>
+      </details>
+    </div>
+  </section>
+</T6>

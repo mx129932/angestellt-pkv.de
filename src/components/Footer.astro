@@ -1,0 +1,126 @@
+---
+/**
+ * Footer.astro — Globaler Footer im Stitch-Design
+ * 4 Spalten (Themen / Rechner / Service / Rechtliches), Brand-Block oben
+ * Links aus 1_IA-und-Fakten/IA_v2.xlsx → Tab "Navigation"
+ */
+
+const themen = [
+  { label: 'Grundlagen', href: '/grundlagen/' },
+  { label: 'Kosten', href: '/kosten/' },
+  { label: 'Leistungen', href: '/leistungen/' },
+  { label: 'Aufnahme', href: '/aufnahme/' },
+  { label: 'Wechsel', href: '/wechsel/' },
+  { label: 'Absicherung', href: '/absicherung/' },
+  { label: 'Familie', href: '/familie/' },
+  { label: 'Lebenssituationen', href: '/lebenssituationen/' },
+];
+
+const rechner = [
+  { label: 'PKV-Beitrag', href: '/rechner/pkv-beitrag/' },
+  { label: 'JAEG-Check', href: '/rechner/jaeg-check/' },
+  { label: 'GKV vs. PKV', href: '/rechner/pkv-gkv-vergleich/' },
+  { label: 'Arbeitgeberzuschuss', href: '/rechner/arbeitgeberzuschuss/' },
+  { label: 'Alle Rechner', href: '/rechner/' },
+];
+
+const service = [
+  { label: 'Über uns', href: '/ueber-uns/' },
+  { label: 'Beratung', href: '/beratung/' },
+  { label: 'Sitemap', href: '/sitemap/' },
+];
+
+const recht = [
+  { label: 'Impressum', href: '/impressum/' },
+  { label: 'Datenschutz', href: '/datenschutz/' },
+  { label: 'Datenschutz-Einstellungen', href: '#', isKlaro: true },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-primary text-white mt-16">
+  <div class="max-w-7xl mx-auto px-6 md:px-8 py-16">
+    <!-- Brand + Tagline -->
+    <div class="mb-12 max-w-xl">
+      <picture class="block mb-3">
+        <source srcset="/images/logo.webp" type="image/webp" />
+        <img src="/images/logo.png" alt="PKV-Welt für Angestellte" class="h-10 w-auto brightness-0 invert" loading="lazy" />
+      </picture>
+      <p class="text-primary-fixed-dim text-sm leading-relaxed">
+        Das Spezialportal zur privaten Krankenversicherung für Angestellte.
+        Mit Transparenz zu einer klaren Entscheidung.
+      </p>
+    </div>
+
+    <!-- 4-Spalten-Link-Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest text-primary-fixed-dim mb-4">Themen</h3>
+        <ul class="space-y-2">
+          {themen.map((l) => (
+            <li>
+              <a href={l.href} class="text-white/80 hover:text-amber-accent text-sm transition-colors">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest text-primary-fixed-dim mb-4">Rechner</h3>
+        <ul class="space-y-2">
+          {rechner.map((l) => (
+            <li>
+              <a href={l.href} class="text-white/80 hover:text-amber-accent text-sm transition-colors">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest text-primary-fixed-dim mb-4">Service</h3>
+        <ul class="space-y-2">
+          {service.map((l) => (
+            <li>
+              <a href={l.href} class="text-white/80 hover:text-amber-accent text-sm transition-colors">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-widest text-primary-fixed-dim mb-4">Rechtliches</h3>
+        <ul class="space-y-2">
+          {recht.map((l) => (
+            <li>
+              {l.isKlaro ? (
+                <button
+                  onclick="window.klaro?.show()"
+                  class="text-white/80 hover:text-amber-accent text-sm transition-colors cursor-pointer bg-transparent border-none p-0 text-left"
+                >
+                  {l.label}
+                </button>
+              ) : (
+                <a href={l.href} class="text-white/80 hover:text-amber-accent text-sm transition-colors">
+                  {l.label}
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom-Bar -->
+    <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-xs text-primary-fixed-dim">
+      <p>© {year} PKV für Angestellte. Unabhängige Fachredaktion.</p>
+      <p class="italic">Stand der Zahlen: 2026 · Alle Angaben ohne Gewähr.</p>
+    </div>
+  </div>
+</footer>

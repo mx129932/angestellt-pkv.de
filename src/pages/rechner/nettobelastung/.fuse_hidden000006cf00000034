@@ -1,0 +1,10 @@
+---
+import T5 from '../../../layouts/T5.astro';
+---
+<T5
+  title='Nettobelastungs-Rechner'
+  description='Echte monatliche Belastung nach Arbeitgeberzuschuss und Steuer.'
+  intro='Berechne deinen echten monatlichen Nettoaufwand für die PKV unter Berücksichtigung von Arbeitgeberzuschuss und Steuerersparnis. Der Rechner zeigt, wie viel die PKV wirklich kostet.'
+  iframeSrc='/rechner-tools/nettobelastung.html'
+  iframeInitialHeight={1400}
+/>

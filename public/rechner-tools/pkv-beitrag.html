@@ -136,7 +136,7 @@
       Der Beitrag hängt ab von:<br>
       <strong style="color: var(--primary);">✓ Dein Alter:</strong> Jünger = günstiger. PKV berücksichtigt dein Alter bei der Risikobewertung.<br>
       <strong style="color: var(--primary);">✓ Gesundheit:</strong> Vorerkrankungen können den Beitrag erhöhen. Der Versicherer prüft das.<br>
-      <strong style="color: var(--primary);">✓ Selbstbeteiligung:</strong> Je höher die SB, desto niedriger der Beitrag (du zahlt mehr von selbst).<br>
+      <strong style="color: var(--primary);">✓ Selbstbeteiligung:</strong> Je höher die SB, desto niedriger der Beitrag (du zahlst mehr selbst).<br>
       <strong style="color: var(--primary);">✓ Tarifwahl:</strong> Es gibt Basis-, Standard- und Premium-Tarife. Wir zeigen hier den Standard.
     </p>
   </div>
@@ -213,7 +213,7 @@ function calcBeitrag() {
   const resultHint = document.getElementById('result-hint');
 
   resultText.innerHTML = `${Math.round(beitrag).toFixed(0)} €<span style="font-size: .6em; display: block; margin-top: 4px;">/ Monat</span>`;
-  resultHint.textContent = `Diesen Beitrag zahlt du selbst. Dein Arbeitgeber gibt noch ca. ${Math.round(beitrag/2)} € dazu (50% Zuschuss).`;
+  resultHint.textContent = `Diesen Beitrag zahlst du selbst. Dein Arbeitgeber gibt noch ca. ${Math.round(beitrag/2)} € dazu (50% Zuschuss).`;
 
   result.classList.remove('hidden');
   if (beitrag < 350) result.classList.add('budget-ok');

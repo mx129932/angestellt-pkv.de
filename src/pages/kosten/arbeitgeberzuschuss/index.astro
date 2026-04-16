@@ -1,7 +1,234 @@
 ---
-import T5 from '../../../layouts/T5.astro';
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'hoechster-zuschuss', label: 'Höchster Arbeitgeberzuschuss 2026' },
+  { id: 'berechnung', label: 'So wird der Zuschuss berechnet' },
+  { id: 'familie', label: 'Zuschuss für Familienangehörige' },
+  { id: 'teilzeit', label: 'AG-Zuschuss bei Teilzeit und Minijob' },
+  { id: 'entwicklung', label: 'Entwicklung des AG-Zuschusses' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const related = [
+  {
+    href: '/kosten/pkv-kosten-uebersicht/',
+    kategorie: 'Kosten',
+    title: 'PKV-Kosten für Angestellte',
+    teaser: 'Alle Kostenbestandteile der PKV: Grundbeitrag, Pflege, Zusatzbausteine und was du netto zahlst.',
+    icon: 'payments',
+  },
+  {
+    href: '/kosten/gkv-hoechstbeitrag/',
+    kategorie: 'Kosten',
+    title: 'GKV-Höchstbeitrag 2026',
+    teaser: 'Was der GKV-Höchstbeitrag für Gutverdiener kostet und wie er sich entwickelt hat.',
+    icon: 'trending_up',
+  },
+  {
+    href: '/wechsel/versicherungspflichtgrenze/',
+    kategorie: 'Wechsel',
+    title: 'Versicherungspflichtgrenze 2026',
+    teaser: 'Ab 77.400 Euro Jahresbrutto kannst du in die PKV. So funktioniert die JAEG.',
+    icon: 'speed',
+  },
+];
 ---
-<T5
-  title='Arbeitgeberzuschuss zur PKV'
-  description='Wie viel der Arbeitgeber zahlt — Berechnung und Deckelung.'
-/>
+<T6
+  title='Arbeitgeberzuschuss PKV 2026: Höhe und Berechnung'
+  description='Arbeitgeberzuschuss PKV 2026: maximal 508,59 Euro KV plus 104,63 Euro Pflege. So funktioniert die Berechnung, auch bei Teilzeit und Familie.'
+  breadcrumb={{ kategorie: 'Kosten', kategorieHref: '/kosten/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='9 Min. Lesezeit'
+  related={related}
+  faqItems={[
+    { question: `Bekomme ich den AG-Zuschuss auch für meine Kinder in der PKV?`, answer: `Ja, wenn deine Kinder in der GKV Anspruch auf beitragsfreie Familienversicherung hätten. Der Zuschuss für Kinder wird zum Gesamtzuschuss addiert, der aber insgesamt nicht den Höchstbetrag (508,59 Euro KV + 104,63 Euro PV) überschreiten darf. Liegt dein eigener PKV-Beitrag bereits über dem Doppelten des Höchstzuschusses, bringt die Berücksichtigung der Kinder keinen zusätzlichen Vorteil.` },
+    { question: `Was passiert mit dem Zuschuss in Elternzeit?`, answer: `In der Elternzeit entfällt der Zuschuss komplett, weil kein laufendes Arbeitsentgelt gezahlt wird. Du musst den vollen PKV-Beitrag selbst tragen. Ausnahme: Wenn du während der Elternzeit in Teilzeit arbeitest (bis 32 Stunden), zahlt dein Arbeitgeber den Zuschuss anteilig auf das Teilzeitgehalt.` },
+    { question: `Ist der AG-Zuschuss steuerfrei?`, answer: `Ja. Der Arbeitgeberzuschuss zur PKV ist nach § 3 Nr. 62 EStG steuerfrei und sozialversicherungsfrei. Er wird nicht auf dein Bruttogehalt aufgeschlagen und erscheint in der Gehaltsabrechnung als steuerfreier Arbeitgeberzuschuss. Der steuerfreie Zuschuss mindert allerdings die als Sonderausgaben absetzbaren Beiträge.` }
+  ]}
+>
+  <!-- Zusammenfassung -->
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der maximale AG-Zuschuss 2026 beträgt <strong>508,59 Euro</strong> für die Krankenversicherung und <strong>104,63 Euro</strong> für die Pflegepflichtversicherung.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die Berechnung folgt einer festen Formel: <strong>BBG (69.750 Euro) mal GKV-Gesamtsatz (17,5 %) geteilt durch 2</strong>, ergibt den Höchstzuschuss.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der Zuschuss darf nie höher sein als <strong>50 Prozent des tatsächlichen PKV-Beitrags</strong>. Bei günstigen Tarifen ist der Zuschuss also geringer.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>In <strong>Elternzeit und bei unbezahltem Urlaub</strong> entfällt der Zuschuss. Bei Teilzeit wird er anteilig berechnet.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Einleitung -->
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Der Arbeitgeberzuschuss ist einer der wichtigsten Kostenfaktoren für PKV-versicherte Angestellte. Er senkt den monatlich selbst zu tragenden Beitrag erheblich. 2026 liegt der Höchstzuschuss bei über 600 Euro monatlich (KV + PV zusammen). Dieser Artikel erklärt, wie der Zuschuss berechnet wird, wann er entfällt und was bei Teilzeit, Familie und Jobwechsel gilt.</p>
+  </div>
+
+  <!-- Höchster AG-Zuschuss -->
+  <section id='hoechster-zuschuss' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Höchster Arbeitgeberzuschuss 2026</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Arbeitgeberzuschuss zur PKV ist gesetzlich geregelt (§ 257 SGB V). Er orientiert sich am fiktiven GKV-Beitrag, den der Arbeitgeber zahlen müsste, wenn du gesetzlich versichert wärst.</p>
+    </div>
+
+    <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+      <table class='w-full text-left border-collapse min-w-[520px]'>
+        <thead>
+          <tr class='bg-surface-container'>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Zuschuss</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Monatlich</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Jährlich</th>
+          </tr>
+        </thead>
+        <tbody class='text-sm text-on-surface'>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4 font-medium'>Krankenversicherung</td>
+            <td class='p-4'>508,59 Euro</td>
+            <td class='p-4'>6.103,08 Euro</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4 font-medium'>Pflegepflichtversicherung</td>
+            <td class='p-4'>104,63 Euro</td>
+            <td class='p-4'>1.255,56 Euro</td>
+          </tr>
+          <tr>
+            <td class='p-4 font-medium'>Gesamt</td>
+            <td class='p-4 font-medium'>613,22 Euro</td>
+            <td class='p-4 font-medium'>7.358,64 Euro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Zuschuss ist auf maximal 50 Prozent des tatsächlichen PKV-Beitrags gedeckelt. Wenn dein PKV-Beitrag (KV-Anteil) also bei 400 Euro liegt, bekommst du nicht 508,59 Euro, sondern nur 200 Euro. Das Deckelungsprinzip gilt für KV und PV getrennt.</p>
+    </div>
+  </section>
+
+  <!-- Berechnung -->
+  <section id='berechnung' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>So wird der Zuschuss berechnet</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Formel für den maximalen Zuschuss zur Krankenversicherung ist transparent:</p>
+      <p><strong>BBG KV (monatlich) mal GKV-Gesamtsatz geteilt durch 2</strong></p>
+      <p>Mit den Werten für 2026: 5.812,50 Euro mal 17,5 Prozent (14,6 % allgemeiner Satz + 2,9 % durchschnittlicher Zusatzbeitrag) geteilt durch 2 = 508,59 Euro.</p>
+      <p>Für die Pflegepflichtversicherung gilt analog: 5.812,50 Euro mal 3,6 Prozent geteilt durch 2 = 104,63 Euro.</p>
+      <p>Die Beitragsbemessungsgrenze (BBG) begrenzt das Einkommen, das für die Berechnung herangezogen wird. 2026 liegt sie bei 69.750 Euro jährlich (5.812,50 Euro monatlich). Wer mehr verdient, bekommt trotzdem nicht mehr Zuschuss.</p>
+      <p>Ein konkretes Beispiel: Dein PKV-Beitrag beträgt 550 Euro (KV) plus 120 Euro (PV) = 670 Euro monatlich. Dein Arbeitgeber zahlt davon: 275 Euro KV (50 % von 550, unter dem Maximum von 508,59) plus 60 Euro PV (50 % von 120, unter dem Maximum von 104,63) = 335 Euro. Du zahlst selbst: 335 Euro.</p>
+    </div>
+  </section>
+
+  <!-- Familienangehörige -->
+  <section id='familie' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Zuschuss für Familienangehörige</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Wenn dein Ehepartner oder deine Kinder privat mitversichert sind, kann der Arbeitgeberzuschuss auch deren Beiträge berücksichtigen. Voraussetzung: Der Familienangehörige hätte in der GKV Anspruch auf beitragsfreie Familienversicherung (§ 10 SGB V). Das bedeutet in der Regel: kein eigenes Einkommen über der Geringfügigkeitsgrenze.</p>
+      <p>Der Gesamtzuschuss (für dich und die mitversicherten Familienangehörigen zusammen) darf aber nie den Höchstbetrag überschreiten. Er bleibt bei 508,59 Euro KV und 104,63 Euro PV, egal wie viele Personen versichert sind.</p>
+      <p>In der Praxis heißt das: Wenn dein eigener PKV-Beitrag bereits über dem Doppelten des Höchstzuschusses liegt, bringt die Berücksichtigung der Familienmitglieder keinen zusätzlichen Zuschuss. Liegt dein eigener Beitrag aber unter dem Maximum, kann der restliche Zuschuss auf die Beiträge der Familienangehörigen angerechnet werden.</p>
+    </div>
+  </section>
+
+  <!-- Teilzeit -->
+  <section id='teilzeit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>AG-Zuschuss bei Teilzeit und Minijob</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Teilzeit:</strong> Bei Teilzeitbeschäftigung wird der Zuschuss auf Basis des tatsächlichen Arbeitsentgelts berechnet. Liegt dein Teilzeitgehalt unter der BBG von 5.812,50 Euro monatlich, sinkt der Zuschuss entsprechend. Die 50-Prozent-Deckelung auf den tatsächlichen PKV-Beitrag gilt weiterhin.</p>
+      <p><strong>Minijob:</strong> Bei einem Minijob (bis 603 Euro monatlich, 2026) zahlt der Arbeitgeber pauschale Beiträge zur GKV, aber keinen individuellen Zuschuss zur PKV. Das gilt auch, wenn du als Hauptberuf PKV-versichert bist und den Minijob nebenher ausübst.</p>
+      <p><strong>Elternzeit und unbezahlter Urlaub:</strong> Da kein Arbeitsentgelt fließt, entfällt der Zuschuss vollständig. Details dazu findest du unter <a href='/familie/elternzeit/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV in der Elternzeit</a>.</p>
+      <p><strong>Jobwechsel:</strong> Der Zuschuss beginnt mit dem neuen Arbeitsverhältnis automatisch. Es gibt keine Wartezeit. Dein neuer Arbeitgeber ist ab dem ersten Tag zur Zahlung verpflichtet. Bei einem Arbeitgeberwechsel musst du deinem neuen Arbeitgeber lediglich deinen PKV-Beitrag nachweisen.</p>
+    </div>
+  </section>
+
+  <!-- Entwicklung -->
+  <section id='entwicklung' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Entwicklung des AG-Zuschusses (5-Jahres-Vergleich)</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Höchstzuschuss steigt jedes Jahr, weil er an die Beitragsbemessungsgrenze und den GKV-Beitragssatz gekoppelt ist. Beide Werte werden jährlich angepasst.</p>
+    </div>
+
+    <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+      <table class='w-full text-left border-collapse min-w-[520px]'>
+        <thead>
+          <tr class='bg-surface-container'>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Jahr</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Höchstzuschuss KV</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>BBG KV (Monat)</th>
+          </tr>
+        </thead>
+        <tbody class='text-sm text-on-surface'>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4'>2022</td>
+            <td class='p-4'>384,58 Euro</td>
+            <td class='p-4'>4.837,50 Euro</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4'>2023</td>
+            <td class='p-4'>403,99 Euro</td>
+            <td class='p-4'>4.987,50 Euro</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4'>2024</td>
+            <td class='p-4'>421,76 Euro</td>
+            <td class='p-4'>5.175,00 Euro</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4'>2025</td>
+            <td class='p-4'>461,10 Euro</td>
+            <td class='p-4'>5.512,50 Euro</td>
+          </tr>
+          <tr>
+            <td class='p-4 font-medium'>2026</td>
+            <td class='p-4 font-medium'>508,59 Euro</td>
+            <td class='p-4 font-medium'>5.812,50 Euro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Von 2022 bis 2026 ist der Höchstzuschuss KV um 124 Euro monatlich gestiegen. Das entspricht einem Zuwachs von 32 Prozent in vier Jahren. Für PKV-Versicherte ist das eine gute Nachricht: Der Arbeitgeberanteil wächst mit und fängt einen Teil der Beitragssteigerungen auf.</p>
+    </div>
+  </section>
+
+  <!-- Fazit -->
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Arbeitgeberzuschuss von bis zu 613,22 Euro monatlich (KV + PV, 2026) macht die PKV für Angestellte deutlich günstiger als der Bruttobeitrag vermuten lässt. Die Berechnung folgt einer klaren Formel: 50 Prozent des fiktiven GKV-Höchstbeitrags, maximal 50 Prozent des tatsächlichen PKV-Beitrags.</p>
+      <p>Behalte im Blick, dass der Zuschuss bei Elternzeit, unbezahltem Urlaub oder Minijob entfällt. Bei Teilzeit wird er anteilig berechnet. Für Familienangehörige kann der Zuschuss mitgenutzt werden, solange der Höchstbetrag nicht überschritten wird. Wie du den PKV-Beitrag zusätzlich über die Steuererklärung reduzierst, erfährst du unter <a href='/kosten/pkv-steuer/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV von der Steuer absetzen</a>.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Bekomme ich den AG-Zuschuss auch für meine Kinder in der PKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, wenn deine Kinder in der GKV Anspruch auf beitragsfreie Familienversicherung hätten. Der Zuschuss für Kinder wird zum Gesamtzuschuss addiert, der aber insgesamt nicht den Höchstbetrag (508,59 Euro KV + 104,63 Euro PV) überschreiten darf. Liegt dein eigener PKV-Beitrag bereits über dem Doppelten des Höchstzuschusses, bringt die Berücksichtigung der Kinder keinen zusätzlichen Vorteil.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was passiert mit dem Zuschuss in Elternzeit?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>In der Elternzeit entfällt der Zuschuss komplett, weil kein laufendes Arbeitsentgelt gezahlt wird. Du musst den vollen PKV-Beitrag selbst tragen. Ausnahme: Wenn du während der Elternzeit in Teilzeit arbeitest (bis 32 Stunden), zahlt dein Arbeitgeber den Zuschuss anteilig auf das Teilzeitgehalt.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ist der AG-Zuschuss steuerfrei?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja. Der Arbeitgeberzuschuss zur PKV ist nach § 3 Nr. 62 EStG steuerfrei und sozialversicherungsfrei. Er wird nicht auf dein Bruttogehalt aufgeschlagen und erscheint in der Gehaltsabrechnung als steuerfreier Arbeitgeberzuschuss. Der steuerfreie Zuschuss mindert allerdings die als Sonderausgaben absetzbaren Beiträge.</div>
+      </details>
+    </div>
+  </section>
+</T6>

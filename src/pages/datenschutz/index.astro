@@ -1,7 +1,362 @@
 ---
-import T7 from '../../layouts/T7.astro';
+import Base from '../../layouts/Base.astro';
+
+const title = 'Datenschutzerklärung · PKV für Angestellte';
+const description = 'Datenschutzerklärung von angestellt-pkv.de – Informationen zur Verarbeitung deiner personenbezogenen Daten gemäß DSGVO, BDSG und TDDDG.';
 ---
-<T7
-  title='Datenschutz'
-  description='Informationen zur Datenverarbeitung auf dieser Seite.'
-/>
+<Base title={title} description={description} schemaType='WebPage' breadcrumbs={[{ label: 'Start', href: '/' }, { label: 'Datenschutz', href: '' }]}>
+  <main class="pt-32 pb-24 px-6 md:px-12 max-w-screen-xl mx-auto">
+    <!-- Editorial Header -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
+      <div class="md:col-span-4">
+        <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4">RECHTLICHER RAHMEN</p>
+        <h1 class="text-5xl md:text-6xl font-headline font-semibold text-primary leading-tight">Datenschutz­erklärung</h1>
+        <div class="mt-8 h-1 w-12 bg-tertiary"></div>
+      </div>
+      <div class="md:col-span-7 md:col-start-6 flex flex-col justify-end">
+        <p class="text-xl font-headline italic text-on-surface-variant leading-relaxed">
+          Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO, BDSG und TDDDG.
+        </p>
+        <p class="mt-6 text-sm text-outline font-label uppercase tracking-wider">Stand: April 2026</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+      <!-- Sticky Nav -->
+      <aside class="hidden md:block md:col-span-3">
+        <div class="sticky top-40 space-y-4">
+          <nav class="flex flex-col border-l border-outline-variant/30 pl-6 space-y-3">
+            <a class="text-sm font-medium text-primary border-l-2 border-primary -ml-[26px] pl-6 py-1" href="#praeambel">Präambel</a>
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#verantwortlicher">Verantwortlicher</a>
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#hosting">Hosting & Logs</a>
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#cookies">Cookies</a>
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#kontakt">Kontaktaufnahme</a>
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#rechner">Rechner-Tools</a>
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#rechte">Deine Rechte</a>
+            <a class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1" href="#aufsicht">Aufsichtsbehörde</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <div class="md:col-span-8 md:col-start-5 space-y-14 text-on-surface-variant leading-relaxed">
+
+        <section class="scroll-mt-40" id="praeambel">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Präambel</h2>
+          <p>
+            Der Schutz deiner personenbezogenen Daten ist uns ein besonderes Anliegen. Diese Datenschutzerklärung
+            informiert dich über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten auf dieser Website.
+            Wir verarbeiten deine Daten ausschließlich auf Grundlage der geltenden Datenschutzgesetze: der
+            Datenschutz-Grundverordnung (DSGVO), des Bundesdatenschutzgesetzes (BDSG) und des
+            Telekommunikation-Digitale-Dienste-Datenschutz-Gesetzes (TDDDG).
+          </p>
+          <p class="mt-3">Stand dieser Datenschutzerklärung: <strong>15. April 2026</strong>.</p>
+        </section>
+
+        <section class="scroll-mt-40" id="verantwortlicher">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Verantwortlicher</h2>
+          <p>
+            <strong>Tim Bökemeier</strong><br />
+            PKV-Welt<br />
+            Dornberger Str. 37a<br />
+            33615 Bielefeld
+          </p>
+          <p class="mt-3">
+            <strong>E-Mail:</strong> <a class="text-primary underline" href="mailto:beratung@angestellt-pkv.de">beratung@angestellt-pkv.de</a><br />
+            <strong>Telefon:</strong> (0521) 97 79 82 32
+          </p>
+        </section>
+
+        <section class="scroll-mt-40" id="hosting">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Bereitstellung des Onlineangebots und Webhosting</h2>
+          <p>
+            <strong>Verarbeitete Daten:</strong> Bestandsdaten (Name, Adresse), Kontaktdaten (E-Mail, Telefon),
+            Inhaltsdaten (Text, Bilder, Videos), Metadaten (Datum, Uhrzeit, IP-Adresse, Browser-Informationen).
+          </p>
+          <p class="mt-3">
+            <strong>Zweck der Verarbeitung:</strong> Bereitstellung der Website, Optimierung der Infrastruktur,
+            Sicherheit und Stabilität des Servers.
+          </p>
+          <p class="mt-3">Unsere Website wird gehostet bei:</p>
+          <p class="mt-3">
+            <strong>ALL-INKL.COM – Neue Medien Münnich</strong><br />
+            René Münnich<br />
+            Hauptstraße 68<br />
+            02742 Friedersdorf, Deutschland
+          </p>
+          <p class="mt-3">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an zuverlässiger
+            Bereitstellung und Sicherheit der Website).
+          </p>
+          <p class="mt-3">
+            All-Inkl.com verarbeitet Daten in unserem Auftrag als Auftragsverarbeiter. Weitere Informationen zum
+            Datenschutz bei All-Inkl.com findest du unter
+            <a class="text-primary underline" href="https://all-inkl.com/datenschutzinformationen/" target="_blank" rel="noopener">all-inkl.com/datenschutzinformationen/</a>.
+          </p>
+
+          <h3 class="text-xl font-headline font-semibold text-primary mt-8 mb-3">SSL-/TLS-Verschlüsselung</h3>
+          <p>
+            Diese Website nutzt aus Sicherheitsgründen eine SSL-/TLS-Verschlüsselung. Eine verschlüsselte Verbindung
+            erkennst du am Schloss-Symbol in der Adresszeile deines Browsers und daran, dass die Adresse mit
+            „https://" beginnt. Dadurch werden deine Daten während der Übertragung vor unbefugtem Zugriff geschützt.
+          </p>
+
+          <h3 class="text-xl font-headline font-semibold text-primary mt-8 mb-3">Server-Log-Files</h3>
+          <p>
+            <strong>Verarbeitete Daten:</strong> IP-Adresse, Datum und Uhrzeit der Anfrage, Browser-Typ,
+            Betriebssystem, Referrer-URL, Zugriffsstatus (HTTP-Status-Code), übertragene Datenmenge.
+          </p>
+          <p class="mt-3">
+            <strong>Zweck:</strong> Gewährleistung der technischen Funktionalität und Sicherheit der Website,
+            Erkennung und Behebung technischer Fehler, Schutz vor Missbrauch.
+          </p>
+          <p class="mt-3">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO.<br />
+            <strong>Speicherdauer:</strong> Server-Log-Files werden üblicherweise nach 7–14 Tagen automatisch gelöscht.
+          </p>
+        </section>
+
+        <section class="scroll-mt-40" id="cookies">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Einsatz von Cookies und Einwilligungsmanagement</h2>
+          <p>
+            <strong>Verarbeitete Daten:</strong> Cookie-Einstellungen und Einwilligungspräferenzen.
+          </p>
+          <p class="mt-3">
+            Wir verwenden das Open-Source-Tool <strong>Klaro v0.7.11</strong> als Consent-Management-Plattform (CMP).
+            Klaro ermöglicht dir, selbst zu entscheiden, welche Technologien auf dieser Website eingesetzt werden
+            dürfen und welche nicht.
+          </p>
+          <p class="mt-3">
+            <strong>Technische Details:</strong> Das Klaro-Konfigurationsskript wird von unserem eigenen Server geladen.
+            Die Klaro-Oberfläche wird von einem externen CDN bereitgestellt (cdn.kiprotect.com, betrieben durch die
+            KIProtect GmbH, Deutschland). Dadurch werden minimale Daten (IP-Adresse, Referer, Browser-Informationen)
+            an KIProtect übermittelt.
+          </p>
+          <p class="mt-3">
+            <strong>Cookie-Speicherung:</strong> Deine Cookie-Einstellungen werden in einem Cookie namens „klaro" auf der
+            Domain angestellt-pkv.de gespeichert. Dieses Cookie ist technisch notwendig und wird auf Grundlage von
+            Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Speicherung deiner Einwilligungspräferenzen) gesetzt.
+            Das Klaro-Cookie hat eine Gültigkeitsdauer von 12 Monaten.
+          </p>
+          <p class="mt-3">
+            <strong>Widerspruchsrecht:</strong> Du kannst deine Cookie-Einstellungen jederzeit über die Schaltfläche
+            „Datenschutz-Einstellungen" im Footer ändern.
+          </p>
+
+          <h3 class="text-xl font-headline font-semibold text-primary mt-8 mb-3">Google Analytics 4</h3>
+          <p>
+            <strong>Verarbeitete Daten:</strong> Anonymisierte IP-Adresse, Geräte-ID, Browser-Informationen,
+            Besuchsdauer, Seitenaufrufe, Nutzerverhalten (Klicks, Scrolling), Referrer-URL.
+          </p>
+          <p class="mt-3">
+            Diese Website nutzt <strong>Google Analytics 4 (GA4)</strong>, einen Webanalysedienst der
+            Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.
+          </p>
+          <p class="mt-3">
+            <strong>Wichtig:</strong> Google Analytics wird <strong>nur nach deiner ausdrücklichen Einwilligung</strong>
+            über das Klaro-Cookie-Banner aktiviert und geladen. Ohne deine Zustimmung erfolgt keine Datenübermittlung
+            an Google.
+          </p>
+          <p class="mt-3">
+            <strong>Datenschutzmaßnahmen:</strong> Wir verwenden GA4 mit aktivierter IP-Anonymisierung (anonymize_ip: true).
+            Deine IP-Adresse wird dadurch innerhalb der EU/EWR gekürzt, bevor sie an Google übermittelt wird.
+          </p>
+          <p class="mt-3">
+            <strong>Datenspeicherung:</strong> Die in GA4 erhobenen Daten werden standardmäßig nach 14 Monaten automatisch gelöscht.
+          </p>
+          <p class="mt-3">
+            <strong>Datentransfer in Drittländer:</strong> Die Daten werden an Google-Server in den USA übermittelt.
+            Google hat sich dem EU-US Data Privacy Framework (DPF) unterworfen.
+          </p>
+          <p class="mt-3">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (deine ausdrückliche Einwilligung).
+          </p>
+          <p class="mt-3">
+            <strong>Widerruf:</strong> Du kannst deine Einwilligung jederzeit über „Datenschutz-Einstellungen" im
+            Footer widerrufen oder das
+            <a class="text-primary underline" href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-Out Browser Add-on</a> installieren.
+          </p>
+        </section>
+
+        <section class="scroll-mt-40" id="fonts">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Lokal gehostete Schriftarten</h2>
+          <p>
+            <strong>Verarbeitete Daten:</strong> Keine personenbezogenen Daten.
+          </p>
+          <p class="mt-3">
+            Diese Website verwendet ausschließlich lokal gehostete Schriftarten und Icons (Material Symbols Outlined
+            als TTF-Datei). Die Schriftdateien werden direkt von unserem Server geladen, nicht von externen CDNs
+            wie Google Fonts. Dadurch werden keine IP-Adressen oder Browser-Informationen an Dritte übermittelt.
+          </p>
+          <p class="mt-3">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einheitlicher
+            und schneller Darstellung).
+          </p>
+        </section>
+
+        <section class="scroll-mt-40" id="kontakt">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Kontaktaufnahme</h2>
+          <p>
+            <strong>Verarbeitete Daten:</strong> Name, E-Mail-Adresse, Telefonnummer, Nachrichteninhalt.
+          </p>
+          <p class="mt-3">
+            <strong>Zweck:</strong> Bearbeitung deiner Anfrage, Kontaktaufnahme und Beantwortung von Fragen,
+            Kommunikation bezüglich deiner Anfrage.
+          </p>
+          <p class="mt-3">
+            Wenn du uns per E-Mail, Telefon oder WhatsApp kontaktierst, werden die von dir übermittelten Daten
+            (Name, Kontaktdaten, Inhalt der Anfrage) zum Zweck der Bearbeitung gespeichert.
+          </p>
+
+          <h3 class="text-xl font-headline font-semibold text-primary mt-8 mb-3">Externe Terminbuchung (Calendly)</h3>
+          <p>
+            Für die Online-Terminvereinbarung verlinken wir auf
+            <a class="text-primary underline" href="https://calendly.com/pkv-welt/" target="_blank" rel="noopener">Calendly</a>
+            (Calendly LLC, 271 17th St NW, Ste 1000, Atlanta, Georgia 30363, USA). Wenn du diesen Link nutzt, gelten die
+            <a class="text-primary underline" href="https://calendly.com/privacy" target="_blank" rel="noopener">Datenschutzbestimmungen von Calendly</a>.
+            Calendly verarbeitet deine Daten unter dem EU-US Data Privacy Framework.
+          </p>
+
+          <h3 class="text-xl font-headline font-semibold text-primary mt-8 mb-3">WhatsApp</h3>
+          <p>
+            Wir bieten die Möglichkeit, uns über WhatsApp zu kontaktieren. WhatsApp wird betrieben von
+            Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland. Wenn du den WhatsApp-Link
+            nutzt, gelten die
+            <a class="text-primary underline" href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noopener">Datenschutzbestimmungen von WhatsApp</a>.
+            Wir weisen darauf hin, dass WhatsApp Zugriff auf Metadaten der Kommunikation hat.
+          </p>
+
+          <p class="mt-6">
+            <strong>Speicherdauer:</strong> Die im Rahmen der Kontaktaufnahme übermittelten Daten werden auf
+            unserem Hosting-Server (All-Inkl.com) für die Dauer der Bearbeitung deiner Anfrage gespeichert. Nach
+            vollständiger Bearbeitung werden die Daten gelöscht, sofern keine gesetzliche Aufbewahrungspflicht besteht.
+          </p>
+          <p class="mt-3">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Anfragen) sowie
+            Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Beantwortung von Anfragen).
+          </p>
+        </section>
+
+        <section class="scroll-mt-40" id="rechner">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Rechner-Tools (Self-Hosted)</h2>
+          <p>
+            <strong>Verarbeitete Daten:</strong> Eingabedaten zur Berechnung (z. B. Alter, Gehalt, Beitrag, Tarif­daten).
+          </p>
+          <p class="mt-3">
+            <strong>Zweck:</strong> Erstellung von Berechnungen und Orientierungshilfen zur privaten Krankenversicherung
+            für Angestellte.
+          </p>
+          <p class="mt-3">
+            Diese Website enthält selbst gehostete Rechner-Tools im Verzeichnis <code>/rechner-tools/</code>. Diese
+            werden vollständig von unserem Server bereitgestellt und verwenden keine externen APIs. Deine Eingaben
+            verlassen den Browser nicht, werden nicht an Dritte übermittelt und nicht gespeichert.
+          </p>
+          <p class="mt-3">
+            Nutzt du am Ende eines Rechners die Schaltfläche „Ergebnis per E-Mail senden", wird dein lokaler
+            Mail-Client mit einer vorausgefüllten E-Mail an <a class="text-primary underline" href="mailto:beratung@angestellt-pkv.de">beratung@angestellt-pkv.de</a>
+            geöffnet. Erst mit dem Absenden durch dich werden die Daten an uns übermittelt.
+          </p>
+          <p class="mt-3">
+            <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Bereitstellung
+            von Beratungstools), bei Kontaktanfrage zusätzlich Art. 6 Abs. 1 lit. b DSGVO.
+          </p>
+        </section>
+
+        <section class="scroll-mt-40" id="speicherung">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Datenspeicherung und Löschung</h2>
+          <p>
+            Wir speichern personenbezogene Daten nur so lange, wie dies für die Zwecke erforderlich ist, für die
+            die Daten erhoben wurden, oder solange gesetzliche Aufbewahrungspflichten bestehen.
+          </p>
+          <p class="mt-3"><strong>Spezifische Fristen:</strong></p>
+          <ul class="list-disc pl-6 mt-2 space-y-1">
+            <li><strong>Kontaktanfragen (E-Mail, Telefon):</strong> bis zu 3 Monate nach Bearbeitung</li>
+            <li><strong>Server-Logs:</strong> 7–14 Tage (automatisch durch Hosting-Provider)</li>
+            <li><strong>Klaro-Cookies:</strong> 12 Monate</li>
+            <li><strong>Google Analytics-Daten:</strong> 14 Monate (automatisch durch Google)</li>
+            <li><strong>Vertragsrelevante Unterlagen:</strong> bis zu 10 Jahre (HGB / AO)</li>
+          </ul>
+        </section>
+
+        <section class="scroll-mt-40" id="dritte">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Übermittlung von Daten an Dritte</h2>
+          <p>
+            <strong>Grundprinzip:</strong> Wir geben deine personenbezogenen Daten nicht an Dritte weiter, sofern
+            diese nicht zur Erfüllung des Vertragszwecks notwendig oder per Gesetz erforderlich sind.
+          </p>
+          <p class="mt-3"><strong>Folgende Empfänger erhalten Zugang zu deinen Daten:</strong></p>
+          <ul class="list-disc pl-6 mt-2 space-y-1">
+            <li><strong>ALL-INKL.COM</strong> (Hosting-Provider) – Auftragsverarbeiter nach Art. 28 DSGVO</li>
+            <li><strong>KIProtect GmbH</strong> (Klaro CDN) – minimale technische Daten für Bereitstellung des Consent-Banners</li>
+            <li><strong>Google Ireland Limited</strong> (Google Analytics) – bei ausdrücklicher Einwilligung (IP-anonymisiert)</li>
+            <li><strong>Calendly LLC</strong> – bei Nutzung der Online-Terminvereinbarung (externer Link)</li>
+            <li><strong>Meta Platforms Ireland Limited</strong> – bei Nutzung der WhatsApp-Kontaktmöglichkeit (externer Link)</li>
+          </ul>
+          <p class="mt-3">
+            <strong>Internationale Datenübermittlung:</strong> Datentransfers an Google, Calendly und Meta erfolgen
+            unter dem EU-US Data Privacy Framework (DPF). Für diese Übermittlungen gelten angemessene Datenschutz­sicherungen
+            gemäß Art. 44–49 DSGVO.
+          </p>
+        </section>
+
+        <section class="scroll-mt-40" id="sicherheit">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Sicherheitsmaßnahmen</h2>
+          <p>
+            Wir setzen technische und organisatorische Maßnahmen um, um deine Daten vor Verlust, Zerstörung,
+            unbefugtem Zugriff und unberechtigter Verarbeitung zu schützen:
+          </p>
+          <ul class="list-disc pl-6 mt-2 space-y-1">
+            <li>SSL-/TLS-Verschlüsselung aller Datenübertragungen (HTTPS)</li>
+            <li>Sichere Speicherung auf gesicherten Hosting-Servern (All-Inkl.com)</li>
+            <li>Regelmäßige Sicherheits-Updates und Patches</li>
+            <li>Datensparsamkeit (Minimale Datenerhebung)</li>
+            <li>Zugriffskontrolle und Authentifizierung</li>
+          </ul>
+        </section>
+
+        <section class="scroll-mt-40" id="rechte">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Deine Rechte</h2>
+          <p>Nach Art. 13–22 DSGVO hast du folgende Rechte in Bezug auf deine personenbezogenen Daten:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li><strong>Auskunftsrecht (Art. 15 DSGVO):</strong> Auskunft über die Verarbeitung deiner Daten</li>
+            <li><strong>Berichtigungsrecht (Art. 16 DSGVO):</strong> Berichtigung unrichtiger oder unvollständiger Daten</li>
+            <li><strong>Recht auf Löschung (Art. 17 DSGVO):</strong> Löschung deiner Daten unter bestimmten Bedingungen</li>
+            <li><strong>Einschränkung der Verarbeitung (Art. 18 DSGVO)</strong></li>
+            <li><strong>Datenportabilität (Art. 20 DSGVO):</strong> Übermittlung in strukturierter, maschinenlesbarer Form</li>
+            <li><strong>Widerspruchsrecht (Art. 21 DSGVO)</strong></li>
+            <li><strong>Widerruf von Einwilligungen (Art. 7 Abs. 3 DSGVO)</strong></li>
+            <li><strong>Beschwerderecht</strong> bei einer Datenschutzaufsichtsbehörde</li>
+          </ul>
+          <p class="mt-4">
+            <strong>Geltendmachung:</strong> Kontaktiere uns dafür bitte unter
+            <a class="text-primary underline" href="mailto:beratung@angestellt-pkv.de">beratung@angestellt-pkv.de</a>
+            oder postalisch an Tim Bökemeier, Dornberger Str. 37a, 33615 Bielefeld. Wir werden deine Anfrage zügig
+            (spätestens innerhalb von 30 Tagen) bearbeiten.
+          </p>
+        </section>
+
+        <section class="scroll-mt-40" id="aufsicht">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Zuständige Aufsichtsbehörde</h2>
+          <p>
+            Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW)<br />
+            Kavalleriestraße 2–4<br />
+            40213 Düsseldorf<br />
+            Telefon: (0211) 38424-0<br />
+            E-Mail: <a class="text-primary underline" href="mailto:poststelle@ldi.nrw.de">poststelle@ldi.nrw.de</a><br />
+            <a class="text-primary underline" href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de</a>
+          </p>
+        </section>
+
+        <section class="scroll-mt-40" id="änderung">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Änderung dieser Datenschutzerklärung</h2>
+          <p>
+            Wir überprüfen diese Datenschutzerklärung regelmäßig und aktualisieren sie, wenn sich die technische
+            Infrastruktur oder die geltenden Gesetze ändern.
+          </p>
+          <p class="mt-3"><strong>Aktuelle Version:</strong> 15. April 2026.</p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</Base>

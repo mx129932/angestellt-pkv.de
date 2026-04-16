@@ -1,0 +1,7 @@
+---
+import T4 from '../../layouts/T4.astro';
+---
+<T4
+  title='Über uns'
+  description='Tim Bökemeier und das PKV-Welt Team: Spezialisiert auf private Krankenversicherung für Angestellte. Unabhängig, ohne Provisionen.'
+/>

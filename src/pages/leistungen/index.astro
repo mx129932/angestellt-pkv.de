@@ -1,7 +1,30 @@
 ---
-import T3 from '../../layouts/T3.astro';
+import CategoryHub from '../../layouts/CategoryHub.astro';
+
+const faq = [
+  {
+    q: 'Welche Leistungsbausteine sind wirklich wichtig?',
+    a: 'Kernbausteine sind ambulant (Arztbesuche, Heilmittel), stationär (Krankenhaus, Chefarzt, Einzelzimmer) und zahnärztlich (inkl. Zahnersatz). Dazu kommen Krankenhaustagegeld und Auslandsabdeckung. Wichtiger als maximale Leistung ist, dass die Bausteine zum Lebensstil passen und bezahlbar bleiben.',
+  },
+  {
+    q: 'Was ist der Basistarif und für wen ist er relevant?',
+    a: 'Der Basistarif ist ein gesetzlich reglementierter PKV-Tarif mit GKV-ähnlichen Leistungen und gedeckeltem Höchstbeitrag. Pflicht-Angebot für alle Versicherer. Relevant für PKV-Versicherte in finanziellen Notlagen oder als Auffangtarif. Keine Empfehlung für Neukunden, die in die PKV wechseln wollen.',
+  },
+  {
+    q: 'Wie erkennt man die "beste" PKV?',
+    a: 'Die "eine beste PKV" gibt es nicht. Seriös bewertbar sind einzelne Tarife anhand von Leistungsumfang, Beitragsstabilität (10-Jahres-Historie), Solvenzquote, RfB-Zuführung und Tarifwechselrechten. Rankings ohne diese Kennzahlen sind Marketing, keine Analyse.',
+  },
+  {
+    q: 'Was sind typische Qualitätsunterschiede zwischen Tarifen?',
+    a: 'Häufig unterschätzt: Höhe der GOÄ-Erstattung (2,3-fach vs. 3,5-fach Satz), Heilpraktikerleistungen, Psychotherapie-Obergrenzen, Kieferorthopädie bei Kindern und Hilfsmittelkataloge. Zwei Tarife zum gleichen Preis können hier gravierend auseinanderliegen.',
+  },
+];
 ---
-<T3
+<CategoryHub
+  kategorieSlug='leistungen'
   title='Leistungen der PKV für Angestellte'
-  description='Tarifbausteine, Basistarif, beste PKV und Qualitätsunterschiede.'
+  description='Tarifbausteine, Basistarif, Qualitätsunterschiede und seriöse Tarifbewertung. Welche Leistungen in der PKV für Angestellte wirklich zählen.'
+  keyword='Leistungen'
+  intro='Kein PKV-Tarif ist wie der andere. Dieser Bereich zeigt, welche Leistungsbausteine den Alltag wirklich prägen, wann der Basistarif sinnvoll ist und woran du einen hochwertigen Tarif objektiv erkennst (jenseits von Hochglanzprospekten und Rankings).'
+  faq={faq}
 />

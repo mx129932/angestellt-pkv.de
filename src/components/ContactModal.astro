@@ -1,0 +1,155 @@
+---
+/**
+ * ContactModal — Globales Kontakt-Modal für PKV-Angestellt
+ * Wird von Rechner-iframes via postMessage getriggert
+ * Kanäle: Termin (Calendly), Telefon, E-Mail, WhatsApp
+ * Safari-safe: native Links, kein JS-Framework
+ */
+---
+
+<div id="contact-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-label="Kontakt aufnehmen">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" data-modal-close></div>
+
+  <!-- Modal Panel -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-[#002046] to-[#004d7a] px-6 py-5 md:px-8 md:py-6 flex items-center justify-between">
+      <div>
+        <h3 class="text-white font-bold text-lg md:text-xl">Kontakt aufnehmen</h3>
+        <p class="text-white/70 text-sm">Wählen Sie Ihren bevorzugten Weg</p>
+      </div>
+      <button data-modal-close class="text-white/80 hover:text-white transition-colors p-1" aria-label="Schließen">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+
+    <!-- Contact Options -->
+    <div class="p-6 md:p-8 space-y-3">
+      <!-- Termin buchen (Calendly) -->
+      <a href="https://calendly.com/pkv-welt/" target="_blank" rel="noopener" aria-label="Termin buchen - öffnet Calendly in neuem Tab"
+        class="flex items-center gap-4 p-4 rounded-xl border-2 border-[#D4A017]/20 hover:border-[#D4A017] hover:bg-[#D4A017]/5 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-[#D4A017]/10 flex items-center justify-center shrink-0 group-hover:bg-[#D4A017]/20 transition-colors">
+          <span class="material-symbols-outlined text-[#D4A017] text-2xl">calendar_month</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <span class="font-bold text-[#002046] block">Termin buchen</span>
+          <span class="text-[#515a6b] text-sm">Online-Kalender, sofort verfügbar</span>
+        </div>
+        <span class="material-symbols-outlined text-slate-300 group-hover:text-[#D4A017] transition-colors">arrow_forward</span>
+      </a>
+
+      <!-- Telefon -->
+      <a href="tel:+4952197798232"
+        class="flex items-center gap-4 p-4 rounded-xl border-2 border-slate-100 hover:border-[#002046]/30 hover:bg-[#002046]/5 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-[#002046]/10 flex items-center justify-center shrink-0 group-hover:bg-[#002046]/20 transition-colors">
+          <span class="material-symbols-outlined text-[#002046] text-2xl">call</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <span class="font-bold text-[#002046] block">Anrufen</span>
+          <span class="text-[#515a6b] text-sm">+49 521 9779 8232</span>
+        </div>
+        <span class="material-symbols-outlined text-slate-300 group-hover:text-[#002046] transition-colors">arrow_forward</span>
+      </a>
+
+      <!-- E-Mail -->
+      <a href="mailto:beratung@angestellt-pkv.de"
+        class="flex items-center gap-4 p-4 rounded-xl border-2 border-slate-100 hover:border-[#002046]/30 hover:bg-[#002046]/5 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-[#002046]/10 flex items-center justify-center shrink-0 group-hover:bg-[#002046]/20 transition-colors">
+          <span class="material-symbols-outlined text-[#002046] text-2xl">mail</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <span class="font-bold text-[#002046] block">E-Mail schreiben</span>
+          <span class="text-[#515a6b] text-sm">beratung@angestellt-pkv.de</span>
+        </div>
+        <span class="material-symbols-outlined text-slate-300 group-hover:text-[#002046] transition-colors">arrow_forward</span>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/491797998239?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20PKV-Beratung%20f%C3%BCr%20Angestellte." target="_blank" rel="noopener" aria-label="WhatsApp-Nachricht senden - öffnet WhatsApp in neuem Tab"
+        class="flex items-center gap-4 p-4 rounded-xl border-2 border-slate-100 hover:border-green-500/30 hover:bg-green-50 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center shrink-0 group-hover:bg-green-200 transition-colors">
+          <svg class="w-6 h-6 text-green-600" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <span class="font-bold text-[#002046] block">WhatsApp</span>
+          <span class="text-[#515a6b] text-sm">Direkt per Chat schreiben</span>
+        </div>
+        <span class="material-symbols-outlined text-slate-300 group-hover:text-green-600 transition-colors">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Footer hint -->
+    <div class="px-6 pb-5 md:px-8 md:pb-6">
+      <p class="text-xs text-center text-[#515a6b]/60">Alle Beratungen sind kostenlos und unverbindlich.</p>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  // Modal open/close logic — Safari-safe
+  function initContactModal() {
+    const modal = document.getElementById('contact-modal');
+    if (!modal) return;
+
+    // Open: via data-contact-modal OR postMessage from iframe
+    window.openContactModal = function() {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    };
+
+    // Listen for postMessage from iframes
+    window.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'open-contact-modal') {
+        window.openContactModal();
+      }
+    });
+
+    // Open: all elements with data-contact-modal (direct)
+    document.querySelectorAll('[data-contact-modal]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.openContactModal();
+      });
+    });
+
+    // Close: all elements with data-modal-close + Escape key
+    modal.querySelectorAll('[data-modal-close]').forEach(el => {
+      el.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // Run on page load + Astro transitions
+  initContactModal();
+  document.addEventListener('astro:page-load', initContactModal);
+</script>
+
+<style>
+  #contact-modal:not(.hidden) {
+    animation: modal-fade 0.2s ease-out;
+  }
+
+  #contact-modal:not(.hidden) > div:last-of-type {
+    animation: modal-scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes modal-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes modal-scale {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+</style>

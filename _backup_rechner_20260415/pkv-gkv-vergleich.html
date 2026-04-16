@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GKV vs. PKV Vergleich 2026 · PKV für Angestellte</title>
+<style>
+  :root {
+    --primary: #002046;
+    --accent: #4c616c;
+    --accent-light: #cfe6f2;
+    --surface: #FAF7F2;
+    --on-surface: #1a1f2e;
+    --on-surface-variant: #515a6b;
+    --outline: #cfd2d8;
+    --success: #1f7a3a;
+    --warn: #d97706;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--on-surface);
+    background: var(--surface);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
+  h1 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.6rem; margin: 0 0 4px; }
+  .lead { color: var(--on-surface-variant); font-size: .95rem; margin: 0 0 20px; }
+  .card {
+    background: #fff;
+    border: 1px solid rgba(0,32,70,.08);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+    margin-bottom: 20px;
+  }
+  .card h2 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.15rem; margin: 0 0 14px; }
+  .input-row { position: relative; margin-bottom: 16px; }
+  .input-row label { display: block; font-size: .85rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
+  input[type="number"] {
+    width: 100%; padding: 11px 90px 11px 14px; border: 1px solid var(--outline);
+    border-radius: 8px; background: #fff; font-size: 1.05rem; font-weight: 600;
+    color: var(--on-surface); outline: none; transition: border-color .15s;
+    -moz-appearance: textfield;
+  }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+  }
+  input:focus { border-color: var(--primary); }
+  .suffix {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--on-surface-variant); font-weight: 600; font-size: .9rem; pointer-events: none;
+  }
+  .comparison-table {
+    width: 100%; border-collapse: collapse; margin-top: 16px;
+    border: 1px solid var(--outline);border-radius: 8px; overflow: hidden;
+  }
+  .comparison-table th, .comparison-table td {
+    padding: 12px; text-align: left; font-size: .9rem;
+  }
+  .comparison-table th {
+    background: var(--primary); color: #fff; font-weight: 700;
+  }
+  .comparison-table tr:nth-child(even) { background: #f9fafb; }
+  .comparison-table tr:hover { background: var(--accent-light); }
+  .comparison-table .pro { color: var(--success); font-weight: 600; }
+  .comparison-table .con { color: var(--warn); font-weight: 600; }
+  .result-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;
+  }
+  .result-box {
+    padding: 16px; border-radius: 8px; text-align: center;
+  }
+  .result-box.gkv {
+    background: #d4edda; border: 1px solid #c3e6cb; color: var(--success);
+  }
+  .result-box.pkv {
+    background: #fff3cd; border: 1px solid #ffe69c; color: #856404;
+  }
+  .result-box strong { display: block; font-size: 1.3rem; font-weight: 700; margin: 8px 0; }
+  .hint { font-size: .85rem; color: var(--on-surface-variant); margin-top: 8px; }
+  .cta-box {
+    margin-top: 24px; background: var(--primary); color: #fff;
+    padding: 30px; border-radius: 12px; text-align: center;
+  }
+  .cta-box .text p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.82); }
+  .cta-box .text strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; color: #fff; margin-bottom: 8px; }
+  .cta-buttons {
+    display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--warn); color: #fff; font-weight: 600; font-size: .95rem;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none;
+    transition: background .15s; cursor: pointer; flex: 1; min-width: 200px;
+  }
+  @media (max-width: 600px) { .cta-buttons { flex-direction: column; } .cta-btn { min-width: 100%; } }
+  .cta-btn:hover { background: #b45309; }
+  .cta-btn#cta-termin {
+    background: transparent; color: #fff; border: 2px solid var(--warn); font-weight: 600;
+  }
+  .cta-btn#cta-termin:hover { background: rgba(217,119,6,.1); border-color: #b45309; }
+  .trust-badges {
+    margin-top: 14px; display: flex; gap: 16px; justify-content: center;
+    flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.85);
+  }
+  .trust-badges span { display: flex; align-items: center; gap: 4px; }
+  .trust-badges span::before { content: "✓"; font-weight: bold; color: #4ade80; }
+  .note { margin-top: 20px; font-size: .78rem; color: var(--on-surface-variant); line-height: 1.5; }
+  @media (max-width: 600px) {
+    .result-grid { grid-template-columns: 1fr; }
+    .comparison-table { font-size: .85rem; }
+    .comparison-table th, .comparison-table td { padding: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>⚖️ GKV oder PKV? Der Vergleich</h1>
+  <p class="lead">Welche Krankenversicherung passt zu dir als Angestellte/r? Vergleich nach deinem Gehalt & deinen Zielen — keine versteckte Agenda, nur Fakten.</p>
+
+  <div class="card">
+    <h2>Dein Gehalt & Situation</h2>
+
+    <div class="input-row">
+      <label for="gehalt">Dein Brutto-Jahresgehalt</label>
+      <div style="position: relative;">
+        <input type="number" id="gehalt" min="0" step="100" value="60000" />
+        <span class="suffix">€ / Jahr</span>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <label for="bonusgebühren">Bonus/Gebühren (optional)</label>
+      <div style="position: relative;">
+        <input type="number" id="bonusgebühren" min="0" step="100" value="0" />
+        <span class="suffix">€ / Jahr</span>
+      </div>
+      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
+        Zählt mit zur JAEG-Grenze (77.400 €)
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💡 GKV vs. PKV — Die Kernunterschiede</h2>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Punkt</th>
+          <th>GKV (Gesetzlich)</th>
+          <th>PKV (Privat)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Beitrag</strong></td>
+          <td>14,6% + Zusatzbeitrag vom Brutto</td>
+          <td><span class="pro">Festbeitrag</span> (unabhängig vom Gehalt)</td>
+        </tr>
+        <tr>
+          <td><strong>Versicherungspflicht</strong></td>
+          <td>Unter 77.400 €: Pflicht</td>
+          <td><span class="pro">Über 77.400 €: Frei wählbar</span></td>
+        </tr>
+        <tr>
+          <td><strong>Arztgebühren</strong></td>
+          <td>Besuche zahlreich, Praxisgebühren gering</td>
+          <td><span class="pro">Selektive Wahl</span>, bessere Verfügbarkeit</td>
+        </tr>
+        <tr>
+          <td><strong>Krankenhaus</strong></td>
+          <td>Regelgebühren</td>
+          <td><span class="pro">Chefarztbehandlung optional</span></td>
+        </tr>
+        <tr>
+          <td><strong>Altersrückstellung</strong></td>
+          <td><span class="con">Keine</span> — Beitrag steigt mit Alter</td>
+          <td><span class="pro">Ja</span> — Beitrag stabilisiert sich</td>
+        </tr>
+        <tr>
+          <td><strong>Zahnbehandlung</strong></td>
+          <td>Gering, Implantate teuer</td>
+          <td><span class="pro">Individuell wählbar</span>, Implantate oft versichert</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>📊 Brutto vs. Netto — Was zahlst du wirklich?</h2>
+    <div class="result-grid">
+      <div class="result-box gkv">
+        <strong>GKV-Beitrag</strong>
+        <span id="gkv-beitrag">≈ 890 €/Monat</span>
+        <div class="hint">Das ist 14,6% deines Brutto (vereinfacht)</div>
+      </div>
+      <div class="result-box pkv">
+        <strong>PKV-Beitrag</strong>
+        <span id="pkv-beitrag">≈ 350-450 €/Monat</span>
+        <div class="hint">Durchschnitt für dein Alter (Schätzung)</div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; padding: 14px; background: #f0f9ff; border-left: 4px solid #0369a1; border-radius: 4px; font-size: .9rem;">
+      <strong>Wichtig:</strong> Dein Arbeitgeber zahlt 50% des PKV-Beitrags mit. Wenn du wechselst, sparst du dich selbst einen Teil — aber gibst auch etwas auf (Versicherungsprinzip).
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>❓ Wann ist PKV sinnvoll?</h2>
+    <p style="margin: 0; font-size: .95rem; color: var(--on-surface-variant); line-height: 1.6;">
+      <strong style="color: var(--primary);">✓ PKV könnte passen, wenn du:</strong><br>
+      • Über 77.400 € verdienst<br>
+      • Zahn- oder Zahnersatz-Versorgung wichtig ist<br>
+      • Arztwahl und Chefarzt-Behandlung möchtest<br>
+      • Langfristig planen willst (Altersrückstellung)<br>
+      • Als Angestellte/r stabil arbeitetest (kein Risiko von Selbstständigkeit)<br><br>
+      <strong style="color: var(--primary);">✗ GKV ist besser, wenn:</strong><br>
+      • Du unter 77.400 € verdienst<br>
+      • Du häufig zum Arzt gehst (GKV ist dann billiger)<br>
+      • Du nicht absehbar mehr Gehalt bekommst<br>
+      • Du Sicherheit durch Versicherungspflicht magst
+    </p>
+  </div>
+
+  <div class="cta-box">
+    <div class="text">
+      <strong>Welche Versicherung passt wirklich zu dir?</strong>
+      <p>Wir besprechen deine persönliche Situation — Gehalt, Alter, Gesundheit, Lebenssituation. Dann weißt du, ob PKV oder GKV Sinn macht.</p>
+    </div>
+    <div class="cta-buttons">
+      <button class="cta-btn" id="send-result">
+        → Ergebnis per E-Mail senden
+      </button>
+      <button class="cta-btn" id="cta-termin">
+        → Termin buchen
+      </button>
+    </div>
+    <div class="trust-badges">
+      <span>Kostenfrei</span>
+      <span>Unverbindlich</span>
+      <span>Vertraulich</span>
+    </div>
+  </div>
+
+  <p class="note">
+    Quelle: § 5 SGB V (Versichertenkreis), GKV-Spitzenverband 2026, PKV-Durchschnittstarife.
+    Beiträge sind Richtwerte. Konsultiere einen Versicherer für genaue Kalkulationen.
+  </p>
+</div>
+
+<script>
+function updateComparison() {
+  const gehalt = parseFloat(document.getElementById('gehalt').value) || 60000;
+  const bonus = parseFloat(document.getElementById('bonusgebühren').value) || 0;
+  const gesamtgehalt = gehalt + bonus;
+
+  const gkvBeitrag = gesamtgehalt * 0.146;
+  const pkvEstimate = 400;
+
+  document.getElementById('gkv-beitrag').textContent = `≈ ${Math.round(gkvBeitrag/12)} €/Monat`;
+  document.getElementById('pkv-beitrag').textContent = `≈ ${pkvEstimate} €/Monat`;
+}
+
+function sendResults(e) {
+  e.preventDefault();
+  const gehalt = document.getElementById('gehalt').value || '—';
+  const lines = [];
+  lines.push("Rechner: PKV vs. GKV Vergleich");
+  lines.push("");
+  lines.push("Mein Gehalt: " + gehalt + " €/Jahr");
+  lines.push("");
+  lines.push("Ich möchte die beste Versicherungslösung für meine Situation besprechen.");
+
+  const subject = encodeURIComponent("Rechner-Ergebnis: GKV vs. PKV");
+  const body = encodeURIComponent(lines.join("\n"));
+  const mailtoUrl = "mailto:beratung@angestellt-pkv.de?subject=" + subject + "&body=" + body;
+
+  const a = document.createElement("a");
+  a.href = mailtoUrl;
+  a.target = "_top";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+document.getElementById('gehalt').addEventListener('input', updateComparison);
+document.getElementById('bonusgebühren').addEventListener('input', updateComparison);
+document.getElementById('send-result').addEventListener('click', sendResults);
+document.getElementById('cta-termin').addEventListener('click', () => {
+  window.open('https://calendly.com/pkv-welt/', '_blank');
+});
+
+updateComparison();
+</script>
+</body>
+</html>

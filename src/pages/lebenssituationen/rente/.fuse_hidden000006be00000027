@@ -1,0 +1,117 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'ruhestand', label: 'Was im Ruhestand mit dem PKV-Beitrag passiert' },
+  { id: 'drv_zuschuss', label: 'DRV-Zuschuss: So wird er berechnet' },
+  { id: 'entlastung', label: 'Drei Entlastungsmechanismen' },
+  { id: 'vergleich', label: 'Vergleich: GKV-Rentner vs. PKV-Rentner' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const related = [
+  {
+    href: '/kosten/pkv-im-alter/',
+    kategorie: 'Kosten',
+    title: 'PKV im Alter',
+    teaser: 'Altersrückstellungen und Beiträge im Ruhestand.',
+    icon: 'elderly',
+  },
+  {
+    href: '/kosten/altersrueckstellung/',
+    kategorie: 'Kosten',
+    title: 'Altersrückstellungen erklaert',
+    teaser: '38.800 Euro pro Versichertem durchschnittlich.',
+    icon: 'payments',
+  },
+  {
+    href: '/wechsel/pkv-in-gkv/',
+    kategorie: 'Wechsel',
+    title: 'Zurück in die GKV',
+    teaser: 'Die 55-Jahre-Grenze und Optionen fuer Rentner.',
+    icon: 'swap_horiz',
+  },
+];
+---
+<T6 title='PKV als Rentner: Beitrag, Zuschuss, Entlastung' description='Als PKV-versicherter Rentner erhältst du einen Zuschuss von 8,15 Prozent deiner Bruttorente. Wie der Beitrag im Ruhestand wirklich aussieht.' breadcrumb={{ kategorie: 'Lebenssituationen', kategorieHref: '/lebenssituationen/' }} toc={toc} date='Update April 2026' readingTime='9 Min. Lesezeit' related={related}>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Der PKV-Beitrag <strong>sinkt NICHT automatisch</strong> im Ruhestand.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>DRV-Zuschuss: <strong>8,15 Prozent deiner Bruttorente</strong>, maximal 50 Prozent des PKV-Beitrags.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span><strong>Drei Entlastungen zusammen:</strong> Rentner-Zuschuss, Wegfall 10%-Zuschlag ab 60, Altersrückstellungen ab 65.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>IGES-Studie Debeka: PKV-Rentner zählen durchschnittlich <strong>600 Euro monatlich</strong> (mit Beihilfe 230 Euro).</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die 55-Jahre-Grenze macht Rückkehr in GKV de facto unmöglich.</span></li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Das Ruhestandsrisiko ist das größte Thema bei PKV für Angestellte. Die Frage ist: Wie teuer wird die PKV, wenn das Einkommen sinkt und du nicht mehr arbeiten kannst.</p>
+  </div>
+
+  <section id='ruhestand' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was im Ruhestand mit dem PKV-Beitrag passiert</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Wichtig: Der PKV-Beitrag sinkt NICHT automatisch. Du zahlst weiterhin den gleichen Beitrag wie im Erwerbsleben, sofern du nicht aktiv etwas änderst.</p>
+      <p>Das ist anders als in der GKV. In der GKV sinkt der Beitrag mit dem Einkommen, also mit der Rente. In der PKV ist das nicht der Fall. Der Beitrag ist an Alter und Tarif gebunden, nicht an Einkommen.</p>
+      <p>Das bedeutet: Du brauchst einen Plan für den Ruhestand. Es gibt aber mehrere Entlastungsmechanismen, die ich im nächsten Punkt erklaere.</p>
+    </div>
+  </section>
+
+  <section id='drv_zuschuss' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>DRV-Zuschuss: So wird er berechnet</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Deutsche Rentenversicherung (DRV) zahlt dir einen Zuschuss zur PKV. Die Regelung: 8,15 Prozent deiner Bruttorente, aber maximal 50 Prozent deines PKV-Beitrags.</p>
+      <p>Beispiel: Deine Bruttorente beträgt 2.500 Euro monatlich. Der DRV-Zuschuss wäre 8,15 Prozent von 2.500 Euro = 203,75 Euro. Wenn dein PKV-Beitrag 600 Euro kostet, wäre 50 Prozent davon 300 Euro. Der Zuschuss wird dann auf das niedriger Minimum begrenzt: 203,75 Euro.</p>
+      <p>Das ist deutlich niedriger als bei GKV-Rentnern, die den vollen 50-Prozent-Zuschuss erhalten.</p>
+    </div>
+  </section>
+
+  <section id='entlastung' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Drei Entlastungsmechanismen</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Mechanismus 1: DRV-Zuschuss</strong> Ab Renteneintritt zahlt die DRV einen Zuschuss (8,15 Prozent der Rente, max. 50 Prozent des PKV-Beitrags). Das ist meist 200 bis 300 Euro monatlich.</p>
+      <p><strong>Mechanismus 2: Wegfall des 10%-Zuschlags</strong> Während der Erwerbstätige zahlte von 21 bis 60 Jahren einen 10-Prozent-Zuschlag für die Altersvorsorge. Ab 60 Jahren (oder Renteneintritt, wenn später) entfällt dieser Zuschlag. Das sind typisch 50 bis 100 Euro weniger pro Monat.</p>
+      <p><strong>Mechanismus 3: Altersrückstellungen ab 65</strong> Ab dem 65. Geburtstag werden deine Altersrückstellungen zur Beitragsreduktion herangezogen. Das kann den Beitrag um 200 bis 400 Euro monatlich senken, je nach dem, wie viel du angespart hast.</p>
+      <p>Zusammen kann das eine Reduktion von 30 bis 50 Prozent des Beitrags bedeuten. Das ist deutlich, aber nicht viel gegen die Ausgangslage.</p>
+    </div>
+  </section>
+
+  <section id='vergleich' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Vergleich: GKV-Rentner vs. PKV-Rentner</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>GKV-Rentner:</strong> Der Beitrag ist einkommensabhängig. Mit 2.500 Euro Rente zahlst du etwa 20 Prozent von dieser Rente als KV-Beitrag (mit DRV-Zuschuss 50 %). Das sind etwa 250 Euro selbst.</p>
+      <p><strong>PKV-Rentner:</strong> Der Beitrag ist unabhängig von der Rente. Mit einem Arbeitnehmer-Beitrag von 600 Euro monatlich zahlt man als Rentner nach Entlastungsmechanismen noch etwa 400 bis 500 Euro monatlich. Der DRV-Zuschuss ist oft niedrig und reicht nicht, um den Beitrag unter 50 Prozent zu drücken.</p>
+      <p>Der GKV-Rentner hat den Vorteil der einkommensabhängigen Berechnung. Der PKV-Rentner hat den Vorteil der Altersrückstellungen, die größere Entlastung ab 65 bieten.</p>
+      <p>In der Realitaet: PKV-Rentner mit niedrigen Renten (unter 2.000 Euro) tragen oft eine deutlich hohere Belastung als GKV-Rentner.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die PKV im Ruhestand ist kein Märchen, aber auch keine Katastrophe, wenn du planst. Die Altersrückstellungen mildern die Belastung ab 65 deutlich.</p>
+      <p>Das zentrale Risiko: Die 55-Jahre-Grenze macht Rückkehr in GKV unmöglich, falls die PKV im Alter untragbar wird. Das ist die eigentliche Sicherheitsfrage bei der Angestellt-PKV.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie hoch ist der DRV-Zuschuss zur PKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>8,15 Prozent deiner Bruttorente, aber maximal 50 Prozent des PKV-Beitrags. Der Zuschuss ist oft niedrig (200 bis 300 Euro), weil die 8,15-Prozent-Grenze haenfig frueh erreicht ist.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Sinkt der PKV-Beitrag im Alter automatisch?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein. Der Beitrag bleibt gleich, es sei denn, du änderst aktiv (z.B. Tarifwechsel). Es gibt aber Entlastungen: Wegfall 10%-Zuschlag, Altersrückstellungen ab 65, DRV-Zuschuss. Zusammen sind das 30 bis 50 Prozent Reduktion, nicht 100 Prozent.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich als Rentner noch in die GKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nur unter seltenen Umstaenden. Die 55-Jahre-Grenze (ab dann keine regulaere Rückkehr in GKV möglich) macht das für die meisten Rentner unmöglich. Einzige Option: Altersarbeitslosigkeit oder extreme Einkommensreduktion. Das ist faktisch selten.</div>
+      </details>
+    </div>
+  </section>
+</T6>

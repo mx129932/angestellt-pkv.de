@@ -1,0 +1,127 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'was-ist', label: 'Was eine Risikovoranfrage ist' },
+  { id: 'warum-anonym', label: 'Warum anonym so wichtig ist' },
+  { id: 'ablauf', label: 'Ablauf in fuenf Schritten' },
+  { id: 'parallele-voranfragen', label: 'Parallele Voranfrage bei mehreren Anbietern' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const related = [
+  {
+    href: '/aufnahme/gesundheitsprüfung/',
+    kategorie: 'Aufnahme',
+    title: 'PKV-Gesundheitsprüfung: Ablauf und Tipps',
+    teaser: 'Bei der PKV-Gesundheitsprüfung werden Vorerkrankungen der letzten 3 bis 10 Jahre abgefragt.',
+    icon: 'shield',
+  },
+  {
+    href: '/aufnahme/risikozuschlag/',
+    kategorie: 'Aufnahme',
+    title: 'PKV-Risikozuschlag: Ursachen, Höhe, Strategien',
+    teaser: 'Ein PKV-Risikozuschlag von 5 bis 50 Prozent kann bei Vorerkrankungen drohen.',
+    icon: 'trending_up',
+  },
+  {
+    href: '/aufnahme/leistungsausschluesse/',
+    kategorie: 'Aufnahme',
+    title: 'PKV-Leistungsausschluss bei Vorerkrankungen',
+    teaser: 'Ein Leistungsausschluss schliesst bestimmte Diagnosen dauerhaft aus.',
+    icon: 'description',
+  },
+];
+---
+
+<T6
+  title='PKV-Risikovoranfrage: Anonym und ohne Risiko'
+  description='Mit einer anonymen Risikovoranfrage erfährst du vorab, ob und zu welchen Konditionen dich ein PKV-Versicherer aufnimmt. So funktioniert es.'
+  breadcrumb={{ kategorie: 'Aufnahme', kategorieHref: '/aufnahme/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='7 Min. Lesezeit'
+  related={related}
+>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Mit einer Risikovoranfrage kannst du vorab testen, zu welchen Konditionen dich ein Versicherer aufnehmen würde.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die Voranfrage ist anonym. Der Versicherer weiß nicht, wer du bist. Es hinterlässt keine Spuren im GDV-System.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Du brauchst einen Makler. Direktanfragen beim Versicherer sind schwierig und oft nicht seriös dokumentiert.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Du kannst bei mehreren Versicherern parallel voranfragen, um die beste Quote zu finden.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die Voranfrage dauert typischerweise 2 bis 4 Wochen. Die Ergebnisse sind danach etwa 6 Monate gültig.</span></li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Die anonyme Risikovoranfrage ist eines der wertvollsten Instrumente, wenn du mit einer Vorerkrankung in die PKV wechseln willst. Sie zeigt dir vorab, wie der Markt dich bewertet, ohne dass der Versicherer deine Identität kennt. Dieser Artikel erklärt dir, wie diese Voranfrage funktioniert, warum sie so wichtig ist und wie du sie konkret nutzt.</p>
+  </div>
+
+  <section id='was-ist' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was eine Risikovoranfrage ist</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Eine Risikovoranfrage ist eine informelle Anfrage an einen Versicherer: "Nehmt ihr einen Menschen mit dieser Krankengeschichte auf, und wenn ja, zu welchen Konditionen?" Der Versicherer bewertet dein gesundheitliches Profil und sagt dir, ob Normal-Annahme, Risikozuschlag, Leistungsausschluss oder Ablehnung wahrscheinlich ist.</p>
+      <p>Das ist nicht verbindlich. Der Versicherer macht dir kein Angebot. Es ist eine inoffizielle Bewertung. Später, wenn du einen echten Antrag stellst, prüft der Versicherer nochmal, und die Antwort kann abweichen. Aber typischerweise wird die Voranfrage bestätigt.</p>
+      <p>Der Clou: Die Voranfrage ist anonym. Der Versicherer kennt deinen Namen nicht. Du fragst "Was ist mit einem 45-jährigen Mann, der vor 3 Jahren einen Bluthochdruck hatte, jetzt aber stabil mit Medikamenten ist?" Der Versicherer antwortet auf diese Frage, ohne zu wissen, wer du bist.</p>
+    </div>
+  </section>
+
+  <section id='warum-anonym' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Warum anonym so wichtig ist</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Wenn du einen echten Antrag bei einem Versicherer stellst und die Antwort ist Ablehnung oder ein hartes Leistungsausschluss, bleibt das dokumentiert. Speziell: Das GDV-Hinweis- und Informationssystem (HIS) ist eine Sperrliste der Versicherungsbranche. Wenn Versicherer A dich ablehnt, können andere Versicherer das im HIS sehen. Das schadet dir bei weiteren Anträgen.</p>
+      <p>Mit einer anonymen Voranfrage passiert das nicht. Der Versicherer gibt dir eine Bewertung, aber es wird nicht erfasst. Wenn du dann sagst "Danke, aber ich bewerbe mich lieber woanders", hat das keine Konsequenzen. Du kannst danach ohne Reputationsnachteil zu Versicherer B oder C gehen.</p>
+      <p>Das ist für Menschen mit ernsthaften Vorerkrankungen entscheidend. Du testest den Markt, ohne dich selbst zu beschädigen.</p>
+      <p>Circa 20 bis 25 Prozent aller Anträge erhalten einen Zuschlag oder Ausschluss. Mit Voranfragen kannst du die Versicherer herausfiltern, bei denen du schlecht bewertet wirst, noch bevor du einen echten Antrag stellst.</p>
+    </div>
+  </section>
+
+  <section id='ablauf' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Ablauf in fuenf Schritten</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Schritt 1: Makler finden.</strong> Du brauchst einen Versicherungsmakler, der das anbietet. Nicht alle Makler machen das, und nicht alle Versicherer akzeptieren anonyme Voranfragen. Ein guter Makler weiß, wer kooperativ ist. Suchkriterium: "PKV Risikovoranfrage anonym" oder "HIS-sichere Voranfrage".</p>
+      <p><strong>Schritt 2: Gesundheitliche Angaben machen.</strong> Du erzählst dem Makler deine Krankengeschichte. Nicht deinen Namen, sondern: Alter, Geschlecht, wichtigste Diagnosen, wann sie festgestellt wurden, aktuelle Medikation, aktuelle Situation. Der Makler dokumentiert das in anonymisierter Form.</p>
+      <p><strong>Schritt 3: Makler sendet Voranfrage.</strong> Der Makler schickt deine anonymisierten Angaben an den Versicherer. Typischerweise auch an mehrere Versicherer gleichzeitig, um Vergleiche zu haben. Das ist erlaubt.</p>
+      <p><strong>Schritt 4: Versicherer antwortet.</strong> Der Versicherer bewertet das Profil und antwortet dem Makler typischerweise innerhalb von 2 bis 4 Wochen. Die Antwort ist: "Normale Annahme" oder "Zuschlag von 15 Prozent" oder "Ausschluss für Bluthochdruck-Folgeerkrankungen" oder "Wir lehnen ab".</p>
+      <p><strong>Schritt 5: Du entscheidest.</strong> Basierend auf den Antworten entscheidest du, ob und bei welchem Versicherer du einen echten Antrag stellst. Die Voranfrage-Bewertungen sind typischerweise 6 Monate lang gültig. Wenn du in dieser Zeit antragst, sollte die Bewertung bestätigt werden.</p>
+    </div>
+  </section>
+
+  <section id='parallele-voranfragen' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Parallele Voranfrage bei mehreren Anbietern</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Das ist einer der besten Strategien bei Vorerkrankungen: Parallele Voranfragen. Du lässt den Makler gleichzeitig bei 3, 4 oder sogar 5 Versicherern anfragen. Jeder Versicherer bewertet dich unabhängig. Die Antworten können unterschiedlich sein.</p>
+      <p>Beispiel: Versicherer A sagt "15 Prozent Zuschlag", Versicherer B sagt "Normale Annahme", Versicherer C sagt "Ausschluss für die Diagnose". Du kannst dann die beste Quote wählen.</p>
+      <p>Das funktioniert ohne Probleme. Die Versicherer wissen nicht, bei wie vielen anderen Versicherern du voranfragst. Es ist völlig normales Marktverhalten.</p>
+      <p>Typische Versicherer für Voranfragen: Debeka, AXA, DKV, Signal Iduna, Allianz, Barmenia, HUK-Coburg, Continentale. Dein Makler kennt die aktuellen Rankings und Kooperationsbereitschaften.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die anonyme Risikovoranfrage über einen Makler ist dein wichtigstes Werkzeug zur Marktprüfung. Du testest risikofrei mehrere Versicherer parallel und erhältst klare Angebote ohne Reputationsnachteil. Mit dieser Information kannst du gezielt den Versicherer mit den besten Konditionen für deinen Fall auswählen.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Hinterlässt die Voranfrage Spuren?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein. Die anonyme Voranfrage wird nicht im GDV-Hinweis- und Informationssystem (HIS) registriert. Der Versicherer kennt deine Identität nicht und hat keine Möglichkeit, dich nachzuverfolgen. Es bleibt völlig privat. Das ist der Hauptvorteil gegenüber einem echten Antrag.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Brauche ich einen Makler für die Voranfrage?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, einen seriösen. Versicherer nehmen anonyme Voranfragen normalerweise nur von Maklern entgegen, nicht direkt von Privatpersonen. Das ist für beide Seiten besser: Der Makler dokumentiert korrekt, und der Versicherer weiß, dass es eine ernsthafte Anfrage ist. Direktanfragen sind oft nicht bindend.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie lange dauert eine Risikovoranfrage?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Typischerweise 2 bis 4 Wochen. Manche Versicherer sind schneller (10 bis 14 Tage), manche brauchen 6 Wochen. Der Makler kann eine ungefähre Dauer nennen basierend auf seiner Erfahrung mit dem Versicherer. Die Voranfrage-Antwort ist danach etwa 6 Monate gültig.</div>
+      </details>
+    </div>
+  </section>
+</T6>

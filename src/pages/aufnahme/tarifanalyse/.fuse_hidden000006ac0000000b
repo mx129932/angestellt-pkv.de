@@ -1,0 +1,191 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'was-tarifanalyse-leistet', label: 'Was eine Tarifanalyse leistet' },
+  { id: 'fuenf-kriterien', label: 'Die fünf Analyse-Kriterien' },
+  { id: 'beitragsstabilitaet', label: 'Beitragsstabilität als Schlüsselfaktor' },
+  { id: 'tarifanalyse-vs-portal', label: 'Tarifanalyse vs. Vergleichsportal' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const related = [
+  {
+    href: '/leistungen/tarifbausteine/',
+    kategorie: 'Leistungen',
+    title: 'PKV-Tarifbausteine erklärt',
+    teaser: 'Welche Leistungsbausteine es gibt und worauf du bei der Tarifwahl achten solltest.',
+    icon: 'dashboard_customize',
+  },
+  {
+    href: '/leistungen/beste-pkv/',
+    kategorie: 'Leistungen',
+    title: 'Beste PKV für Angestellte',
+    teaser: 'Welche Anbieter in unabhängigen Tests gut abschneiden und warum Testsieger allein nicht reichen.',
+    icon: 'verified',
+  },
+  {
+    href: '/kosten/beitragsanpassung/',
+    kategorie: 'Kosten',
+    title: 'PKV-Beitragsanpassung',
+    teaser: 'Wie Beitragsanpassungen nach § 203 VVG funktionieren und was sie für deine Prämie bedeuten.',
+    icon: 'trending_up',
+  },
+];
+---
+<T6
+  title='PKV-Tarifanalyse: Worauf es vor dem Antrag ankommt'
+  description='Eine PKV-Tarifanalyse prüft Leistungsbausteine, Beitragsstabilität und Bilanzkennzahlen systematisch. So erkennst du vor dem Antrag einen guten Tarif.'
+  breadcrumb={{ kategorie: 'Aufnahme', kategorieHref: '/aufnahme/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='9 Min. Lesezeit'
+  related={related}
+>
+  <!-- Zusammenfassung -->
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Eine <strong>Tarifanalyse</strong> prüft Leistungsbausteine, Beitragsstabilität und Bilanzkennzahlen eines PKV-Tarifs systematisch, bevor du einen Antrag stellst.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der <strong>MAP-Report 2024</strong> zeigt eine Spannbreite bei Beitragsanpassungen von 2,0 bis 31,2 Prozent zwischen Anbietern. Die Wahl des richtigen Tarifs entscheidet über Jahrzehnte.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span><strong>Finanztest 03/2025</strong> hat 384 Tarifkombinationen von 35 Anbietern bewertet. Viele Tarife sind nicht empfehlenswert, eine kritische Auswahl ist nötig.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Vergleichsportale zeigen meist nur den <strong>Einstiegspreis</strong>. Eine seriöse Tarifanalyse berücksichtigt zusätzlich GOÄ-Sätze, Zahnstaffeln, RfB-Quote und Bilanzkennzahlen.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Einleitung -->
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Wer als Angestellter in die private Krankenversicherung wechseln will, steht vor einer Entscheidung mit Tragweite über Jahrzehnte. Der Einstiegsbeitrag allein sagt wenig darüber aus, wie sich ein Tarif langfristig entwickelt. Die durchschnittliche Beitragsanpassung in der PKV-Vollversicherung lag 2024 bei 4,9 Prozent (Assekurata Marktausblick 2024), einzelne Anbieter passten jedoch um mehr als 30 Prozent an.</p>
+    <p>Eine systematische Tarifanalyse schützt vor solchen Überraschungen. Sie prüft nicht nur, was ein Tarif heute kostet, sondern wie stabil er in 20 oder 30 Jahren noch sein wird. Dieser Artikel erklärt, welche Kriterien wirklich zählen und warum ein Vergleichsportal dafür nicht ausreicht.</p>
+  </div>
+
+  <!-- Was eine Tarifanalyse leistet -->
+  <section id='was-tarifanalyse-leistet' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was eine Tarifanalyse leistet</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Eine Tarifanalyse geht über einen einfachen Preisvergleich hinaus. Sie untersucht den Tarif auf mindestens drei Ebenen: Leistungsumfang, Beitragsstabilität und die finanzielle Solidität des Versicherers.</p>
+      <p><strong>Leistungsumfang</strong> meint nicht nur die Anzahl der erstatteten Leistungen, sondern die konkreten Bedingungen. Wie hoch sind die erstatteten GOÄ-Sätze? Gibt es Zahnstaffeln, die in den ersten Jahren die Erstattung begrenzen? Werden Heilpraktiker, Psychotherapie oder Sehhilfen abgedeckt? Jeder Tarif setzt hier andere Schwerpunkte.</p>
+      <p><strong>Beitragsstabilität</strong> zeigt, wie sich die Prämie in der Vergangenheit entwickelt hat und wie wahrscheinlich künftige Anpassungen sind. Der MAP-Report 2024 von Franke und Bornberg vergleicht die Anpassungshistorie über 24 Jahre (2000 bis 2024) und zeigt eine Spannbreite von 2,0 bis 31,2 Prozent zwischen Anbietern. Das macht den Unterschied zwischen einer bezahlbaren und einer kaum tragbaren Versicherung im Alter.</p>
+      <p><strong>Finanzielle Solidität</strong> misst sich an Bilanzkennzahlen wie der RfB-Quote (Rückstellung für Beitragsrückerstattung), der Nettoverzinsung der Kapitalanlagen und der Schadenquote. Je höher die RfB-Quote, desto mehr Spielraum hat der Versicherer, Beitragsanpassungen zu dämpfen.</p>
+    </div>
+  </section>
+
+  <!-- Die fünf Analyse-Kriterien -->
+  <section id='fuenf-kriterien' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Die fünf Analyse-Kriterien</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Eine fundierte Tarifanalyse prüft fünf Kernbereiche. Jeder einzelne kann über die langfristige Qualität deiner Versicherung entscheiden.</p>
+    </div>
+
+    <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+      <table class='w-full text-left border-collapse min-w-[520px]'>
+        <thead>
+          <tr class='bg-surface-container'>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Kriterium</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Was geprüft wird</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Worauf achten</th>
+          </tr>
+        </thead>
+        <tbody class='text-sm text-on-surface'>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4 font-medium'>GOÄ-Erstattungssätze</td>
+            <td class='p-4'>Bis zu welchem Satz der Gebührenordnung erstattet wird</td>
+            <td class='p-4'>Mindestens 3,5-facher Satz für ambulante Leistungen</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4 font-medium'>Zahnstaffeln</td>
+            <td class='p-4'>Erstattungsgrenzen in den ersten Versicherungsjahren</td>
+            <td class='p-4'>Staffeln enden idealerweise nach 3 bis 4 Jahren</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4 font-medium'>Beitragshistorie</td>
+            <td class='p-4'>Anpassungen der letzten 10 bis 20 Jahre</td>
+            <td class='p-4'>Durchschnittlich unter 4 Prozent pro Jahr ist solide</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4 font-medium'>RfB-Quote</td>
+            <td class='p-4'>Rückstellungen für Beitragsrückerstattung</td>
+            <td class='p-4'>Je höher die Quote, desto mehr Puffer gegen Anpassungen</td>
+          </tr>
+          <tr>
+            <td class='p-4 font-medium'>Tarifoffenheit</td>
+            <td class='p-4'>Ist der Tarif noch für Neugeschäft geöffnet</td>
+            <td class='p-4'>Geschlossene Tarife schrumpfen und werden instabiler</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die GOÄ-Erstattungssätze bestimmen, ob dein Arzt die Behandlung vollständig über die Versicherung abrechnen kann. Viele Fachärzte rechnen oberhalb des 2,3-fachen Satzes ab. Tarife, die nur den Regelhöchstsatz erstatten, können zu Eigenanteilen führen, die im Vertrag nicht sofort sichtbar sind.</p>
+      <p>Zahnstaffeln begrenzen die Erstattung für Zahnersatz und Zahnbehandlungen in den ersten Versicherungsjahren. Eine typische Staffel erstattet im ersten Jahr nur 1.000 bis 2.000 Euro, steigend bis zur vollen Erstattung nach drei bis fünf Jahren. Wer kurz nach Versicherungsbeginn Zahnersatz braucht, kann trotz guter Versicherung auf hohen Kosten sitzen bleiben.</p>
+      <p>Welche Leistungsbausteine es im Detail gibt, erklärt der Artikel <a href='/leistungen/tarifbausteine/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-Tarifbausteine</a>.</p>
+    </div>
+  </section>
+
+  <!-- Beitragsstabilität als Schlüsselfaktor -->
+  <section id='beitragsstabilitaet' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Beitragsstabilität als Schlüsselfaktor</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Kein Analyse-Kriterium ist wichtiger als die Beitragsstabilität. Der Einstiegsbeitrag entscheidet über die ersten Jahre, die Beitragsstabilität über die nächsten 30.</p>
+      <p>Der MAP-Report 2024 von Franke und Bornberg dokumentiert die Beitragsentwicklung über 24 Jahre (2000 bis 2024). Die Ergebnisse sind ernüchternd: Für Angestellte lag die durchschnittliche Anpassung 2025 bei 10,6 Prozent, ein Rekord im 25-Jahres-Vergleich. Die Spannbreite zwischen den Anbietern reicht von 2,0 bis 31,2 Prozent. Das bedeutet: Bei einem identischen Einstiegsbeitrag von 400 Euro monatlich zahlst du nach 20 Jahren je nach Anbieter zwischen 500 und 1.200 Euro.</p>
+      <p>Assekurata beziffert die durchschnittliche Beitragsanpassung in der Vollversicherung (ohne Subvention) für 2024 auf 4,9 Prozent. Das liegt spürbar über der allgemeinen Inflation. Die Leistungsausgaben befinden sich laut Assekurata auf Rekordniveau, weiterer Anpassungsdruck ist absehbar.</p>
+      <p>Entscheidend ist deshalb: Nicht der günstigste Tarif ist der beste, sondern der stabilste. Ein Tarif mit einem etwas höheren Einstiegsbeitrag, aber nachweislich niedrigen Anpassungsraten über 15 bis 20 Jahre, ist langfristig fast immer die bessere Wahl. Details zur Beitragsanpassung und dem Mechanismus nach § 203 VVG findest du unter <a href='/kosten/beitragsanpassung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-Beitragsanpassung</a>.</p>
+    </div>
+  </section>
+
+  <!-- Tarifanalyse vs. Vergleichsportal -->
+  <section id='tarifanalyse-vs-portal' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Tarifanalyse vs. Vergleichsportal</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Online-Vergleichsportale zeigen in der Regel den Monatsbeitrag, den Selbstbehalt und eine grobe Leistungsübersicht. Das reicht für einen ersten Überblick, nicht aber für eine fundierte Entscheidung.</p>
+      <p>Ein Vergleichsportal berücksichtigt typischerweise weder die Beitragshistorie eines Tarifs noch die Bilanzkennzahlen des Versicherers. Die RfB-Quote, die Nettoverzinsung oder die Entwicklung der Versichertengemeinschaft (wachsend oder schrumpfend) sind für die Langzeitstabilität eines Tarifs mindestens so wichtig wie der aktuelle Preis.</p>
+      <p>Finanztest hat in der Ausgabe 03/2025 insgesamt 1.245 Tarifkombinationen von 35 Anbietern untersucht und davon 384 bewertet. Die Kernbotschaft: Viele Tarife sind nicht empfehlenswert. Wer sich nur am Preis orientiert, läuft Gefahr, einen dieser Tarife zu wählen.</p>
+      <p>Eine unabhängige Tarifanalyse, etwa durch einen Versicherungsmakler mit Zugang zu Vergleichssoftware und Bilanzdaten, prüft dagegen alle fünf Analyse-Kriterien. Der Makler wird direkt vom Versicherer vergütet, für dich entstehen keine zusätzlichen Kosten. Entscheidend ist, dass der Makler unabhängig arbeitet und nicht nur mit ausgewählten Anbietern zusammenarbeitet.</p>
+      <p>Welche Anbieter in unabhängigen Tests gut abschneiden, zeigt der Artikel <a href='/leistungen/beste-pkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Beste PKV für Angestellte</a>.</p>
+    </div>
+  </section>
+
+  <!-- Fazit -->
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Eine PKV-Tarifanalyse ist kein optionaler Zusatzschritt, sondern die Grundlage einer guten Entscheidung. Die Spannbreite bei Beitragsanpassungen zwischen 2,0 und 31,2 Prozent zeigt, dass die Wahl des richtigen Tarifs über Jahrzehnte tausende Euro Unterschied machen kann.</p>
+      <p>Achte auf die fünf Kernkriterien: GOÄ-Erstattungssätze, Zahnstaffeln, Beitragshistorie, RfB-Quote und Tarifoffenheit. Vergleichsportale liefern einen Einstieg, ersetzen aber keine fundierte Analyse. Ein unabhängiger Makler mit Zugang zu Bilanzdaten ist für die meisten Angestellten der sinnvollste Weg.</p>
+      <p>Bevor du einen Antrag stellst, lies auch den Artikel zur <a href='/aufnahme/gesundheitspruefung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Gesundheitsprüfung</a>, denn die Annahmeentscheidung des Versicherers beeinflusst, welche Tarife dir überhaupt offenstehen.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich die Tarifanalyse selbst machen oder brauche ich einen Makler?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Grundsätzlich kannst du die Analyse selbst durchführen, wenn du Zugang zu Bilanzkennzahlen (z. B. über den MAP-Report von Franke und Bornberg) und Tarifbedingungen hast. In der Praxis ist ein unabhängiger Versicherungsmakler effizienter, weil er professionelle Vergleichssoftware nutzt und die Ergebnisse einordnen kann. Für dich entstehen dabei keine Kosten, da der Makler vom Versicherer vergütet wird.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie lange dauert eine Tarifanalyse?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Eine professionelle Tarifanalyse durch einen Makler dauert in der Regel ein bis zwei Wochen. In dieser Zeit werden deine persönlichen Anforderungen erfasst, passende Tarife vorselektiert und anhand der fünf Analyse-Kriterien verglichen. Die eigentliche Beratung mit Ergebnispräsentation nimmt meist ein bis zwei Stunden in Anspruch.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was kostet eine unabhängige Tarifanalyse?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Bei einem Versicherungsmakler ist die Tarifanalyse in der Regel kostenlos, weil der Makler über die Abschlussprovision des Versicherers vergütet wird. Honorarberater berechnen dagegen ein Honorar, typischerweise 150 bis 500 Euro, beraten dafür aber unabhängig von Provisionsinteressen. Beide Modelle haben Vor- und Nachteile. Entscheidend ist, dass der Berater Zugang zu einer breiten Tarifpalette hat und nicht nur ausgewählte Anbieter empfiehlt.</div>
+      </details>
+    </div>
+  </section>
+</T6>

@@ -1,0 +1,55 @@
+---
+/**
+ * RechnerEmbed.astro — iFrame-Wrapper für die Rechner-HTMLs in /public/rechner-tools/
+ * Auto-Resize per postMessage (der Rechner postet sein Content-Height).
+ */
+export interface Props {
+  /** Dateiname (ohne .html) in /public/rechner-tools/ */
+  rechnerId: string;
+  title: string;
+  /** Fallback-Höhe in Pixeln, bis der Rechner postMessage sendet */
+  height?: number;
+}
+
+const { rechnerId, title, height = 900 } = Astro.props;
+const src = `/rechner-tools/${rechnerId}.html`;
+---
+
+<section class='rechner-embed my-12'>
+  <div class='max-w-5xl mx-auto px-6 md:px-8'>
+    <iframe
+      id={`rechner-${rechnerId}`}
+      src={src}
+      title={`${title} | interaktiver Rechner`}
+      width='100%'
+      height={height}
+      loading='lazy'
+      class='rechner-embed__iframe'
+    ></iframe>
+    <p class='text-xs text-on-surface-variant mt-3 text-center'>
+      Berechnung auf Basis aktueller Werte (Stand 2026). Keine Anlageberatung, keine Rechtsberatung.
+    </p>
+  </div>
+</section>
+
+<script>
+  window.addEventListener('message', (event) => {
+    const data = event.data;
+    if (data && data.type === 'rechner-resize' && data.id) {
+      const el = document.getElementById(`rechner-${data.id}`) as HTMLIFrameElement | null;
+      if (el && typeof data.height === 'number') {
+        el.style.height = `${data.height}px`;
+      }
+    }
+  });
+</script>
+
+<style>
+  .rechner-embed__iframe {
+    border: 0;
+    width: 100%;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    box-shadow: 0 24px 60px -20px rgba(0, 32, 70, 0.15);
+  }
+</style>

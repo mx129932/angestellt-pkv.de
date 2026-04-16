@@ -1,0 +1,181 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'beitrag-elternzeit', label: 'Was mit dem PKV-Beitrag passiert' },
+  { id: 'kein-ag-zuschuss', label: 'Kein Arbeitgeberzuschuss' },
+  { id: 'mutterschutz-vs-elternzeit', label: 'Mutterschutz vs. Elternzeit' },
+  { id: 'drei-optionen', label: 'Drei Optionen für die Elternzeit' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const related = [
+  {
+    href: '/familie/kinder/',
+    kategorie: 'Familie',
+    title: 'Kinder in der PKV',
+    teaser: 'Was die PKV für Kinder kostet und wann die GKV-Familienversicherung die bessere Wahl ist.',
+    icon: 'child_care',
+  },
+  {
+    href: '/absicherung/mutterschutz/',
+    kategorie: 'Absicherung',
+    title: 'Mutterschutz und PKV',
+    teaser: 'Wie Schwangerschaft und Mutterschutz in der PKV geregelt sind.',
+    icon: 'pregnancy',
+  },
+  {
+    href: '/kosten/arbeitgeberzuschuss/',
+    kategorie: 'Kosten',
+    title: 'Arbeitgeberzuschuss PKV 2026',
+    teaser: 'Maximal 508,59 Euro KV plus 104,63 Euro Pflege. So wird der Zuschuss berechnet.',
+    icon: 'payments',
+  },
+];
+---
+<T6
+  title='PKV in der Elternzeit: Beitrag und Optionen'
+  description='In der Elternzeit zahlst du den vollen PKV-Beitrag ohne Arbeitgeberzuschuss. Welche drei Optionen du hast und welche sich bei welchem Beitrag rechnet.'
+  breadcrumb={{ kategorie: 'Familie', kategorieHref: '/familie/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='7 Min. Lesezeit'
+  related={related}
+>
+  <!-- Zusammenfassung -->
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>In der Elternzeit läuft dein PKV-Vertrag <strong>unverändert weiter</strong>. Der volle Beitrag ist fällig, Leistungen bleiben bestehen.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der <strong>Arbeitgeberzuschuss entfällt</strong> komplett: bis zu 508,59 Euro KV plus 104,63 Euro Pflege (2026) musst du selbst tragen.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Im <strong>Mutterschutz</strong> (6 Wochen vor, 8 Wochen nach Geburt) bleibt der Arbeitgeberzuschuss dagegen erhalten (§ 10 MuSchG).</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Es gibt <strong>drei Optionen</strong>: PKV beibehalten, Selbstbeteiligung erhöhen oder (unter bestimmten Voraussetzungen) vorübergehend in die GKV wechseln.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Einleitung -->
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Die Elternzeit ist für viele Familien eine finanzielle Umstellung. Für PKV-versicherte Angestellte kommt ein Faktor dazu, den viele unterschätzen: Der Arbeitgeberzuschuss fällt weg, der PKV-Beitrag bleibt. Das kann je nach Tarif eine monatliche Mehrbelastung von über 600 Euro bedeuten. Dieser Artikel erklärt, was genau passiert, wo der Unterschied zum Mutterschutz liegt und welche Optionen du hast.</p>
+  </div>
+
+  <!-- Was mit dem Beitrag passiert -->
+  <section id='beitrag-elternzeit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was in der Elternzeit mit dem PKV-Beitrag passiert</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Dein PKV-Vertrag ist ein privatrechtlicher Vertrag zwischen dir und deinem Versicherer. Die Elternzeit ändert daran nichts. Der Vertrag läuft unverändert weiter, mit vollem Leistungsumfang und vollem Beitrag.</p>
+      <p>Der entscheidende Unterschied zur Zeit vor der Elternzeit: Du beziehst kein Gehalt mehr (oder nur ein deutlich reduziertes Teilzeitgehalt). Das Elterngeld (maximal 1.800 Euro monatlich, seit April 2025 bei 175.000 Euro Einkommensgrenze) deckt den PKV-Beitrag in den meisten Fällen nicht allein.</p>
+      <p>Ein Rechenbeispiel: Dein PKV-Beitrag liegt bei 600 Euro monatlich (KV + PV). Davon hat bisher der Arbeitgeber rund die Hälfte übernommen. In der Elternzeit zahlst du die vollen 600 Euro selbst. Bei 1.800 Euro Elterngeld bleiben nach Abzug des PKV-Beitrags nur noch 1.200 Euro für alle anderen Ausgaben.</p>
+    </div>
+  </section>
+
+  <!-- Kein AG-Zuschuss -->
+  <section id='kein-ag-zuschuss' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Kein Arbeitgeberzuschuss in der Elternzeit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Arbeitgeberzuschuss zur Krankenversicherung ist an die tatsächliche Gehaltszahlung geknüpft. Sobald du kein laufendes Arbeitsentgelt mehr beziehst, entfällt der Zuschuss vollständig.</p>
+      <p>2026 liegt der maximale Arbeitgeberzuschuss bei 508,59 Euro für die Krankenversicherung und 104,63 Euro für die Pflegepflichtversicherung, zusammen also bis zu 613,22 Euro monatlich. Dieser Betrag fällt in der Elternzeit komplett weg.</p>
+      <p>Ausnahme: Wenn du während der Elternzeit in Teilzeit arbeitest (bis zu 32 Stunden pro Woche erlaubt), zahlt dein Arbeitgeber anteilig den Zuschuss auf das reduzierte Gehalt. Der Zuschuss wird dann nach dem tatsächlichen Arbeitsentgelt berechnet, nicht nach dem früheren Vollzeitgehalt.</p>
+      <p>Details zur Berechnung des Zuschusses findest du unter <a href='/kosten/arbeitgeberzuschuss/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Arbeitgeberzuschuss PKV 2026</a>.</p>
+    </div>
+  </section>
+
+  <!-- Mutterschutz vs. Elternzeit -->
+  <section id='mutterschutz-vs-elternzeit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Mutterschutz vs. Elternzeit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Mutterschutz und Elternzeit werden oft verwechselt, unterscheiden sich aber grundlegend in der finanziellen Absicherung.</p>
+    </div>
+
+    <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+      <table class='w-full text-left border-collapse min-w-[520px]'>
+        <thead>
+          <tr class='bg-surface-container'>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Merkmal</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Mutterschutz</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Elternzeit</th>
+          </tr>
+        </thead>
+        <tbody class='text-sm text-on-surface'>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4 font-medium'>Dauer</td>
+            <td class='p-4'>6 Wochen vor, 8 Wochen nach Geburt</td>
+            <td class='p-4'>Bis zu 3 Jahre</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4 font-medium'>Einkommen</td>
+            <td class='p-4'>Mutterschaftsgeld + AG-Zuschuss (voller Nettolohn)</td>
+            <td class='p-4'>Elterngeld (max. 1.800 Euro)</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4 font-medium'>AG-Zuschuss PKV</td>
+            <td class='p-4'>Bleibt erhalten (§ 10 MuSchG)</td>
+            <td class='p-4'>Entfällt komplett</td>
+          </tr>
+          <tr>
+            <td class='p-4 font-medium'>PKV-Beitrag</td>
+            <td class='p-4'>Wird wie bisher geteilt</td>
+            <td class='p-4'>Voller Beitrag selbst zu tragen</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Im Mutterschutz bleibt der Arbeitgeberzuschuss erhalten, weil das Beschäftigungsverhältnis weiterläuft und der Arbeitgeber zur Zahlung verpflichtet ist (§ 10 MuSchG). Erst mit Beginn der Elternzeit, also in der Regel ab der 9. Woche nach der Geburt, ändert sich die Situation.</p>
+      <p>Mehr zum Mutterschutz in der PKV findest du unter <a href='/absicherung/mutterschutz/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Mutterschutz und PKV</a>.</p>
+    </div>
+  </section>
+
+  <!-- Drei Optionen -->
+  <section id='drei-optionen' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Drei Optionen für die Elternzeit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Option 1: PKV beibehalten und vollen Beitrag zahlen.</strong> Das ist der einfachste Weg. Dein Vertrag und dein Leistungsumfang bleiben unverändert. Die Mehrkosten musst du aus Elterngeld, Ersparnissen oder dem Einkommen des Partners decken. Vorteil: Keine Unterbrechung, keine neuen Gesundheitsprüfungen nach der Elternzeit.</p>
+      <p><strong>Option 2: Selbstbeteiligung erhöhen oder Tarif anpassen.</strong> Eine höhere Selbstbeteiligung senkt den Monatsbeitrag. Je nach Tarif und Anbieter kannst du auch in einen günstigeren Tarif beim selben Versicherer wechseln (Tarifwechsel nach § 204 VVG). Das spart monatlich, reduziert aber den Leistungsumfang oder erhöht dein Kostenrisiko bei Arztbesuchen.</p>
+      <p><strong>Option 3: Wechsel in die GKV (unter bestimmten Voraussetzungen).</strong> Während der Elternzeit besteht unter Umständen die Möglichkeit, in die gesetzliche Krankenversicherung zu wechseln. Das gilt vor allem, wenn du vorher freiwillig in der GKV versichert warst oder wenn dein Einkommen in der Elternzeit unter die Jahresarbeitsentgeltgrenze von 77.400 Euro (2026) fällt. Dieser Weg ist komplex und nicht für jeden möglich. Lass dich dazu individuell beraten.</p>
+      <p>Für die meisten PKV-versicherten Angestellten ist Option 1 der sinnvollste Weg, weil ein Systemwechsel mit erheblichen Nachteilen verbunden sein kann (neue Gesundheitsprüfung bei Rückkehr, Verlust der Altersrückstellungen). Details zum Rückweg findest du unter <a href='/wechsel/pkv-in-gkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Zurück in die GKV</a>.</p>
+    </div>
+  </section>
+
+  <!-- Fazit -->
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Elternzeit trifft PKV-Versicherte härter als GKV-Versicherte, weil der volle Beitrag ohne Arbeitgeberzuschuss fällig wird. Plane die Mehrkosten von bis zu 613,22 Euro monatlich (AG-Zuschuss KV + PV 2026) frühzeitig ein.</p>
+      <p>Im Mutterschutz bleibt der Zuschuss erhalten, erst mit Beginn der eigentlichen Elternzeit ändert sich die Situation. Für die meisten Angestellten ist das Beibehalten des PKV-Vertrags der sicherste Weg, weil die Alternativen (GKV-Wechsel, Tarifanpassung) eigene Risiken und Einschränkungen mit sich bringen.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Bekomme ich Elterngeld wenn ich privat versichert bin?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja. Elterngeld ist eine staatliche Leistung und unabhängig von der Art deiner Krankenversicherung. Du bekommst als Angestellter in der Regel 65 bis 67 Prozent deines bisherigen Nettoeinkommens, maximal 1.800 Euro monatlich. Die PKV-Versicherung hat keinen Einfluss auf die Höhe des Elterngeldes.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich für die Elternzeit in die GKV wechseln?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Unter bestimmten Voraussetzungen ja, aber es ist komplex. Du müsstest versicherungspflichtig werden, etwa weil dein Einkommen unter die JAEG von 77.400 Euro (2026) fällt. Die Rückkehr in die PKV nach der Elternzeit erfordert dann eine neue Gesundheitsprüfung, und deine bisherigen Altersrückstellungen gehen verloren. Lass dich vor einem solchen Schritt individuell beraten.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Bleibt der AG-Zuschuss im Mutterschutz?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja. Während des Mutterschutzes (6 Wochen vor und 8 Wochen nach der Geburt) bleibt der Arbeitgeberzuschuss zur PKV erhalten. Das regelt § 10 MuSchG. Erst mit dem Beginn der Elternzeit entfällt der Zuschuss, weil kein laufendes Arbeitsentgelt mehr gezahlt wird.</div>
+      </details>
+    </div>
+  </section>
+</T6>

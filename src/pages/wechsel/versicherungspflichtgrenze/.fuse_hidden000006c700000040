@@ -1,0 +1,153 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'überblick', label: 'Die Versicherungspflichtgrenze 2026 im Überblick' },
+  { id: 'was_zählt', label: 'Was zum Jahresarbeitsentgelt zählt' },
+  { id: 'besondere', label: 'Allgemeine vs. besondere JAEG' },
+  { id: 'wann_wechsel', label: 'Wann der Wechsel in die PKV möglich wird' },
+  { id: 'rueckfall', label: 'Was passiert bei Gehaltsrückfall' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const related = [
+  {
+    href: '/wechsel/gkv-in-pkv/',
+    kategorie: 'Wechsel',
+    title: 'Von der GKV in die PKV wechseln',
+    teaser: 'Der komplette Ablauf: Voraussetzungen, Fristen und Sonderfälle erklärt.',
+    icon: 'swap_horiz',
+  },
+  {
+    href: '/grundlagen/gkv-vs-pkv/',
+    kategorie: 'Grundlagen',
+    title: 'GKV vs. PKV: Vergleich für Angestellte',
+    teaser: 'Beitrag, Leistung, Familie und Langzeitkosten beider Systeme im Direktvergleich.',
+    icon: 'payments',
+  },
+  {
+    href: '/kosten/arbeitgeberzuschuss/',
+    kategorie: 'Kosten',
+    title: 'Arbeitgeberzuschuss PKV 2026',
+    teaser: 'Wie hoch der Zuschuss maximal ist und wie er berechnet wird.',
+    icon: 'trending_up',
+  },
+];
+---
+<T6
+  title='Versicherungspflichtgrenze 2026 (JAEG)'
+  description='Die Versicherungspflichtgrenze 2026 liegt bei 77.400 Euro. Was zum Jahresarbeitsentgelt zählt und wann der PKV-Wechsel möglich ist.'
+  breadcrumb={{ kategorie: 'Wechsel', kategorieHref: '/wechsel/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='8 Min. Lesezeit'
+  related={related}
+>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Versicherungspflichtgrenze 2026: <strong>77.400 Euro brutto jährlich</strong> (6.450 Euro monatlich).</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Dein Gehalt muss diese Grenze <strong>dauerhaft überschreiten</strong>, nicht nur einmalig.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Zum Jahresarbeitsentgelt zählen: Grund- und Zusatzentgelt, Bonus, Provisionen, Weihnachtsgeld (wenn regelmäßig).</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Besondere JAEG (nur bei vor 2003 Versicherten): 69.750 Euro.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Sinkt dein Gehalt wieder, wirst du automatisch GKV-pflichtversichert.</span>
+      </li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Die Versicherungspflichtgrenze ist die Einkommensgrenze, ab der Angestellte sich zwischen gesetzlicher und privater Krankenversicherung frei entscheiden können. Sie wird jährlich angepasst und ist derzeit der zentrale Regler, der steuert, wer PKV-Kunde werden kann und wer nicht. Dieser Artikel erklärt, wie diese Grenze funktioniert und was zum Jahresarbeitsentgelt zählt.</p>
+  </div>
+
+  <section id='überblick' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Die Versicherungspflichtgrenze 2026 im Überblick</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Seit dem 1. Januar 2026 liegt die allgemeine Versicherungspflichtgrenze (auch Jahresarbeitsentgeltgrenze oder JAEG genannt) bei 77.400 Euro brutto pro Jahr. Das sind 6.450 Euro monatlich im Durchschnitt.</p>
+      <p>Diese Grenze wird jedes Jahr angepasst. Hintergrund: Sie ist gesetzlich an die Bruttolohn- und Bruttogehalts entwicklung gekoppelt. Das bedeutet, wenn die Löhne und Gehälter in Deutschland insgesamt steigen, steigt auch die Grenze. 2025 lag sie bei 77.100 Euro. Die Erhöhung 2026 betrug also 300 Euro.</p>
+      <p>Entscheidend: Dein Gehalt muss die Grenze <strong>regelmäßig</strong> überschreiten. Nicht einmalig. Wenn du ein Jahr 100.000 Euro verdienst und dann ein Jahr 50.000 Euro, darfst du dich nicht als über-JAEG-Angestellter registrieren. Das System prüft auf Dauerhaftigkeit.</p>
+    </div>
+  </section>
+
+  <section id='was_zählt' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was zum Jahresarbeitsentgelt zählt</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Gehalt zählt:</strong> Dein regelmäßiges monatliches Grundgehalt. Das ist klar und unkompliziert.</p>
+      <p><strong>Zulagen zählen:</strong> Schichtzulagen, Überstundenzuschläge, Ortszu schläge, Fahrtkosten-Zuschuss (sofern Gehaltsbestandteil).</p>
+      <p><strong>Bonuszahlungen zählen (mit Einschränkung)</strong>. Weihnachtsgeld und Urlaubsgeld zählen, wenn du sie regelmäßig erhältst und sie vorhersehbar sind. Wenn dein Arbeitsvertrag sagt, dass du jährlich ein Weihnachtsgeld von 2.000 Euro bekommst, zählt das. Wenn der Bonus aber völlig variabel ist und von Leistungszielen abhängt, zählt er nicht.</p>
+      <p><strong>Provisionen zählen (nur regelmäßige)</strong>. Wenn du im Sales arbeitest und jede Woche Provisionen erhältst, wird hier oft ein Durchschnittswert berechnet. Höchst variable Provisionen zählen nicht.</p>
+      <p><strong>Nicht angerechnet:</strong> Spesen, Kostenvergütungen (z.B. für Fahrtkosten als Auslagenerstattung), Sachbezüge (wie Kost und Logis), Darlehen oder sonstige Vorschüsse, steuerfreie Zuschläge (wie Arbeitskleidungszuschüsse).</p>
+      <p><strong>Teilzeitarbeit:</strong> Wird auf Jahresbasis hochgerechnet. Wenn du halbtags arbeitest und 38.700 Euro verdienst, wird dies auf 77.400 Euro hochgerechnet, als wäre es Vollzeitarbeit. Das ist ein wichtiger Punkt: Teilzeit mindert nicht automatisch die Qualifikation als über-JAEG-Verdiener.</p>
+    </div>
+  </section>
+
+  <section id='besondere' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Allgemeine vs. besondere JAEG</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Allgemeine JAEG: 77.400 Euro</strong>. Dies ist die Grenze für alle Angestellten, die nach 2003 eingestellt wurden oder die noch nie privat versichert waren.</p>
+      <p><strong>Besondere JAEG: 69.750 Euro</strong>. Dies ist eine tiefere Grenze für Menschen, die vor dem 1. Januar 2003 bereits privat versichert waren. Das ist ein historisches Übergangsrecht. Wenn du 1990 in die PKV wechselst und seitdem dort bleibst, kannst du mit 69.750 Euro Jahreseinkommen bereits versicherungsfrei sein.</p>
+      <p>Praktisch: Die besondere JAEG ist nur noch für eine schrumpfende Gruppe relevant, da diese Menschen heute (2026) mindestens 50 bis 60 Jahre alt sind. Für Angestellte unter 45 Jahren ist praktisch immer die allgemeine JAEG 77.400 Euro relevant.</p>
+    </div>
+  </section>
+
+  <section id='wann_wechsel' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wann der Wechsel in die PKV möglich wird</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Wechsel wird mit dem <strong>ersten Monat</strong> möglich, in dem dein Einkommen die Grenze übersteigt. Das ist aber an eine Frist gekoppelt.</p>
+      <p><strong>Timing ist kritisch:</strong> Wenn du am 15. März ein Jobangebot erhältst, das ab 1. April 100.000 Euro pro Jahr kostet, darfst du dich zu diesem Zeitpunkt als versicherungsfrei eintragen. Die Versicherungspflicht endet dann. Du kannst bereits im Bewerbungsgespräch Kontakt mit PKV-Versicherern aufnehmen, damit der Vertrag am 1. April beginnt.</p>
+      <p><strong>Wichtig:</strong> Eine Versicherungslücke ist nicht erlaubt. Du brauchst an jedem Tag versichert zu sein. Das heißt, wenn du die GKV kündigen willst, muss bereits ein Annahmeschreiben der PKV vorliegen. Der Kündigungsfrist der GKV beträgt einen Monat.</p>
+      <p><strong>Besonderheit bei Bonus-Zahlungen:</strong> Wenn dein Einkommen über die JAEG steigt, weil es zum ersten Mal ein Weihnachtsgeld oder einen Bonus gibt, zählt das. Manche Arbeitgeber zahlen das erste Mal im dritten oder vierten Quartal. Dann wird die Grenzüberschreitung erst später sichtbar, zum 1. Oktober oder 1. November. Die Versicherungsfreiheit beginnt dann.</p>
+    </div>
+  </section>
+
+  <section id='rueckfall' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was passiert bei Gehaltsrückfall</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Szenario: Du verdienst seit drei Jahren 100.000 Euro, bist privat versichert, und wechselst zu einem neuen Job mit 70.000 Euro pro Jahr. Dein Einkommen sinkt unter 77.400 Euro. Was passiert?</p>
+      <p><strong>Automatische Versicherungspflicht.</strong> Du wirst automatisch wieder versicherungspflichtig in der GKV. Dies ist kein Antrag. Dies geschieht einfach. Dein neuer Arbeitgeber registriert dich oder der bisherige Arbeitgeber meldet die Gehaltsänderung. Die GKV wird dich erfassen.</p>
+      <p><strong>Befreiungsrecht.</strong> Du hast jedoch ein Recht: Innerhalb von drei Monaten kannst du einen Antrag nach § 8 SGB V stellen und dich von der Versicherungspflicht befreien lassen. Du bleibst dann in der PKV. Diese Frist ist nicht verhandelbar. Wer sie verpasst, muss in die GKV.</p>
+      <p><strong>Besonderheit: ALG I-Bezug.</strong> Wenn du arbeitslos wirst (nicht nur Gehaltsreduktion, sondern tatsächlich ohne Job), bist du automatisch GKV-versicherungspflichtig. Das Befreiungsrecht nach § 8 SGB V gibt es hier nicht direkt. Du bist dann in der GKV, solange du ALG I beziehst. Nach Beendigung des ALG I kannst du wieder die Befreiung beantragen, wenn die Bedingungen erfüllt sind.</p>
+      <p><strong>Die 55-Jahres-Falle:</strong> Das ist der kritischste Punkt. Wenn du älter als 55 Jahre bist und dein Einkommen unter die JAEG fällt, funktioniert das Befreiungsrecht nicht. Du darfst nicht einfach in die GKV wechseln und dich dann befreien. Das System sperrt dich ab 55. Das ist der Grund, warum die Entscheidung für die PKV für ältere Menschen so kritisch ist.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Versicherungspflichtgrenze von 77.400 Euro 2026 ist die Tür zur PKV-Freiheit. Dein Gehalt muss diese Grenze regelmäßig überschreiten, nicht einmalig. Bedenke aber: Die Entscheidung über oder unter der Grenze ist eine Langzeitentscheidung. Besonders über 55 Jahren gibt es kein Zurück.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Zählen Weihnachtsgeld und Boni zur JAEG?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, aber nur wenn sie regelmäßig und vorhersehbar sind. Wenn dein Arbeitsvertrag sagt, dass du ein Weihnachtsgeld in Höhe von zwei Monatsgehältern erhältst, zählt das vollständig. Ist der Bonus aber völlig variabel und hängt von Leistungszielen ab, die nie erreicht werden, zählt er weniger oder gar nicht. Im Zweifel wird ein Dreijahresdurchschnitt berechnet.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was ist der Unterschied zwischen JAEG und BBG?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>BBG (Beitragsbemessungsgrenze) ist eine Grenze für die GKV-Beitragsberechnung. 2026 liegt die BBG bei 69.750 Euro. Oberhalb dieser Grenze wird dein Einkommen nicht mehr mit dem GKV-Prozentsatz berechnet. JAEG ist die Versicherungspflicht-Grenze bei 77.400 Euro. Oberhalb dieser Grenze kannst du in die PKV. Die BBG ist eine Berechnung, die JAEG ist eine Grenzziehung.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie oft wird die Versicherungspflichtgrenze angepasst?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Jedes Jahr zum 1. Januar. Die Anpassung basiert auf der Entwicklung der Löhne und Gehälter in Deutschland im Vorjahr. 2025 war die Grenze 77.100 Euro, 2026 ist sie 77.400 Euro (Erhöhung von 300 Euro). Der Gesetzentwurf wird üblicherweise im Oktober des Vorjahres beschlossen, sodass die neuen Zahlen Anfang Januar gültig sind.</div>
+      </details>
+    </div>
+  </section>
+</T6>

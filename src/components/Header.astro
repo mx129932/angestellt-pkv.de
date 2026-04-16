@@ -1,0 +1,416 @@
+---
+/**
+ * Header.astro — Globaler Header mit Megamenu (Flyout-Navigation)
+ * Sticky, frosted-glass, serif italic Logo, Amber-Accent CTA
+ *
+ * Desktop: "Themen" Megamenu (Kategorien + Artikel + Rechner-Teaser) + "Rechner" Megamenu
+ * Mobile: Akkordeon pro Kategorie + Rechner-Liste
+ *
+ * Orientiert sich am PKV-Selbstständige Header-Pattern.
+ */
+
+const categories = [
+  {
+    icon: 'school', label: 'Grundlagen', href: '/grundlagen/',
+    articles: [
+      { title: 'GKV vs. PKV im Vergleich', href: '/grundlagen/gkv-vs-pkv/' },
+      { title: 'Lohnt sich die PKV?', href: '/grundlagen/lohnt-sich-pkv/' },
+      { title: 'Vor- und Nachteile', href: '/grundlagen/vor-und-nachteile/' },
+    ],
+    rechner: { icon: 'compare_arrows', title: 'PKV-GKV Vergleich', desc: 'GKV und PKV direkt vergleichen', href: '/rechner/pkv-gkv-vergleich/' },
+  },
+  {
+    icon: 'payments', label: 'Kosten & Beiträge', href: '/kosten/',
+    articles: [
+      { title: 'PKV-Kosten Übersicht', href: '/kosten/pkv-kosten-uebersicht/' },
+      { title: 'Arbeitgeberzuschuss', href: '/kosten/arbeitgeberzuschuss/' },
+      { title: 'Beitragsanpassung', href: '/kosten/beitragsanpassung/' },
+      { title: 'Selbstbeteiligung', href: '/kosten/selbstbeteiligung/' },
+      { title: 'PKV & Steuer', href: '/kosten/pkv-steuer/' },
+      { title: 'Altersrückstellung', href: '/kosten/altersrueckstellung/' },
+      { title: 'GKV-Höchstbeitrag', href: '/kosten/gkv-hoechstbeitrag/' },
+      { title: 'Zusatzbeitrag GKV', href: '/kosten/gkv-zusatzbeitrag/' },
+      { title: 'PKV im Alter', href: '/kosten/pkv-im-alter/' },
+    ],
+    rechner: { icon: 'business_center', title: 'Arbeitgeberzuschuss', desc: 'Zuschuss vom Arbeitgeber berechnen', href: '/rechner/arbeitgeberzuschuss/' },
+  },
+  {
+    icon: 'swap_horiz', label: 'Wechsel & JAEG', href: '/wechsel/',
+    articles: [
+      { title: 'Versicherungspflichtgrenze', href: '/wechsel/versicherungspflichtgrenze/' },
+      { title: 'Wechsel GKV in PKV', href: '/wechsel/gkv-in-pkv/' },
+      { title: 'Rückwechsel PKV in GKV', href: '/wechsel/pkv-in-gkv/' },
+      { title: 'Tarifwechsel § 204', href: '/wechsel/tarifwechsel-204/' },
+      { title: 'Optionstarif', href: '/wechsel/optionstarif/' },
+    ],
+    rechner: { icon: 'gavel', title: 'JAEG-Check', desc: 'Darf ich in die PKV wechseln?', href: '/rechner/jaeg-check/' },
+  },
+  {
+    icon: 'verified_user', label: 'Leistungen', href: '/leistungen/',
+    articles: [
+      { title: 'Leistungen Überblick', href: '/leistungen/uebersicht/' },
+      { title: 'Tarifbausteine', href: '/leistungen/tarifbausteine/' },
+      { title: 'Beste PKV für Angestellte', href: '/leistungen/beste-pkv/' },
+      { title: 'Basistarif & Standardtarif', href: '/leistungen/basistarif-standardtarif/' },
+    ],
+    rechner: { icon: 'calculate', title: 'PKV-Beitragsrechner', desc: 'Monatsbeitrag in 60 Sekunden', href: '/rechner/pkv-beitrag/' },
+  },
+  {
+    icon: 'fact_check', label: 'Aufnahme', href: '/aufnahme/',
+    articles: [
+      { title: 'Gesundheitsprüfung', href: '/aufnahme/gesundheitspruefung/' },
+      { title: 'Risikovoranfrage', href: '/aufnahme/risikovoranfrage/' },
+      { title: 'Risikozuschlag', href: '/aufnahme/risikozuschlag/' },
+      { title: 'Leistungsausschlüsse', href: '/aufnahme/leistungsausschluesse/' },
+      { title: 'Wartezeiten', href: '/aufnahme/wartezeiten/' },
+      { title: 'Tarifanalyse', href: '/aufnahme/tarifanalyse/' },
+    ],
+    rechner: { icon: 'compare_arrows', title: 'PKV-GKV Vergleich', desc: 'Lohnt sich der Wechsel?', href: '/rechner/pkv-gkv-vergleich/' },
+  },
+  {
+    icon: 'shield', label: 'Absicherung', href: '/absicherung/',
+    articles: [
+      { title: 'Krankentagegeld', href: '/absicherung/krankentagegeld/' },
+      { title: 'Berufsunfähigkeit', href: '/absicherung/berufsunfaehigkeit/' },
+      { title: 'Mutterschutz & PKV', href: '/absicherung/mutterschutz/' },
+    ],
+    rechner: { icon: 'event_busy', title: 'Krankentagegeld', desc: 'Tagessatz-Bedarf ermitteln', href: '/rechner/krankentagegeld/' },
+  },
+  {
+    icon: 'family_restroom', label: 'Familie', href: '/familie/',
+    articles: [
+      { title: 'Kinder in der PKV', href: '/familie/kinder/' },
+      { title: 'PKV in Elternzeit', href: '/familie/elternzeit/' },
+    ],
+    rechner: { icon: 'stroller', title: 'Elternzeit-Rechner', desc: 'Beitragslast in der Elternzeit', href: '/rechner/elternzeit/' },
+  },
+  {
+    icon: 'diversity_3', label: 'Lebenssituationen', href: '/lebenssituationen/',
+    articles: [
+      { title: 'PKV in der Rente', href: '/lebenssituationen/rente/' },
+      { title: 'Kündigung & Jobwechsel', href: '/lebenssituationen/kuendigung-jobwechsel/' },
+      { title: 'Angestellt + Selbstständig', href: '/lebenssituationen/angestellt-selbststaendig/' },
+      { title: 'Öffentlicher Dienst', href: '/lebenssituationen/oeffentlicher-dienst/' },
+      { title: 'Betriebliche KV (bKV)', href: '/lebenssituationen/bkv/' },
+    ],
+    rechner: { icon: 'trending_up', title: 'Langfristvergleich', desc: 'PKV vs. GKV über 30 Jahre', href: '/rechner/langfristvergleich/' },
+  },
+];
+
+const rechner = [
+  { icon: 'calculate', label: 'PKV-Beitragsrechner', desc: 'Monatsbeitrag in 60 Sekunden', href: '/rechner/pkv-beitrag/' },
+  { icon: 'business_center', label: 'Arbeitgeberzuschuss', desc: 'Zuschuss vom Arbeitgeber berechnen', href: '/rechner/arbeitgeberzuschuss/' },
+  { icon: 'gavel', label: 'JAEG-Check', desc: 'Darf ich in die PKV wechseln?', href: '/rechner/jaeg-check/' },
+  { icon: 'compare_arrows', label: 'PKV-GKV Vergleich', desc: 'GKV und PKV direkt vergleichen', href: '/rechner/pkv-gkv-vergleich/' },
+  { icon: 'percent', label: 'Selbstbeteiligung', desc: 'Optimale Selbstbeteiligung finden', href: '/rechner/selbstbeteiligung/' },
+  { icon: 'event_busy', label: 'Krankentagegeld', desc: 'Tagessatz-Bedarf ermitteln', href: '/rechner/krankentagegeld/' },
+  { icon: 'trending_up', label: 'Langfristvergleich', desc: 'PKV vs. GKV über 10 bis 30 Jahre', href: '/rechner/langfristvergleich/' },
+  { icon: 'sync_alt', label: 'Tarifwechsel § 204', desc: 'Sparpotenzial ohne Anbieterwechsel', href: '/rechner/tarifwechsel-204/' },
+  { icon: 'stroller', label: 'Elternzeit-Rechner', desc: 'Beitragslast in der Elternzeit', href: '/rechner/elternzeit/' },
+  { icon: 'account_balance_wallet', label: 'Nettobelastung', desc: 'Quick-Check PKV vs. GKV netto', href: '/rechner/nettobelastung/' },
+];
+
+const current = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? current === '/' : current.startsWith(href);
+---
+
+<header class="bg-slate-50/90 backdrop-blur-md sticky top-0 z-50 shadow-[0_12px_40px_rgba(25,28,29,0.06)]">
+  <!-- Mobile-Menu-Toggle muss auf oberster Ebene sein für CSS ~ Selector -->
+  <input class="hidden peer" id="ang-mobile-menu-toggle" type="checkbox" />
+
+  <nav class="flex justify-between items-center w-full px-6 md:px-8 py-4 max-w-7xl mx-auto">
+    <!-- Logo -->
+    <a href="/" class="shrink-0 block" aria-label="Startseite">
+      <picture>
+        <source srcset="/images/logo.webp" type="image/webp" />
+        <img src="/images/logo.png" alt="PKV-Welt für Angestellte" class="h-8 md:h-10 w-auto" loading="eager" />
+      </picture>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden lg:flex items-center gap-8">
+      <!-- Themen Megamenu -->
+      <div class="ang-mega-trigger relative" data-mega="themen">
+        <button class="ang-mega-btn text-secondary font-medium hover:text-amber-accent-dark transition-colors duration-300 text-sm tracking-tight flex items-center gap-1" aria-expanded="false" aria-haspopup="menu">
+          Themen
+          <span class="material-symbols-outlined text-base ang-mega-chevron transition-transform duration-200">expand_more</span>
+        </button>
+        <div class="ang-mega-panel absolute top-full -left-40 pt-4 hidden" role="menu">
+          <div class="bg-white rounded-2xl shadow-2xl shadow-primary/10 border border-outline-variant/20 w-[780px] flex overflow-hidden">
+            <!-- Linke Spalte: Kategorien -->
+            <div class="w-[220px] bg-[#FAF7F2] py-6 px-3 shrink-0 border-r border-outline-variant/20">
+              <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-4 px-3">Alle Themen</p>
+              {categories.map((cat, i) => (
+                <button
+                  class:list={[
+                    'ang-cat-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-colors group text-sm',
+                    i === 0 ? 'bg-white shadow-sm text-primary' : 'text-secondary hover:bg-white/60',
+                  ]}
+                  data-cat-index={i}
+                >
+                  <span class="material-symbols-outlined text-lg text-amber-accent-dark/70 group-hover:text-amber-accent-dark">{cat.icon}</span>
+                  <span class="font-medium">{cat.label}</span>
+                </button>
+              ))}
+            </div>
+            <!-- Rechte Spalte: Artikel + Rechner-Teaser -->
+            {categories.map((cat, i) => (
+              <div
+                class:list={[
+                  'ang-cat-panel flex-1 p-6',
+                  i === 0 ? 'block' : 'hidden',
+                ]}
+                data-cat-panel={i}
+              >
+                <div class="flex items-center justify-between mb-4">
+                  <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Beiträge</p>
+                  <a href={cat.href} class="text-xs font-bold text-amber-accent-dark hover:underline flex items-center gap-1">
+                    Alle anzeigen
+                    <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                  </a>
+                </div>
+                <div class="grid grid-cols-2 gap-1 mb-6">
+                  {cat.articles.map((a) => (
+                    <a
+                      href={a.href}
+                      class="flex items-center gap-2 px-3 py-2.5 rounded-lg hover:bg-[#FAF7F2] transition-colors group"
+                    >
+                      <span class="material-symbols-outlined text-sm text-amber-accent-dark/60 group-hover:text-amber-accent-dark">article</span>
+                      <span class="text-sm text-secondary group-hover:text-primary">{a.title}</span>
+                    </a>
+                  ))}
+                </div>
+                <!-- Rechner-Teaser -->
+                <div class="border-t border-outline-variant/20 pt-4">
+                  <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-3">Passender Rechner</p>
+                  <a
+                    href={cat.rechner.href}
+                    class="flex items-center gap-4 p-3 bg-gradient-to-r from-[#FAF7F2] to-amber-accent/5 border border-amber-accent/20 rounded-xl hover:border-amber-accent/40 hover:shadow-sm transition-all group"
+                  >
+                    <span class="shrink-0 w-10 h-10 rounded-lg bg-white border border-outline-variant/20 flex items-center justify-center shadow-sm">
+                      <span class="material-symbols-outlined text-amber-accent-dark text-xl">{cat.rechner.icon}</span>
+                    </span>
+                    <div class="min-w-0">
+                      <span class="text-sm font-semibold text-primary group-hover:text-amber-accent-dark block">{cat.rechner.title}</span>
+                      <span class="text-xs text-on-surface-variant">{cat.rechner.desc}</span>
+                    </div>
+                    <span class="material-symbols-outlined text-amber-accent-dark/40 group-hover:text-amber-accent-dark ml-auto text-lg">arrow_forward</span>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Rechner Megamenu -->
+      <div class="ang-mega-trigger relative" data-mega="rechner">
+        <button class="ang-mega-btn text-secondary font-medium hover:text-amber-accent-dark transition-colors duration-300 text-sm tracking-tight flex items-center gap-1" aria-expanded="false" aria-haspopup="menu">
+          Rechner
+          <span class="material-symbols-outlined text-base ang-mega-chevron transition-transform duration-200">expand_more</span>
+        </button>
+        <div class="ang-mega-panel absolute top-full -left-60 pt-4 hidden" role="menu">
+          <div class="bg-white rounded-2xl shadow-2xl shadow-primary/10 border border-outline-variant/20 p-8 w-[640px]">
+            <div class="flex items-center justify-between mb-5">
+              <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Alle Rechner</p>
+              <a href="/rechner/" class="text-xs font-bold text-amber-accent-dark hover:underline flex items-center gap-1">
+                Übersicht
+                <span class="material-symbols-outlined text-xs">arrow_forward</span>
+              </a>
+            </div>
+            <div class="grid grid-cols-2 gap-1">
+              {rechner.map((r) => (
+                <a href={r.href} class="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-[#FAF7F2] transition-colors group">
+                  <span class="material-symbols-outlined text-xl text-amber-accent-dark/60 group-hover:text-amber-accent-dark mt-0.5">{r.icon}</span>
+                  <div class="min-w-0">
+                    <span class="text-sm font-medium text-secondary group-hover:text-primary block">{r.label}</span>
+                    <span class="text-xs text-on-surface-variant leading-tight block">{r.desc}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direkte Links -->
+      <a
+        href="/pkv-beratung/"
+        class:list={[
+          'font-medium transition-colors duration-300 text-sm tracking-tight',
+          isActive('/pkv-beratung/') ? 'text-primary' : 'text-secondary hover:text-amber-accent-dark',
+        ]}
+      >
+        PKV-Beratung Angestellte
+      </a>
+      <a
+        href="/ueber-uns/"
+        class:list={[
+          'font-medium transition-colors duration-300 text-sm tracking-tight',
+          isActive('/ueber-uns/') ? 'text-primary' : 'text-secondary hover:text-amber-accent-dark',
+        ]}
+      >
+        Über uns
+      </a>
+    </div>
+
+    <!-- Right: CTA + Mobile Toggle -->
+    <div class="flex items-center gap-3">
+      <a
+        href="/beratung/"
+        class="hidden lg:inline-block bg-amber-accent hover:bg-amber-accent-dark text-white px-5 py-2.5 rounded-md font-semibold text-sm shadow-lg shadow-amber-900/10 transition-all active:scale-95"
+      >
+        Beratung
+      </a>
+
+      <!-- Mobile: Hamburger -->
+      <label
+        class="lg:hidden flex items-center justify-center w-10 h-10 cursor-pointer text-primary"
+        for="ang-mobile-menu-toggle"
+        aria-label="Navigation öffnen"
+      >
+        <span class="material-symbols-outlined text-3xl ang-hamburger">menu</span>
+        <span class="material-symbols-outlined text-3xl ang-close">close</span>
+      </label>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Panel -->
+  <div
+    class="ang-mobile-panel lg:hidden absolute top-full left-0 w-full bg-white border-t border-outline-variant/20 shadow-xl z-40 hidden max-h-[calc(100vh-4rem)] overflow-y-auto"
+    id="ang-mobile-menu"
+  >
+    <nav class="flex flex-col py-4 px-6">
+      <!-- Mobile: Themen Akkordeon -->
+      {categories.map((cat, i) => (
+        <div class="border-b border-outline-variant/10">
+          <input class="hidden" id={`ang-mob-cat-${i}`} type="checkbox" />
+          <label class="flex items-center justify-between py-3 px-2 cursor-pointer" for={`ang-mob-cat-${i}`}>
+            <span class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-lg text-amber-accent-dark/70">{cat.icon}</span>
+              <span class="font-semibold text-base text-primary">{cat.label}</span>
+            </span>
+            <span class="material-symbols-outlined text-primary ang-mob-chevron transition-transform duration-200">expand_more</span>
+          </label>
+          <div class="ang-mob-content hidden pb-3 pl-2">
+            {cat.articles.map((a) => (
+              <a href={a.href} class="flex items-center gap-2 py-2 px-3 text-sm text-secondary hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-sm text-amber-accent-dark/40">article</span>
+                {a.title}
+              </a>
+            ))}
+            <a href={cat.href} class="flex items-center gap-2 py-2 px-3 text-xs font-bold text-amber-accent-dark mt-1">
+              <span class="material-symbols-outlined text-xs">arrow_forward</span>
+              Alle {cat.label} Beiträge
+            </a>
+            <!-- Mobile: Rechner-Teaser -->
+            <a href={cat.rechner.href} class="flex items-center gap-3 mt-2 mx-3 p-3 bg-[#FAF7F2] rounded-lg border border-amber-accent/10">
+              <span class="material-symbols-outlined text-amber-accent-dark text-lg">{cat.rechner.icon}</span>
+              <div>
+                <span class="text-xs font-semibold text-primary block">{cat.rechner.title}</span>
+                <span class="text-[11px] text-on-surface-variant">{cat.rechner.desc}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      ))}
+
+      <!-- Mobile: Rechner Akkordeon -->
+      <div class="border-b border-outline-variant/10">
+        <input class="hidden" id="ang-mob-rechner" type="checkbox" />
+        <label class="flex items-center justify-between py-3 px-2 cursor-pointer" for="ang-mob-rechner">
+          <span class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-lg text-amber-accent-dark/70">calculate</span>
+            <span class="font-semibold text-base text-primary">Rechner</span>
+          </span>
+          <span class="material-symbols-outlined text-primary ang-mob-chevron transition-transform duration-200">expand_more</span>
+        </label>
+        <div class="ang-mob-content hidden pb-3 pl-2">
+          {rechner.map((r) => (
+            <a href={r.href} class="flex items-center gap-3 py-2 px-3 text-sm text-secondary hover:text-primary transition-colors">
+              <span class="material-symbols-outlined text-sm text-amber-accent-dark/60">{r.icon}</span>
+              {r.label}
+            </a>
+          ))}
+          <a href="/rechner/" class="flex items-center gap-2 py-2 px-3 text-xs font-bold text-amber-accent-dark mt-1">
+            <span class="material-symbols-outlined text-xs">arrow_forward</span>
+            Alle Rechner anzeigen
+          </a>
+        </div>
+      </div>
+
+      <!-- Direkte Links -->
+      <a class="py-3 px-2 text-secondary font-semibold text-base border-b border-outline-variant/10 flex items-center gap-3" href="/pkv-beratung/">
+        <span class="material-symbols-outlined text-lg text-amber-accent-dark/70">hub</span>
+        PKV-Beratung Angestellte
+      </a>
+      <a class="py-3 px-2 text-secondary font-semibold text-base border-b border-outline-variant/10 flex items-center gap-3" href="/ueber-uns/">
+        <span class="material-symbols-outlined text-lg text-amber-accent-dark/70">group</span>
+        Über uns
+      </a>
+      <a
+        href="/beratung/"
+        class="mt-4 bg-amber-accent hover:bg-amber-accent-dark text-white px-5 py-3 rounded-md font-semibold text-sm text-center shadow-lg shadow-amber-900/10"
+      >
+        Beratung vereinbaren
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Hamburger-State (CSS-only Toggle) */
+  .ang-close { display: none; }
+  #ang-mobile-menu-toggle:checked ~ nav .ang-hamburger { display: none; }
+  #ang-mobile-menu-toggle:checked ~ nav .ang-close { display: inline-block; }
+  #ang-mobile-menu-toggle:checked ~ #ang-mobile-menu { display: block; }
+
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+  }
+
+  /* Desktop Megamenu: show on hover */
+  .ang-mega-trigger:hover .ang-mega-panel,
+  .ang-mega-trigger:focus-within .ang-mega-panel {
+    display: block;
+  }
+  .ang-mega-trigger:hover .ang-mega-chevron {
+    transform: rotate(180deg);
+  }
+  .ang-mega-trigger:hover .ang-mega-btn {
+    color: var(--color-amber-accent-dark, #B8860B);
+  }
+
+  /* Mobile Akkordeon Toggles (CSS-only) */
+  input[id^="ang-mob-"]:checked ~ .ang-mob-content {
+    display: block;
+  }
+  input[id^="ang-mob-"]:checked ~ label .ang-mob-chevron {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script is:inline>
+  /* Desktop: Kategorie-Hover im Themen-Megamenu */
+  (function () {
+    const btns = document.querySelectorAll('.ang-cat-btn');
+    const panels = document.querySelectorAll('.ang-cat-panel');
+    btns.forEach((btn) => {
+      btn.addEventListener('mouseenter', () => {
+        const idx = btn.dataset.catIndex;
+        btns.forEach((b) => {
+          b.classList.remove('bg-white', 'shadow-sm', 'text-primary');
+          b.classList.add('text-secondary');
+        });
+        btn.classList.add('bg-white', 'shadow-sm', 'text-primary');
+        btn.classList.remove('text-secondary');
+        panels.forEach((p) => {
+          p.classList.toggle('hidden', p.dataset.catPanel !== idx);
+          p.classList.toggle('block', p.dataset.catPanel === idx);
+        });
+      });
+    });
+  })();
+</script>

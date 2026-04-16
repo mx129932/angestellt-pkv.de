@@ -1,7 +1,203 @@
 ---
 import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'warum-günstig', label: 'Warum der günstigste Tarif selten der beste ist' },
+  { id: 'kriterien', label: 'Die wichtigsten Bewertungskriterien' },
+  { id: 'stabilitaet', label: 'Beitragsstabilität: Das entscheidende Kriterium' },
+  { id: 'testergebnisse', label: 'Aktuelle Testergebnisse und Rankings' },
+  { id: 'topanbieter', label: 'Top-Anbieter für Angestellte im Profil' },
+  { id: 'faq', label: 'Häufige Fragen' },
+  { id: 'fazit', label: 'Fazit' },
+];
+
+const related = [
+  {
+    href: '/leistungen/tarifbausteine/',
+    kategorie: 'Leistungen',
+    title: 'PKV-Tarifbausteine',
+    teaser: 'Wie ein PKV-Tarif aufgebaut ist und woraus du ihn zusammensetzt.',
+    icon: 'balance',
+  },
+  {
+    href: '/leistungen/uebersicht/',
+    kategorie: 'Leistungen',
+    title: 'PKV-Leistungen Übersicht',
+    teaser: 'Welche Leistungen die PKV bietet und worin sie sich von der GKV unterscheidet.',
+    icon: 'description',
+  },
+  {
+    href: '/kosten/beitragsanpassung/',
+    kategorie: 'Kosten',
+    title: 'PKV Beitragsanpassung',
+    teaser: 'Wie und warum PKV-Beiträge steigen und wie oft das passiert.',
+    icon: 'trending_up',
+  },
+];
 ---
 <T6
-  title='Beste PKV für Angestellte — Vergleich'
-  description='Worauf es bei einem PKV-Vergleich wirklich ankommt.'
-/>
+  title='Beste PKV für Angestellte 2026'
+  description='Welche PKV-Anbieter für Angestellte am besten abschneiden: nach Beitragsstabilität, Leistung und Kundenzufriedenheit mit aktuellen Testdaten.'
+  breadcrumb={{ kategorie: 'Leistungen', kategorieHref: '/leistungen/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='10 Min. Lesezeit'
+  related={related}
+  faqItems={[
+    { question: `Welche PKV hat die stabilsten Beiträge?`, answer: `Laut MAP-Report führen Nürnberger, Debeka und Allianz bei der Beitragsstabilität. Das bedeutet, dass diese Anbieter über 20 bis 25 Jahre hinweg moderatere Beitragserhöhungen hatten als der Durchschnitt. Aber auch bei ihnen solltest du die konkrete Tarifkalkulation prüfen.` },
+    { question: `Sollte ich nach Testsieger oder nach persönlichem Profil wählen?`, answer: `Beides sollte passen. Der Testsieger von Finanztest ist relevant, weil die Tester 1.245 Kombinationen getestet haben und objektive Qualitätskriterien anlegten. Aber der beste Tarif von Finanztest nützt dir nichts, wenn er keine Zahnerstattung hat und du eine Brücke brauchst. Such einen Anbieter, der in Tests gut abschneidet UND der Tarife bietet, die zu deiner Lebenssituation passen.` },
+    { question: `Wie finde ich den besten Tarif für mich?`, answer: `In drei Schritten: Erstens, konzentriere dich auf Anbieter mit guter Beitragsstabilität (MAP-Report, Assekurata). Zweitens, definiere klar deine Leistungsanforderungen (Zahnarzt, Sehhilfen, Psychotherapie?). Drittens, hole konkrete Angebote von 3 bis 4 Anbietern für exakt deine Wunsch-Leistungen. Vergleiche nicht die absoluten Beiträge, sondern die Leistungs-Äquivalente.` }
+  ]}
+>
+  <!-- Zusammenfassung -->
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die <strong>beste PKV für dich</strong> ist nicht die günstigste, sondern die mit der besten Beitragsstabilität über Jahrzehnte.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span><strong>Beitragsstabilität variiert massiv:</strong> Im MAP-Report 2024 schwanken die Beitragserhöhungen zwischen 2,0 und 31,2 Prozent. Der Anbieter ist entscheidender als der Einstiegsbeitrag.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span><strong>Assekurata-Spitze 2024:</strong> Nürnberger, Debeka und Allianz führen die Zufriedenheitsranking an.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span><strong>Finanztest 03/2025</strong> hat 1.245 Tarifkombinationen getestet, davon 154 speziell für Angestellte bewertet.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die Top-8 Anbieter (Debeka, AXA, DKV, Signal Iduna, Allianz, Barmenia, HUK-Coburg, Continentale) decken rund 75 Prozent des Marktes ab.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Einleitung -->
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Welche PKV ist die beste für Angestellte? Die Antwort fällt schwer, weil "beste" keine absolute Größe ist. Der billigste Einstiegsbeitrag ist selten das beste Angebot für 40 Jahre Versicherung. Der Testsieger von gestern passt nicht automatisch zu deiner Lebenssituation. Dieser Artikel hilft dir, die richtigen Anbieter zu finden und nicht in die Einstiegsbeitrag-Falle zu tappen.</p>
+  </div>
+
+  <!-- Warum günstig nicht best ist -->
+  <section id='warum-günstig' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Warum der günstigste Tarif selten der beste ist</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Viele Angestellte wählen ihre PKV primär nach dem Einstiegsbeitrag aus. Ein 30-Jähriger findet schnell einen Tarif für 400 Euro monatlich. Das ist verlockend. Aber der gleiche Beitrag bei einem anderen Anbieter ist nach 20 Jahren bei 800 Euro, bei einem dritten bei 600 Euro angelangt.</p>
+      <p>Der Grund: Die PKV kalkuliert jeden Tarif so, dass über eine lange Laufzeit die Einnahmen die Ausgaben decken. Anbieter mit schlechter Beitragsstabilität müssen später stark anheben. Anbieter mit guter Stabilität haben moderate Steigerungen. Das ist kein Zufall, sondern das Ergebnis von Underwriting, Kostenmanagement und Schadenquoten.</p>
+      <p><strong>Praktisches Beispiel:</strong> 2025 hatten Angestellte im Schnitt Beitragserhöhungen von 10,6 Prozent zu tragen. Die Spannbreite war aber 2,0 bis 31,2 Prozent je Anbieter (MAP-Report 2024, Franke und Bornberg). Ein Anbieter mit 31-Prozent-Erhöhung hätte mit seinem günstigen Einstiegsbeitrag längst unwirtschaftlich kalkuliert. Mehr über die <a href='/kosten/beitragsanpassung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Beitragsanpassung</a> erfährst du in unserem Ratgeber.</p>
+    </div>
+  </section>
+
+  <!-- Kriterien -->
+  <section id='kriterien' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Die wichtigsten Bewertungskriterien</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Beitragsstabilität über 24 Jahre:</strong> Das ist das Kriterium Nummer 1. Wie hat sich der Beitrag über zwei Jahrzehnte entwickelt? Die MAP-Studie misst das konkret anhand historischer Daten.</p>
+      <p><strong>Leistungsumfang und Tarifflexibilität:</strong> Kann ich den Tarif nachträglich anpassen? Gibt es Kombinationen, die wirklich passen? Stiftung Warentest bewertet Tarife danach.</p>
+      <p><strong>Kundenservice und Leistungserstattung:</strong> Wie zügig wird erstattet? Wie freundlich ist der Kundenservice? Assekurata und Continentale führen dazu regelmäßig Befragungen durch.</p>
+      <p><strong>Finanzielle Stabilität des Anbieters:</strong> Wie gut ist die Rücklagenquote? Hat der Anbieter genug Kapitaldeckung? Das ist die Versicherungsaufsicht BaFin relevant, wird aber auch von Ratingagenturen überwacht.</p>
+      <p><strong>Passgenauigkeit für deine Situation:</strong> Ein Anbieter, der in Tests hervorragend abschneidet, kann für deine konkrete Situation trotzdem nicht optimal sein. Alleinstehende ohne Zahnersatz-Anspruch brauchen andere Tarife als Paare mit Kindern.</p>
+    </div>
+  </section>
+
+  <!-- Stabilität -->
+  <section id='stabilitaet' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Beitragsstabilität: Das entscheidende Kriterium</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die MAP-Studie (Franke und Bornberg) ist die umfassendste Langzeitanalyse in Deutschland. Sie misst für jeden Anbieter, wie stark die Beiträge über 24 Jahre gestiegen sind. Das ist relevant, weil es zeigt: Wer heute günstig kalkuliert, muss morgen mehr erheben.</p>
+      <p><strong>Was die MAP-Studie zeigt:</strong> Angestellte im Schnitt hatten 2025 Beitragserhöhungen von 10,6 Prozent. Beamte im Schnitt 7,8 Prozent. Aber die Spannbreite zwischen Anbietern lag zwischen 2,0 und 31,2 Prozent. Ein Unterschied von knapp 30 Prozentpunkten in einem einzigen Jahr. Über 20 Jahre kumuliert ist das das Unterschied zwischen bezahlbar und existenzbedrohend.</p>
+      <p><strong>Praktische Konsequenz:</strong> Wenn du einen Tarif mit gutem Einstiegspreis findest, aber der Anbieter ist bekannt für hohe Beitragssprünge, sollte dich das warnen. Ein Anbieter wie Nürnberger oder Debeka, der gemäßigtere Steigerungen hat, ist wirtschaftlich besser für dich langfristig, auch wenn der Einstiegsbeitrag 50 Euro höher liegt.</p>
+    </div>
+  </section>
+
+  <!-- Testergebnisse -->
+  <section id='testergebnisse' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Aktuelle Testergebnisse und Rankings</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Finanztest 03/2025 (Stiftung Warentest):</strong> Insgesamt 35 Anbieter, 1.245 Tarifkombinationen getestet, davon 154 speziell für Angestellte im Alter 35 Jahre bewertet. Das ist die größte deutschsprachige Teststudie zu PKV-Tarifen. Wichtiges Ergebnis: Viele Tarife wurden als "nicht empfehlenswert" eingestuft, weil die Deckungslücken zu groß oder die Selbstbeteiligungen unvorteilhaft sind. Nicht der Einstiegspreis war das Kriterium, sondern das Kosten-Leistungs-Verhältnis über die gesamte Vertragsdauer.</p>
+      <p><strong>Assekurata Kundenzufriedenheit 2024/2025:</strong> Über 4.500 Versicherte befragt, 21 PKV-Anbieter im Test. Die Top-3: Nürnberger, Debeka, Allianz. Kategorien: faire Produktangebote, Beratung, Schadenregulierung, Preis-Leistungs-Verhältnis, Kommunikation. Best-in-Class: Alte Oldenburger bei Bearbeitungszeit, Barmenia bei Klarheit der Schadenabwicklung.</p>
+      <p><strong>ServiceValue Deutschland-Test 2026 (für FOCUS-MONEY):</strong> 2.716 Kunden, 30 PKV-Anbieter. Top-Anbieter: Allianz, Debeka, SDK. Der Test konzentriert sich auf Schaden- und Leistungsregulierung, also darauf, wie zügig und freundlich die Versicherer zahlen.</p>
+    </div>
+  </section>
+
+  <!-- Top-Anbieter -->
+  <section id='topanbieter' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Top-Anbieter für Angestellte im Profil</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die folgenden Anbieter sind am Markt etabliert, verfügen über gute Testergebnisse und eine solide Beitragsstabilität. Das bedeutet nicht, dass sie in jeder Situation optimal sind, aber sie gehören zu den weniger risikobehafteten Entscheidungen:</p>
+      <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+        <table class='w-full text-left border-collapse min-w-[520px]'>
+          <thead>
+            <tr class='bg-[#FAF7F2]'>
+              <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Anbieter</th>
+              <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Marktanteil</th>
+              <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Stärken</th>
+            </tr>
+          </thead>
+          <tbody class='divide-y divide-outline-variant/20'>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>Debeka</td>
+              <td class='px-5 py-4 text-on-surface-variant'>28,9 %</td>
+              <td class='px-5 py-4 text-on-surface-variant'>Stabilität, Beamten-Fokus, große Tarifvielfalt</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>AXA</td>
+              <td class='px-5 py-4 text-on-surface-variant'>9,2 %</td>
+              <td class='px-5 py-4 text-on-surface-variant'>Kundenservice, Tarifflexibilität</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>DKV</td>
+              <td class='px-5 py-4 text-on-surface-variant'>7,6 %</td>
+              <td class='px-5 py-4 text-on-surface-variant'>Allianz-Nähe, breites Tarifportfolio</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>Signal Iduna</td>
+              <td class='px-5 py-4 text-on-surface-variant'>7,1 %</td>
+              <td class='px-5 py-4 text-on-surface-variant'>Preis-Leistungs-Verhältnis, regionale Nähe</td>
+            </tr>
+            <tr>
+              <td class='px-5 py-4 font-semibold text-primary'>Allianz</td>
+              <td class='px-5 py-4 text-on-surface-variant'>6,3 %</td>
+              <td class='px-5 py-4 text-on-surface-variant'>Finanzielle Stabilität, Service</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Debeka:</strong> Mit knapp 29 Prozent Marktanteil der Marktführer, historisch fokussiert auf Beamte, inzwischen auch solide Tarife für Angestellte. Besonderheit: sehr stabile Beitragsentwicklung, großes Tarifangebot, gute Leistungserstattung.</p>
+      <p><strong>Allianz:</strong> Größter Versicherer insgesamt, finanzielle Stabilität ist gegeben, Service und Leistungsregulierung gelten als überdurchschnittlich. Tarife sind teilweise teurer im Einstieg, aber gutes Kosten-Nutzen-Verhältnis.</p>
+      <p><strong>Nürnberger:</strong> Obwohl nicht in der Top-5 nach Marktanteil, taucht Nürnberger in Zufriedenheits- und Stabilitätsranking immer ganz oben auf. Das deutet auf hohe Kundenzufriedenheit bei moderater Größe hin.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Welche PKV hat die stabilsten Beiträge?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Laut MAP-Report führen Nürnberger, Debeka und Allianz bei der Beitragsstabilität. Das bedeutet, dass diese Anbieter über 20 bis 25 Jahre hinweg moderatere Beitragserhöhungen hatten als der Durchschnitt. Aber auch bei ihnen solltest du die konkrete Tarifkalkulation prüfen.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Sollte ich nach Testsieger oder nach persönlichem Profil wählen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Beides sollte passen. Der Testsieger von Finanztest ist relevant, weil die Tester 1.245 Kombinationen getestet haben und objektive Qualitätskriterien anlegten. Aber der beste Tarif von Finanztest nützt dir nichts, wenn er keine Zahnerstattung hat und du eine Brücke brauchst. Such einen Anbieter, der in Tests gut abschneidet UND der Tarife bietet, die zu deiner Lebenssituation passen.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie finde ich den besten Tarif für mich?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>In drei Schritten: Erstens, konzentriere dich auf Anbieter mit guter Beitragsstabilität (MAP-Report, Assekurata). Zweitens, definiere klar deine Leistungsanforderungen (Zahnarzt, Sehhilfen, Psychotherapie?). Drittens, hole konkrete Angebote von 3 bis 4 Anbietern für exakt deine Wunsch-Leistungen. Vergleiche nicht die absoluten Beiträge, sondern die Leistungs-Äquivalente.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Fazit -->
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Es gibt keine "beste PKV" im absoluten Sinne. Es gibt aber bessere und schlechtere Anbieter für deine konkrete Situation. Die beste PKV für dich ist der Anbieter, der langfristige Beitragsstabilität bietet, Leistungen hat, die du wirklich brauchst, und dessen Service du vertraust.</p>
+      <p>Die Testsieger-Listen (Finanztest, Assekurata) sind ein guter Anhaltspunkt. Die MAP-Report-Rankings zeigen, wer historisch stabil kalkuliert hat. Aber am Ende musst du mit den konkreten Tarifen rechnen und vergleichen. Ein Einstiegsbeitrag von 80 Euro Unterschied ist verlockend, aber über 30 Jahre sind das 28.800 Euro. Das sollte nicht die einzige Entscheidungsbasis sein.</p>
+    </div>
+  </section>
+</T6>

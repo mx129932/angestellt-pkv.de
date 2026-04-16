@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Selbstbeteiligung: Was passt? 2026 · PKV für Angestellte</title>
+<style>
+  :root {
+    --primary: #002046;
+    --accent: #aec7f7;
+    --accent-dark: #5f6fb5;
+    --surface: #FAF7F2;
+    --on-surface: #1a1f2e;
+    --on-surface-variant: #515a6b;
+    --outline: #cfd2d8;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--on-surface);
+    background: var(--surface);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
+  h1 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.6rem; margin: 0 0 4px; }
+  .lead { color: var(--on-surface-variant); font-size: .95rem; margin: 0 0 20px; }
+  .card {
+    background: #fff;
+    border: 1px solid rgba(0,32,70,.08);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+    margin-bottom: 20px;
+  }
+  .card h2 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.15rem; margin: 0 0 14px; }
+  .input-row { position: relative; margin-bottom: 16px; }
+  .input-row label { display: block; font-size: .85rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
+  input[type="number"], input[type="range"] {
+    width: 100%; padding: 11px 14px; border: 1px solid var(--outline);
+    border-radius: 8px; background: #fff; font-size: 1rem;
+    color: var(--on-surface); outline: none; transition: border-color .15s;
+  }
+  input[type="number"] { -moz-appearance: textfield; font-weight: 600; padding: 11px 90px 11px 14px; }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+  }
+  input:focus { border-color: var(--primary); }
+  .suffix {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--on-surface-variant); font-weight: 600; font-size: .9rem; pointer-events: none;
+  }
+  .sb-options {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;
+  }
+  .sb-btn {
+    padding: 12px; border: 2px solid var(--outline); border-radius: 8px; background: #fff;
+    cursor: pointer; font-size: .9rem; font-weight: 600; transition: all .2s;
+  }
+  .sb-btn:hover { border-color: var(--accent-dark); background: var(--accent); }
+  .sb-btn.active { border-color: var(--accent-dark); background: var(--accent); color: #fff; }
+  .result { margin-top: 16px; padding: 16px; border-radius: 8px; background: #f0f9ff; border: 1px solid #87a0cd; }
+  .result strong { color: var(--primary); }
+  .cta-box {
+    margin-top: 24px; background: var(--primary); color: #fff;
+    padding: 30px; border-radius: 12px; text-align: center;
+  }
+  .cta-box .text p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.82); }
+  .cta-box .text strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; color: #fff; margin-bottom: 8px; }
+  .cta-buttons {
+    display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--accent-dark); color: #fff; font-weight: 600; font-size: .95rem;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none;
+    transition: background .15s; cursor: pointer; flex: 1; min-width: 200px;
+  }
+  @media (max-width: 600px) { .cta-buttons { flex-direction: column; } .cta-btn { min-width: 100%; } .sb-options { grid-template-columns: 1fr; } }
+  .cta-btn:hover { background: var(--primary); }
+  .trust-badges {
+    margin-top: 14px; display: flex; gap: 16px; justify-content: center;
+    flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.85);
+  }
+  .trust-badges span { display: flex; align-items: center; gap: 4px; }
+  .trust-badges span::before { content: "✓"; font-weight: bold; color: #4ade80; }
+  .note { margin-top: 20px; font-size: .78rem; color: var(--on-surface-variant); line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🎯 Selbstbeteiligung: Wie viel sparst du?</h1>
+  <p class="lead">Höhere Selbstbeteiligung = niedrigere Beiträge. Aber rechnet sich das für dich? Finde heraus, was sinnvoll ist.</p>
+
+  <div class="card">
+    <h2>Deine Situation</h2>
+
+    <div class="input-row">
+      <label>Wie oft gehst du zum Arzt? (geschätzt pro Jahr)</label>
+      <div class="sb-options">
+        <button class="sb-btn" data-visits="5">Selten (5x)</button>
+        <button class="sb-btn active" data-visits="15">Normal (15x)</button>
+        <button class="sb-btn" data-visits="30">Häufig (30x)</button>
+        <button class="sb-btn" data-visits="50">Sehr häufig (50x+)</button>
+      </div>
+      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 8px;" id="visits-hint">
+        Das hilft bei der Wahl der Selbstbeteiligung
+      </div>
+    </div>
+
+    <div id="result" class="result">
+      <strong>Deine beste Option:</strong><br>
+      <span id="recommendation">Berechne deine Situation...</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💡 Die 3 Standard-Optionen</h2>
+    <p style="margin: 0; font-size: .95rem; color: var(--on-surface-variant); line-height: 1.8;">
+      <strong style="color: var(--primary); display: block;">Keine Selbstbeteiligung (SB 0 €)</strong>
+      Du zahlt zur Behandlung nichts zusätzlich. Beitrag ist höher. Ideal für: Häufige Arztbesuche.<br><br>
+      <strong style="color: var(--primary); display: block;">€300/Jahr Selbstbeteiligung</strong>
+      Pro Kalenderja 300 € sparst du am Beitrag. Danach kostenlos. Ideal für: Normales Besuchsverhalten.<br><br>
+      <strong style="color: var(--primary); display: block;">€600/Jahr oder mehr</strong>
+      Höchste Beitragsersparnis. Du zahlst anfangs mehr aus der Tasche. Ideal für: Wenige Arztbesuche.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>❓ Häufige Fragen</h2>
+    <p style="margin: 0; font-size: .92rem; color: var(--on-surface-variant); line-height: 1.7;">
+      <strong>Q: Sind Behandlungen ohne SB besser?</strong><br>
+      A: Nein. Die ärztliche Qualität ist gleich. SB kostet dich mehr, spart dir aber Beitrag.<br><br>
+      <strong>Q: Kann ich die SB ändern?</strong><br>
+      A: Ja, meist einmal pro Jahr während des Versicherungsjahres.<br><br>
+      <strong>Q: Zahle ich SB bei Notfällen?</strong><br>
+      A: Ja, aber als Notfall zählt, was der Arzt definiert — nicht du selbst.
+    </p>
+  </div>
+
+  <div class="cta-box">
+    <div class="text">
+      <strong>Die richtige SB für dein Leben</strong>
+      <p>SB ist eine Kosten-Nutzen-Abwägung. Lass uns gemeinsam schauen, was für dich sinnvoll ist.</p>
+    </div>
+    <div class="cta-buttons">
+      <button class="cta-btn" id="send-result">
+        → Ergebnis per E-Mail senden
+      </button>
+      <button class="cta-btn" id="cta-termin">
+        → Termin buchen
+      </button>
+    </div>
+    <div class="trust-badges">
+      <span>Kostenfrei</span>
+      <span>Unverbindlich</span>
+      <span>Vertraulich</span>
+    </div>
+  </div>
+
+  <p class="note">
+    Quelle: PKV-Standard-Tarife 2026. Selbstbeteiligung ist optional und tarifabhängig.
+    Die Höhe ist einzeln wählbar und kann während des Versicherungsjahres angepasst werden.
+  </p>
+</div>
+
+<script>
+const recommendations = {
+  5: { option: 'Keine Selbstbeteiligung', reason: 'Du gehst sehr selten zum Arzt. Beitragsersparnis wäre gering, Komfort ist wichtiger.' },
+  15: { option: '€300-€600/Jahr', reason: 'Du hast normales Besuchverhalten. Diese Höhe balanciert Beitrag und Kosten gut aus.' },
+  30: { option: '€300/Jahr', reason: 'Du gehst öfter hin. €300 ist optimal — danach kostenlos.' },
+  50: { option: 'Keine Selbstbeteiligung', reason: 'Bei häufigen Besuchen kostet dich eine SB zu viel. Höhere Beiträge sind wirtschaftlicher.' }
+};
+
+document.querySelectorAll('.sb-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.sb-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+
+    const visits = parseInt(this.dataset.visits);
+    const rec = recommendations[visits];
+    document.getElementById('recommendation').innerHTML = `
+      <strong>${rec.option}</strong><br>
+      ${rec.reason}
+    `;
+  });
+});
+
+function sendResults(e) {
+  e.preventDefault();
+  const activeBtn = document.querySelector('.sb-btn.active');
+  const visits = activeBtn ? activeBtn.dataset.visits : '15';
+
+  const lines = [];
+  lines.push("Rechner: Selbstbeteiligung Planer");
+  lines.push("");
+  lines.push("Meine Arztkbesuche pro Jahr: ca. " + visits);
+  lines.push("");
+  lines.push("Ich möchte die beste Selbstbeteiligungshöhe für meine Situation wählen.");
+
+  const subject = encodeURIComponent("Rechner-Ergebnis: Selbstbeteiligung");
+  const body = encodeURIComponent(lines.join("\n"));
+  const mailtoUrl = "mailto:beratung@angestellt-pkv.de?subject=" + subject + "&body=" + body;
+
+  const a = document.createElement("a");
+  a.href = mailtoUrl;
+  a.target = "_top";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+document.getElementById('send-result').addEventListener('click', sendResults);
+document.getElementById('cta-termin').addEventListener('click', () => {
+  window.open('https://calendly.com/pkv-welt/', '_blank');
+});
+</script>
+</body>
+</html>

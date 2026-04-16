@@ -1,0 +1,106 @@
+---
+/**
+ * HTML-Sitemap — alle Seiten aus der IA, gruppiert nach Themenbereich.
+ * Schlank: nur Titel und Link, keine URL-Zeile, keine Badges.
+ */
+import Base from '../../layouts/Base.astro';
+import iaRaw from '../../data/ia.json';
+
+type Page = {
+  nr: number | string;
+  ebene: number;
+  title: string;
+  url: string;
+  kategorie?: string | null;
+};
+
+const pages = iaRaw as Page[];
+
+// Gruppen in fester Reihenfolge. Alle nicht gemappten Seiten landen in "sonstiges".
+const groupOrder = [
+  { slug: 'grundlagen', label: 'Grundlagen', icon: 'school' },
+  { slug: 'kosten', label: 'Kosten & Beiträge', icon: 'payments' },
+  { slug: 'leistungen', label: 'Leistungen', icon: 'verified_user' },
+  { slug: 'aufnahme', label: 'Aufnahme & Gesundheitsprüfung', icon: 'fact_check' },
+  { slug: 'wechsel', label: 'Wechsel & JAEG', icon: 'swap_horiz' },
+  { slug: 'absicherung', label: 'Absicherung', icon: 'shield' },
+  { slug: 'familie', label: 'Familie', icon: 'family_restroom' },
+  { slug: 'lebenssituationen', label: 'Lebenssituationen', icon: 'diversity_3' },
+  { slug: 'rechner', label: 'Rechner', icon: 'calculate' },
+  { slug: 'sonstiges', label: 'Sonstiges', icon: 'more_horiz' },
+];
+
+const mainSlugs = new Set(groupOrder.map((g) => g.slug).filter((s) => s !== 'sonstiges'));
+
+function getSeg(url: string): string {
+  const cleaned = url.replace(/^\/+|\/+$/g, '');
+  if (!cleaned) return '';
+  return cleaned.split('/')[0];
+}
+
+const grouped: Record<string, Page[]> = {};
+for (const p of pages) {
+  const seg = getSeg(p.url);
+  // Home und 404 nicht listen
+  if (seg === '' || seg === '404') continue;
+  const target = mainSlugs.has(seg) ? seg : 'sonstiges';
+  (grouped[target] ||= []).push(p);
+}
+
+// Sortierung innerhalb einer Gruppe: Ebene, dann Nr.
+for (const arr of Object.values(grouped)) {
+  arr.sort((a, b) => {
+    const e = (a.ebene ?? 0) - (b.ebene ?? 0);
+    if (e !== 0) return e;
+    return String(a.nr).localeCompare(String(b.nr), 'de', { numeric: true });
+  });
+}
+
+const total = Object.values(grouped).reduce((sum, arr) => sum + arr.length, 0);
+---
+
+<Base
+  title='Sitemap | PKV für Angestellte'
+  description='Alle Seiten des Portals auf einen Blick, gruppiert nach Themenbereich.'
+  schemaType='WebPage'
+  breadcrumbs={[{ label: 'Start', href: '/' }, { label: 'Sitemap', href: '' }]}
+>
+  <main class='max-w-5xl mx-auto px-6 md:px-8 py-16'>
+    <header class='mb-12'>
+      <p class='text-xs font-bold uppercase tracking-widest text-amber-accent mb-3'>Übersicht</p>
+      <h1 class='text-4xl md:text-5xl font-serif text-primary mb-4 leading-tight'>Sitemap</h1>
+      <p class='text-on-surface-variant text-lg max-w-2xl'>
+        Alle {total} Seiten des Portals, gruppiert nach Themenbereich.
+      </p>
+    </header>
+
+    {groupOrder.map((grp) => {
+      const items = grouped[grp.slug] ?? [];
+      if (items.length === 0) return null;
+      return (
+        <section class='mb-12 border-t border-outline-variant/30 pt-8'>
+          <h2 class='flex items-center gap-3 text-2xl font-serif text-primary mb-6'>
+            <span class='material-symbols-outlined text-amber-accent'>{grp.icon}</span>
+            {grp.label}
+            <span class='text-sm font-body font-normal text-on-surface-variant'>({items.length})</span>
+          </h2>
+          <ul class='grid grid-cols-1 md:grid-cols-2 gap-2'>
+            {items.map((p) => {
+              const indent = (p.ebene ?? 0) > 1 ? 'md:pl-6' : '';
+              return (
+                <li class={`py-2 px-3 rounded-md hover:bg-surface-container-low transition-colors ${indent}`}>
+                  <a
+                    href={p.url}
+                    class='block text-primary font-medium text-sm leading-snug hover:text-amber-accent-dark transition-colors'
+                  >
+                    {p.title}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      );
+    })}
+  </main>
+</Base>

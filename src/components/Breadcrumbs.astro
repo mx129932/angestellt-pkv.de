@@ -1,0 +1,58 @@
+---
+/**
+ * Breadcrumbs.astro — Hierarchische Navigation basierend auf URL-Pfad.
+ * Liest Titel aus src/data/ia.json und fügt Schema.org-JSON-LD hinzu.
+ */
+import iaRaw from '../data/ia.json';
+
+type IaPage = { url: string; title: string };
+const ia = iaRaw as IaPage[];
+
+export interface Props {
+  /** Override-Titel für die letzte Stufe (wenn abweichend vom IA-Titel) */
+  currentTitle?: string;
+}
+
+const { currentTitle } = Astro.props;
+const pathname = Astro.url.pathname;
+
+// Segmente aufbauen: "/kosten/arbeitgeberzuschuss/" → ["/", "/kosten/", "/kosten/arbeitgeberzuschuss/"]
+const parts = pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
+const crumbs: { url: string; label: string }[] = [{ url: '/', label: 'Start' }];
+let acc = '';
+for (let i = 0; i < parts.length; i++) {
+  acc += '/' + parts[i];
+  const url = acc + '/';
+  const isLast = i === parts.length - 1;
+  const override = isLast && currentTitle ? currentTitle : undefined;
+  const ia_match = ia.find((p) => p.url === url);
+  const label = override ?? ia_match?.title ?? parts[i]
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+  crumbs.push({ url, label });
+}
+
+// JSON-LD wird zentral in Base.astro via @graph ausgegeben.
+// Breadcrumb-Daten muessen als breadcrumbs-Prop an das Layout uebergeben werden.
+---
+
+<nav aria-label='Brotkrumennavigation' class='text-sm text-on-surface-variant py-4'>
+  <ol class='flex flex-wrap items-center gap-1.5 max-w-7xl mx-auto px-6 md:px-8'>
+    {crumbs.map((c, i) => {
+      const isLast = i === crumbs.length - 1;
+      return (
+        <li class='flex items-center gap-1.5'>
+          {i > 0 && (
+            <span class='material-symbols-outlined text-[14px] text-outline-variant' aria-hidden='true'>chevron_right</span>
+          )}
+          {isLast ? (
+            <span class='text-primary font-medium' aria-current='page'>{c.label}</span>
+          ) : (
+            <a href={c.url} class='hover:text-amber-accent-dark transition-colors'>{c.label}</a>
+          )}
+        </li>
+      );
+    })}
+  </ol>
+</nav>
+

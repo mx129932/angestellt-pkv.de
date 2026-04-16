@@ -1,7 +1,164 @@
 ---
 import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'vier-bausteine', label: 'Die vier Grundbausteine eines PKV-Tarifs' },
+  { id: 'ambulant', label: 'Ambulanter Baustein: Was er enthaelt' },
+  { id: 'stationaer', label: 'Stationaerer Baustein: Einbett bis Mehrbett' },
+  { id: 'zahn', label: 'Zahnbaustein: Wo die größten Unterschiede liegen' },
+  { id: 'pflege', label: 'Pflege und Zusatzbausteine' },
+  { id: 'fazit', label: 'Fazit: Worauf du nicht verzichten solltest' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const related = [
+  {
+    href: '/leistungen/uebersicht/',
+    kategorie: 'Leistungen',
+    title: 'PKV-Leistungen im Überblick',
+    teaser: 'Welche Leistungen die PKV bietet und worin sie von der GKV unterscheidet.',
+    icon: 'health_and_safety',
+  },
+  {
+    href: '/leistungen/beste-pkv/',
+    kategorie: 'Leistungen',
+    title: 'Beste PKV-Tarife für Angestellte',
+    teaser: 'Welche Tarife in Tests gut abschneiden und worauf du bei der Auswahl achtest.',
+    icon: 'grade',
+  },
+  {
+    href: '/kosten/selbstbeteiligung/',
+    kategorie: 'Kosten',
+    title: 'Selbstbeteiligung in der PKV',
+    teaser: '300 bis 1000 Euro pro Jahr sind typisch. So verhandelt du die richtige Höhe.',
+    icon: 'payments',
+  },
+];
 ---
 <T6
-  title='Tarifbausteine: ambulant, stationär, zahn'
-  description='Wie Tarife aufgebaut sind und worauf du achten solltest.'
-/>
+  title='PKV-Tarifbausteine: Woraus sich dein Tarif zusammensetzt'
+  description='Ein PKV-Tarif besteht aus Bausteinen für ambulant, stationaer, Zahn und Pflege. Welche Module du brauchst, wo du sparen kannst und was du nicht weglassen solltest.'
+  breadcrumb={{ kategorie: 'Leistungen', kategorieHref: '/leistungen/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='8 Min. Lesezeit'
+  related={related}
+  faqItems={[
+    { question: `Kann ich Bausteine nachtraeglich ändern?`, answer: `Ja, aber mit Einschränkungen. Upgraden (zum Beispiel von Mehrbett auf Einfachbett oder höhere Zahnleistung) ist oft ohne neue Gesundheitsprüfung möglich. Downgrades sind meist nur zum Jahresende möglich und erfordern manchmal eine Rückstuefung. Das ist ein Argument, beim Tarif-Start bereits die richtige Kombination zu waehlen.` },
+    { question: `Was ist der Unterschied zwischen Kompakt- und Einzelbaustein?`, answer: `Kompaktbausteine sind vorkonfigurierte Kombinationen (Basis, Standard, Premium), bei denen die vier Grundbausteine bereits aufeinander abgestimmt sind. Einzelbausteine bedeuten, du stellst dir deinen Tarif selbst zusammen. Das ist flexibler, aber riskanter: Falsche Kombinationen entstehen leicht.` },
+    { question: `Welche Bausteine sollte ich auf keinen Fall weglassen?`, answer: `Mindestens diese vier: (1) Ambulant ohne Genehmigungspflicht. (2) Stationaer mind. Einfachbett. (3) Zahn mit Erstatz-Abdeckung (nicht nur Behandlung). (4) PPV mit 100 Prozent Erstattung. Alles andere ist Sparpotenzial, nicht Notwendigkeit. Du kannst später upgraden, wenn sich deine Situation ändert.` }
+  ]}
+>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Jeder PKV-Tarif besteht aus vier Grundbausteinen: Ambulant, Stationaer, Zahn und Pflege.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Du kannst Bausteine einzeln zusammenstellen oder vorkonfigurierte Module (Kompakt, Standard, Premium) waehlen.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Stiftung Warentest hat 1.245 Tarifkombinationen analysiert. 154 Tarife für Angestellte, viele davon nicht empfehlenswert.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Zahnleistungen unterscheiden sich am stärksten zwischen Anbietern. Hier entsteht das größte Sparpotenzial.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Selbstbeteiligungen liegen typischerweise zwischen 300 und 1.000 Euro pro Jahr. Senkt Beitrag, verschoert Vergütung.</span>
+      </li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Ein PKV-Tarif ist nicht wie ein GKV-Paket mit Einheitslohn. Du stückst dir deinen Versicherungsumfang zusammen. Das bietet Flexibilität, schafft aber auch Unsicherheit. Dieser Artikel erklaert, woraus sich dein Tarif zusammensetzt und wo die Unterschiede wirklich liegen.</p>
+  </div>
+
+  <section id='vier-bausteine' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Die vier Grundbausteine eines PKV-Tarifs</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Jeder vollständige PKV-Tarif besteht aus vier abhängigen Komponenten. Sie können separat kalkuliert werden, sind aber rechtlich nicht ganz unabhängig.</p>
+      <p><strong>1. Ambulanter Baustein:</strong> Arztbesuche, Diagnostik, Psychotherapie, Zahnbehandlung (nicht Prothetik). Typischerweise unbegrenzt im Umfang, aber mit <a href='/kosten/selbstbeteiligung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Selbstbeteiligung</a> pro Termin oder pro Jahr.</p>
+      <p><strong>2. Stationaerer Baustein:</strong> Krankenhausaufenthalte, Voruntersuchungen, Psychosomatische Stationen. Unterschied: Zweibett, Einfachbett oder <a href='/wechsel/tarifwechsel-204/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Chefarztbehandlung</a>. Das beeinflusst den Beitrag erheblich.</p>
+      <p><strong>3. Zahnbaustein:</strong> Zahnbehandlung und Zahnersatz (Kronen, Bruecken, Implantate). Separate Selbstbeteiligungen, oft prozentual oder nach Schrittplan. Hier unterscheiden sich die Tarife am stärksten.</p>
+      <p><strong>4. Pflegebaustein:</strong> Pflichtversicherung für private Pflegeversicherung (PPV). Sie versichert Pflegeleistungen ab Pflegegrad 1. Grundsätzlich getrennt vom Krankenversicherungsbeitrag, aber verwaltung in einem Vertrag möglich.</p>
+      <p>Die meisten Versicherer bieten dir vorkonfigurierte Module an (Basis, Komfort, Premium). Diese Paar enthalten die vier Bausteine in vordefinierter Kombinationen. Oft ist ein Tarifwechsel innerhalb dieser Modulleiter ohne Gesundheitsprüfung möglich. Spezialbau ist seltener und teuer.</p>
+    </div>
+  </section>
+
+  <section id='ambulant' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Ambulanter Baustein: Was er enthaelt</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der ambulante Baustein deckt Behandlungen ab, die nicht stationaer erfolgen. Das umfasst Hausarzt, Facharzt, Diagnostik (Labor, Roentgen, MRT), Psychotherapie und spezialisierte Behandlungen wie Physio oder Logopaedie.</p>
+      <p>Wichtig: In guten PKV-Tarifen ist keine Genehmigungspflicht vorgesehen. Du gehst zum Arzt deiner Wahl, teilst die Rechnung ein, bekommst das Geld zurück. In der GKV brauchst du für viele Facharzttermine eine Ueberweisung. In der PKV nicht. Das ist der Hauptgrund, warum PKV-Versicherte Facharztermine schneller bekommen. Das Median liegt bei 9 Tagen gegenüber 10 Tagen in der GKV, aber 64 Prozent der PKV-Versicherten erhalten ihren Termin innerhalb von drei Tagen.</p>
+      <p>Kostenerstattung ist das Schluesselwort. Du bezahlst dem Arzt direkt nach der privaten Gebührenordnung (GOAE) statt nach dem Einheitlichen Bewertungsmassstab (EBM), der in der GKV gilt. Der GOAE-Satz liegt typischerweise 20 bis 40 Prozent höher als der EBM. Das ist für den Arzt attraktiv und erklaert die bessere Versorgung.</p>
+      <p>Selbstbeteiligung im ambulanten Bereich funktioniert unterschiedlich: Manche Tarife rechnen ohne Selbstbeteiligung, andere mit 10 bis 50 Euro pro Termin. Wieder andere setzen eine Jahres-Selbstbeteiligung von 300 bis 500 Euro. Der gewaehlte Modell beeinflusst deinen Monatsbeitrag erheblich.</p>
+    </div>
+  </section>
+
+  <section id='stationaer' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Stationaerer Baustein: Einbett bis Mehrbett</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der stationaere Baustein ist die Versicherung für Krankenhausaufenthalte. Die Unterschiede sind hier am einfachsten zu verstehen und beeinflussen deinen Beitrag massiv.</p>
+      <p><strong>Zweibett oder Mehrbett:</strong> Du teilst dir das Zimmer mit mindestens einer anderen Person. Das ist Standard in der GKV. In der PKV der günstigste stationaere Baustein. Der Beitragsvorteil gegenüber Einfachbett beträgt typischerweise 30 bis 50 Euro monatlich.</p>
+      <p><strong>Einfachbett:</strong> Du hast dein eigenes Zimmer. Typisch für Angestellte und Selbstständige mittlerer Einkommensklasse. Der Zuschlag gegenüber Mehrbentzimmer ist mäßig, aber die Beitragsersparnis ergibt sich aus dem Verzicht auf Chefarztbehandlung.</p>
+      <p><strong>Chefarztbehandlung:</strong> Dein Arzt kann Chefärzte nutzen, ohne Zusatzbeitrag zu zahlen. Das kostet monatlich 30 bis 80 Euro mehr. In der Praxis nutzen diesen Vorteil weniger als 20 Prozent der Versicherten, aber psychologisch ist es attraktiv.</p>
+      <p>Tarifwechsel im stationaeren Bereich sind oft möglich, aber kompliziert. Viele Versicherer erlauben upgraden (von Mehrbett auf Einfachbett) ohne neue Gesundheitsprüfung. Senkungen sind manchmal nur in der Jahres-Freischaltung möglich oder erfordern eine Rückstuefung ohne neuen Antrag.</p>
+    </div>
+  </section>
+
+  <section id='zahn' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Zahnbaustein: Wo die größten Unterschiede liegen</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Zahnbaustein ist der größte Variabilität zwischen Anbietern. Hier entsteht das größte Sparpotenzial, aber auch das größte Risiko von Kostenueberraschungen. Der Grund: Zahnersatz ist teuer und zahlreiche Tarife versuchen, ihre Leistungen entweder zu maximieren oder zu begrenzen.</p>
+      <p>Die PKV unterscheidet zwischen Zahnbehandlung (Fullung, Behandlung von Karies, Entfernung) und Zahnersatz (Kronen, Bruecken, Implantate). Zahnbehandlung ist in den meisten Tarifen gut abgedeckt. Zahnersatz ist der Knackpunkt.</p>
+      <p><strong>Beispiel: Leistungsspektrum Zahnersatz</strong> - Ein Anbieter zahlt 75 Prozent für Bruecken, aber nur 50 Prozent für Implantate und verweist auf günstigere Bruecken. Ein anderer zahlt 100 Prozent für Implantate nach Zahnverlust, sperrt aber Implantate bei aktiven Parodontitis-Diagnosen. Wieder ein anderer zahlt gar keinen Zahnersatz in den ersten zwei Jahren. Diese Details erklaeren Beitragsunterschiede von bis zu 100 Euro monatlich.</p>
+      <p>Selbstbeteiligung im Zahnbereich funktioniert oft prozentual: 20, 25 oder 30 Prozent Selbstbeteiligung für den Versicherten. Manche Tarife begrenzen auch die Jahresleistung (maximal 1.000 oder 2.000 Euro pro Jahr). Das klingt fair, reicht aber bei größeren Arbeiten oft nicht aus.</p>
+      <p>Wichtig: Tarifwechsel im Zahnbereich sind meist nur zum Jahresende möglich und erfordern oft eine neue Zahngesundheitsprüfung. Das Leistungsausschlussfristen für Zahnersatz sind typischerweise acht bis zehn Jahre. Goed Planung beim Tarifstart ist hier essentiell.</p>
+    </div>
+  </section>
+
+  <section id='pflege' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Pflege und Zusatzbausteine</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Pflegebaustein ist rechtlich Pflicht. Wer eine PKV hat, muss auch privat pflegeversichert sein. Die monatliche Praemie für die private Pflegeversicherung (PPV) liegt 2026 durchschnittlich bei etwa 122,64 Euro. Sie ist unabhängig vom Einkommen und wird nicht vom Arbeitgeber mitfinanziert, anders als die Krankenversicherung.</p>
+      <p>Die Leistungen der PPV sind grosso modo deckungsgleich mit der gesetzlichen Pflegeversicherung (SPV). Der Unterschied liegt in der Pflegehöhe: In guten Tarifen zahlt die PPV 100 Prozent der erstattungsfaehigen Kosten, in günstigeren Tarifen 50 bis 80 Prozent. Die meisten Versicherten merken das erst, wenn sie pflegebeduerftig werden.</p>
+      <p>Achtung: Kinderlosenzuschläge in der SPV (gesetzliche Pflege) gibt es nicht in der PPV. Das bedeutet, du zahlst als kinderlose Person die volle Praemie, obwohl die SPV einen Kinderlosenzuschlag von 0,6 Prozentpunkten erhebt. Das ist ein systematischer Nachteil der privaten Pflegeversicherung.</p>
+      <p>Zusatzbausteine sind optional: Zahnzusatzversicherung (wenn nicht im Basistarif enthalten), Krankentagegeld, Chefarztbehandlung im Krankenhaus (manchmal separat buchbar). Manche Versicherer bieten auch alternative Heilverfahren (Homoeopathie, Naturheilkunde) als Zusatzbaustein an. Diese erhöhen den Beitrag, sind aber optional.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit: Worauf du nicht verzichten solltest</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Bausteindenken ist Versicherer-Denken. Für dich als Versicherter geht es um die entscheidende Frage: Welcher Tarif deckt im Krankheitsfall tatsächlich ab?</p>
+      <p>Auf folgende Bausteine solltest du nicht verzichten: Ein ambulanter Baustein ohne Genehmigungspflicht bei Facharzt-Besuchen. Ein stationaerer Baustein mindestens mit Einfachbett (um groesse Sprungkosten zu vermeiden). Ein Zahnbaustein mit mindestens 75 Prozent Leistung für Ersatz, nicht nur Behandlung. Ein PPV-Baustein mit 100 Prozent Erstattung, nicht 50 Prozent.</p>
+      <p>Das Sparpotenzial liegt in der <a href='/kosten/selbstbeteiligung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Selbstbeteiligung</a> (300 bis 1.000 Euro annual reduziert deinen Monatsbeitrag um 50 bis 150 Euro), nicht in der Leistungsreduktion. Eine Zahnzusatzbaustein ist nur noetig, wenn dein Haut-Tarif Zahnersatz nicht abdeckt.</p>
+      <p>Bausteine nachtraeglich zu ändern ist kompliziert. Gute Planung beim Tarifstart spart dir Jahre an Frustration und Rentabilitaetsrechnerei. Nutze externe Vergleichsseiten, die Tarifdetails transparente darstellen. Oder hole eine Fachberatung. Die Entscheidung über Bausteine entscheidet über deine Versorgungsqualitaet für die nächsten Jahre.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich Bausteine nachtraeglich ändern?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, aber mit Einschränkungen. Upgraden (zum Beispiel von Mehrbett auf Einfachbett oder höhere Zahnleistung) ist oft ohne neue Gesundheitsprüfung möglich. Downgrades sind meist nur zum Jahresende möglich und erfordern manchmal eine Rückstuefung. Das ist ein Argument, beim Tarif-Start bereits die richtige Kombination zu waehlen.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was ist der Unterschied zwischen Kompakt- und Einzelbaustein?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Kompaktbausteine sind vorkonfigurierte Kombinationen (Basis, Standard, Premium), bei denen die vier Grundbausteine bereits aufeinander abgestimmt sind. Einzelbausteine bedeuten, du stellst dir deinen Tarif selbst zusammen. Das ist flexibler, aber riskanter: Falsche Kombinationen entstehen leicht.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Welche Bausteine sollte ich auf keinen Fall weglassen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Mindestens diese vier: (1) Ambulant ohne Genehmigungspflicht. (2) Stationaer mind. Einfachbett. (3) Zahn mit Erstatz-Abdeckung (nicht nur Behandlung). (4) PPV mit 100 Prozent Erstattung. Alles andere ist Sparpotenzial, nicht Notwendigkeit. Du kannst später upgraden, wenn sich deine Situation ändert.</div>
+      </details>
+    </div>
+  </section>
+</T6>

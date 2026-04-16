@@ -1,0 +1,10 @@
+---
+import T5 from '../../../layouts/T5.astro';
+---
+<T5
+  title='Arbeitgeberzuschuss-Rechner'
+  description='Wie viel zahlt dein Arbeitgeber zur PKV dazu? Berechnet nach § 257 SGB V mit Kappung am Höchstwert 2026.'
+  intro='Gib deinen tatsächlichen PKV-Beitrag ein. Der Rechner ermittelt den Arbeitgeberzuschuss, den Jahreswert und deinen Eigenanteil. Daten live aus dem PKV-Angestellt Google Sheet.'
+  iframeSrc='/rechner-tools/arbeitgeberzuschuss.html'
+  iframeInitialHeight={1100}
+/>

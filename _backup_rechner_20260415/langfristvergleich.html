@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Langfristvergleich GKV vs. PKV · PKV für Angestellte</title>
+<style>
+  :root {
+    --primary: #002046;
+    --accent: #526772;
+    --accent-light: #cfe6f2;
+    --surface: #FAF7F2;
+    --on-surface: #1a1f2e;
+    --on-surface-variant: #515a6b;
+    --outline: #cfd2d8;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--on-surface);
+    background: var(--surface);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
+  h1 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.6rem; margin: 0 0 4px; }
+  .lead { color: var(--on-surface-variant); font-size: .95rem; margin: 0 0 20px; }
+  .card {
+    background: #fff;
+    border: 1px solid rgba(0,32,70,.08);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+    margin-bottom: 20px;
+  }
+  .card h2 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.15rem; margin: 0 0 14px; }
+  .input-row { position: relative; margin-bottom: 16px; }
+  .input-row label { display: block; font-size: .85rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
+  input[type="number"] {
+    width: 100%; padding: 11px 90px 11px 14px; border: 1px solid var(--outline);
+    border-radius: 8px; background: #fff; font-size: 1.05rem; font-weight: 600;
+    color: var(--on-surface); outline: none; transition: border-color .15s;
+    -moz-appearance: textfield;
+  }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+  }
+  input:focus { border-color: var(--primary); }
+  .suffix {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--on-surface-variant); font-weight: 600; font-size: .9rem; pointer-events: none;
+  }
+  .timeline { margin-top: 16px; position: relative; padding: 16px 0; }
+  .timeline-item { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--outline); }
+  .timeline-item:last-child { border: none; }
+  .timeline-year { font-size: .85rem; font-weight: 600; color: var(--accent); }
+  .timeline-gkv, .timeline-pkv { font-size: .9rem; }
+  .cta-box {
+    margin-top: 24px; background: var(--primary); color: #fff;
+    padding: 30px; border-radius: 12px; text-align: center;
+  }
+  .cta-box .text p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.82); }
+  .cta-box .text strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; color: #fff; margin-bottom: 8px; }
+  .cta-buttons {
+    display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--accent); color: #fff; font-weight: 600; font-size: .95rem;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none;
+    transition: background .15s; cursor: pointer; flex: 1; min-width: 200px;
+  }
+  @media (max-width: 600px) { .cta-buttons { flex-direction: column; } .cta-btn { min-width: 100%; } }
+  .cta-btn:hover { background: var(--primary); }
+  .trust-badges {
+    margin-top: 14px; display: flex; gap: 16px; justify-content: center;
+    flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.85);
+  }
+  .trust-badges span { display: flex; align-items: center; gap: 4px; }
+  .trust-badges span::before { content: "✓"; font-weight: bold; color: #4ade80; }
+  .note { margin-top: 20px; font-size: .78rem; color: var(--on-surface-variant); line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📈 Langfristvergleich: 20 Jahre GKV vs. PKV</h1>
+  <p class="lead">Welche Versicherung ist über Jahrzehnte günstiger? Simuliere deinen finanziellen Weg bis zur Rente mit realischen Zahlen.</p>
+
+  <div class="card">
+    <h2>Deine Ausgangssituation</h2>
+
+    <div class="input-row">
+      <label for="alter">Wie alt bist du jetzt?</label>
+      <div style="position: relative;">
+        <input type="number" id="alter" min="18" max="90" value="35" />
+        <span class="suffix">Jahre</span>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <label for="gehalt">Dein Brutto-Jahresgehalt</label>
+      <div style="position: relative;">
+        <input type="number" id="gehalt" min="0" step="1000" value="70000" />
+        <span class="suffix">€ / Jahr</span>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <label for="steigerung">Gehaltssteigerung pro Jahr (ø)</label>
+      <div style="position: relative;">
+        <input type="number" id="steigerung" min="0" step="0.1" value="2.5" />
+        <span class="suffix">%</span>
+      </div>
+      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
+        Durchschnitt: 2-3% Inflation + Lohnsteigerung
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💰 Kostenverlauf bis zur Rente</h2>
+    <div id="timeline" class="timeline"></div>
+  </div>
+
+  <div class="card">
+    <h2>💡 Was du wissen solltest</h2>
+    <p style="margin: 0; font-size: .95rem; color: var(--on-surface-variant); line-height: 1.6;">
+      <strong>GKV-Kosten steigen mit dem Gehalt:</strong> Der Beitrag ist prozentual (14,6%) und wird mit jedem Lohnaufstieg teurer.<br><br>
+      <strong>PKV-Kosten sind anfangs niedriger, später höher:</strong> Mit jedem Lebensjahr wird es teurer. Dafür bildest du Altersrückstellungen, die später bremsen.<br><br>
+      <strong>Die Rechnung ist nicht absolut:</strong> Wir nutzen Durchschnittswerte. Deine persönliche Gesundheit, Tarifwahl und zukünftige Reformen beeinflussen das stark.<br><br>
+      <strong>Darum ist diese Simulation hilfreich:</strong> Sie zeigt dir die Größenordnung und hilft, eine informierte Entscheidung zu treffen.
+    </p>
+  </div>
+
+  <div class="cta-box">
+    <div class="text">
+      <strong>Welcher Weg passt zu dir?</strong>
+      <p>20 Jahre sind lang. Lass uns gemeinsam schauen, welche Versicherung auch in 10, 15, 20 Jahren noch passen wird.</p>
+    </div>
+    <div class="cta-buttons">
+      <button class="cta-btn" id="send-result">
+        → Ergebnis per E-Mail senden
+      </button>
+      <button class="cta-btn" id="cta-termin">
+        → Termin buchen
+      </button>
+    </div>
+    <div class="trust-badges">
+      <span>Kostenfrei</span>
+      <span>Unverbindlich</span>
+      <span>Vertraulich</span>
+    </div>
+  </div>
+
+  <p class="note">
+    Quelle: GKV-Spitzenverband 2026, PKV-Durchschnittstarife, Inflationsprognosen.
+    Alle Werte sind Durchschnitte und Hochrechnungen. Individuelle Tarife können erheblich abweichen.
+  </p>
+</div>
+
+<script>
+function simulate() {
+  const startAlter = parseInt(document.getElementById('alter').value) || 35;
+  const startGehalt = parseFloat(document.getElementById('gehalt').value) || 70000;
+  const steigerung = parseFloat(document.getElementById('steigerung').value) / 100 || 0.025;
+
+  const timeline = document.getElementById('timeline');
+  timeline.innerHTML = '';
+
+  let cumGKV = 0, cumPKV = 0;
+
+  for (let y = 0; y < 21; y++) {
+    const jahr = new Date().getFullYear() + y;
+    const alter = startAlter + y;
+    const gehalt = startGehalt * Math.pow(1 + steigerung, y);
+
+    const gkvJaehr = gehalt * 0.146;
+    const pkvJaehr = 350 + (alter > 40 ? (alter - 40) * 30 : 0);
+
+    cumGKV += gkvJaehr;
+    cumPKV += pkvJaehr;
+
+    const item = document.createElement('div');
+    item.className = 'timeline-item';
+    item.innerHTML = `
+      <div class="timeline-year">${y === 0 ? 'Heute' : '+' + y + ' J.'}</div>
+      <div class="timeline-gkv" style="color: #2563eb;"><strong>GKV:</strong> ${Math.round(gkvJaehr/12)} €/Mo</div>
+      <div class="timeline-pkv" style="color: #059669;"><strong>PKV:</strong> ${Math.round(pkvJaehr/12)} €/Mo</div>
+    `;
+    timeline.appendChild(item);
+  }
+}
+
+function sendResults(e) {
+  e.preventDefault();
+  const alter = document.getElementById('alter').value;
+  const gehalt = document.getElementById('gehalt').value;
+
+  const lines = [];
+  lines.push("Rechner: Langfristvergleich GKV vs. PKV");
+  lines.push("");
+  lines.push("Mein Alter: " + alter);
+  lines.push("Mein Gehalt: " + gehalt + " €/Jahr");
+  lines.push("");
+  lines.push("Ich möchte wissen, welche Versicherung langfristig für mich besser ist.");
+
+  const subject = encodeURIComponent("Rechner-Ergebnis: Langfristvergleich");
+  const body = encodeURIComponent(lines.join("\n"));
+  const mailtoUrl = "mailto:beratung@angestellt-pkv.de?subject=" + subject + "&body=" + body;
+
+  const a = document.createElement("a");
+  a.href = mailtoUrl;
+  a.target = "_top";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+document.getElementById('alter').addEventListener('input', simulate);
+document.getElementById('gehalt').addEventListener('input', simulate);
+document.getElementById('steigerung').addEventListener('input', simulate);
+document.getElementById('send-result').addEventListener('click', sendResults);
+document.getElementById('cta-termin').addEventListener('click', () => {
+  window.open('https://calendly.com/pkv-welt/', '_blank');
+});
+
+simulate();
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+---
+import T2 from '../../layouts/T2.astro';
+---
+<T2
+  title='PKV für Angestellte | Übersicht'
+  description='Alle Themen rund um die private Krankenversicherung für Angestellte: Analyse statt Verkauf. Unabhängig, datenbasiert, ohne Provision.'
+  headline='PKV für Angestellte: die ehrliche'
+  headlineAccent='Entscheidungshilfe.'
+  lead='Kein Makler-Pitch, kein Vergleichsportal. Wir prüfen dein Profil gegen echte Marktdaten 2026 und sagen dir, ob die PKV für dich passt oder eben nicht.'
+/>

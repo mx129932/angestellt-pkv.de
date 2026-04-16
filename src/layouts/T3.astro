@@ -13,17 +13,7 @@ interface Props {
 const { title, description, canonical } = Astro.props;
 ---
 <Base title={title} description={description} canonical={canonical}>
-  <Fragment set:html={`<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_12px_40px_rgba(25,28,29,0.06)]">
-<div class="font-['Newsreader'] text-2xl font-bold text-[#002046] dark:text-white">The Sentinel</div>
-<nav class="hidden md:flex space-x-8 items-center">
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-[#002046] dark:hover:text-white transition-colors duration-300" href="#">Analyses</a>
-<a class="text-[#002046] dark:text-white border-b-2 border-[#002046] dark:border-white pb-1 font-semibold hover:text-[#002046] dark:hover:text-white transition-colors duration-300" href="#">Private Health</a>
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-[#002046] dark:hover:text-white transition-colors duration-300" href="#">Compare</a>
-<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-2 rounded-lg font-medium transition-transform scale-95 duration-150 ease-in-out hover:scale-100">Consultation</button>
-</nav>
-</header>
-<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
+  <Fragment set:html={`<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
 <!-- Breadcrumb -->
 <nav class="flex items-center space-x-2 text-xs uppercase tracking-widest text-on-surface-variant mb-12">
 <a class="hover:text-primary" href="#">Home</a>
@@ -69,8 +59,8 @@ const { title, description, canonical } = Astro.props;
 <span>14 Min. Lesezeit</span>
 <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
 <div class="flex items-center gap-2">
-<img alt="Marc-Oliver Neumann" class="w-6 h-6 rounded-full object-cover border border-outline-variant/30" src="https://lh3.googleusercontent.com/aida/ADBb0uidJq9ad5X7_BOC4k6JV7OVjL4nf5FRyKCH_y5CWoUcDZE3zv7H_HVTFiZAqfHHq-i6IEgyatVPosSi8AUW9VRNMQIh7RumMhkO-2TN-v2kjz2k9zA7v6ouTQ6FRbSagJ4nCixRo28AhwyUvjvg1BPx3JCexzQE6KJ4Nj-h7HEOzgvnP9d2TlBZyePtLsE-bqBecTo-bgbAnp3UREI1aQ2ZP3e7_E5-qkCf85lWZkPY_rYPmlPvMwIU"/>
-<span class="italic font-medium">Von Marc-Oliver Neumann</span>
+<img alt="Tim Bökemeier" class="w-6 h-6 rounded-full object-cover border border-outline-variant/30" src="/images/tim-avatar.webp"/>
+<span class="italic font-medium">Von Tim Bökemeier</span>
 </div>
 </div>
 <!-- Key Fact Box -->
@@ -262,16 +252,5 @@ const { title, description, canonical } = Astro.props;
 </article>
 </div>
 </main>
-<!-- Footer -->
-<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center border-t border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950">
-<div class="mb-8 md:mb-0">
-<div class="font-['Newsreader'] text-xl font-semibold text-[#002046] dark:text-white mb-2">The Sentinel</div>
-<p class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400">© 2024 The Sentinel. Editorial Excellence for the Modern Professional.</p>
-</div>
-<nav class="flex space-x-6">
-<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-[#00261c] dark:hover:text-emerald-400 underline decoration-2 transition-opacity opacity-80 hover:opacity-100" href="#">Editorial Standards</a>
-<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-[#00261c] dark:hover:text-emerald-400 underline decoration-2 transition-opacity opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
-<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-[#00261c] dark:hover:text-emerald-400 underline decoration-2 transition-opacity opacity-80 hover:opacity-100" href="#">Imprint</a>
-</nav>
-</footer>`} />
+`} />
 </Base>

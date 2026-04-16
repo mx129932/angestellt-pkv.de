@@ -1,0 +1,10 @@
+<If "%{HTTP_HOST} == 'test.angestellt-pkv.de'">
+  AuthType Basic
+  AuthName "Testumgebung"
+  AuthUserFile /www/htdocs/w021792a/test.angestellt-pkv.de/.htpasswd
+  Require valid-user
+</If>
+
+<Files ".htpasswd">
+  Require all denied
+</Files>

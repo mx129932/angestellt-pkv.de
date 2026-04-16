@@ -1,0 +1,30 @@
+---
+import CategoryHub from '../../layouts/CategoryHub.astro';
+
+const faq = [
+  {
+    q: 'Sind Kinder bei PKV-Eltern kostenlos mitversichert?',
+    a: 'Nein. In der PKV gibt es keine beitragsfreie Familienversicherung wie in der GKV. Jedes Kind braucht einen eigenen Vertrag und einen eigenen Beitrag, der allerdings deutlich niedriger ist (oft 100 bis 180 Euro pro Kind). Die Beitragspflicht beginnt ab Geburt.',
+  },
+  {
+    q: 'Wann lohnt sich die PKV für Kinder, wann nicht?',
+    a: 'Lohnt sich: ein oder zwei Kinder, beide Eltern gut verdienend, gesunde Kinder, Wert auf Chefarzt-/Einzelzimmer-Leistung. Lohnt sich weniger: viele Kinder geplant (jedes kostet extra) oder ein Elternteil über JAEG, der andere GKV-pflichtig. Dann oft GKV für Kinder + PKV-Zusatz die bessere Kombination.',
+  },
+  {
+    q: 'Wie ist die PKV in der Elternzeit geregelt?',
+    a: 'Der PKV-Beitrag läuft weiter, auch wenn kein Gehalt fließt. Während der Elternzeit entfällt allerdings der Arbeitgeberzuschuss, es sei denn, du arbeitest in Teilzeit weiter. Wichtig: Elterngeld ist kein Erwerbseinkommen, die Versicherungspflichtgrenze wird dadurch nicht unterschritten.',
+  },
+  {
+    q: 'Kann ein Kind, das in der PKV geboren wurde, später in die GKV?',
+    a: 'Ja, sobald das Kind selbst erwerbstätig wird und die Versicherungspflicht (unterhalb JAEG) besteht, ist es GKV-pflichtig. Aus der PKV-Kindheit entsteht keine dauerhafte PKV-Bindung. Wichtig ist aber, die Wahlfristen nach Kontenaufnahme einzuhalten.',
+  },
+];
+---
+<CategoryHub
+  kategorieSlug='familie'
+  title='PKV und Familie'
+  description='Kindernachversicherung, Elternzeit, Familienplanung und GKV-PKV-Mischformen. Alles rund um die private Krankenversicherung im Familienkontext.'
+  keyword='Familie und Kindern'
+  intro='Familie verändert die PKV-Rechnung fundamental. Kein Automatismus wie in der GKV, jedes Kind mit eigenem Vertrag und Beitrag, dafür oft mit deutlich besseren Leistungen. Dieser Bereich zeigt, ab wann sich die PKV für Familien rechnet, wie Elternzeit sich auswirkt und welche Mischformen mit der GKV funktionieren.'
+  faq={faq}
+/>

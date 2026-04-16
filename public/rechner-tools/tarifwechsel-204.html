@@ -1,222 +1,354 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>§ 204 Tarifwechsel-Sparrechner 2026 · PKV für Angestellte</title>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>§ 204 VVG Tarifwechsel-Rechner 2026 · PKV fuer Angestellte</title>
 <style>
   :root {
-    --primary: #002046;
-    --accent: #ea580c;
-    --accent-dark: #b45309;
-    --surface: #FAF7F2;
-    --on-surface: #1a1f2e;
-    --on-surface-variant: #515a6b;
-    --outline: #cfd2d8;
-    --warn: #dc2626;
+    --bd: #002046; --bm: #1b365d; --bl: #e3ebf5; --or: #D4A017;
+    --bg: #F7F9FC; --tx: #4A4A4A; --mu: #666; --bo: #cfd6e3;
+    --gr: #1E7D4B; --gb: #EAF7EF; --wb: #FFF8EC; --wr: #E8B84B;
+    --am: #002046; --amb: #e3ebf5;
+    --r: 8px; --sh: 0 2px 12px rgba(31,78,121,.10);
   }
-  * { box-sizing: border-box; }
-  html, body {
-    margin: 0; padding: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: var(--on-surface);
-    background: var(--surface);
-    line-height: 1.55;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--tx); line-height: 1.6; }
+
+  
+
+  /* Mobile responsive */
+  @media (max-width: 520px) {
+    .wrap { padding: 12px 8px 32px !important; }
+    .hdr { padding: 18px 14px !important; }
+    .hdr h1 { font-size: 1.15rem !important; }
+    .wrap .card { padding: 14px 10px !important; }
+    .wrap .rval { min-width: 72px !important; font-size: .92rem !important; }
+    .wrap .f label span { display: block !important; margin-left: 0 !important; margin-top: 2px !important; }
+    .wrap .grid2 { grid-template-columns: 1fr !important; }
+    .wrap .savings-banner .nums { flex-direction: column !important; gap: 8px !important; }
+    .cta { padding: 14px 10px !important; }
   }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
-  h1 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.6rem; margin: 0 0 4px; }
-  .lead { color: var(--on-surface-variant); font-size: .95rem; margin: 0 0 20px; }
-  .card {
-    background: #fff;
-    border: 1px solid rgba(0,32,70,.08);
-    border-radius: 12px;
-    padding: 22px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.03);
-    margin-bottom: 20px;
-  }
-  .card h2 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.15rem; margin: 0 0 14px; }
-  .input-row { position: relative; margin-bottom: 16px; }
-  .input-row label { display: block; font-size: .85rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
-  input[type="number"] {
-    width: 100%; padding: 11px 90px 11px 14px; border: 1px solid var(--outline);
-    border-radius: 8px; background: #fff; font-size: 1.05rem; font-weight: 600;
-    color: var(--on-surface); outline: none; transition: border-color .15s;
-    -moz-appearance: textfield;
-  }
-  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-    -webkit-appearance: none; margin: 0;
-  }
-  input:focus { border-color: var(--primary); }
-  .suffix {
-    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-    color: var(--on-surface-variant); font-weight: 600; font-size: .9rem; pointer-events: none;
-  }
-  .result { margin-top: 16px; padding: 16px; border-radius: 8px; background: #fef3c7; border: 1px solid #fcd34d; }
-  .result strong { color: var(--warn); }
-  .result .big { display: block; font-size: 1.5rem; font-weight: 700; margin: 8px 0; color: var(--warn); }
-  .cta-box {
-    margin-top: 24px; background: var(--primary); color: #fff;
-    padding: 30px; border-radius: 12px; text-align: center;
-  }
-  .cta-box .text p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.82); }
-  .cta-box .text strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; color: #fff; margin-bottom: 8px; }
-  .cta-buttons {
-    display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;
-  }
-  .cta-btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    background: var(--accent); color: #fff; font-weight: 600; font-size: .95rem;
-    padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none;
-    transition: background .15s; cursor: pointer; flex: 1; min-width: 200px;
-  }
-  @media (max-width: 600px) { .cta-buttons { flex-direction: column; } .cta-btn { min-width: 100%; } }
-  .cta-btn:hover { background: var(--accent-dark); }
-  .trust-badges {
-    margin-top: 14px; display: flex; gap: 16px; justify-content: center;
-    flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.85);
-  }
-  .trust-badges span { display: flex; align-items: center; gap: 4px; }
-  .trust-badges span::before { content: "✓"; font-weight: bold; color: #4ade80; }
-  .note { margin-top: 20px; font-size: .78rem; color: var(--on-surface-variant); line-height: 1.5; }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; }
+  .hdr { background: linear-gradient(135deg, var(--bd) 0%, var(--bm) 100%);
+    border-radius: var(--r); padding: 26px 30px; color: #fff; margin-bottom: 20px; }
+  .hdr h1 { font-size: 1.45rem !important; font-weight: 700 !important; margin-bottom: 5px !important; color: #fff !important; line-height: 1.3 !important; }
+  .hdr p  { font-size: .88rem !important; opacity: .88; color: #fff !important; line-height: 1.5 !important; }
+  .card { background: #fff; border: 1px solid var(--bo); border-radius: var(--r);
+    padding: 22px; margin-bottom: 14px; box-shadow: var(--sh); }
+  .card h2 { font-size: .95rem; font-weight: 700; color: var(--bd); margin-bottom: 14px;
+    padding-bottom: 7px; border-bottom: 2px solid var(--bl); }
+  .f { margin-bottom: 16px; }
+  .f label { display: block; font-size: .83rem; font-weight: 600; color: var(--bd); margin-bottom: 5px; }
+  .f label span { font-weight: 400; color: var(--mu); font-size: .78rem; margin-left: 4px; }
+  .rrow { display: flex; align-items: center; gap: 10px; }
+  .rval { min-width: 90px; text-align: right; font-size: 1.08rem; font-weight: 700;
+    color: var(--bd); background: var(--bl); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--bo); }
+  input[type=range] { width: 100%; accent-color: var(--bm); cursor: pointer; min-height: 44px; }
+  select { width: 100%; padding: 11px 12px; border: 1px solid var(--bo);
+    border-radius: 6px; font-size: 1rem; background: #fff; color: var(--tx); cursor: pointer; min-height: 44px; }
+
+  .leistungen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .chk-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+    border: 2px solid var(--bo); border-radius: 6px; cursor: pointer; transition: all .15s; }
+  .chk-item:hover { border-color: var(--or); }
+  .chk-item input[type=checkbox] { accent-color: var(--bm); width: 16px; height: 16px; cursor: pointer; min-height: 44px; }
+  .chk-item.checked { border-color: var(--or); background: #FFF8E4; }
+  .chk-item label { font-size: .82rem; font-weight: 600; color: var(--tx); cursor: pointer; min-height: 44px; }
+  .chk-item .sav-badge { margin-left: auto; font-size: .72rem; font-weight: 700;
+    color: var(--gr); background: var(--gb); padding: 1px 7px; border-radius: 10px; }
+
+  .res { display: none; }
+  .res.on { display: block; }
+
+  .savings-banner { background: linear-gradient(135deg, var(--bd), var(--bm));
+    border-radius: var(--r); padding: 20px 24px; color: #fff; margin-bottom: 14px; text-align: center; }
+  .savings-banner .main-num { font-size: 3rem; font-weight: 900; line-height: 1; }
+  .savings-banner .sub { font-size: .85rem; opacity: .88; margin-top: 4px; }
+  .savings-banner .sub-nums { display: flex; justify-content: center; gap: 24px; margin-top: 12px; flex-wrap: wrap; }
+  .savings-banner .sub-num { text-align: center; }
+  .savings-banner .sub-num .n { font-size: 1.3rem; font-weight: 800; }
+  .savings-banner .sub-num .l { font-size: .74rem; opacity: .8; }
+
+  .compare-box { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center;
+    margin-bottom: 14px; }
+  .compare-box .side { background: #fff; border: 2px solid var(--bo); border-radius: var(--r); padding: 16px; text-align: center; }
+  .compare-box .side.new { border-color: var(--gr); background: var(--gb); }
+  .compare-box .side .type { font-size: .75rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .5px; margin-bottom: 5px; color: var(--mu); }
+  .compare-box .side.new .type { color: var(--gr); }
+  .compare-box .side .amount { font-size: 1.6rem; font-weight: 900; color: var(--bd); }
+  .compare-box .side.new .amount { color: var(--gr); }
+  .compare-box .side .sub { font-size: .75rem; color: var(--mu); margin-top: 3px; }
+  .compare-box .arrow { font-size: 1.8rem; color: var(--or); text-align: center; font-weight: 900; }
+
+  .leist-changes { background: var(--amb); border: 1px solid var(--bo); border-radius: 6px;
+    padding: 14px 16px; margin-bottom: 14px; }
+  .leist-changes h3 { font-size: .85rem; font-weight: 700; color: var(--am); margin-bottom: 8px; }
+  .leist-item { display: flex; align-items: flex-start; gap: 8px; font-size: .82rem;
+    padding: 4px 0; border-bottom: 1px dashed #d9b874; }
+  .leist-item:last-child { border-bottom: none; }
+  .leist-item .icon { min-width: 16px; }
+
+  .recht-box { background: #e8eef7; border: 1px solid #7a93bf; border-radius: 6px;
+    padding: 14px 16px; margin-bottom: 14px; }
+  .recht-box h3 { font-size: .85rem; font-weight: 700; color: var(--bd); margin-bottom: 8px; }
+  .recht-box p { font-size: .82rem; color: #002046; line-height: 1.5; }
+
+  .cta { background: linear-gradient(135deg, var(--bd), var(--bm));
+    border-radius: var(--r); padding: 18px 22px; text-align: center; color: #fff; }
+  .cta p { font-size: .87rem; opacity: .9; margin-bottom: 10px; }
+  .cbtn { display: inline-block; background: var(--or); color: #fff; padding: 14px 28px;
+    border-radius: 6px; font-weight: 700; text-decoration: none; font-size: .95rem; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  .note { font-size: .73rem; color: var(--mu); text-align: center; margin-top: 10px; }
+
+  @media (max-width: 520px) { .compare-box { grid-template-columns: 1fr; }
+    .compare-box .arrow { transform: rotate(90deg); } .leistungen-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>💡 § 204 Tarifwechsel: Clever sparen</h1>
-  <p class="lead">Ohne neue Gesundheitsprüfung zu einem günstigeren Tarif wechseln? § 204 macht's möglich. Berechne dein Sparpotenzial.</p>
+<div class="hdr">
+  <h1>💡 § 204 VVG Tarifwechsel-Rechner</h1>
+  <p>Du bist angestellt und privat versichert? Pruefe, wie viel Beitrag du ueber einen internen Tarifwechsel nach § 204 VVG sparen kannst — ohne neue Gesundheitspruefung, mit Mitnahme aller Altersrueckstellungen.</p>
+</div>
 
-  <div class="card">
-    <h2>Deine Situation</h2>
-
-    <div class="input-row">
-      <label for="jetziger">Dein jetziger PKV-Beitrag (monatlich)</label>
-      <div style="position: relative;">
-        <input type="number" id="jetziger" min="0" step="10" value="550" />
-        <span class="suffix">€ / Monat</span>
-      </div>
-      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
-        Was du aktuell zahlst (steht auf der Rechnung)
-      </div>
+<div class="card">
+  <h2>Dein aktueller PKV-Beitrag</h2>
+  <div class="f">
+    <label>Aktueller Monatsbeitrag</label>
+    <div class="rrow">
+      <input type="range" id="beitrag" min="300" max="2000" step="10" value="900"
+             oninput="v('beitrag_v', feur(this.value)); calc()">
+      <span class="rval" id="beitrag_v">900 €</span>
     </div>
-
-    <div class="input-row">
-      <label for="neuer">Angebot für einen neuen Tarif</label>
-      <div style="position: relative;">
-        <input type="number" id="neuer" min="0" step="10" value="420" />
-        <span class="suffix">€ / Monat</span>
-      </div>
-      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
-        Das bringen dir andere Versicherer oder bessere Tarife
-      </div>
+  </div>
+  <div class="f">
+    <label>Versicherer</label>
+    <select id="versicherer" onchange="calc()">
+      <option value="typical">Typischer Großversicherer (Allianz, AXA, DKV, Signal Iduna...)</option>
+      <option value="premium">Premium-Versicherer (Hanse Merkur, Barmenia, Gothaer...)</option>
+      <option value="direct">Direktversicherer / Neugründer (z.B. ottonova, vitolo...)</option>
+    </select>
+  </div>
+  <div class="f">
+    <label>Alter</label>
+    <div class="rrow">
+      <input type="range" id="alter" min="25" max="70" step="1" value="45"
+             oninput="v('alter_v', this.value + ' Jahre'); calc()">
+      <span class="rval" id="alter_v">45 Jahre</span>
     </div>
+  </div>
+</div>
 
-    <div id="result" class="result hidden">
-      <span style="font-size: .85rem;">Dein jährliches Sparpotenzial:</span>
-      <div class="big" id="sparpotential">—</div>
-      <div style="font-size: .9rem; margin-top: 8px;">
-        <strong>Ohne dass deine Leistungen schlechter werden!</strong> Das ist der § 204 Vorteil.
-      </div>
+<div class="card">
+  <h2>Auf welche Leistungen könntest du verzichten?</h2>
+  <p style="font-size:.82rem;color:var(--mu);margin-bottom:12px;">Wähle Leistungen, auf die du im neuen Tarif verzichten würden. Das bestimmt die mögliche Beitragsersparnis.</p>
+  <div class="leistungen-grid" id="leistungen_grid">
+    <!-- wird per JS gebaut -->
+  </div>
+</div>
+
+<!-- Ergebnis -->
+<div id="res" class="res">
+  <div class="savings-banner">
+    <div class="sub">Geschätztes Sparpotenzial durch § 204 VVG Tarifwechsel</div>
+    <div class="main-num" id="r_spar_jahr">–</div>
+    <div class="sub">pro Jahr</div>
+    <div class="sub-nums">
+      <div class="sub-num"><div class="n" id="r_spar_mon">–</div><div class="l">/ Monat</div></div>
+      <div class="sub-num"><div class="n" id="r_spar_5j">–</div><div class="l">in 5 Jahren</div></div>
+      <div class="sub-num"><div class="n" id="r_spar_10j">–</div><div class="l">in 10 Jahren</div></div>
     </div>
   </div>
 
-  <div class="card">
-    <h2>💡 Was ist § 204?</h2>
-    <p style="margin: 0; font-size: .95rem; color: var(--on-surface-variant); line-height: 1.6;">
-      <strong>Das Problem:</strong> Du hast eine gute PKV, aber der Beitrag ist über die Jahre gestiegen. Ein Wechsel zu einem billigeren Versicherer kostet eine neue Gesundheitsprüfung.<br><br>
-      <strong>Die Lösung (§ 204 VVG):</strong> Du darfst innerhalb deines Versicherers in einen günstigeren Tarif mit gleicher oder besserer Leistung wechseln — ohne Gesundheitsprüfung!<br><br>
-      <strong>Das Ergebnis:</strong> Du sparst Geld und verlierst nicht deine Altersrückstellungen, die du über Jahre aufgebaut hast.<br><br>
-      <strong>Die Voraussetzung:</strong> Es muss einen § 204-fähigen Tarif beim gleichen Versicherer geben. Das ist oft der Fall.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>❓ Häufige Fragen</h2>
-    <p style="margin: 0; font-size: .92rem; color: var(--on-surface-variant); line-height: 1.7;">
-      <strong>Q: Verliere ich meine Altersrückstellung?</strong><br>
-      A: Nein! Die bleibt bestehen und wird mitgenommen. Das ist der § 204 Vorteil.<br><br>
-      <strong>Q: Verschlechtert sich meine Leistung?</strong><br>
-      A: Nein, die bleibt gleich oder wird sogar besser (das ist eine Bedingung).<br><br>
-      <strong>Q: Muss ich eine neue Gesundheitsprüfung machen?</strong><br>
-      A: Nein! Das ist das ganze Konzept von § 204 — keine Prüfung, kein Warten.
-    </p>
-  </div>
-
-  <div class="cta-box">
-    <div class="text">
-      <strong>Nutze § 204 und spare Geld</strong>
-      <p>Wenn du bei uns anfragst, prüfen wir, ob und wie viel du sparen kannst — und vermitteln den Wechsel.</p>
+  <div class="compare-box">
+    <div class="side">
+      <div class="type">Aktueller Tarif</div>
+      <div class="amount" id="r_alt">–</div>
+      <div class="sub">/ Monat</div>
     </div>
-    <div class="cta-buttons">
-      <button class="cta-btn" id="send-result">
-        → Ergebnis per E-Mail senden
-      </button>
-      <button class="cta-btn" id="cta-termin">
-        → Termin buchen
-      </button>
-    </div>
-    <div class="trust-badges">
-      <span>Kostenfrei</span>
-      <span>Unverbindlich</span>
-      <span>Vertraulich</span>
+    <div class="arrow">→</div>
+    <div class="side new">
+      <div class="type">Neuer Tarif (Schätzung)</div>
+      <div class="amount" id="r_neu">–</div>
+      <div class="sub">/ Monat</div>
     </div>
   </div>
 
-  <p class="note">
-    Quelle: § 204 Versicherungsvertragsgesetz (VVG). § 204 Tarifwechsel ist dem Versicherer vorzuschlagen.
-    Die Akzeptanz und Bedingungen können variieren — wir prüfen das kostenlos für dich.
-  </p>
+  <div class="leist-changes" id="leist_changes">
+    <h3>⚠️ Leistungsänderungen beim Wechsel</h3>
+    <div id="leist_list"></div>
+  </div>
+
+  <div class="recht-box">
+    <h3>⚖️ dein Recht nach § 204 VVG</h3>
+    <p>Als PKV-Versicherter hast du das gesetzliche Recht, jederzeit in einen anderen Tarif desselben Versicherers zu wechseln – <strong>ohne erneute Gesundheitsprüfung</strong> und mit <strong>vollständiger Mitnahme aller Altersrückstellungen</strong>. Der Versicherer muss deinem Wechselantrag stattgeben, solange du in einen gleichwertigen oder günstigeren Tarif wechseln.</p>
+  </div>
+
+  <div class="cta">
+    <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:6px;">Ergebnis mit einem Experten besprechen?</h3>
+    <p>Gerne analysieren wir dein Ergebnis und melden uns bei dir - klären du offene Fragen einfach mit unseren Experten.</p>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <a id="mailto_cta" href="#" class="cbtn" onclick="sendResults(event)">→ Ergebnis per E-Mail senden</a>
+      <a href="https://calendly.com/pkv-welt/" target="_blank" rel="noopener" class="cbtn" style="background:var(--bm);">→ Termin buchen</a>
+    </div>
+    <div style="display:flex;gap:16px;justify-content:center;margin-top:12px;font-size:.78rem;opacity:.85;">
+      <span>✓ Kostenfrei</span><span>✓ Unverbindlich</span><span>✓ Vertraulich</span>
+    </div>
+  </div>
+</div>
+
+<div class="note">Ersparnisangaben sind Schätzwerte auf Basis von Marktdurchschnittswerten. Tatsächliche Ersparnisse hängen stark von Tarif, Versicherer und deiner individuellen Situation ab. Keine Beratung.</div>
 </div>
 
 <script>
-function calculate() {
-  const jetziger = parseFloat(document.getElementById('jetziger').value) || 550;
-  const neuer = parseFloat(document.getElementById('neuer').value) || 420;
-
-  if (neuer >= jetziger) {
-    document.getElementById('result').classList.add('hidden');
-    return;
-  }
-
-  const ersparnis = (jetziger - neuer) * 12;
-  document.getElementById('sparpotential').textContent = `${Math.round(ersparnis)} € / Jahr`;
-  document.getElementById('result').classList.remove('hidden');
-}
+function feur(v,d=0) { return new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR",maximumFractionDigits:d}).format(v); }
+function v(id, t) { document.getElementById(id).textContent = t; }
 
 function sendResults(e) {
   e.preventDefault();
-  const jetziger = document.getElementById('jetziger').value;
-  const neuer = document.getElementById('neuer').value;
-  const ersparnis = Math.round((parseFloat(jetziger) - parseFloat(neuer)) * 12);
-
   const lines = [];
-  lines.push("Rechner: § 204 Tarifwechsel-Planer");
-  lines.push("");
-  lines.push("Mein aktueller Beitrag: " + jetziger + " €/Monat");
-  lines.push("Angebot neuer Tarif: " + neuer + " €/Monat");
-  lines.push("Sparpotenzial: " + ersparnis + " €/Jahr");
-  lines.push("");
-  lines.push("Ich möchte wissen, ob ein § 204 Wechsel für mich möglich und sinnvoll ist.");
+  lines.push('Rechner: § 204 VVG Tarifwechsel-Rechner');
+  lines.push('');
+  lines.push('Meine Eingaben:');
 
-  const subject = encodeURIComponent("Rechner-Ergebnis: § 204 Tarifwechsel");
-  const body = encodeURIComponent(lines.join("\n"));
-  const mailtoUrl = "mailto:beratung@angestellt-pkv.de?subject=" + subject + "&body=" + body;
+  const beitrag = document.getElementById("beitrag").value;
+  const versicherer = document.getElementById("versicherer").value;
+  const alter = document.getElementById("alter").value;
 
-  const a = document.createElement("a");
+  lines.push('  Aktueller Monatsbeitrag: ' + feur(beitrag));
+  lines.push('  Versicherer: ' + versicherer);
+  lines.push('  Alter: ' + alter + ' Jahre');
+
+  lines.push('');
+  lines.push('Leistungsverzichte:');
+  let hasChecks = false;
+  const checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+  if (checkboxes.length === 0) {
+    lines.push('  Keine – Basisreduktion durch effizienteren Tarif');
+  } else {
+    hasChecks = true;
+    checkboxes.forEach(cb => {
+      const label = document.querySelector('label[for="' + cb.id + '"]');
+      if (label) {
+        lines.push('  ✓ ' + label.textContent.trim());
+      }
+    });
+  }
+
+  lines.push('');
+  lines.push('Ergebnis:');
+  const rSparMon = document.getElementById("r_spar_mon").textContent;
+  const rSparJahr = document.getElementById("r_spar_jahr").textContent;
+  const rSpar5j = document.getElementById("r_spar_5j").textContent;
+  const rSpar10j = document.getElementById("r_spar_10j").textContent;
+  const rAlt = document.getElementById("r_alt").textContent;
+  const rNeu = document.getElementById("r_neu").textContent;
+
+  lines.push('  Sparpotenzial / Monat: ' + rSparMon);
+  lines.push('  Sparpotenzial / Jahr: ' + rSparJahr);
+  lines.push('  Sparpotenzial in 5 Jahren: ' + rSpar5j);
+  lines.push('  Sparpotenzial in 10 Jahren: ' + rSpar10j);
+  lines.push('');
+  lines.push('  Aktueller Tarif: ' + rAlt + ' / Monat');
+  lines.push('  Neuer Tarif (Schätzung): ' + rNeu + ' / Monat');
+
+  lines.push('');
+  lines.push('Ich möchte mein Ergebnis gerne mit einem Experten besprechen.');
+
+  const subject = encodeURIComponent('Rechner-Ergebnis: § 204 VVG Tarifwechsel-Rechner');
+  const body = encodeURIComponent(lines.join('\n'));
+  var mailtoUrl = 'mailto:beratung@angestellt-pkv.de?subject=' + subject + '&body=' + body;
+  var a = document.createElement('a');
   a.href = mailtoUrl;
-  a.target = "_top";
+  a.target = '_top';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
 }
 
-document.getElementById('jetziger').addEventListener('input', calculate);
-document.getElementById('neuer').addEventListener('input', calculate);
-document.getElementById('send-result').addEventListener('click', sendResults);
-document.getElementById('cta-termin').addEventListener('click', () => {
-  window.open('https://calendly.com/pkv-welt/', '_blank');
+const LEISTUNGEN = [
+  { id: "chefarzt",     label: "Chefarztbehandlung",         reduktion: 0.07, warnung: "Nur noch Behandlung durch Stationsarzt statt Chefarzt." },
+  { id: "einbett",      label: "1-Bett-Zimmer",              reduktion: 0.06, warnung: "Kein garantiertes Einzelzimmer mehr im Krankenhaus." },
+  { id: "zahn80",       label: "Zahnersatz 80% → 50%",       reduktion: 0.04, warnung: "Zahnersatz-Erstattung sinkt von 80% auf 50%." },
+  { id: "ausland",      label: "Weltweiter Auslandsschutz",   reduktion: 0.02, warnung: "Auslandsschutz auf EU/Europa begrenzt." },
+  { id: "altvorsorg",   label: "Alternative Heilmethoden",    reduktion: 0.025, warnung: "Naturheilkunde, Homöopathie etc. nicht mehr erstattungsfähig." },
+  { id: "sehhilfe",     label: "Sehhilfen-Erstattung",        reduktion: 0.015, warnung: "Keine Erstattung für Brille / Kontaktlinsen mehr." },
+  { id: "sb_erh",       label: "Selbstbehalt erhöhen (+500€)", reduktion: 0.05, warnung: "Jährlicher Selbstbehalt steigt um 500 €." },
+  { id: "heilpraktiker",label: "Heilpraktiker-Leistungen",    reduktion: 0.02, warnung: "Heilpraktiker-Behandlungen nicht mehr erstattungsfähig." },
+];
+
+// Leistungen-Grid aufbauen
+const grid = document.getElementById("leistungen_grid");
+LEISTUNGEN.forEach(l => {
+  const div = document.createElement("div");
+  div.className = "chk-item";
+  div.id = "ci_" + l.id;
+  div.innerHTML = `
+    <input type="checkbox" id="chk_${l.id}" onchange="toggleChk('${l.id}'); calc()">
+    <label for="chk_${l.id}">${l.label}</label>
+    <span class="sav-badge">ca. ${(l.reduktion*100).toFixed(0)}%</span>
+  `;
+  grid.appendChild(div);
 });
 
-calculate();
+function toggleChk(id) {
+  const chk = document.getElementById("chk_" + id);
+  const ci  = document.getElementById("ci_" + id);
+  ci.classList.toggle("checked", chk.checked);
+}
+
+function calc() {
+  const beitrag = parseFloat(document.getElementById("beitrag").value);
+  const alter   = parseInt(document.getElementById("alter").value);
+  const vers    = document.getElementById("versicherer").value;
+
+  // Basisreduktion durch Tarifwechsel (auch ohne Leistungsverzicht möglich
+  // durch effizientere Tarife mit gleichen Leistungen)
+  const basisReduktion = vers === "direct" ? 0.03 : vers === "premium" ? 0.04 : 0.05;
+  // Altersbonus: ältere Versicherte haben mehr Potenzial durch neuere Tarife
+  const altersFaktor = alter > 50 ? 1.2 : alter > 40 ? 1.1 : 1.0;
+
+  // Leistungsverzicht-Reduktion summieren
+  let leistReduktion = 0;
+  const verzichtetLeist = [];
+  LEISTUNGEN.forEach(l => {
+    if (document.getElementById("chk_" + l.id)?.checked) {
+      leistReduktion += l.reduktion;
+      verzichtetLeist.push(l);
+    }
+  });
+
+  const gesamtReduktion = Math.min(0.40, (basisReduktion * altersFaktor) + leistReduktion);
+  const beitragNeu = beitrag * (1 - gesamtReduktion);
+  const sparMon    = beitrag - beitragNeu;
+  const sparJahr   = sparMon * 12;
+
+  document.getElementById("r_spar_mon").textContent  = feur(sparMon);
+  document.getElementById("r_spar_jahr").textContent = feur(sparJahr) + " / Jahr";
+  document.getElementById("r_spar_5j").textContent   = feur(sparJahr * 5);
+  document.getElementById("r_spar_10j").textContent  = feur(sparJahr * 10);
+  document.getElementById("r_alt").textContent       = feur(beitrag);
+  document.getElementById("r_neu").textContent       = feur(beitragNeu);
+
+  // Leistungsänderungen anzeigen
+  const leistList = document.getElementById("leist_list");
+  if (verzichtetLeist.length === 0) {
+    leistList.innerHTML = '<div class="leist-item"><span class="icon">✅</span><span>Du haben keinen Leistungsverzicht gewählt. Basisreduktion durch effizienteren Tarif (gleiche Leistungen, neuer Tarif) ist oft ohne Einschränkungen möglich.</span></div>';
+  } else {
+    leistList.innerHTML = verzichtetLeist.map(l =>
+      `<div class="leist-item"><span class="icon">⚠️</span><span>${l.warnung}</span></div>`
+    ).join("");
+  }
+
+  document.getElementById("res").classList.add("on");
+}
+
+calc();
 </script>
 </body>
 </html>

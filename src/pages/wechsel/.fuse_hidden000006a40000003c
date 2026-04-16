@@ -1,0 +1,30 @@
+---
+import CategoryHub from '../../layouts/CategoryHub.astro';
+
+const faq = [
+  {
+    q: 'Wann kann ich als Angestellter von der GKV in die PKV wechseln?',
+    a: 'Sobald das Bruttojahresgehalt die Versicherungspflichtgrenze (JAEG) überschreitet und die Prognose auch fürs Folgejahr darüber liegt. 2026 liegt die JAEG bei 77.400 Euro pro Jahr, das entspricht 6.450 Euro brutto im Monat. Der Wechsel ist jederzeit zum Monatsende möglich, sofern die Wartefristen des neuen Tarifs eingehalten werden.',
+  },
+  {
+    q: 'Wie komme ich zurück in die GKV?',
+    a: 'Der Weg zurück ist eng: unter 55 Jahren geht es nur über Pflichtversicherung (Gehalt unter JAEG, Arbeitslosigkeit, Elternzeit, Teilzeit). Ab 55 ist der Rückweg in der Regel versperrt, es sei denn über Familienversicherung beim Partner. Deshalb ist die Wechselentscheidung langfristig zu denken.',
+  },
+  {
+    q: 'Was bringt ein interner Tarifwechsel nach § 204 VVG?',
+    a: 'Mit § 204 VVG darf man beim selben Versicherer in einen anderen Tarif wechseln, ohne erneute Gesundheitsprüfung und mit Mitnahme der Altersrückstellungen. Richtig eingesetzt kann das den Beitrag deutlich senken, ohne Leistung zu verlieren. Die Hürde: Man muss wissen, welche Tarife in Frage kommen.',
+  },
+  {
+    q: 'Was ist ein Optionstarif und wofür brauche ich den?',
+    a: 'Ein Optionstarif ist eine Art Reservierung: Man sichert sich das Recht, später ohne neue Gesundheitsprüfung in einen Vollversicherungstarif zu wechseln. Sinnvoll für Berufseinsteiger, deren Gehalt die JAEG noch nicht erreicht, die aber ihre Gesundheit heute noch problemlos bestätigen können.',
+  },
+];
+---
+<CategoryHub
+  kategorieSlug='wechsel'
+  title='Wechsel und Tarifoptimierung'
+  description='Wege in die PKV, Rückwechsel in die GKV, interner Tarifwechsel nach § 204 VVG und Optionstarife. Alles zu Zeitpunkt, Ablauf und Hürden.'
+  keyword='Wechsel und Tarifoptimierung'
+  intro='Der Wechsel in die PKV ist eine Weichenstellung, der Rückweg in die GKV dagegen eng. Dieser Bereich beantwortet, wann ein Wechsel rechtlich möglich ist, wie ein interner Tarifwechsel Beiträge senkt, ohne Leistungen zu verlieren, und warum ein Optionstarif eine Absicherung für Berufseinsteiger sein kann.'
+  faq={faq}
+/>

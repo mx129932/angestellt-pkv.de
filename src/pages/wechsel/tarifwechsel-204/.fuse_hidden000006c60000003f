@@ -1,0 +1,160 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'was-204-regelt', label: 'Was § 204 VVG regelt' },
+  { id: 'ablauf', label: 'Ablauf des Tarifwechsels' },
+  { id: 'altersrueckstellungen', label: 'Altersrückstellungen beim Tarifwechsel' },
+  { id: 'wann-lohnt', label: 'Wann sich der interne Tarifwechsel lohnt' },
+  { id: 'huerden', label: 'Typische Hürden und wie du sie umgehst' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const related = [
+  {
+    href: '/wechsel/pkv-in-gkv/',
+    kategorie: 'Wechsel',
+    title: 'Zurück in die GKV',
+    teaser: 'Wann und wie die Rückkehr in die gesetzliche Krankenversicherung möglich ist.',
+    icon: 'swap_horiz',
+  },
+  {
+    href: '/kosten/beitragsanpassung/',
+    kategorie: 'Kosten',
+    title: 'PKV-Beitragsanpassung',
+    teaser: 'Wie Beitragsanpassungen nach § 203 VVG funktionieren und was sie für deine Prämie bedeuten.',
+    icon: 'trending_up',
+  },
+  {
+    href: '/kosten/altersrueckstellung/',
+    kategorie: 'Kosten',
+    title: 'Altersrückstellungen erklärt',
+    teaser: '351 Milliarden Euro angespart: Wie Altersrückstellungen funktionieren und deinen Beitrag senken.',
+    icon: 'savings',
+  },
+];
+---
+<T6
+  title='PKV-Tarifwechsel nach § 204 VVG'
+  description='Mit einem Tarifwechsel nach Paragraph 204 VVG kannst du innerhalb deines PKV-Anbieters in einen günstigeren Tarif wechseln. So gehst du vor.'
+  breadcrumb={{ kategorie: 'Wechsel', kategorieHref: '/wechsel/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='9 Min. Lesezeit'
+  related={related}
+>
+  <!-- Zusammenfassung -->
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span><strong>§ 204 VVG</strong> gibt dir das Recht, innerhalb deines PKV-Anbieters in jeden gleichartigen Tarif zu wechseln. Der Versicherer darf das nicht ablehnen.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Beim internen Tarifwechsel bleiben deine <strong>Altersrückstellungen</strong> vollständig erhalten. Das ist der entscheidende Vorteil gegenüber einem Anbieterwechsel.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die Beitragsanpassungen zwischen Anbietern reichen von <strong>2,0 bis 31,2 Prozent</strong> (MAP-Report 2024). Ein Tarifwechsel kann erhebliche Einsparungen bringen.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Als Untergrenze steht jedem Versicherten der <strong>Basistarif</strong> offen (max. 1.017,18 Euro monatlich, 2026).</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Einleitung -->
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Wenn der PKV-Beitrag nach einer Anpassung deutlich steigt, denken viele zuerst an den Wechsel zurück in die GKV. Doch es gibt eine näher liegende Option: den internen Tarifwechsel nach § 204 VVG. Dieser Paragraph gibt dir ein gesetzliches Recht, innerhalb deines Versicherers in einen anderen Tarif zu wechseln, ohne deine Altersrückstellungen zu verlieren. Viele PKV-Versicherte wissen nicht, dass dieses Recht existiert, oder scheitern an Hürden, die der Versicherer aufbaut.</p>
+  </div>
+
+  <!-- Was § 204 VVG regelt -->
+  <section id='was-204-regelt' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was § 204 VVG regelt</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>§ 204 Absatz 1 VVG (Versicherungsvertragsgesetz) gibt dir das Recht, von deinem Versicherer den Wechsel in einen anderen Tarif mit gleichartigem Versicherungsschutz zu verlangen. Der Versicherer muss diesem Wechsel zustimmen, wenn bestimmte Voraussetzungen erfüllt sind:</p>
+      <p>Der neue Tarif muss beim selben Versicherer bestehen. Der Versicherungsschutz muss gleichartig sein (Krankheitskostenvollversicherung bleibt Krankheitskostenvollversicherung). Eine neue Gesundheitsprüfung darf nur für Leistungen verlangt werden, die im bisherigen Tarif nicht enthalten waren. Für gleichwertige oder niedrigere Leistungen gibt es keine neue Risikoprüfung.</p>
+      <p>Das Recht gilt unabhängig davon, ob der Zieltarif noch für Neugeschäft geöffnet ist. Du kannst also auch in geschlossene Tarife wechseln, die für Neukunden nicht mehr zugänglich sind.</p>
+      <p>Der Mechanismus steht in engem Zusammenhang mit den Beitragsanpassungen nach § 203 VVG. Wenn dein Beitrag durch eine Anpassung stark steigt (Spannbreite 2,0 bis 31,2 Prozent laut MAP-Report 2024), ist der Tarifwechsel oft die wirtschaftlichste Reaktion. Details zu Beitragsanpassungen findest du unter <a href='/kosten/beitragsanpassung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-Beitragsanpassung</a>.</p>
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section id='ablauf' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Ablauf des Tarifwechsels in der Praxis</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Tarifwechsel nach § 204 VVG folgt einem klaren Ablauf:</p>
+      <p><strong>Schritt 1: Schriftlicher Antrag.</strong> Du stellst bei deinem Versicherer schriftlich den Antrag auf Tarifwechsel. Nenne dabei konkret den Zieltarif oder bitte um eine Übersicht der verfügbaren Tarife mit gleichartigem Leistungsumfang.</p>
+      <p><strong>Schritt 2: Angebot des Versicherers.</strong> Der Versicherer muss dir ein Angebot unterbreiten. Er ist verpflichtet, dich über die Möglichkeiten des Tarifwechsels zu informieren und die Beitragsunterschiede darzulegen. Diese Informationspflicht ist gesetzlich verankert.</p>
+      <p><strong>Schritt 3: Prüfung und Entscheidung.</strong> Vergleiche die Leistungen und Beiträge der angebotenen Tarife. Achte besonders auf die Beitragshistorie des Zieltarifs: Ein Tarif, der heute günstig ist, aber in den letzten Jahren stark angepasst wurde, ist keine langfristig gute Wahl.</p>
+      <p><strong>Schritt 4: Umstellung.</strong> Nach deiner Zustimmung wird der Tarifwechsel umgesetzt, in der Regel zum nächsten Monatsersten oder zum nächsten Versicherungsjahr. Deine Altersrückstellungen werden vollständig in den neuen Tarif übertragen.</p>
+    </div>
+  </section>
+
+  <!-- Altersrückstellungen -->
+  <section id='altersrueckstellungen' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Altersrückstellungen beim Tarifwechsel</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der größte Vorteil des internen Tarifwechsels gegenüber einem Anbieterwechsel: Deine Altersrückstellungen bleiben vollständig erhalten. Die PKV-Branche hält aktuell rund 351 Milliarden Euro an Altersrückstellungen, das entspricht im Durchschnitt 38.800 Euro pro Versichertem (PKV-Verband, Stand 09/2025).</p>
+      <p>Bei einem Anbieterwechsel kannst du seit 2009 nur den Teil der Rückstellungen mitnehmen, der dem Basistarif-Niveau entspricht. Der darüber hinausgehende Teil (aus höherwertigen Tarifen) geht verloren. Das kann mehrere zehntausend Euro ausmachen.</p>
+      <p>Beim internen Wechsel nach § 204 VVG gibt es dieses Problem nicht. Die gesamten Rückstellungen wandern in den neuen Tarif mit. Das senkt den Beitrag im neuen Tarif gegenüber dem eines Neukunden gleichen Alters erheblich. Mehr zu Altersrückstellungen unter <a href='/kosten/altersrueckstellung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Altersrückstellungen erklärt</a>.</p>
+    </div>
+  </section>
+
+  <!-- Wann lohnt sich der Wechsel -->
+  <section id='wann-lohnt' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wann sich der interne Tarifwechsel lohnt</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Ein Tarifwechsel nach § 204 VVG lohnt sich typischerweise in folgenden Situationen:</p>
+      <p><strong>Nach einer starken Beitragsanpassung:</strong> Wenn dein Beitrag deutlich gestiegen ist und dein Tarif eine überdurchschnittliche Anpassungshistorie aufweist. Assekurata beziffert die durchschnittliche Anpassung in der Vollversicherung für 2024 auf 4,9 Prozent. Liegt dein Tarif darüber, kann ein Wechsel sinnvoll sein.</p>
+      <p><strong>Bei überflüssigen Leistungen:</strong> Wenn dein aktueller Tarif Leistungen enthält, die du nicht brauchst (z. B. Heilpraktikerbehandlungen, wenn du sie nie nutzt), kann ein Tarif ohne diese Bausteine günstiger sein.</p>
+      <p><strong>Bei geschlossenen Alt-Tarifen:</strong> Geschlossene Tarife haben keine Neuzugänge mehr. Die Versichertengemeinschaft altert, die Kosten steigen überproportional. Ein Wechsel in einen offenen Tarif mit jüngerer Versichertengemeinschaft kann den Beitragsdruck mildern.</p>
+      <p><strong>Nicht empfehlenswert:</strong> Ein Wechsel nur wegen des Preises, ohne die Beitragshistorie und Bilanzkennzahlen des Zieltarifs zu prüfen. Ein heute günstiger Tarif kann morgen stark angepasst werden.</p>
+    </div>
+  </section>
+
+  <!-- Typische Hürden -->
+  <section id='huerden' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Typische Hürden und wie du sie umgehst</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Obwohl § 204 VVG ein gesetzliches Recht ist, versuchen manche Versicherer, den Wechsel zu erschweren. Typische Hürden und wie du damit umgehst:</p>
+      <p><strong>Fehlende oder unvollständige Information:</strong> Manche Versicherer zeigen nicht alle verfügbaren Tarife. Bestehe schriftlich auf einer vollständigen Übersicht aller gleichartigen Tarife, einschließlich geschlossener Tarife. Die Informationspflicht ist gesetzlich verankert.</p>
+      <p><strong>Verweis auf vermeintliche Gesundheitsprüfung:</strong> Eine Gesundheitsprüfung darf nur für Leistungen verlangt werden, die im bisherigen Tarif nicht enthalten waren. Für gleichwertige oder niedrigere Leistungen ist keine neue Prüfung zulässig.</p>
+      <p><strong>Abraten durch den Versicherer:</strong> Versicherer raten manchmal vom Wechsel ab, weil sie den Kunden im höherwertigen (und teureren) Tarif halten wollen. Lass dich davon nicht verunsichern. Hole im Zweifel eine unabhängige Zweitmeinung ein, etwa bei einem Versicherungsmakler oder der Verbraucherzentrale.</p>
+      <p><strong>Als Untergrenze</strong> steht jedem PKV-Versicherten der Basistarif offen. Er bietet GKV-vergleichbare Leistungen und kostet 2026 maximal 1.017,18 Euro monatlich (bei Hilfebedürftigkeit halbiert). Der Basistarif ist die letzte Auffanglösung, nicht die erste Wahl, aber er zeigt, dass kein PKV-Versicherter in einer Beitragsfalle stecken muss. Details findest du unter <a href='/leistungen/basistarif-standardtarif/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Basistarif und Standardtarif</a>.</p>
+    </div>
+  </section>
+
+  <!-- Fazit -->
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Tarifwechsel nach § 204 VVG ist ein unterschätztes Instrument. Er ermöglicht Beitragseinsparungen, ohne die Altersrückstellungen zu verlieren, die bei einem Anbieterwechsel teilweise verfallen würden.</p>
+      <p>Nutze dieses Recht, wenn dein Beitrag stark gestiegen ist oder dein Tarif eine überdurchschnittliche Anpassungshistorie aufweist. Lass dich nicht von Hürden des Versicherers abschrecken. Bestehe auf einer vollständigen Tarifübersicht und hole bei Bedarf unabhängige Beratung ein. Der Tarifwechsel ist dein gesetzliches Recht.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Verliere ich Altersrückstellungen beim Tarifwechsel?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein. Beim internen Tarifwechsel nach § 204 VVG bleiben deine Altersrückstellungen vollständig erhalten. Sie werden in den neuen Tarif übertragen. Das ist der entscheidende Vorteil gegenüber einem Anbieterwechsel, bei dem nur der Basistarif-Anteil der Rückstellungen mitgenommen werden kann.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann mein Versicherer den Tarifwechsel ablehnen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Grundsätzlich nicht, wenn die Voraussetzungen erfüllt sind (gleichartiger Versicherungsschutz, selber Versicherer). Der Versicherer darf eine Gesundheitsprüfung nur für Leistungen verlangen, die im bisherigen Tarif nicht enthalten waren. Für gleichwertige oder niedrigere Leistungen ist keine Prüfung zulässig. Wenn der Versicherer den Wechsel trotzdem ablehnt, kannst du dich an die BaFin oder die Verbraucherzentrale wenden.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Brauche ich eine neue Gesundheitsprüfung?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nur für Leistungen, die im neuen Tarif enthalten sind, aber im bisherigen Tarif nicht abgedeckt waren (sogenannte Mehrleistungen). Wenn du in einen Tarif mit gleichem oder niedrigerem Leistungsumfang wechselst, ist keine Gesundheitsprüfung erforderlich. Das ist einer der Gründe, warum der interne Tarifwechsel für Menschen mit Vorerkrankungen besonders attraktiv ist.</div>
+      </details>
+    </div>
+  </section>
+</T6>

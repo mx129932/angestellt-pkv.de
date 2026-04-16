@@ -1,7 +1,175 @@
 ---
-import T7 from '../../layouts/T7.astro';
+import Base from '../../layouts/Base.astro';
+
+const title = 'Impressum · PKV für Angestellte';
+const description = 'Impressum von angestellt-pkv.de – Angaben gemäß § 5 DDG.';
 ---
-<T7
-  title='Impressum'
-  description='Anbieterkennzeichnung nach § 5 TMG.'
-/>
+<Base title={title} description={description} schemaType='WebPage' breadcrumbs={[{ label: 'Start', href: '/' }, { label: 'Impressum', href: '' }]}>
+  <main class="pt-32 pb-24 px-6 md:px-12 max-w-screen-xl mx-auto">
+    <!-- Editorial Header -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
+      <div class="md:col-span-4">
+        <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-4">RECHTLICHER RAHMEN</p>
+        <h1 class="text-5xl md:text-6xl font-headline font-semibold text-primary leading-tight">Impressum</h1>
+        <div class="mt-8 h-1 w-12 bg-tertiary"></div>
+      </div>
+      <div class="md:col-span-7 md:col-start-6 flex flex-col justify-end">
+        <p class="text-xl font-headline italic text-on-surface-variant leading-relaxed">
+          Anbieterkennzeichnung nach § 5 DDG, § 18 MStV und § 34d GewO.
+        </p>
+        <p class="mt-6 text-sm text-outline font-label uppercase tracking-wider">Stand: April 2026</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+      <div class="md:col-span-8 md:col-start-3 space-y-14 text-on-surface-variant leading-relaxed">
+
+        <section class="scroll-mt-40">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Angaben gemäß § 5 DDG</h2>
+          <p>
+            <strong>Tim Bökemeier</strong><br />
+            PKV-Welt<br />
+            Dornberger Str. 37a<br />
+            33615 Bielefeld<br />
+            Deutschland
+          </p>
+        </section>
+
+        <section class="scroll-mt-40">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Kontakt</h2>
+          <p>
+            E-Mail: <a class="text-primary underline" href="mailto:beratung@angestellt-pkv.de">beratung@angestellt-pkv.de</a><br />
+            Telefon: <a class="text-primary underline" href="tel:+4952197798232">+49 521 97 79 82 32</a><br />
+            Mobil: <a class="text-primary underline" href="tel:+491797998239">+49 179 79 98 239</a><br />
+            Telefax: +49 521 97 79 82 27
+          </p>
+        </section>
+
+        <section class="scroll-mt-40">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Redaktionell verantwortlich (§ 18 Abs. 2 MStV)</h2>
+          <p>Tim Bökemeier (Anschrift wie oben)</p>
+        </section>
+
+        <section class="scroll-mt-40">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+          <p>
+            <strong>Berufsbezeichnung:</strong> Versicherungsmakler mit Erlaubnis nach § 34d Abs. 1 GewO<br />
+            <strong>Zuständige Kammer:</strong> DIHK, Deutscher Industrie- und Handelskammertag e.V.<br />
+            <strong>Berufsbezeichnung verliehen durch:</strong> Deutschland
+          </p>
+          <p class="mt-4">Es gelten folgende berufsrechtliche Regelungen:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-1">
+            <li>§ 34d Gewerbeordnung (GewO)</li>
+            <li>§§ 59–68 Versicherungsvertragsgesetz (VVG)</li>
+            <li>§ 48b Versicherungsaufsichtsgesetz (VAG)</li>
+            <li>Verordnung über die Versicherungsvermittlung und -beratung (VersVermV)</li>
+          </ul>
+          <p class="mt-4">
+            Die Regelungen sind einsehbar unter
+            <a class="text-primary underline" href="https://www.gesetze-im-internet.de" target="_blank" rel="noopener">www.gesetze-im-internet.de</a>.
+          </p>
+        </section>
+
+        <section class="scroll-mt-40">
+          <h3 class="text-2xl font-headline font-semibold text-primary mb-4">Aufsichtsbehörde</h3>
+          <p>
+            Industrie- und Handelskammer Ostwestfalen zu Bielefeld<br />
+            Elsa-Brändström-Straße 1–3<br />
+            33602 Bielefeld<br />
+            <a class="text-primary underline" href="http://www.ostwestfalen.ihk.de" target="_blank" rel="noopener">www.ostwestfalen.ihk.de</a>
+          </p>
+        </section>
+
+        <section class="scroll-mt-40">
+          <h3 class="text-2xl font-headline font-semibold text-primary mb-4">Berufshaftpflichtversicherung</h3>
+          <p>
+            Liberty Specialty Markets Europe S.à.r.l. Zweigniederlassung Deutschland<br />
+            Im Mediapark 8<br />
+            50670 Köln<br />
+            <strong>Geltungsraum:</strong> Deutschland
+          </p>
+        </section>
+
+        <section class="scroll-mt-40">
+          <h3 class="text-2xl font-headline font-semibold text-primary mb-4">Registrierungen</h3>
+          <p>
+            <strong>IHK-Registrierungsnummer:</strong> D-LGAN-23GPT-90 (§ 34 d Abs. 1 GewO)<br />
+            <strong>Vermittlerregister:</strong>
+            <a class="text-primary underline" href="http://www.vermittlerregister.info" target="_blank" rel="noopener">www.vermittlerregister.info</a><br />
+            <strong>DIHK:</strong> Breite Straße 29, 10178 Berlin
+          </p>
+        </section>
+
+        <section class="scroll-mt-40">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Haftungsausschluss</h2>
+          <h3 class="text-xl font-headline font-semibold text-primary mt-6 mb-3">Haftung für Inhalte</h3>
+          <p>
+            Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit
+            und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir
+            gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+          </p>
+
+          <h3 class="text-xl font-headline font-semibold text-primary mt-6 mb-3">Haftung für Links</h3>
+          <p>
+            Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben.
+            Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
+            verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+          </p>
+
+          <h3 class="text-xl font-headline font-semibold text-primary mt-6 mb-3">Urheberrecht</h3>
+          <p>
+            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+            Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb
+            der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+          </p>
+        </section>
+
+        <section class="scroll-mt-40">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Hinweis</h2>
+          <p>
+            Die Inhalte dieser Website dienen ausschließlich der allgemeinen Information. Sie stellen keine
+            individuelle Beratung dar und ersetzen nicht die Beratung durch einen qualifizierten Versicherungsmakler.
+          </p>
+        </section>
+
+        <section class="scroll-mt-40">
+          <h2 class="text-3xl font-headline font-semibold text-primary mb-6">Außergerichtliche Streitschlichtung</h2>
+          <p>
+            <strong>EU-Plattform für Online-Streitbeilegung:</strong><br />
+            <a class="text-primary underline" href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a><br />
+            Unsere E-Mail-Adresse findest du oben im Impressum.
+          </p>
+          <p class="mt-4">
+            Wir nehmen an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teil. Die
+            zuständigen Verbraucherschlichtungsstellen sind:
+          </p>
+
+          <p class="mt-6">
+            <strong>Versicherungsombudsmann e.V.</strong><br />
+            Postfach 08 06 32<br />
+            10006 Berlin<br />
+            Telefon: 0800 3 69 60 00 (kostenfrei)<br />
+            E-Mail: <a class="text-primary underline" href="mailto:beschwerde@versicherungsombudsmann.de">beschwerde@versicherungsombudsmann.de</a><br />
+            <a class="text-primary underline" href="https://www.versicherungsombudsmann.de" target="_blank" rel="noopener">www.versicherungsombudsmann.de</a>
+          </p>
+
+          <p class="mt-6">
+            <strong>Ombudsmann Private Kranken- und Pflegeversicherung</strong><br />
+            Postfach 06 02 22<br />
+            10052 Berlin<br />
+            Telefon: 0800 2 55 04 44 (kostenfrei)<br />
+            <a class="text-primary underline" href="https://www.pkv-ombudsmann.de" target="_blank" rel="noopener">www.pkv-ombudsmann.de</a>
+          </p>
+
+          <p class="mt-6">
+            <strong>BaFin (Bundesanstalt für Finanzdienstleistungsaufsicht)</strong><br />
+            Graurheindorfer Straße 108<br />
+            53117 Bonn<br />
+            <a class="text-primary underline" href="https://www.bafin.de" target="_blank" rel="noopener">www.bafin.de</a>
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</Base>

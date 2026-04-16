@@ -1,7 +1,30 @@
 ---
-import T3 from '../../layouts/T3.astro';
+import CategoryHub from '../../layouts/CategoryHub.astro';
+
+const faq = [
+  {
+    q: 'Sind diese Rechner unverbindlich?',
+    a: 'Ja. Alle Rechner dienen der ersten Orientierung und liefern Richtwerte auf Basis aktueller Kennzahlen und gesetzlicher Rahmenwerte. Konkrete Tarifangebote oder eine verbindliche Beitragskalkulation erhältst du nur direkt beim Versicherer, typischerweise nach Risikovoranfrage.',
+  },
+  {
+    q: 'Welche Rechner brauche ich für eine Grundsatzentscheidung GKV vs. PKV?',
+    a: 'Der GKV-vs-PKV-Rechner zeigt die monatliche Belastung heute, der Beitragsrechner gibt eine langfristige PKV-Schätzung, der Arbeitgeberzuschuss-Rechner zeigt den tatsächlichen Eigenanteil. Zusammen ergibt sich ein belastbares Bild für die nächsten Jahre.',
+  },
+  {
+    q: 'Wie aktuell sind die zugrundeliegenden Werte?',
+    a: 'Alle Rechenwerte (JAEG, Beitragsbemessungsgrenzen, Zusatzbeitragssatz, Pflegeversicherungssatz) werden jährlich zum 1. Januar aktualisiert. Stand: 2026. Historische Werte früherer Jahre können auf Anfrage bereitgestellt werden.',
+  },
+  {
+    q: 'Warum weichen meine Zahlen von Angeboten einzelner Versicherer ab?',
+    a: 'Unsere Rechner arbeiten mit Marktdurchschnittswerten und realistischen Annahmen. Einzelne Versicherer können je nach Alter, Gesundheit und Tarifzuschnitt darüber oder deutlich darunter liegen. Abweichungen von 10 bis 25% sind normal, größere Differenzen verdienen eine genauere Prüfung.',
+  },
+];
 ---
-<T3
+<CategoryHub
+  kategorieSlug='rechner'
   title='Rechner-Übersicht'
-  description='Alle Rechner rund um PKV für Angestellte.'
+  description='PKV-Beitragsrechner, GKV-vs-PKV-Vergleich, Arbeitgeberzuschuss, Ersparnisrechner und weitere Tools für die fundierte Entscheidung.'
+  keyword='Rechnern'
+  intro='Bevor ein PKV-Vertrag unterschrieben wird, sollten die Zahlen stehen. Die hier verlinkten Rechner übersetzen die wichtigsten Variablen (Gehalt, Alter, Familie, Tarifoptionen) in konkrete monatliche Beträge. Kein Rechner ersetzt das Tarifangebot, alle zusammen liefern aber eine belastbare Entscheidungsgrundlage.'
+  faq={faq}
 />

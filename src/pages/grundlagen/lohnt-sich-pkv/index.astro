@@ -1,7 +1,215 @@
 ---
 import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'wann-rechnet-sich', label: 'Wann sich die PKV für Angestellte rechnet' },
+  { id: 'single-32-85k', label: 'Rechenbeispiel: Single, 32 Jahre, 85.000 Euro brutto' },
+  { id: 'familie-38-2k', label: 'Rechenbeispiel: Familie, 38 Jahre, zwei Kinder' },
+  { id: 'vier-faktoren', label: 'Vier Faktoren, die über Lohnen oder Nicht entscheiden' },
+  { id: 'nicht-lohnt', label: 'Wann die PKV sich nicht lohnt' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const related = [
+  {
+    href: '/grundlagen/gkv-vs-pkv/',
+    kategorie: 'Grundlagen',
+    title: 'GKV vs. PKV: Vergleich für Angestellte 2026',
+    teaser: 'Systemischer Vergleich: Solidarität vs. Äquivalenz, Beitragsstruktur, Leistungen, Familie.',
+    icon: 'swap_horiz',
+  },
+  {
+    href: '/grundlagen/vor-und-nachteile/',
+    kategorie: 'Grundlagen',
+    title: 'PKV Vorteile und Nachteile für Angestellte',
+    teaser: 'Pro-Contra-Liste mit Zahlen: Leistungsvorteile, Beitragsrisiko im Alter, fehlende Familienversicherung.',
+    icon: 'balance',
+  },
+  {
+    href: '/kosten/arbeitgeberzuschuss/',
+    kategorie: 'Kosten',
+    title: 'Arbeitgeberzuschuss PKV 2026',
+    teaser: 'Maximal 508,59 Euro KV plus 104,63 Euro Pflege. So wird der Zuschuss berechnet.',
+    icon: 'payments',
+  },
+];
 ---
 <T6
   title='Lohnt sich die PKV für Angestellte?'
-  description='Datenbasierte Entscheidungshilfe für den Wechsel in die private Krankenversicherung.'
-/>
+  description='Ob sich die PKV als Angestellter lohnt, hängt von Gehalt, Alter, Familie und Gesundheit ab. Rechenbeispiele und Entscheidungshilfe 2026.'
+  breadcrumb={{ kategorie: 'Grundlagen', kategorieHref: '/grundlagen/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='15 Min. Lesezeit'
+  related={related}
+  faqItems={[
+    { question: `Lohnt sich PKV für Angestellte mit Familie?`, answer: `In den meisten Fällen nein. Die Familienversicherung in der GKV ist ein immenser Vorteil. Kinder und Partner ohne Einkommen kosten dort nichts zusätzlich. In der PKV braucht jede Person einen eigenen Vertrag. Ein Paar mit zwei Kindern zahlt in der PKV schnell 40 bis 50 Prozent mehr als in der GKV. Nur bei sehr hohem Einkommen (über 150.000 Euro kombiniert) kann die PKV wirtschaftlich interessant werden.` },
+    { question: `Ab welchem Alter lohnt sich der PKV-Wechsel nicht mehr?`, answer: `Grob ab 50 Jahren wird es kritisch. Ab 55 ist ein wirtschaftlicher Wechsel meist sinnlos, weil du weniger als 12 Jahre bis zum normalen Renteneintritt (67) hast. Die Amortisierung funktioniert nicht mehr. Hinzu kommt: Ab 55 gibt es keinen Rückweg mehr in die GKV, falls es doch nicht passt. Wer über 50 ist, sollte sehr gründlich rechnen und alle Risiken berücksichtigen.` },
+    { question: `Kann ich zurück in die GKV wenn es sich nicht mehr lohnt?`, answer: `Das ist die unbequeme Wahrheit: Ab 55 Jahren ist eine Rückkehr in die GKV faktisch nicht mehr möglich (§ 6 Abs. 3a SGB V). Nur wenn dein Gehalt wieder unter die JAEG von 77.400 Euro fällt (etwa durch Jobwechsel, Teilzeit oder Arbeitslosigkeit), kommst du zurück. Ansonsten bist du lebenslang in der PKV. Das ist der wichtigste Grund, die Entscheidung nicht zu leicht zu treffen. Mehr dazu unter Zurück in die GKV.` }
+  ]}
+>
+  <!-- Zusammenfassung -->
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die Frage ist nicht pauschal zu beantworten, sondern hängt stark von deiner persönlichen Situation ab: Single vs. Familie, Alter, Gesundheit und geplante Dauer der Erwerbstätigkeit.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Für einen jungen, gesunden Single über der JAEG (77.400 Euro brutto) ist die PKV oft günstiger. Die Einsparung liegt zwischen 5.000 bis 8.000 Euro pro Jahr.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Ab dem Moment, in dem Familie dazukommt, wird die Rechnung kompliziert. Ein Paar mit zwei Kindern zahlt in der PKV schnell 50 bis 100 Prozent mehr als in der GKV.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die Beitragssteigerung im Alter ist das zweite Risiko. PKV-Versicherte zahlten 2025 im Durchschnitt 12,5 Prozent mehr, die Spannbreite reicht bis 31 Prozent (MAP-Report 2025).</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der Rückweg ist ab 55 versperrt. Wer sich für die PKV entscheidet, sollte die Entscheidung für mindestens 30 Jahre treffen können.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Einleitung -->
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Die Frage stellen sich hundertausende Angestellte jährlich, wenn sie die Versicherungspflichtgrenze überschreiten: Lohnt sich die PKV wirklich? Die ehrliche Antwort ist: Es kommt darauf an.</p>
+    <p>Es gibt Fälle, in denen die PKV eine klare Ersparnis bringt. Es gibt aber auch viele Fälle, in denen sie teurer wird als die GKV. Mit konkreten Rechenbeispielen und vier entscheidenden Faktoren zeigt dieser Artikel, wie du deine persönliche Antwort findest.</p>
+  </div>
+
+  <!-- Wann sich die PKV rechnet -->
+  <section id='wann-rechnet-sich' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wann sich die PKV für Angestellte rechnet</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die PKV rechnet sich in erster Linie für drei Gruppen: junge, alleinstehende Angestellte mit guter Gesundheit, Paare ohne Kinder mit zwei stabilen Einkommen und Angestellte mit sehr hohem Einkommen, für die die Einkommensobegrenzung der GKV stark ins Gewicht fällt.</p>
+      <p>Der zentrale wirtschaftliche Vorteil der PKV liegt im Eintrittsalter. Wer mit 30 wechselt, zahlt über 30 Jahre deutlich weniger bei frühen Eintritt als wer mit 45 wechselt. Die Jahresarbeitsentgeltgrenze (JAEG) liegt 2026 bei 77.400 Euro. Wer dauerhaft darunter verdient, kann nicht wechseln.</p>
+      <p>Einen ersten Anhaltspunkt bietet die Faustregel: Wenn du unter der JAEG verdienst, Familie hast oder dich nicht 30 bis 40 Jahre lang an einen Vertrag binden willst, ist die GKV meist die bessere Wahl. Wenn du deutlich über der JAEG verdienst und keine Familienpläne hast, lohnt sich ein genaues Durchrechnen.</p>
+    </div>
+  </section>
+
+  <!-- Beispiel 1: Single -->
+  <section id='single-32-85k' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Rechenbeispiel: Single, 32 Jahre, 85.000 Euro brutto</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Jan verdient 85.000 Euro brutto pro Jahr. Er ist 32 Jahre alt, gesund und plant, mindestens bis 67 zu arbeiten. Er prüft den Wechsel in die PKV.</p>
+      <p><strong>GKV-Kosten 2026:</strong> Die Beitragsbemessungsgrenze (BBG) liegt 2026 bei 69.750 Euro. Der allgemeine Beitragssatz beträgt 14,6 Prozent, der durchschnittliche Zusatzbeitrag 2,9 Prozent, die Pflegeversicherung 3,6 Prozent. Das ergibt 21,1 Prozent auf die BBG. Der Arbeitgeber übernimmt die Hälfte.</p>
+    </div>
+    <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+      <table class='w-full text-left border-collapse min-w-[520px]'>
+        <thead>
+          <tr class='bg-[#FAF7F2]'>
+            <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Position</th>
+            <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>GKV 2026</th>
+            <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>PKV 2026</th>
+          </tr>
+        </thead>
+        <tbody class='divide-y divide-outline-variant/20'>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Jahresbrutto</td><td class='px-5 py-4 text-on-surface-variant'>85.000 Euro</td><td class='px-5 py-4 text-on-surface-variant'>85.000 Euro</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Versicherungsbeitrag (Eigenanteil)</td><td class='px-5 py-4 text-on-surface-variant'>7.300 Euro/Jahr</td><td class='px-5 py-4 text-on-surface-variant'>5.000 Euro/Jahr</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Arbeitgeberzuschuss</td><td class='px-5 py-4 text-on-surface-variant'>7.299 Euro/Jahr (hälftig)</td><td class='px-5 py-4 text-on-surface-variant'>6.103 Euro/Jahr (max. 508,59 Euro/Monat)</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Netto-Eigenanteil</td><td class='px-5 py-4 text-on-surface-variant'>0 Euro</td><td class='px-5 py-4 text-on-surface-variant">0 Euro</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Einsparung/Mehrkosten p.a.</td><td class='px-5 py-4 text-on-surface-variant'>, </td><td class='px-5 py-4 text-on-surface-variant'>200 Euro Vorteil</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Auf den ersten Blick spart Jan durch den höheren AG-Zuschuss wenig bei reinen Bruttobeiträgen. Der entscheidende Faktor kommt aber ins Spiel, wenn die GKV steigt. Beim nächsten Beitragssatzsprung zahlt Jan sofort mehr GKV-Beitrag, während sein PKV-Tarif nur angepasst werden kann, wenn die Leistungsausgaben um 10 Prozent oder mehr abweichen.</p>
+      <p>Rechnung über 35 Jahre Erwerbstätigkeit (von 32 bis 67): Annahme: GKV-Höchstbeitrag steigt durchschnittlich 5 Prozent pro Jahr, PKV-Prämie 3,5 Prozent pro Jahr. Nach dieser Projektion hätte Jan mit 67 Jahren in der GKV einen Höchstbeitrag von etwa 3.200 Euro monatlich zu zahlen. In der PKV, mit Altersrückstellungen gedämpft, wären es etwa 2.400 Euro. Über die gesamte Erwerbszeit summiert sich die Ersparnis auf etwa 120.000 bis 180.000 Euro.</p>
+      <p>Allerdings gibt es auch Risiken. Wenn Jan mit 40 Jahren eine chronische Erkrankung entwickelt, könnte sein PKV-Tarif mit erheblichen Risikozuschlägen belastet werden. Dann ist die Rechnung plötzlich nicht mehr günstig. Dieses Risiko trägt man selbst.</p>
+    </div>
+  </section>
+
+  <!-- Beispiel 2: Familie -->
+  <section id='familie-38-2k' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Rechenbeispiel: Familie, 38 Jahre, zwei Kinder</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Sarah verdient 95.000 Euro, ihr Partner Martin verdient 55.000 Euro. Zusammen sind sie weit über der JAEG. Sie haben zwei Kinder und bewegen sich in der PKV. Sollten sie wechseln?</p>
+      <p><strong>GKV-Szenario:</strong> Sarahs Beitrag rund 9.300 Euro pro Jahr (allein durch BBG-Obergrenze), Martins etwa 8.100 Euro. Kinder und Martin als Partner ohne Einkommen sind beitragsfrei mitversichert (wenn Martin nicht arbeitet oder unter 565 Euro monatlich). Gesamtkosten für vier Personen: etwa 17.400 Euro netto (nach AG-Zuschuss).</p>
+    </div>
+    <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+      <table class='w-full text-left border-collapse min-w-[520px]'>
+        <thead>
+          <tr class='bg-[#FAF7F2]'>
+            <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Person</th>
+            <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>GKV 2026</th>
+            <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>PKV (Richtwert)</th>
+          </tr>
+        </thead>
+        <tbody class='divide-y divide-outline-variant/20'>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Sarah (95.000 Euro, 38 J.)</td><td class='px-5 py-4 text-on-surface-variant'>9.300 Euro/Jahr</td><td class='px-5 py-4 text-on-surface-variant'>4.200 Euro/Jahr</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Martin (55.000 Euro, 36 J.)</td><td class='px-5 py-4 text-on-surface-variant'>7.200 Euro/Jahr</td><td class='px-5 py-4 text-on-surface-variant'>3.800 Euro/Jahr</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Kind 1 (8 Jahre)</td><td class='px-5 py-4 text-on-surface-variant'>0 Euro (mitversichert)</td><td class='px-5 py-4 text-on-surface-variant'>1.200 Euro/Jahr</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Kind 2 (5 Jahre)</td><td class='px-5 py-4 text-on-surface-variant'>0 Euro (mitversichert)</td><td class='px-5 py-4 text-on-surface-variant'>1.200 Euro/Jahr</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Summe (netto nach AG-Zuschuss)</td><td class='px-5 py-4 text-on-surface-variant'>9.000 Euro/Jahr</td><td class='px-5 py-4 text-on-surface-variant'>10.600 Euro/Jahr</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Das Ergebnis ist eindeutig: Die PKV ist für diese Familie teurer. Die GKV kostet netto weniger als 9.000 Euro pro Jahr für vier Personen. In der PKV würden es etwa 10.600 Euro sein. Der Grund ist die fehlende Familienversicherung. Jedes Kind braucht einen eigenen Tarif.</p>
+      <p>Hinzu kommt: Sarah und Martins PKV-Beiträge werden nicht ausgleichend, sondern potenzieren sich in der Lebensarbeitszeit. Wenn einer von beiden 50 wird, steigen die Beiträge deutlich. Mit Anpassungen um 5 bis 8 Prozent jährlich hätten sie mit 60 Jahren für vier Personen etwa 18.000 Euro pro Jahr zu zahlen. In der GKV hätten sie längst 30 Prozent weniger bezahlt.</p>
+      <p>Unter den Bedingungen, dass Martin nicht arbeitet oder Teilzeit arbeitet, ist die Familienversicherung in der GKV ein nicht zu unterschätzender Vorteil, der die PKV unwirtschaftlich macht.</p>
+    </div>
+  </section>
+
+  <!-- Vier Faktoren -->
+  <section id='vier-faktoren' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Vier Faktoren, die über Lohnen oder Nicht entscheiden</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>1. Alter beim Eintritt</strong><br>
+      Der wichtigste Faktor ist das Eintrittsalter in die PKV. Mit 30 Jahren zahlst du 30 Jahre weniger, bevor die altersbedingte Beitragsbelastung eintritt. Mit 50 Jahren wirkt sich der "Altenlasteneffekt" schnell negativ aus. Als Faustregel: Wer vor 40 wechselt, hat einen Zeitpuffer für lange Amortisation. Wer nach 50 wechselt, sollte sich die Entscheidung genau überlegen.</p>
+      <p><strong>2. Familienstand und Familienplanung</strong><br>
+      Alleinstehende oder Paare ohne Kinderplanung kommen in der PKV oft besser weg. Sobald Kinder kommen oder der Partner nicht arbeitet, verschieben sich die Kosten zugunsten der GKV erheblich. Zur Erinnerung: Ein typischer Kindertarif in der PKV kostet 100 bis 220 Euro monatlich. In der GKV kostet das Kind 0 Euro zusätzlich.</p>
+      <p><strong>3. Einkommensstabilität und Einkommenshöhe</strong><br>
+      Je weiter du über der JAEG von 77.400 Euro verdienst, desto mehr macht die PKV wirtschaftlich Sinn. Das Einkommen sollte stabil sein und nicht absehbar sinken. Freiberufler oder Angestellte mit schwankendem Einkommen tragen das Risiko, plötzlich wieder unter die Versicherungspflicht zu fallen und in der PKV festzusitzen.</p>
+      <p><strong>4. Gesundheitszustand</strong><br>
+      Die Gesundheitsprüfung bei PKV-Antrag ist entscheidend. Wer mit Vorerkrankungen aufgelesen wird, zahlt Risikozuschläge von 5 bis 50 Prozent. Chronische Erkrankungen wie Diabetes, Asthma oder psychische Belastungen können zu erheblichen Zu-Zahlungen führen. Etwa 20 bis 25 Prozent der Anträge bekommen einen Risikozuschlag oder Leistungsausschluss (Franke und Bornberg MAP-Report 2024).</p>
+    </div>
+  </section>
+
+  <!-- Nicht lohnt -->
+  <section id='nicht-lohnt' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wann die PKV sich nicht lohnt</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Es gibt klare Szenarien, in denen die PKV wirtschaftlich sinnlos ist.</p>
+      <p><strong>Szenario 1: Familie mit Kind und unter 100.000 Euro Einkommen.</strong> Die Familienversicherung in der GKV ist für diese Gruppe nicht zu schlagen. Mit zwei oder mehr Kindern wird die PKV schnell 40 bis 50 Prozent teurer. Selbst wenn du später mehr verdienst, amortisiert sich das nicht.</p>
+      <p><strong>Szenario 2: Du bist über 45 Jahre alt und möchtest vor 67 in Rente gehen.</strong> Die Altenlastenrückstellungen helfen, aber nicht so viel, dass sie die Beitragssteigerungen aufzehren. Hinzu kommt: Der Rentnerzuschuss der PKV ist bekanntlich schwach. Du zahlst als PKV-Rentner oft deutlich mehr als dein GKV-Pendant.</p>
+      <p><strong>Szenario 3: Du hast Vorerkrankungen.</strong> Eine Diabetes, Rheuma, chronische Atemwegserkrankung oder psychische Belastung führt in der PKV zu Risikozuschlägen oder Leistungsausschlüssen. Die GKV nimmt dich ohne Gesundheitsprüfung an und behandelt dich gleich wie andere.</p>
+      <p><strong>Szenario 4: Du verdienst knapp über der JAEG.</strong> Wenn dein Einkommen zwischen 77.400 und 85.000 Euro liegt, ist der Vorteil der PKV marginal. Ein Jobwechsel, ein paar Monate ohne Bonus, ein kurzfristiges Projekt ohne Abschluss, und schon fällst du zurück unter die Pflichtversicherung. Das Risiko ist nicht wert.</p>
+    </div>
+  </section>
+
+  <!-- Fazit -->
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Frage "Lohnt sich die PKV?" ist keine Ja-oder-Nein-Frage. Sie ist eine persönliche Kosten-Nutzen-Abwägung mit erheblichen Unsicherheiten über Jahrzehnte hinweg.</p>
+      <p>Für junge, gut verdienende, gesunde Singles ohne Familienpläne ist die Antwort häufig Ja. Die Ersparnis über 35 Erwerbsjahre kann 100.000 Euro und mehr erreichen. Für Familien mit Kindern oder Menschen mit schwankendem Einkommen ist die Antwort meistens Nein. Das Risiko ist zu hoch, die Familienversicherung zu wertvoll.</p>
+      <p>Wer sich unsicher ist, sollte zwei Dinge tun: Erstens, deine konkrete Situation mit einem <a href='/rechner/pkv-gkv-vergleich/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-GKV-Vergleichsrechner</a> durchrechnen. Zweitens, alle <a href='/grundlagen/vor-und-nachteile/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Vorteile und Nachteile</a> gründlich lesen und abwägen. Die Entscheidung bindet dich für Jahrzehnte.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Lohnt sich PKV für Angestellte mit Familie?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>In den meisten Fällen nein. Die Familienversicherung in der GKV ist ein immenser Vorteil. Kinder und Partner ohne Einkommen kosten dort nichts zusätzlich. In der PKV braucht jede Person einen eigenen Vertrag. Ein Paar mit zwei Kindern zahlt in der PKV schnell 40 bis 50 Prozent mehr als in der GKV. Nur bei sehr hohem Einkommen (über 150.000 Euro kombiniert) kann die PKV wirtschaftlich interessant werden.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ab welchem Alter lohnt sich der PKV-Wechsel nicht mehr?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Grob ab 50 Jahren wird es kritisch. Ab 55 ist ein wirtschaftlicher Wechsel meist sinnlos, weil du weniger als 12 Jahre bis zum normalen Renteneintritt (67) hast. Die Amortisierung funktioniert nicht mehr. Hinzu kommt: Ab 55 gibt es keinen Rückweg mehr in die GKV, falls es doch nicht passt. Wer über 50 ist, sollte sehr gründlich rechnen und alle Risiken berücksichtigen.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich zurück in die GKV wenn es sich nicht mehr lohnt?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Das ist die unbequeme Wahrheit: Ab 55 Jahren ist eine Rückkehr in die GKV faktisch nicht mehr möglich (§ 6 Abs. 3a SGB V). Nur wenn dein Gehalt wieder unter die JAEG von 77.400 Euro fällt (etwa durch Jobwechsel, Teilzeit oder Arbeitslosigkeit), kommst du zurück. Ansonsten bist du lebenslang in der PKV. Das ist der wichtigste Grund, die Entscheidung nicht zu leicht zu treffen. Mehr dazu unter <a href='/wechsel/pkv-in-gkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Zurück in die GKV</a>.</div>
+      </details>
+    </div>
+  </section>
+</T6>

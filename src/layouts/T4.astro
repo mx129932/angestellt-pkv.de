@@ -1,8 +1,12 @@
 ---
-// Auto-generiert aus 2_Design-Input/templates/T4_ueber/code.html
-// UeberUns-Template (T4) — 1:1 Stitch-Export.
-// Dieses Layout NICHT manuell ändern — bei Design-Update neu generieren.
+/**
+ * Über-uns-Template (T4).
+ * Harmonisiert mit CategoryHub/T2/T5/T6: gleiche Container-Breite (max-w-6xl),
+ * gleiche Top-Position (pt-6 md:pt-10), Brand-Tokens durchgezogen,
+ * "du"-Ansprache. Fokus: Tim Bökemeier als Experte, PKV-Welt-Team.
+ */
 import Base from './Base.astro';
+import altTexts from '../data/image-alt-texts.json';
 
 interface Props {
   title?: string;
@@ -10,223 +14,232 @@ interface Props {
   canonical?: string;
 }
 
-const { title, description, canonical } = Astro.props;
+const { title = 'Über uns', description, canonical } = Astro.props;
+
+// Hero-Bild fuer Ueber-uns
+const heroData = (altTexts as Record<string, { alt: string; size: string }>)['hero-ueber-uns'];
+const heroSrc = heroData ? '/img/hero-ueber-uns.webp' : '';
+const heroAlt = heroData?.alt || '';
+
+const companyFacts = [
+  { label: 'Spezialisierung', value: 'PKV für Angestellte' },
+  { label: 'Teil von', value: 'PKV-Welt' },
+  { label: 'Team', value: '8 Spezialisten' },
+  { label: 'Unabhängigkeit', value: '100 %' },
+  { label: 'Provisionen', value: 'Keine' },
+];
+
+const team = [
+  {
+    role: 'PKV-Experte und Autor',
+    name: 'Tim Bökemeier',
+    text: 'Über 10 Jahre Erfahrung in der privaten Krankenversicherung. Tim analysiert Tarife, Beitragsentwicklungen und Wechselstrategien speziell für Angestellte oberhalb der Versicherungspflichtgrenze.',
+    img: '/images/team-tim-color.webp',
+  },
+  {
+    role: 'Kundenmanagement',
+    name: 'Sandra',
+    text: 'Erste Ansprechpartnerin für alle Kundenanliegen. Sandra koordiniert Beratungstermine und sorgt dafür, dass dein Anliegen schnell beim richtigen Experten landet.',
+    img: '/images/team-sandra-color.webp',
+  },
+  {
+    role: 'Tarifoptimierung',
+    name: 'Jan',
+    text: 'Spezialist für Tarifwechsel nach § 204 VVG und Beitragsoptimierung. Jan findet Einsparpotenziale in bestehenden PKV-Verträgen.',
+    img: '/images/team-jan-color.webp',
+  },
+  {
+    role: 'Beamtentarife',
+    name: 'Jan',
+    text: 'Experte für Beihilfe-konforme Tarife und die Besonderheiten der PKV im öffentlichen Dienst.',
+    img: '/images/team-jan-2-color.webp',
+  },
+  {
+    role: 'Unternehmensberatung',
+    name: 'Max',
+    text: 'Verantwortlich für strategische Entwicklung, digitale Prozesse und die Weiterentwicklung der PKV-Welt-Plattformen.',
+    img: '/images/team-max-color.webp',
+  },
+  {
+    role: 'Verwaltung',
+    name: 'Frederike',
+    text: 'Kümmert sich um die kaufmännische Organisation und hält dem Beratungsteam den Rücken frei.',
+    img: '/images/team-frederike-color.webp',
+  },
+];
+
+const principles = [
+  { icon: 'balance', title: 'Unabhängig', text: 'Keine Beteiligungen durch Versicherungskonzerne. Unsere redaktionelle Freiheit ist nicht verhandelbar.' },
+  { icon: 'analytics', title: 'Zahlenbasiert', text: 'Jede Aussage stützt sich auf offizielle Quellen: BMG, BMAS, PKV-Verband, GKV-Spitzenverband. Keine Schätzungen.' },
+  { icon: 'security', title: 'DSGVO-ernst', text: 'Deine Daten sind kein Handelsgut. Kein aggressives Tracking, keine Datenweitergabe an Dritte.' },
+  { icon: 'verified_user', title: 'Kein Verkaufsdruck', text: 'Wir drängen nicht zum Abschluss. Information und Aufklärung stehen im Mittelpunkt, die Entscheidung liegt bei dir.' },
+];
 ---
-<Base title={title} description={description} canonical={canonical}>
-  <Fragment set:html={`<!-- TopNavBar -->
-<header class="bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 shadow-[0_12px_40px_rgba(25,28,29,0.06)]">
-<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
-<div class="text-xl font-serif italic text-blue-950 dark:text-white">The Financial Architect</div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-200 transition-colors" href="#">Analysis</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-200 transition-colors" href="#">Providers</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-200 transition-colors" href="#">Comparison</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-200 transition-colors" href="#">Guides</a>
-<a class="text-blue-900 dark:text-blue-200 font-semibold border-b-2 border-blue-900 dark:border-blue-200 pb-1" href="#">About Us</a>
-</nav>
-<div class="flex items-center gap-4">
-<button class="text-slate-600 hover:bg-slate-100 p-2 transition-all duration-300 rounded-lg">
-<span class="material-symbols-outlined">search</span>
-</button>
-<button class="bg-primary text-white px-6 py-2 rounded-lg text-sm font-semibold hover:bg-primary-container transition-all">
-                    Consultation
-                </button>
-</div>
-</div>
-</header>
-<main>
-<!-- Hero Section -->
-<section class="pt-24 pb-16 px-8 text-center bg-surface">
-<div class="max-w-2xl mx-auto">
-<span class="inline-block text-brand-amber font-bold tracking-[0.2em] text-xs mb-6 font-label">ÜBER UNS</span>
-<h1 class="text-5xl md:text-6xl text-primary leading-tight mb-8">Warum es dieses Portal gibt.</h1>
-<p class="text-[18px] text-on-surface-variant leading-relaxed font-body font-light">
-                    Wir glauben, dass die private Krankenversicherung für Angestellte kein Glücksspiel sein darf. Unser Portal bietet die notwendige Präzision und Tiefe für eine fundierte Lebensentscheidung.
-                </p>
-</div>
-</section>
-<!-- Long-Form Narrative + Company Facts -->
-<section class="py-16 px-8 bg-surface">
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
-<!-- Main Content -->
-<article class="lg:col-span-8">
-<h2 class="text-3xl text-primary mb-8">Ein Markt voller Intransparenz</h2>
-<div class="text-[18px] text-on-surface leading-[1.7] space-y-8 font-body">
-<p>
-                            Der deutsche Versicherungsmarkt für Angestellte ist geprägt von komplexen Tarifen, versteckten Beitragsentwicklungen und einer Provisionslandschaft, die oft die Verkaufszahlen über das Wohl des Versicherten stellt. Wer als Besserverdiener in die PKV wechselt, bindet sich oft für Jahrzehnte.
-                        </p>
-<p>
-                            Doch wo finden diese Menschen objektive Daten? Wo werden die Bilanzen der Versicherer so aufbereitet, dass sie für einen Laien verständlich, aber für einen Analysten präzise genug sind?
-                        </p>
-<div class="pl-8 border-l-4 border-brand-amber my-12">
-<blockquote class="text-3xl italic serif text-primary leading-snug">
-                                "Unser Ziel ist es, die Architektur hinter den Tarifen sichtbar zu machen, damit Sie auf festem Fundament bauen können."
-                            </blockquote>
-</div>
-<h2 class="text-3xl text-primary mt-16 mb-8">Der hanseatische Ansatz</h2>
-<p>
-                            Wir verstehen uns nicht als Vermittler im klassischen Sinne, sondern als Architekten Ihrer Absicherung. Unsere Analysen folgen einem strengen, zahlenbasierten Protokoll. Wir schauen nicht auf den bunten Hochglanzprospekt, sondern auf die Solvenzquoten, die RfB-Zuführungen und die versicherungsgeschäftliche Ergebnisquote.
-                        </p>
-<p>
-                            Diese Nüchternheit ist unsere Stärke. In einer Welt voller Verkaufsargumente setzen wir auf die Kraft des Faktums.
-                        </p>
-</div>
-</article>
-<!-- Company Facts Sidebar -->
-<aside class="lg:col-span-4">
-<div class="sticky top-32 p-10 bg-surface-container-lowest border border-outline-variant/30 shadow-sm">
-<h3 class="text-xl serif text-primary mb-8 border-b border-outline-variant pb-4">Company Facts</h3>
-<div class="space-y-6">
-<div>
-<span class="block text-xs font-label text-on-surface-variant uppercase tracking-widest mb-1">Gegründet</span>
-<span class="text-xl font-semibold text-primary">2021</span>
-</div>
-<div>
-<span class="block text-xs font-label text-on-surface-variant uppercase tracking-widest mb-1">Sitz</span>
-<span class="text-xl font-semibold text-primary">Hamburg</span>
-</div>
-<div>
-<span class="block text-xs font-label text-on-surface-variant uppercase tracking-widest mb-1">Team</span>
-<span class="text-xl font-semibold text-primary">8 Experten</span>
-</div>
-<div>
-<span class="block text-xs font-label text-on-surface-variant uppercase tracking-widest mb-1">Analysierte Datensätze</span>
-<span class="text-xl font-semibold text-primary">&gt; 1.2 Mio.</span>
-</div>
-<div>
-<span class="block text-xs font-label text-on-surface-variant uppercase tracking-widest mb-1">Unabhängigkeits-Rating</span>
-<span class="text-xl font-semibold text-primary">100%</span>
-</div>
-</div>
-</div>
-</aside>
-</div>
-</section>
-<!-- Team Section -->
-<section class="py-24 px-8 bg-surface-container-low">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-16">
-<span class="inline-block text-brand-amber font-bold tracking-[0.2em] text-xs mb-4 font-label">UNSERE ANALYTIK-LEITUNG</span>
-<h2 class="text-4xl text-primary serif">Expertise am Werk</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- Member 1: Dr. Christian von Ahrensburg -->
-<div class="bg-surface-container-lowest p-8 flex flex-col sm:flex-row items-center sm:items-start gap-8 shadow-[0_8px_30px_rgba(25,28,29,0.04)] border border-outline-variant/10">
-<div class="w-40 h-40 flex-shrink-0 bg-surface-container-highest overflow-hidden">
-<img alt="Dr. Christian von Ahrensburg" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida/ADBb0uidJq9ad5X7_BOC4k6JV7OVjL4nf5FRyKCH_y5CWoUcDZE3zv7H_HVTFiZAqfHHq-i6IEgyatVPosSi8AUW9VRNMQIh7RumMhkO-2TN-v2kjz2k9zA7v6ouTQ6FRbSagJ4nCixRo28AhwyUvjvg1BPx3JCexzQE6KJ4Nj-h7HEOzgvnP9d2TlBZyePtLsE-bqBecTo-bgbAnp3UREI1aQ2ZP3e7_E5-qkCf85lWZkPY_rYPmlPvMwIU"/>
-</div>
-<div class="flex-1 text-center sm:text-left">
-<h3 class="text-xs font-label tracking-widest text-on-surface-variant uppercase mb-2">Herausgeber &amp; Analyst</h3>
-<h2 class="text-2xl text-primary serif mb-3">Dr. Christian von Ahrensburg</h2>
-<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">
-                                Ehemaliger Aktuar und Wirtschaftsmathematiker mit über 15 Jahren Erfahrung in der Analyse von PKV-Bilanzkennzahlen.
-                            </p>
-<a class="inline-flex items-center gap-2 text-primary text-sm font-semibold hover:underline transition-all" href="#">
-<span class="material-symbols-outlined text-sm">link</span>
-                                LinkedIn Profil
-                            </a>
-</div>
-</div>
-<!-- Member 2: Elena Schmidt -->
-<div class="bg-surface-container-lowest p-8 flex flex-col sm:flex-row items-center sm:items-start gap-8 shadow-[0_8px_30px_rgba(25,28,29,0.04)] border border-outline-variant/10">
-<div class="w-40 h-40 flex-shrink-0 bg-surface-container-highest overflow-hidden">
-<img alt="Elena Schmidt" class="w-full h-full object-cover grayscale" data-alt="professional portrait of a middle-aged woman with light hair in a dark blazer, soft corporate lighting, minimalist office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGWRytx5JKNTFjlJ8FjMec8Ju6KWkgvNQXZ4J-hlo0W4A2WZuhvUXEpmU1bZXDiIHHQiLjEgFOi1rY_LIpEKdWbrsDpqcLErFQsFW3rTzyoLW8f5kHgSuZYlOHB1aqnJsmFRoDjNbl1fUBSQR9uinekfiyYMSIMMfiMVIjURN8fKAVmb9QDr_WzNh7X4ps3cSYMRvM7c36O4HNMr0B2r3nbm3SCrCc3yWol010uyn2CxKBCET7TgVDBqaxFh694Oid-Tsed7aj"/>
-</div>
-<div class="flex-1 text-center sm:text-left">
-<h3 class="text-xs font-label tracking-widest text-on-surface-variant uppercase mb-2">Senior Analystin</h3>
-<h2 class="text-2xl text-primary serif mb-3">Dipl.-Kffr. Elena Schmidt</h2>
-<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">
-                                Spezialisiert auf Beitragsstabilitäts-Prognosen und Wettbewerbsvergleiche. Zuvor bei einer führenden Wirtschaftsprüfungsgesellschaft.
-                            </p>
-<a class="inline-flex items-center gap-2 text-primary text-sm font-semibold hover:underline transition-all" href="#">
-<span class="material-symbols-outlined text-sm">link</span>
-                                LinkedIn Profil
-                            </a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Principles Section -->
-<section class="py-24 px-8 bg-surface">
-<div class="max-w-4xl mx-auto text-center mb-16">
-<h2 class="text-4xl text-primary serif">Wofür wir stehen</h2>
-</div>
-<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="bg-surface-container p-10 border-l border-outline-variant/20">
-<span class="material-symbols-outlined text-brand-amber text-4xl mb-6">balance</span>
-<h3 class="text-xl font-bold text-primary mb-4 font-body">Unabhängig</h3>
-<p class="text-on-surface-variant font-body">Keine Beteiligungen durch Versicherungskonzerne. Unsere redaktionelle Freiheit ist unser höchstes Gut und wird durch Abonnementsmodelle gesichert.</p>
-</div>
-<div class="bg-surface-container p-10 border-l border-outline-variant/20">
-<span class="material-symbols-outlined text-brand-amber text-4xl mb-6">analytics</span>
-<h3 class="text-xl font-bold text-primary mb-4 font-body">Zahlenbasiert</h3>
-<p class="text-on-surface-variant font-body">Wir analysieren Geschäftsberichte, nicht Marketing-Slogans. Jede Empfehlung stützt sich auf mindestens fünf Jahre historische Bilanzdaten.</p>
-</div>
-<div class="bg-surface-container p-10 border-l border-outline-variant/20">
-<span class="material-symbols-outlined text-brand-amber text-4xl mb-6">security</span>
-<h3 class="text-xl font-bold text-primary mb-4 font-body">Datenschutz ernst</h3>
-<p class="text-on-surface-variant font-body">Ihre Daten sind kein Handelsgut. Wir nutzen keine aggressiven Tracking-Tools und fordern nur Informationen an, die für die Analyse zwingend nötig sind.</p>
-</div>
-<div class="bg-surface-container p-10 border-l border-outline-variant/20">
-<span class="material-symbols-outlined text-brand-amber text-4xl mb-6">verified_user</span>
-<h3 class="text-xl font-bold text-primary mb-4 font-body">Keine Verkaufsmasche</h3>
-<p class="text-on-surface-variant font-body">Wir drängen Sie nicht zum Abschluss. Unsere Aufgabe endet bei der Aufklärung und Analyse. Die Entscheidung liegt allein bei Ihnen.</p>
-</div>
-</div>
-</section>
-<!-- Sources Section -->
-<section class="py-24 px-8 bg-surface-container-low">
-<div class="max-w-4xl mx-auto">
-<h2 class="text-4xl text-primary serif mb-12 text-center md:text-left">Woher unsere Zahlen stammen</h2>
-<div class="space-y-4">
-<a class="group flex items-center justify-between p-6 bg-surface-container-lowest hover:bg-primary hover:text-white transition-all duration-300" href="#">
-<span class="text-lg font-medium">BMG – Bundesministerium für Gesundheit</span>
-<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">open_in_new</span>
-</a>
-<a class="group flex items-center justify-between p-6 bg-surface-container-lowest hover:bg-primary hover:text-white transition-all duration-300" href="#">
-<span class="text-lg font-medium">BMAS – Bundesministerium für Arbeit und Soziales</span>
-<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">open_in_new</span>
-</a>
-<a class="group flex items-center justify-between p-6 bg-surface-container-lowest hover:bg-primary hover:text-white transition-all duration-300" href="#">
-<span class="text-lg font-medium">GKV-Spitzenverband</span>
-<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">open_in_new</span>
-</a>
-<a class="group flex items-center justify-between p-6 bg-surface-container-lowest hover:bg-primary hover:text-white transition-all duration-300" href="#">
-<span class="text-lg font-medium">PKV-Verband e.V.</span>
-<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">open_in_new</span>
-</a>
-<a class="group flex items-center justify-between p-6 bg-surface-container-lowest hover:bg-primary hover:text-white transition-all duration-300" href="#">
-<span class="text-lg font-medium">Bundesfinanzministerium (BMF)</span>
-<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">open_in_new</span>
-</a>
-</div>
-</div>
-</section>
-<!-- Contact CTA -->
-<section class="bg-[#1A1F2E] py-20 px-8">
-<div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-<h2 class="text-3xl serif text-white">Fragen zum Portal? Schreib uns.</h2>
-<button class="bg-brand-amber text-white px-10 py-4 rounded-lg font-bold text-lg hover:brightness-110 transition-all shadow-lg">
-                    Kontakt
-                </button>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-slate-100 dark:bg-slate-900 full-width py-12">
-<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-<div class="space-y-4">
-<div class="text-lg font-serif italic text-blue-950 dark:text-white">The Financial Architect</div>
-<p class="text-slate-500 dark:text-slate-400 font-body text-sm">© 2024 The Financial Architect. Independent Editorial Excellence in Healthcare.</p>
-</div>
-<div class="flex flex-wrap justify-start md:justify-end gap-6">
-<a class="text-xs tracking-wider uppercase Inter text-slate-500 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors" href="#">Privacy Policy</a>
-<a class="text-xs tracking-wider uppercase Inter text-slate-500 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors" href="#">Editorial Guidelines</a>
-<a class="text-xs tracking-wider uppercase Inter text-slate-500 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors" href="#">Imprint</a>
-<a class="text-xs tracking-wider uppercase Inter text-slate-500 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors" href="#">Compliance</a>
-<a class="text-xs tracking-wider uppercase Inter text-slate-500 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors" href="#">Contact</a>
-</div>
-</div>
-</footer>`} />
+<Base
+  title={title + ' | PKV für Angestellte'}
+  description={description}
+  canonical={canonical}
+  schemaType='AboutPage'
+  breadcrumbs={[
+    { label: 'Start', href: '/' },
+    { label: 'Über uns', href: '' }
+  ]}
+>
+  <main class='bg-[#FAF7F2]'>
+    <!-- Breadcrumbs -->
+    <nav class='max-w-6xl mx-auto pt-6 md:pt-10 px-6 md:px-8 flex items-center gap-2 text-xs uppercase tracking-widest text-on-surface-variant' aria-label='Breadcrumb'>
+      <a class='hover:text-primary transition-colors' href='/'>Home</a>
+      <span class='material-symbols-outlined text-[14px]'>chevron_right</span>
+      <span class='text-primary font-semibold'>Über uns</span>
+    </nav>
+
+    <!-- Hero + Narrative + Company Facts -->
+    <section class='max-w-6xl mx-auto px-6 md:px-8 py-8 md:py-12'>
+      <header class='mb-10 md:mb-14'>
+        <div class={`grid grid-cols-1 ${heroSrc ? 'lg:grid-cols-12' : ''} gap-8 lg:gap-12 items-start`}>
+          <div class={heroSrc ? 'lg:col-span-8' : 'max-w-3xl'}>
+            <p class='text-xs uppercase tracking-widest text-amber-accent-dark font-bold mb-3'>Über uns</p>
+            <h1 class='font-serif text-primary font-semibold leading-[1.1] break-words text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4'>
+              Dein spezialisiertes Informationsportal.
+            </h1>
+            <p class='text-base md:text-lg text-on-surface-variant leading-relaxed'>
+              angestellt-pkv.de ist das Fachportal der PKV-Welt, das sich ausschließlich mit der privaten Krankenversicherung für Angestellte beschäftigt. Keine Selbstständigen, keine Beamten, keine Kompromisse bei der Zielgruppe.
+            </p>
+          </div>
+          {heroSrc && (
+            <div class='lg:col-span-4 min-w-0'>
+              <div class='relative aspect-[3/2] w-full rounded-xl overflow-hidden shadow-lg shadow-primary/10'>
+                <img alt={heroAlt} class='w-full h-full object-cover' src={heroSrc} loading='eager' />
+              </div>
+            </div>
+          )}
+        </div>
+      </header>
+
+      <div class='grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16'>
+        <article class='lg:col-span-8 min-w-0'>
+          <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Warum ein eigenes Portal für Angestellte?</h2>
+          <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-10'>
+            <p>
+              Als Angestellter oberhalb der Versicherungspflichtgrenze stehst du vor einer Entscheidung, die dich Jahrzehnte begleitet: GKV oder PKV? Die meisten Informationsquellen im Netz mischen Selbstständige, Beamte und Angestellte wild durcheinander. Dabei unterscheiden sich die Rahmenbedingungen fundamental.
+            </p>
+            <p>
+              Der Arbeitgeberzuschuss, die Rückkehrmöglichkeiten in die GKV, die Versicherungspflichtgrenze, der Umgang mit Elternzeit oder Jobwechsel: All das betrifft nur dich als Angestellten. Genau dafür gibt es angestellt-pkv.de.
+            </p>
+          </div>
+
+          <blockquote class='my-10 py-6 md:py-8 border-y border-outline-variant/30 max-w-2xl'>
+            <p class='font-serif text-lg md:text-xl italic text-primary leading-snug'>
+              „Ehrliche Beratung bedeutet auch, zu sagen, wenn der Status quo die bessere Lösung ist."
+            </p>
+            <footer class='mt-4 text-sm text-on-surface-variant'>Tim Bökemeier, PKV-Experte</footer>
+          </blockquote>
+
+          <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was dich hier erwartet</h2>
+          <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+            <p>
+              36 Fachartikel, 10 interaktive Rechner und eine klare Struktur, die dir hilft, die PKV als Angestellter von allen Seiten zu verstehen. Jede Zahl stammt aus offiziellen Quellen (BMG, BMAS, PKV-Verband), jeder Artikel wird von Tim Bökemeier geschrieben und geprüft.
+            </p>
+            <p>
+              Wir verkaufen keine Leads, wir vermitteln keine Verträge. Wir liefern dir die Grundlage, damit du selbst eine informierte Entscheidung treffen kannst.
+            </p>
+          </div>
+        </article>
+
+        <!-- Company Facts Sidebar -->
+        <aside class='lg:col-span-4'>
+          <div class='lg:sticky lg:top-28 bg-white border border-outline-variant/30 rounded-xl p-6 md:p-8 shadow-sm'>
+            <h3 class='text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-6 pb-4 border-b border-outline-variant/30'>Auf einen Blick</h3>
+            <dl class='space-y-5'>
+              {companyFacts.map((f) => (
+                <div>
+                  <dt class='text-xs uppercase tracking-widest text-on-surface-variant mb-1'>{f.label}</dt>
+                  <dd class='font-serif text-xl text-primary font-semibold'>{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Tim Bökemeier — Experte -->
+    <section class='bg-white border-y border-outline-variant/30'>
+      <div class='max-w-6xl mx-auto px-6 md:px-8 py-16 md:py-24'>
+        <div class='mb-10 md:mb-14 max-w-3xl'>
+          <p class='text-xs uppercase tracking-widest text-amber-accent-dark font-bold mb-3'>Dein Experte</p>
+          <h2 class='font-serif text-primary font-semibold leading-tight text-3xl md:text-4xl lg:text-5xl'>
+            Tim Bökemeier
+          </h2>
+        </div>
+        <div class='grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start'>
+          <div class='lg:col-span-5'>
+            <div class='rounded-xl overflow-hidden'>
+              <picture>
+                <source srcset='/images/tim-experte.webp' type='image/webp' />
+                <img alt='Tim Bökemeier, PKV-Experte für Angestellte' class='w-full h-auto object-cover' loading='lazy' src='/images/tim-experte.png' />
+              </picture>
+            </div>
+          </div>
+          <div class='lg:col-span-7'>
+            <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+              <p>
+                Tim ist seit über 10 Jahren auf die private Krankenversicherung spezialisiert. Als Autor aller Beiträge auf angestellt-pkv.de verbindet er Praxiserfahrung aus tausenden Beratungsgesprächen mit analytischer Tiefe.
+              </p>
+              <p>
+                Sein Fokus: die Fragen, die Angestellte wirklich beschäftigen. Lohnt sich der Wechsel bei meinem Gehalt? Was passiert bei einem Jobwechsel? Wie entwickeln sich die Beiträge im Alter? Tim rechnet vor, statt zu versprechen.
+              </p>
+              <p>
+                Als Teil der PKV-Welt berät Tim täglich Angestellte, Selbstständige und Beamte. Für angestellt-pkv.de konzentriert er sich auf das, was für dich als Angestellten zählt: Arbeitgeberzuschuss, Versicherungspflichtgrenze, Rückkehroptionen und langfristige Beitragsplanung.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class='max-w-6xl mx-auto px-6 md:px-8 py-16 md:py-24'>
+      <div class='mb-10 md:mb-14 max-w-3xl'>
+        <p class='text-xs uppercase tracking-widest text-amber-accent-dark font-bold mb-3'>Das Team</p>
+        <h2 class='font-serif text-primary font-semibold leading-tight text-3xl md:text-4xl lg:text-5xl'>
+          Die Köpfe hinter PKV-Welt
+        </h2>
+      </div>
+      <div class='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8'>
+        {team.map((m) => (
+          <div class='text-center'>
+            <div class='w-24 h-24 md:w-28 md:h-28 mx-auto mb-4 rounded-full overflow-hidden border-2 border-outline-variant/20'>
+              <img alt={m.name} class='w-full h-full object-cover' loading='lazy' src={m.img} />
+            </div>
+            <h3 class='font-semibold text-primary text-sm mb-1'>{m.name}</h3>
+            <p class='text-[11px] text-on-surface-variant leading-snug'>{m.role}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Prinzipien -->
+    <section class='bg-white border-y border-outline-variant/30'>
+      <div class='max-w-6xl mx-auto px-6 md:px-8 py-16 md:py-24'>
+        <div class='mb-10 md:mb-14 max-w-3xl'>
+          <p class='text-xs uppercase tracking-widest text-amber-accent-dark font-bold mb-3'>Prinzipien</p>
+          <h2 class='font-serif text-primary font-semibold leading-tight text-3xl md:text-4xl lg:text-5xl'>
+            Wofür wir stehen
+          </h2>
+        </div>
+        <div class='grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6'>
+          {principles.map((p) => (
+            <div class='flex gap-4 bg-[#FAF7F2] border border-outline-variant/30 rounded-xl p-6 md:p-8'>
+              <span class='material-symbols-outlined text-amber-accent-dark text-3xl shrink-0'>{p.icon}</span>
+              <div>
+                <h3 class='font-semibold text-primary mb-2'>{p.title}</h3>
+                <p class='text-sm text-on-surface-variant leading-relaxed'>{p.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
 </Base>

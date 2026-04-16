@@ -12,7 +12,7 @@ const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 
 const REQUIRED_ROUTES = [
-  '/', '/pkv-angestellte/', '/grundlagen/', '/grundlagen/gkv-vs-pkv/',
+  '/', '/pkv-beratung/', '/grundlagen/', '/grundlagen/gkv-vs-pkv/',
   '/kosten/', '/kosten/arbeitgeberzuschuss/', '/rechner/', '/rechner/pkv-beitrag/',
   '/beratung/', '/ueber-uns/', '/impressum/', '/datenschutz/'
 ];

@@ -1,7 +1,167 @@
 ---
 import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'übersicht', label: 'Drei Sozialtarife in der PKV' },
+  { id: 'basistarif', label: 'Der Basistarif seit 2009' },
+  { id: 'standardtarif', label: 'Der Standardtarif für Altverträge' },
+  { id: 'notlagentarif', label: 'Der Notlagentarif bei Beitragsrückstand' },
+  { id: 'entscheidung', label: 'Wann welcher Tarif infrage kommt' },
+  { id: 'faq', label: 'Häufige Fragen' },
+  { id: 'fazit', label: 'Fazit' },
+];
+
+const related = [
+  {
+    href: '/wechsel/tarifwechsel-204/',
+    kategorie: 'Wechsel',
+    title: 'Tarifwechsel nach § 204 VVG',
+    teaser: 'Wie du innerhalb der PKV den Tarif wechselst, ohne neue Gesundheitsprüfung.',
+    icon: 'swap_horiz',
+  },
+  {
+    href: '/kosten/pkv-im-alter/',
+    kategorie: 'Kosten',
+    title: 'PKV im Alter',
+    teaser: 'Altersrückstellungen und Beiträge: Was dich als Rentner erwartet.',
+    icon: 'elderly',
+  },
+  {
+    href: '/wechsel/pkv-in-gkv/',
+    kategorie: 'Wechsel',
+    title: 'Zurück in die GKV',
+    teaser: 'Wann der Rückweg möglich ist und wann er faktisch versperrt bleibt.',
+    icon: 'description',
+  },
+];
 ---
 <T6
-  title='Basistarif, Standardtarif, Notlagentarif'
-  description='Die Auffang-Tarife der PKV und wann sie greifen.'
-/>
+  title='Basistarif, Standardtarif und Notlagentarif der PKV'
+  description='Basistarif, Standardtarif und Notlagentarif der PKV im Vergleich: wer sie nutzen kann, was sie leisten und was sie 2026 kosten. Alle Höchstbeiträge.'
+  breadcrumb={{ kategorie: 'Leistungen', kategorieHref: '/leistungen/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='8 Min. Lesezeit'
+  related={related}
+  faqItems={[
+    { question: `Kann jeder in den Basistarif wechseln?`, answer: `Ja, grundsätzlich kann jeder PKV-Vollversicherte in den Basistarif wechseln. Es gibt keine medizinischen Hürden, keine neuen Gesundheitsfragen, keine Wartezeiten. Der Wechsel ist ein Vertragsrecht nach § 193 VVG und kostet in der Regel nichts extra.` },
+    { question: `Wie hoch ist der Basistarif 2026?`, answer: `Der Basistarif kostet 2026 maximal 1.017,18 Euro pro Monat für die Krankenversicherung. Die Pflegepflichtversicherung im Basistarif liegt bei 209,25 Euro. Insgesamt sind das bis zu 1.226,43 Euro. Bei Sozialhilfeempfängern wird der Beitrag halbiert.` },
+    { question: `Bekomme ich im Basistarif noch gute Leistungen?`, answer: `Der Basistarif zahlt auf GKV-Niveau. Das ist nicht schlecht: Du erhältst Arztbesuche, Krankenhaustage, Arzneien, Laboruntersuchungen. Einschränkungen gibt es nur bei Komfortleistungen wie Zahnersatz ab bestimmten Grenzen, hochwertige Sehhilfen oder alternative Heilmethoden. Als regulärer Arbeitnehmer solltest du deine Grundversorgung erhalten.` }
+  ]}
+>
+  <!-- Zusammenfassung -->
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Es gibt <strong>drei Sozialtarife</strong> in der PKV: Basistarif (seit 2009 für alle), Standardtarif (nur Altversicherte vor 2009) und Notlagentarif (bei Beitragsrückstand).</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der <strong>Basistarif</strong> kostet 2026 maximal 1.017,18 Euro monatlich (plus 209,25 Euro Pflege). Bei Hilfebedürftigkeit wird das halbiert.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der <strong>Standardtarif</strong> ist günstiger (ca. 804,82 Euro), bleibt aber älteren Versicherten vorbehalten, die vor 2009 in die PKV gewechselt haben.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der <strong>Notlagentarif</strong> (100 bis 155 Euro monatlich) ist Notfalllösung bei Zahlungsrückstand und soll die Existenz sichern.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Alle drei Tarife zahlen Leistungen auf GKV-Niveau, sperren aber aufwendige Komforthygiene.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Einleitung -->
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Die private Krankenversicherung kennt drei Sozialtarife: Basistarif, Standardtarif und Notlagentarif. Sie existieren, um zu verhindern, dass Versicherte aus der PKV rutschen, wenn sie finanzielle Notlagen treffen oder sich einen regulären Tarif nicht mehr leisten können. Dieser Artikel erklärt, wer Zugang zu jedem Tarif hat, was die Leistungen abdecken und wie die Beiträge 2026 aussehen.</p>
+  </div>
+
+  <!-- Übersicht -->
+  <section id='übersicht' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Drei Sozialtarife in der PKV</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die PKV reguliert den Zugang zu günstigen Notfalltarifen, damit niemand komplett unversichert wird. Jeder dieser Tarife hat einen eigenen Zweck und unterschiedliche Voraussetzungen.</p>
+      <p>Der <strong>Basistarif</strong> ist das Standardangebot für alle, die sich in finanzielle Schwierigkeiten geraten oder deren Einkommen unter Versorgungsniveau fällt. Der <strong>Standardtarif</strong> ist älteren Verträgen vorbehalten und war lange Zeit die einzige Notfall-Alternative. Der <strong>Notlagentarif</strong> ist die letzte Eskalationsstufe: Er greift ein, wenn jemand seine Rechnungen nicht mehr bezahlen kann.</p>
+      <p>Während die regulären PKV-Tarife individuelle Leistungspakete schnüren, zahlen alle drei Sozialtarife auf dem Niveau der gesetzlichen Krankenversicherung. Das heißt: Du bekommst Grundversorgung, aber keine Komfortleistungen.</p>
+    </div>
+  </section>
+
+  <!-- Basistarif -->
+  <section id='basistarif' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Der Basistarif seit 2009</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Basistarif wurde 2009 eingeführt und ist heute das Auffangnetz der PKV. Jeder PKV-Versicherte kann jederzeit in den Basistarif wechseln, unabhängig von Alter oder Gesundheitszustand. Es gibt keine <a href='/aufnahme/gesundheitspruefung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Neu-Gesundheitsprüfung</a>, keine Wartezeiten.</p>
+      <p><strong>Höchstbeitrag 2026:</strong> Der Basistarif kostet maximal <strong>1.017,18 Euro monatlich</strong> für die Krankenversicherung. Die <a href='/kosten/pkv-im-alter/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Pflegepflichtversicherung</a> im Basistarif liegt bei <strong>209,25 Euro</strong> monatlich. Insgesamt sind das bis zu 1.226,43 Euro. Bei Hilfebedürftigkeit wird der Beitrag um die Hälfte reduziert.</p>
+      <p><strong>Leistungen:</strong> Der Basistarif zahlt auf GKV-Niveau. Das bedeutet: ambulante Arztbesuche, Krankenhaustage, Verschreibungen, Labor. Ausgeschlossen sind dagegen Leistungen, die die GKV nicht zahlt. Das sind beispielsweise Zahnbehandlung ab der ersten Zahnfüllung (Prävention ist enthalten), Sehhilfen, Kuren und Haushaltshilfen über das GKV-Minimum hinaus.</p>
+      <p><strong>Wer kann wechseln:</strong> Jeder, der privat versichert ist. Das ist auch strategisch sinnvoll: Manche Angestellte, deren Einkommen sinkt oder deren Lebenssituation sich ändert, wechseln proaktiv in den Basistarif, um sich finanzielle Luft zu verschaffen. Der Wechsel ändert nichts an der PKV-Zugehörigkeit selbst.</p>
+    </div>
+  </section>
+
+  <!-- Standardtarif -->
+  <section id='standardtarif' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Der Standardtarif für Altverträge</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Standardtarif ist die ältere Variante. Er existierte, bevor es den Basistarif gab. Wer vor dem 1. Januar 2009 einen PKV-Vertrag abschloss und diesen durchgehend behielt, hat Zugang zum Standardtarif. Seit 2009 können Neu-Versicherte nicht mehr in den Standardtarif einsteigen.</p>
+      <p><strong>Höchstbeitrag 2026:</strong> Der Standardtarif ist günstiger als der Basistarif. Er kostet im Schnitt etwa <strong>804,82 Euro monatlich</strong>. Das ist eine erhebliche Ersparnis für Versicherte, die diesen Tarif nutzen dürfen.</p>
+      <p><strong>Leistungen:</strong> Der Standardtarif unterscheidet sich vom Basistarif nur minimal. Auch hier gilt GKV-Niveau. Auch hier sind Zahnersatz und Sehhilfen begrenzt oder ausgeschlossen.</p>
+      <p><strong>Die praktische Bedeutung:</strong> Der Standardtarif ist ein historischer Vorteil für lange Zeit Versicherte. Manche halten bewusst an alten Altverträgen mit Basistarif-Zugang fest, weil die Entlastung im Fall von Finanzproblemen beträchtlich ist. Andere sind allerdings in regulären Tarifen deutlich besser versichert und profitieren nicht von diesem Angebot.</p>
+    </div>
+  </section>
+
+  <!-- Notlagentarif -->
+  <section id='notlagentarif' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Der Notlagentarif bei Beitragsrückstand</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Notlagentarif ist die Notbremse. Er greift ein, wenn ein Versicherter seine Prämie nicht mehr zahlen kann und in Rückstand gerät. Der Wechsel ist nicht freiwillig, sondern automatisch. Der Anbieter versetzt den Versicherten in diesen Tarif, um die Existenzversorgung zu sichern.</p>
+      <p><strong>Höchstbeitrag 2026:</strong> Der Notlagentarif kostet typischerweise zwischen <strong>100 und 155 Euro monatlich</strong>. Die genaue Höhe kalkuliert jeder Anbieter selbst. Das ist ein Bruchteil des Basistarifs und soll als minimale Versorgung dienen.</p>
+      <p><strong>Leistungen:</strong> Auch der Notlagentarif zahlt auf GKV-Niveau, aber mit noch weniger Spielraum als Basistarif oder Standardtarif. Das Ziel ist nicht komfortable Versorgung, sondern Verhinderung von kompletter Unversichertheit.</p>
+      <p><strong>Wie er funktioniert:</strong> Wenn du deinen PKV-Beitrag nicht mehr bezahlst, mahnt der Versicherer. Nach einer Frist von mehreren Wochen erfolgt automatisch ein Wechsel in den Notlagentarif. Das System schützt also auch den Anbieter: Die Versichertenzahl sinkt nicht einfach, weil jemand die Prämie stundet.</p>
+      <p><strong>Ausstieg:</strong> Sobald die Rückstände beglichen sind und der Versicherte wieder zahlt, kann ein Wechsel zurück in einen regulären Tarif möglich sein. Das ist allerdings Verhandlungssache mit der jeweiligen Krankenkasse.</p>
+    </div>
+  </section>
+
+  <!-- Entscheidung -->
+  <section id='entscheidung' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wann welcher Tarif infrage kommt</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Basistarif:</strong> Nutze den Basistarif, wenn deine finanzielle Situation sich verschärft hat, dein Einkommen sinkt, oder wenn du eine Pause brauchst. Der <a href='/wechsel/tarifwechsel-204/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Wechsel</a> ist kostenfrei und jederzeit möglich. Deine Versichertenzahl rutscht nicht ab. Du erhältst weiter Leistungen auf GKV-Niveau. Der Basistarif ist kein Scheitern, sondern eine intelligente Anpassung.</p>
+      <p><strong>Standardtarif:</strong> Wenn du vor 2009 in die PKV gegangen bist und noch nie aus der PKV ausgetreten, dir aber Kosten ersparen möchtest, solltest du prüfen, ob dein Vertrag Standardtarif-Zugang hat. Bei Finanzproblemen ist das eine erhebliche Entlastung. Der Wechsel dorthin ist normalerweise kostenfrei, auch zeitlich unbegrenzt.</p>
+      <p><strong>Notlagentarif:</strong> Du solltest alles tun, um diesen Tarif zu vermeiden. Er ist nicht strafend gemeint, aber er ist ein Zeichen von Zahlungsproblemen. Deutlich besser ist es, proaktiv in den Basistarif zu wechseln, ehe Rückstände entstehen. Falls du jedoch in der Notlage landest, ist es besser, im Notlagentarif versichert zu sein, als komplett unversichert zu werden.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann jeder in den Basistarif wechseln?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, grundsätzlich kann jeder PKV-Vollversicherte in den Basistarif wechseln. Es gibt keine medizinischen Hürden, keine neuen Gesundheitsfragen, keine Wartezeiten. Der Wechsel ist ein Vertragsrecht nach § 193 VVG und kostet in der Regel nichts extra.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie hoch ist der Basistarif 2026?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Der Basistarif kostet 2026 maximal 1.017,18 Euro pro Monat für die Krankenversicherung. Die Pflegepflichtversicherung im Basistarif liegt bei 209,25 Euro. Insgesamt sind das bis zu 1.226,43 Euro. Bei Sozialhilfeempfängern wird der Beitrag halbiert.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Bekomme ich im Basistarif noch gute Leistungen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Der Basistarif zahlt auf GKV-Niveau. Das ist nicht schlecht: Du erhältst Arztbesuche, Krankenhaustage, Arzneien, Laboruntersuchungen. Einschränkungen gibt es nur bei Komfortleistungen wie Zahnersatz ab bestimmten Grenzen, hochwertige Sehhilfen oder alternative Heilmethoden. Als regulärer Arbeitnehmer solltest du deine Grundversorgung erhalten.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Fazit -->
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Sozialtarife der PKV sind ein wichtiges Auffangnetz. Sie verhindern, dass Versicherte in Finanzproblemen aus dem System fallen, und gewährleisten Grundversorgung auf GKV-Niveau.</p>
+      <p>Der Basistarif ist die praktisch wichtigste Variante für Angestellte. Du kannst jederzeit hineinwechseln, wenn deine finanzielle Situation es verlangt. Der Standardtarif ist ein Vorteil für lange Zeit Versicherte. Der Notlagentarif ist die letzte Rettungsleine, wenn Rückstände entstehen.</p>
+      <p>Wer in einem dieser Tarife landet, ist nicht gescheitert. Wer in einem dieser Tarife bleibt, sollte aber wissen, dass die regulären Tarife deutlich mehr Leistung bieten. Ein Wechsel zurück in einen besseren Tarif ist irgendwann wieder möglich, wenn die Situation stabilisiert ist.</p>
+    </div>
+  </section>
+</T6>

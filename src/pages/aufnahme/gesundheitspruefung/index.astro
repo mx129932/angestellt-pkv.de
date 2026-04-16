@@ -1,7 +1,156 @@
 ---
 import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'warum-gesundheitsprüfung', label: 'Warum es eine Gesundheitsprüfung gibt' },
+  { id: 'welche-fragen', label: 'Welche Fragen gestellt werden' },
+  { id: 'zeitraeume', label: 'Die Zeiträume: 3, 5 und 10 Jahre' },
+  { id: 'vorerkrankungen', label: 'Was passiert bei Vorerkrankungen' },
+  { id: 'falsche-angaben', label: 'Falsche Angaben: Konsequenzen' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const related = [
+  {
+    href: '/aufnahme/risikovoranfrage/',
+    kategorie: 'Aufnahme',
+    title: 'PKV-Risikovoranfrage: Anonym und ohne Risiko',
+    teaser: 'Mit einer anonymen Voranfrage erfährst du vorab, zu welchen Konditionen ein Versicherer dich aufnimmt.',
+    icon: 'shield',
+  },
+  {
+    href: '/wechsel/gkv-in-pkv/',
+    kategorie: 'Wechsel',
+    title: 'Von der GKV in die PKV wechseln',
+    teaser: 'Der komplette Ablauf: Voraussetzungen, Fristen und was bei Gehaltsänderung passiert.',
+    icon: 'swap_horiz',
+  },
+  {
+    href: '/leistungen/beste-pkv/',
+    kategorie: 'Leistungen',
+    title: 'Beste PKV für Angestellte',
+    teaser: 'Welche Tarife überzeugen bei Leistung, Beitragsstabilität und Service? Vergleich 2026.',
+    icon: 'star',
+  },
+];
 ---
+
 <T6
-  title='Gesundheitsprüfung in der PKV'
-  description='Wie die Gesundheitsprüfung abläuft und worauf du achten solltest.'
-/>
+  title='PKV-Gesundheitsprüfung: Ablauf und Tipps'
+  description='Bei der PKV-Gesundheitsprüfung werden Vorerkrankungen der letzten 3 bis 10 Jahre abgefragt. Was du wissen musst und wie du dich vorbereitest.'
+  breadcrumb={{ kategorie: 'Aufnahme', kategorieHref: '/aufnahme/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='8 Min. Lesezeit'
+  related={related}
+  faqItems={[
+    { question: `Muss ich jede Erkrankung angeben?`, answer: `Ja, alle Erkrankungen im abgefragten Zeitraum. Das schließt auch Dinge ein, die du selbst für unbedeutend hältst. Ein einfacher Bronchitis vor 2 Jahren, ein Allergietest, sogar Migräneanfälle müssen aufgelistet werden, wenn der Fragebogen danach fragt. Die Schwelle für Angabe ist niedrig. Es ist besser, zu viel anzugeben als zu wenig.` },
+    { question: `Wie weit zurück reichen die Gesundheitsfragen?`, answer: `Das ist unterschiedlich. Die meisten Versicherer fragen die letzten 5 Jahre ab. Schwere Erkrankungen wie Krebs können 10 Jahre zurückabgefragt werden. Psychische Erkrankungen und Suchtprobleme auch. Der Fragebogen teilt dir mit, welche Zeiträume relevant sind. Lies ihn sorgfältig durch.` },
+    { question: `Kann die PKV meinen Antrag ablehnen?`, answer: `Ja, ein Versicherer kann einen Antrag ablehnen. Das kommt aber selten vor. Typische Gründe sind aktive Krebserkrankungen, schwere und ungeklärte Diagnosen oder akute psychische Krisen. In den meisten Fällen akzeptiert ein Versicherer einen Antrag mit Zuschlag oder Ausschluss, statt abzulehnen. Mit einer anonymen Risikovoranfrage kannst du vorab testen, wie ein Versicherer dich beurteilt.` }
+  ]}
+>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die Gesundheitsprüfung ist Routine in der PKV. Der Versicherer prüft deine Krankengeschichte der letzten 3 bis 10 Jahre.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Etwa 20 bis 25 Prozent der Anträge erhalten einen <a href='/aufnahme/risikozuschlag/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Risikozuschlag</a> oder <a href='/aufnahme/leistungsausschluesse/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Leistungsausschluss</a>.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Falsche oder verschwiegene Angaben können später zur Leistungsverweigerung berechtigen.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Mit einer anonymen Risikovoranfrage kannst du vorab testen, zu welchen Konditionen ein Versicherer dich aufnimmt.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Typische Risikozuschläge liegen zwischen 5 und 50 Prozent des Grundbeitrags.</span></li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Die Gesundheitsprüfung ist das zentrale Instrument der PKV, um das individuelle Risiko eines Antragstellers zu bewerten. Im Gegensatz zur GKV, wo Alter, Geschlecht und Gesundheitszustand egal sind, ist die Gesundheitshistorie in der PKV entscheidend. Dieser Artikel zeigt dir, was dich in der Prüfung erwartet, welche Fragen gestellt werden und wie du dich richtig verhältst.</p>
+  </div>
+
+  <section id='warum-gesundheitsprüfung' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Warum es eine Gesundheitsprüfung gibt</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die PKV kalkuliert deine Prämie nach dem Äquivalenzprinzip. Das heisst: Dein Beitrag soll das Risiko abbilden, das du für den Versicherer darstellst. Je höher dein Risiko für teure Behandlungen, desto höher dein Beitrag.</p>
+      <p>Die GKV funktioniert anders. Dort zahlen alle den gleichen prozentualen Satz, unabhängig von Alter oder Gesundheit. Die Gemeinschaft trägt die Lasten. In der PKV trägt jeder sein eigenes Risiko. Das ist fair für Junge und Gesunde, kann aber für Menschen mit Vorerkrankungen teuer werden.</p>
+      <p>Um dieses Risiko einzuschätzen, musst du einen Gesundheitsfragebogen ausfüllen. Der Versicherer nutzt diese Daten, um dein Profil zu erstellen und zu entscheiden, ob und zu welchen Konditionen er dich aufnimmt.</p>
+    </div>
+  </section>
+
+  <section id='welche-fragen' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Welche Fragen gestellt werden</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Gesundheitsfragebogen der PKV ist typischerweise 5 bis 15 Seiten lang. Die Fragen sind strukturiert nach Organen und Erkrankungen. Du wirst gefragt nach:</p>
+      <ul class='list-disc list-inside space-y-2 ml-2'>
+        <li>Herz- und Kreislauferkrankungen</li>
+        <li>Bluthochdruck, Cholesterin, Diabetes</li>
+        <li>Atemwegserkrankungen wie Asthma oder COPD</li>
+        <li>Magen- und Darmerkrankungen</li>
+        <li>Leber- und Nierenleiden</li>
+        <li>Psychische Erkrankungen und Burnout</li>
+        <li>Krebs und Tumorerkrankungen</li>
+        <li>Orthopädische Probleme wie Rückenschmerzen oder Arthrose</li>
+        <li>Neurologische Erkrankungen</li>
+        <li>Allergien und Hauterkrankungen</li>
+      </ul>
+      <p>Zusätzlich wird dich der Versicherer nach Medikamenten, Krankenhausaufenthalten, Operationen, Behinderungen und Suchterkrankungen fragen. Die Fragen sind detailliert. Du musst angeben, wann die Erkrankung diagnostiziert wurde, welche Behandlung stattfand und wie der aktuelle Status ist.</p>
+    </div>
+  </section>
+
+  <section id='zeitraeume' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Die Zeiträume: 3, 5 und 10 Jahre</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Fragen beziehen sich auf unterschiedliche Zeitfenster. Das ist wichtig, weil du wissen musst, wie weit du zurückblicken musst.</p>
+      <p><strong>Letzte 3 Jahre:</strong> Aktuelle Erkrankungen und Behandlungen werden immer abgefragt. Der Versicherer möchte wissen, was gerade los ist. Wenn du vor 3 Monaten eine Gallenblasenoperation hattest, muss das rein.</p>
+      <p><strong>Letzte 5 Jahre:</strong> Schwere Erkrankungen wie Krebs, Herzinfarkt oder Schlaganfall werden typischerweise 5 Jahre zurückabgefragt. Der Grund: Wer fünf Jahre ohne Rückfall durchgehalten hat, gilt bei manchen Erkrankungen als geheilt oder zumindest deutlich risikomindernd.</p>
+      <p><strong>Letzte 10 Jahre:</strong> Manche Versicherer fragen auch Erkrankungen ab, die 10 Jahre zurückliegen. Das ist besonders bei psychiatrischen Erkrankungen und Suchtproblemen der Fall. Hier geht es um die Langzeitstabilität.</p>
+      <p>Das Wichtigste: Es gibt keine ärztliche Verschwiegenheit gegenüber dem Versicherer. Wenn du Angaben machst, prüft der Versicherer diese über deine bisherigen Versicherer oder über eine Sperrlistenabfrage. Lügen werden teuer.</p>
+    </div>
+  </section>
+
+  <section id='vorerkrankungen' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was passiert bei Vorerkrankungen</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Versicherer hat nach der Prüfung deines Fragebogens vier Optionen: Normal-Annahme, Risikozuschlag, Leistungsausschluss oder Ablehnung.</p>
+      <p><strong>Normal-Annahme:</strong> Du wirst ohne Zuschlag angenommen. Das ist der Best Case.</p>
+      <p><strong><a href='/aufnahme/risikozuschlag/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Risikozuschlag</a>:</strong> Der Versicherer akzeptiert dich, rechnet aber mit höheren Kosten. Du zahlst einen prozentualen Aufschlag auf deinen Grundbeitrag. Typische Zuschläge liegen bei 5, 10, 20 oder 30 Prozent, in schweren Fällen bis 50 Prozent. Ein Beispiel: Dein Grundbeitrag wäre 450 Euro. Mit 20 Prozent Zuschlag zahlst du 540 Euro pro Monat.</p>
+      <p><strong><a href='/aufnahme/leistungsausschluesse/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Leistungsausschluss</a>:</strong> Der Versicherer nimmt dich auf, schließt aber einzelne Diagnosen dauerhaft aus. Wenn du beispielsweise eine Kniearthrose hast, kann der Versicherer diese Diagnose ausnehmen. Alle damit verbundenen Behandlungen zahlt nicht die PKV, sondern du selbst. Ein Leistungsausschluss ist typischerweise zeitlich unbegrenzt, kann aber nach einigen Jahren aufgehoben werden.</p>
+      <p><strong>Ablehnung:</strong> Der Versicherer sagt nein. Das passiert eher selten, kommt aber vor. Typische Gründe sind schwere psychiatrische Erkrankungen, aktive Krebserkrankungen oder ungeklärte Diagnosen mit schlechter Prognose.</p>
+      <p>Etwa 20 bis 25 Prozent aller Anträge in der PKV erhalten einen Zuschlag oder Ausschluss. Das ist breite Marktpraxis, bedeutet aber nicht, dass dein Fall einer sein wird.</p>
+    </div>
+  </section>
+
+  <section id='falsche-angaben' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Falsche Angaben: Konsequenzen</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Gesundheitsfragebogen ist eine Gewissensfrage. Du unterschreibst deine Antworten. Das macht die Aussagen rechtlich bindend.</p>
+      <p><strong>Verschwiegene Erkrankungen:</strong> Wenn du eine Erkrankung absichtlich verschweigst oder bewusst falsch angibst und der Versicherer das später entdeckt, kann er den Versicherungsvertrag anfechten. Das bedeutet: Der Versicherer kann unter Umständen alle Leistungen ablehnen, die mit dieser Erkrankung zusammenhängen, auch wenn die Krankheit Jahre später auftritt.</p>
+      <p><strong>Unvorsichtige Angaben:</strong> Wenn du die Fragen nicht richtig verstanden hast oder Informationen vergessen hast, ist das weniger problematisch. Wichtig ist, dass keine Absicht dahintersteckt. Der Versicherer muss nachweisen, dass du bewusst gelogen hast.</p>
+      <p><strong>Recht auf Korrektur:</strong> Wenn du vor Vertragsabschluss merkst, dass du etwas falsch angegeben hast, kannst du dich an den Versicherer wenden und korrigieren. Das ist deutlich besser, als wenn der Versicherer es später selbst herausfindet.</p>
+      <p>Fazit: Beantworte alle Fragen wahrheitsgemäss und vollständig. Es hilft keine Lüge. Der Versicherer hat Zugang zu deinen Patientenakten, Sperrlistendaten und kann notfalls Ärzte befragen. Wenn du mit einer Erkrankung rechnest, dass sie zu Problemen führt, verhandel lieber offen über einen Zuschlag, statt zu lügen.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Gesundheitsprüfung ist das zentrale Bewertungsinstrument der PKV für dich als Angestellter. Beantworte alle Fragen wahrheitsgemäss und vollständig: Der Versicherer hat ohnehin Zugriff auf deine Patientenakten und Sperrlistendaten. Mit einer anonymen Risikovoranfrage kannst du vorab testen, wie der Markt dich bewertet, ohne Spuren zu hinterlassen.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Muss ich jede Erkrankung angeben?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, alle Erkrankungen im abgefragten Zeitraum. Das schließt auch Dinge ein, die du selbst für unbedeutend hältst. Ein einfacher Bronchitis vor 2 Jahren, ein Allergietest, sogar Migräneanfälle müssen aufgelistet werden, wenn der Fragebogen danach fragt. Die Schwelle für Angabe ist niedrig. Es ist besser, zu viel anzugeben als zu wenig.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie weit zurück reichen die Gesundheitsfragen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Das ist unterschiedlich. Die meisten Versicherer fragen die letzten 5 Jahre ab. Schwere Erkrankungen wie Krebs können 10 Jahre zurückabgefragt werden. Psychische Erkrankungen und Suchtprobleme auch. Der Fragebogen teilt dir mit, welche Zeiträume relevant sind. Lies ihn sorgfältig durch.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann die PKV meinen Antrag ablehnen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, ein Versicherer kann einen Antrag ablehnen. Das kommt aber selten vor. Typische Gründe sind aktive Krebserkrankungen, schwere und ungeklärte Diagnosen oder akute psychische Krisen. In den meisten Fällen akzeptiert ein Versicherer einen Antrag mit Zuschlag oder Ausschluss, statt abzulehnen. Mit einer anonymen Risikovoranfrage kannst du vorab testen, wie ein Versicherer dich beurteilt.</div>
+      </details>
+    </div>
+  </section>
+</T6>

@@ -1,0 +1,128 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'was', label: 'Was die betriebliche Krankenversicherung ist' },
+  { id: 'vorteile', label: 'Vorteile fuer Arbeitnehmer' },
+  { id: 'sachbezug', label: 'Sachbezugsgrenze und Steuereffekt' },
+  { id: 'leistungen', label: 'Typische Leistungen' },
+  { id: 'doppel', label: 'BKV und PKV: Doppelerstattung?' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const related = [
+  {
+    href: '/grundlagen/gkv-vs-pkv/',
+    kategorie: 'Grundlagen',
+    title: 'GKV vs. PKV Vergleich',
+    teaser: 'Systemvergleich mit allen Unterschieden.',
+    icon: 'trending_up',
+  },
+  {
+    href: '/leistungen/übersicht/',
+    kategorie: 'Leistungen',
+    title: 'Leistungen in der PKV',
+    teaser: 'Was die PKV bezahlt und was nicht.',
+    icon: 'shield',
+  },
+  {
+    href: '/grundlagen/vor-und-nachteile/',
+    kategorie: 'Grundlagen',
+    title: 'Vor- und Nachteile der PKV',
+    teaser: 'Was spricht fuer und gegen die PKV.',
+    icon: 'trending_up',
+  },
+];
+---
+<T6 title='Betriebliche Krankenversicherung für Arbeitnehmer' description='Die betriebliche Krankenversicherung (BKV) ist ein Gruppenvertrag ohne Gesundheitsprüfung. Was sie leistet und worauf du als Arbeitnehmer achten musst.' breadcrumb={{ kategorie: 'Lebenssituationen', kategorieHref: '/lebenssituationen/' }} toc={toc} date='Update April 2026' readingTime='7 Min. Lesezeit' related={related}>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>BKV ist ein <strong>Gruppenvertrag</strong> des Arbeitgebers, keine einzelne Versicherung.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span><strong>Keine Gesundheitsprüfung</strong> bei der Aufnahme in die BKV.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Sachbezugsgrenze: <strong>50 Euro monatlich</strong> sind steuerfrei.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Typische Leistungen: <strong>Zahnersatz, Sehhilfen, Wellness</strong>.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>BKV ist <strong>Zusatzversicherung</strong>, kein Ersatz für Hauptversicherung.</span></li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Die betriebliche Krankenversicherung ist ein unterschätzter Vorteil. Viele Arbeitnehmer wissen gar nicht, dass ihr Arbeitgeber ihnen eine Zusatzversicherung finanziert oder zurecht.</p>
+  </div>
+
+  <section id='was' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was die betriebliche Krankenversicherung ist</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die BKV ist NICHT deine Hauptversicherung. Sie ist eine Zusatzversicherung, die der Arbeitgeber für seine Mitarbeiter abschliesst. Typischerweise sind das Zahnzusatz, Sehhilfen oder Krankentagegelder auf GKV-Basis.</p>
+      <p>Der Arbeitgeber zahlt komplett oder bezuschusst die Prämie. Du brauchst keinen eigenen Versicherungsvertrag, du bist automatisch Mitglied, wenn du bei dem Unternehmen arbeitest.</p>
+      <p>Die BKV ist ein Gruppenvertrag, was bedeutet: Keine Gesundheitsprüfung bei Aufnahme, keine Risikozuschlaeage für dich persoenlich, pauschal für alle Mitarbeiter kalkuliert.</p>
+    </div>
+  </section>
+
+  <section id='vorteile' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Vorteile für Arbeitnehmer</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>1. Kostenlos oder stark bezuschusst:</strong> Der Arbeitgeber zahlt oft 50 bis 100 Prozent der Prämie. Du brauchst wenig oder gar nichts selbst zu zahlen.</p>
+      <p><strong>2. Keine Gesundheitsprüfung:</strong> Auch wenn du Vorerkrankungen hast, keine Ablehnung oder Risikozuschlag. Alle zahlen den gleichen Beitrag.</p>
+      <p><strong>3. Vereinfachte Verwaltung:</strong> Abrechnung oft direkt über den Arbeitgeber, nicht über deine private Versicherung.</p>
+      <p><strong>4. Zusatzschutz:</strong> Du erhältst Leistungen, die deine Hauptversicherung (GKV oder PKV) nicht deckt.</p>
+    </div>
+  </section>
+
+  <section id='sachbezug' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Sachbezugsgrenze und Steuereffekt</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Wenn der Arbeitgeber die BKV für dich zahlt, kann das ein Sachbezug sein. Sachbezuege bis 50 Euro monatlich sind steuerfrei (2026). Alles darüber wird versteuert.</p>
+      <p>Beispiel: Arbeitgeber zahlt 60 Euro Prämie für deine BKV. Davon sind 50 Euro steuerfrei, 10 Euro werden versteuert, erhöhen also dein zu versteuerndes Einkommen um 10 Euro monatlich.</p>
+      <p>Das ist aber kein Problem, sondern normal. Die meisten Arbeitgeber kalkulieren so ein, dass die BKV innerhalb der 50-Euro-Grenze liegt.</p>
+    </div>
+  </section>
+
+  <section id='leistungen' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Typische Leistungen</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Zahnzusatz:</strong> Die häufigste BKV-Leistung. Bezahlt Zahnersatz, Zahnsanierungen, Professionelle Zahnreinigung.</p>
+      <p><strong>Sehhilfen:</strong> Brille oder Kontaktlinsen. GKV zahlt fast nichts, PKV zahlt oft 100 Prozent. BKV bridgt die Luecke.</p>
+      <p><strong>Krankentagegeld (GKV-Basis):</strong> Zusätzlich zum gesetzlichen Krankengeld. Nur relevant für GKV-Versicherte.</p>
+      <p><strong>Wellness/Prävention:</strong> Fitness, Massagen, Meditationskurse. Moderne BKVs bieten das an.</p>
+    </div>
+  </section>
+
+  <section id='doppel' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>BKV und PKV: Doppelerstattung?</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Das ist eine häufige Frage: Wenn ich PKV-versichert bin und die BKV zahlt auch, bekomme ich doppelt erstattet?</p>
+      <p>Nein, die Versicherungen zahlen koordiniert. Es gibt zwei Modelle:</p>
+      <p><strong>Modell 1: Nachrangigkeit</strong> - Die BKV zahlt nur, wenn die Hauptversicherung (PKV) nicht zahlt oder einen Eigenanteil lässt.</p>
+      <p><strong>Modell 2: Zusatzversicherung</strong> - Die BKV zahlt unabhängig, z.B. 50 Euro feste Zahnzusatz, ob die PKV das bezahlt oder nicht.</p>
+      <p>Die genaue Regelung steht in deinem BKV-Vertrag. Aber Doppelerstattung (dich selbst bereichern) ist nicht möglich.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>BKV ist ein unterschätzter Vorteil. Frag bei deinem Arbeitgeber nach, ob ihr einen Gruppenvertrag habt. Wenn ja, ist das ein zusätzlicher Schutz, den du nutzen solltest.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Muss ich die BKV versteuern?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nur, wenn der Arbeitgeberzuschuss über 50 Euro monatlich liegt. Dann wird der uebersteiger Teil versteuert. Bis 50 Euro ist steuerfrei.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Behalte ich die BKV bei Jobwechsel?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein, die BKV ist an die Anstellung gebunden. Bei Jobwechsel endet sie. Der neue Arbeitgeber kann einen anderen Vertrag haben oder nicht.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich mit BKV doppelt erstattet bekommen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein, die Versicherungen zahlen koordiniert. Es gibt Nachrangigkeitsklauseln, die verhindern, dass du dich selbst bereichert. Das steht in deinem BKV-Vertrag.</div>
+      </details>
+    </div>
+  </section>
+</T6>

@@ -1,7 +1,202 @@
 ---
 import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'grundprinzip', label: 'Solidarität vs. Äquivalenz' },
+  { id: 'beitragsvergleich', label: 'Beitragsstruktur 2026' },
+  { id: 'leistungen', label: 'Sachleistung vs. Kostenerstattung' },
+  { id: 'familie', label: 'Familie' },
+  { id: 'langfrist', label: 'Langfristperspektive' },
+  { id: 'wechselvoraussetzung', label: 'Wer kann wechseln' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const related = [
+  {
+    href: '/grundlagen/lohnt-sich-pkv/',
+    kategorie: 'Grundlagen',
+    title: 'Lohnt sich die PKV für Angestellte?',
+    teaser: 'Datenbasierte Entscheidungshilfe mit konkreten Rechenbeispielen für verschiedene Lebenssituationen.',
+    icon: 'trending_up',
+  },
+  {
+    href: '/kosten/arbeitgeberzuschuss/',
+    kategorie: 'Kosten',
+    title: 'Arbeitgeberzuschuss PKV 2026',
+    teaser: 'Maximal 508,59 Euro KV plus 104,63 Euro Pflege. So wird der Zuschuss berechnet.',
+    icon: 'payments',
+  },
+  {
+    href: '/kosten/pkv-im-alter/',
+    kategorie: 'Kosten',
+    title: 'PKV im Alter',
+    teaser: 'Was Altersrückstellungen leisten und wie du die Beiträge im Ruhestand einordnest.',
+    icon: 'elderly',
+  },
+];
 ---
 <T6
-  title='Unterschied GKV und PKV für Angestellte'
-  description='Die wichtigsten Unterschiede zwischen gesetzlicher und privater Krankenversicherung.'
-/>
+  title='GKV vs. PKV: Vergleich für Angestellte 2026'
+  description='GKV oder PKV als Angestellter? Beitrag, Leistung, Familienversicherung und Langzeitkosten im Direktvergleich mit allen relevanten Zahlen 2026.'
+  breadcrumb={{ kategorie: 'Grundlagen', kategorieHref: '/grundlagen/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='12 Min. Lesezeit'
+  related={related}
+  faqItems={[
+    { question: `Ab welchem Gehalt kann ich als Angestellter in die PKV?`, answer: `Ab einem regelmäßigen Bruttojahresgehalt über der Jahresarbeitsentgeltgrenze (JAEG). 2026 liegt sie bei 77.400 Euro, das sind 6.450 Euro im Monat. Dein Gehalt muss diese Grenze dauerhaft überschreiten, nicht nur einmalig durch Sonderzahlungen.` },
+    { question: `Ist die PKV wirklich günstiger als die GKV?`, answer: `Für junge, gesunde Angestellte ohne Familie oft ja. Der Einstiegsbeitrag liegt häufig bei 400 bis 550 Euro, deutlich unter dem GKV-Höchstbeitrag. Für Paare mit Kindern oder bei Vorerkrankungen kann die PKV jedoch teurer sein, weil jede Person einen eigenen Vertrag braucht und Risikozuschläge anfallen können.` },
+    { question: `Was passiert mit meiner PKV wenn ich unter die JAEG falle?`, answer: `Wenn dein Gehalt unter die JAEG von 77.400 Euro fällt (etwa durch Jobwechsel oder Teilzeit), wirst du wieder versicherungspflichtig in der GKV. Du kannst dich nach § 8 SGB V innerhalb von drei Monaten von dieser Pflicht befreien lassen und in der PKV bleiben. Diese Befreiung gilt jedoch nur für den konkreten Anlass und ist nicht widerrufbar.` }
+  ]}
+>
+  <!-- Zusammenfassung -->
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die GKV rechnet <strong>einkommensabhängig und solidarisch</strong>, die PKV <strong>risikobasiert und individuell</strong>. Das erklärt fast alle weiteren Unterschiede.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der GKV-Höchstbeitrag 2026 liegt bei <strong>1.229,35 Euro</strong> monatlich (inkl. Pflege). In der PKV variiert der Beitrag je nach Alter, Gesundheit und Tarif.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span><strong>Familienversicherung</strong> gibt es nur in der GKV. In der PKV zahlt jede Person einen eigenen Beitrag, auch Kinder.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Langfristvergleich: PKV-Beiträge stiegen 2015 bis 2025 um <strong>3,9 % pro Jahr</strong>, GKV-Beiträge um <strong>4,1 % pro Jahr</strong> (WIP-Studie 2024).</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Wechsel möglich ab <strong>77.400 Euro Jahresbrutto</strong> (JAEG 2026). Der Rückweg in die GKV ist ab 55 faktisch versperrt.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Einleitung -->
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Der Vergleich zwischen gesetzlicher und privater Krankenversicherung wirkt auf den ersten Blick wie eine Wahl zwischen zwei Tarifen. Tatsächlich stehen sich zwei grundsätzlich verschiedene Systeme gegenüber. In Deutschland sind rund 74,5 Millionen Menschen gesetzlich versichert, weitere 8,79 Millionen privat vollversichert. Unter den PKV-Versicherten sind etwa 11,6 Prozent Angestellte, das entspricht rund 1,02 Millionen Personen (PKV-Verband, Branchenzahlen 2025).</p>
+    <p>Wer als Angestellter über der Versicherungspflichtgrenze verdient, steht vor einer Entscheidung mit weitreichenden Folgen. Dieser Artikel liefert den nüchternen Systemvergleich mit allen relevanten Zahlen 2026.</p>
+  </div>
+
+  <!-- Grundprinzip -->
+  <section id='grundprinzip' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Das Grundprinzip: Solidarität vs. Äquivalenz</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Die GKV</strong> funktioniert nach dem Solidarprinzip. Jeder zahlt einen prozentualen Anteil seines Einkommens. Alter, Geschlecht und Gesundheitszustand spielen keine Rolle. Der Beitrag steigt mit dem Gehalt, aber nur bis zur Beitragsbemessungsgrenze. Die liegt 2026 bei 69.750 Euro Jahresbrutto (5.812,50 Euro monatlich). Darüber bleibt der Beitrag konstant.</p>
+      <p><strong>Die PKV</strong> funktioniert nach dem Äquivalenzprinzip. Der Beitrag richtet sich nach dem individuellen Risiko: Eintrittsalter, Gesundheitszustand, gewählter Tarif und Selbstbeteiligung. Das Einkommen spielt keine Rolle. Ein 30-jähriger gesunder Angestellter zahlt deutlich weniger als ein 50-jähriger mit Vorerkrankungen.</p>
+      <p>Dieser Unterschied in der Grundlogik erklärt fast alle weiteren Abweichungen zwischen beiden Systemen. Die GKV verteilt Kosten über die Gemeinschaft, die PKV kalkuliert sie individuell.</p>
+    </div>
+  </section>
+
+  <!-- Beitragsvergleich -->
+  <section id='beitragsvergleich' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Beitragsstruktur 2026 im Direktvergleich</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die folgende Tabelle zeigt die zentralen Unterschiede in der Beitragsstruktur. Alle Zahlen gelten für das Jahr 2026.</p>
+    </div>
+    <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+      <table class='w-full text-left border-collapse min-w-[520px]'>
+        <thead>
+          <tr class='bg-[#FAF7F2]'>
+            <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>Kennzahl</th>
+            <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>GKV</th>
+            <th class='px-5 py-3 font-semibold text-xs uppercase tracking-wider text-on-surface-variant'>PKV</th>
+          </tr>
+        </thead>
+        <tbody class='divide-y divide-outline-variant/20'>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Beitragsbasis</td><td class='px-5 py-4 text-on-surface-variant'>Einkommen (bis BBG)</td><td class='px-5 py-4 text-on-surface-variant'>Alter, Gesundheit, Tarif</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Beitragssatz 2026</td><td class='px-5 py-4 text-on-surface-variant'>14,6 % + Ø 2,9 % Zusatz = 17,5 %</td><td class='px-5 py-4 text-on-surface-variant'>individuell kalkuliert</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Zusatzbeitrag-Spanne</td><td class='px-5 py-4 text-on-surface-variant'>2,18 % bis 4,39 %</td><td class='px-5 py-4 text-on-surface-variant'>entfällt</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Höchstbeitrag inkl. Pflege</td><td class='px-5 py-4 text-on-surface-variant'>1.229,35 €/Monat</td><td class='px-5 py-4 text-on-surface-variant'>je nach Tarif</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Max. AG-Zuschuss</td><td class='px-5 py-4 text-on-surface-variant'>hälftig (max. 614,68 €)</td><td class='px-5 py-4 text-on-surface-variant'>508,59 € KV + 104,63 € PV</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Kinder</td><td class='px-5 py-4 text-on-surface-variant'>beitragsfrei mitversichert</td><td class='px-5 py-4 text-on-surface-variant'>eigener Beitrag je Kind</td></tr>
+          <tr><td class='px-5 py-4 font-semibold text-primary'>Partner ohne Einkommen</td><td class='px-5 py-4 text-on-surface-variant'>beitragsfrei mitversichert</td><td class='px-5 py-4 text-on-surface-variant'>eigener Beitrag</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der scheinbar günstige PKV-Einstiegsbeitrag von 400 bis 550 Euro für junge Angestellte relativiert sich, sobald mehrere Personen zu versichern sind. In der GKV kostet der gesamte Haushalt genauso viel wie der Einzelverdiener. In der PKV braucht jedes Familienmitglied einen eigenen Vertrag.</p>
+      <p>Die Berechnung des maximalen Arbeitgeberzuschusses folgt einer festen Formel: BBG monatlich (5.812,50 Euro) mal Gesamtbeitragssatz (14,6 % + 2,9 %) geteilt durch zwei ergibt 508,59 Euro. Dazu kommen maximal 104,63 Euro Pflegeversicherung. Details dazu findest du unter <a href='/kosten/arbeitgeberzuschuss/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Arbeitgeberzuschuss PKV 2026</a>.</p>
+    </div>
+  </section>
+
+  <!-- Leistungen -->
+  <section id='leistungen' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Leistungen: Sachleistung vs. Kostenerstattung</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>In der GKV gilt das <strong>Sachleistungsprinzip</strong>. Du zeigst die Versichertenkarte, die Kasse zahlt dem Arzt direkt. Das Leistungsspektrum ist durch das SGB V geregelt und folgt dem Maßstab „ausreichend, zweckmäßig, wirtschaftlich". Zusatzleistungen über dieses Niveau hinaus sind die Ausnahme.</p>
+      <p>In der PKV gilt das <strong>Kostenerstattungsprinzip</strong>. Du bekommst die Rechnung, reichst sie ein und erhältst das Geld zurück. Was bezahlt wird, regelt dein Tarif. Gute Tarife übernehmen Chefarztbehandlung, Einbettzimmer, alternative Heilverfahren, hochwertige Sehhilfen und Zahnersatz weit über GKV-Niveau.</p>
+      <p>Bei Facharztterminen zeigen sich messbare Unterschiede. Laut GKV-Spitzenverband warten gesetzlich Versicherte im Median 10 Tage auf einen Termin, 25 Prozent sogar länger als 30 Tage. Bei PKV-Versicherten liegt der Durchschnitt bei 9 Tagen, 64 Prozent erhalten ihren Termin innerhalb von 3 Tagen (GKV-Spitzenverband Bevölkerungsbefragung 2024).</p>
+      <p>Die pauschale Aussage „bessere Leistungen in der PKV" stimmt nur für entsprechend kalkulierte Tarife. Ein Billigtarif mit hoher Selbstbeteiligung kann im Krankheitsfall deutlich weniger abdecken als die Regelversorgung der GKV. Stiftung Warentest hat 2025 insgesamt 1.245 Tarifkombinationen geprüft und stufte viele als „nicht empfehlenswert" ein (Finanztest 03/2025).</p>
+    </div>
+  </section>
+
+  <!-- Familie -->
+  <section id='familie' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Familie: Der wirtschaftliche Hauptunterschied</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Familienversicherung ist der einzelne Faktor, der die Systementscheidung am stärksten beeinflusst. In der GKV können Ehepartner ohne eigenes Einkommen (unter 565 Euro monatlich, Stand 2026) und Kinder bis 25 beitragsfrei mitversichert werden. 15,9 Millionen Menschen sind aktuell als beitragsfreie Familienangehörige in der GKV mitversichert (GKV-Spitzenverband 2025).</p>
+      <p>In der PKV ist das nicht vorgesehen. Jede Person braucht einen eigenen Vertrag. Typische Kinderbeiträge liegen bei 100 bis 220 Euro monatlich. Ein Angestellter mit Partnerin in Erziehungszeit und zwei Kindern kann in der PKV schnell bei 1.200 bis 1.600 Euro monatlich liegen. Das übersteigt den GKV-Höchstbeitrag, der die gesamte Familie abdeckt.</p>
+      <p>Für Alleinstehende oder Paare mit zwei Einkommen ist dieser Unterschied weniger relevant. Für alle anderen ist er oft entscheidend. Mehr dazu unter <a href='/familie/kinder/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Kinder in der PKV</a>.</p>
+    </div>
+  </section>
+
+  <!-- Langfrist -->
+  <section id='langfrist' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Langfristperspektive: Beitragsentwicklung</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die langfristige Beitragsentwicklung ist der zweite große Faktor. Beide Systeme werden teurer, aber auf unterschiedliche Weise.</p>
+      <p><strong>In der GKV</strong> steigt der Beitrag nicht direkt, aber der Beitragssatz und die Bemessungsgrenzen werden jährlich angepasst. Der GKV-Höchstbeitrag (inkl. Pflege) ist zwischen 2017 und 2026 von 789,53 Euro auf 1.229,35 Euro gestiegen. Das entspricht einem Anstieg von rund 56 Prozent in zehn Jahren. Allein von 2021 bis 2026 lag die jährliche Steigerung bei durchschnittlich 6,91 Prozent (BMG/eigene Berechnungen). Im Rentenalter fällt die Belastung, weil der Beitrag mit dem Einkommen sinkt.</p>
+      <p><strong>In der PKV</strong> wird nach § 203 VAG nur dann angepasst, wenn bestimmte Auslöser überschritten sind: mindestens 10 Prozent Abweichung bei den Leistungsausgaben oder 5 Prozent bei der Sterblichkeit. Die Anpassungen kommen dann oft sprunghaft. Die WIP-Studie 2024 zeigt für den Zeitraum 2015 bis 2025: PKV-Beiträge stiegen um durchschnittlich 3,9 Prozent pro Jahr, GKV-Beiträge um 4,1 Prozent pro Jahr. Über den längeren Zeitraum 2005 bis 2025 liegt die PKV bei 3,1 Prozent jährlich, die GKV bei 3,8 Prozent (WIP-Kurzanalyse 2024; Interessenlage beachten: WIP ist das Forschungsinstitut der PKV).</p>
+      <p>Im Alter steigt der PKV-Beitrag weiter, gedämpft durch Altersrückstellungen. Die PKV-Branche hält aktuell rund 351 Milliarden Euro an Altersrückstellungen, das entspricht durchschnittlich 38.800 Euro pro Versichertem (PKV-Verband 09/2025). Zum Vergleich: Die GKV-Finanzreserven lagen Ende 2024 bei nur 2,1 Milliarden Euro, genug für knapp 3 Tage Leistungsausgaben (BMG 03/2025).</p>
+      <p>Trotz der Rückstellungen gilt: Auch als Rentner zahlst du als PKV-Versicherter denselben Beitrag wie zuletzt. Das Einkommen ist im Ruhestand halbiert, der Beitrag nicht. Dieser Effekt ist der Hauptgrund, warum viele PKV-Versicherte im Ruhestand über ihre Beiträge klagen. Mehr dazu unter <a href='/kosten/pkv-im-alter/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV im Alter</a>.</p>
+    </div>
+  </section>
+
+  <!-- Wer kann wechseln -->
+  <section id='wechselvoraussetzung' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wer kann überhaupt wechseln</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Wechsel in die PKV ist für Angestellte an eine Einkommensschwelle gebunden. 2026 liegt die Jahresarbeitsentgeltgrenze (JAEG) bei 77.400 Euro brutto (6.450 Euro monatlich). Wer darunter liegt, ist in der Regel pflichtversichert in der GKV und kann nicht wechseln.</p>
+      <p>Oberhalb der JAEG liegt Versicherungsfreiheit. Du kannst freiwillig in der GKV bleiben oder in die PKV wechseln. Die Entscheidung kannst du in dem Moment treffen, in dem dein Gehalt die Schwelle überschreitet. Details zum Ablauf findest du unter <a href='/wechsel/gkv-in-pkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Von der GKV in die PKV wechseln</a>.</p>
+      <p>Die sogenannte besondere JAEG liegt 2026 bei 69.750 Euro. Sie gilt für Angestellte, die bereits vor dem 1. Januar 2003 privat versichert waren.</p>
+      <p>Für Beamte, Richter und Referendare ist das System anders. Sie bekommen Beihilfe vom Dienstherrn und versichern den Restanteil privat. Rund 85 Prozent aller Beamten sind PKV-vollversichert, weil die GKV für diese Gruppe mangels Arbeitgeberzuschuss oft die teurere Wahl ist.</p>
+      <p>Wichtig: Der Rückweg in die GKV ist ab dem 55. Lebensjahr faktisch versperrt (§ 6 Abs. 3a SGB V). Wer sich für die PKV entscheidet, trifft eine weitgehend irreversible Entscheidung. Mehr dazu unter <a href='/wechsel/versicherungspflichtgrenze/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Versicherungspflichtgrenze</a> und <a href='/wechsel/pkv-in-gkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Zurück in die GKV</a>.</p>
+    </div>
+  </section>
+
+  <!-- Fazit -->
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Wahl zwischen GKV und PKV ist keine reine Beitragsentscheidung. Sie ist eine Entscheidung über Systemlogik: Solidarfinanzierung oder individuelle Kalkulation, Familienschutz oder Einzelrechnung, Einkommensbindung oder Einkommensentkopplung.</p>
+      <p>Für Angestellte mit hohem, stabilem Einkommen, ohne große Familienpläne und mit guter Gesundheit ist die PKV oft die wirtschaftlich bessere Wahl. Für Familien mit einem Verdiener, für Angestellte mit schwankendem Einkommen oder für Menschen mit Vorerkrankungen ist die GKV in der Regel das robustere System.</p>
+      <p>Die Zahlen helfen bei der Einordnung. Die Lebensplanung entscheidet. Wer seinen persönlichen Vergleich rechnen will, findet hier den <a href='/rechner/pkv-gkv-vergleich/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-GKV-Vergleichsrechner</a>. Wer wissen will, ob der Wechsel sich konkret lohnt, liest <a href='/grundlagen/lohnt-sich-pkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Lohnt sich die PKV für Angestellte?</a>.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ab welchem Gehalt kann ich als Angestellter in die PKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ab einem regelmäßigen Bruttojahresgehalt über der Jahresarbeitsentgeltgrenze (JAEG). 2026 liegt sie bei 77.400 Euro, das sind 6.450 Euro im Monat. Dein Gehalt muss diese Grenze dauerhaft überschreiten, nicht nur einmalig durch Sonderzahlungen.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ist die PKV wirklich günstiger als die GKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Für junge, gesunde Angestellte ohne Familie oft ja. Der Einstiegsbeitrag liegt häufig bei 400 bis 550 Euro, deutlich unter dem GKV-Höchstbeitrag. Für Paare mit Kindern oder bei Vorerkrankungen kann die PKV jedoch teurer sein, weil jede Person einen eigenen Vertrag braucht und Risikozuschläge anfallen können.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was passiert mit meiner PKV wenn ich unter die JAEG falle?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Wenn dein Gehalt unter die JAEG von 77.400 Euro fällt (etwa durch Jobwechsel oder Teilzeit), wirst du wieder versicherungspflichtig in der GKV. Du kannst dich nach § 8 SGB V innerhalb von drei Monaten von dieser Pflicht befreien lassen und in der PKV bleiben. Diese Befreiung gilt jedoch nur für den konkreten Anlass und ist nicht widerrufbar.</div>
+      </details>
+    </div>
+  </section>
+</T6>

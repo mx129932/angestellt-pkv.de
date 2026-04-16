@@ -1,7 +1,137 @@
 ---
 import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'jobwechsel', label: 'Jobwechsel: Was mit der PKV passiert' },
+  { id: 'arbeitslosigkeit', label: 'Arbeitslosigkeit und PKV' },
+  { id: 'algi', label: 'ALG-I: Befreiung oder GKV-Pflicht' },
+  { id: 'algii', label: 'ALG-II: Wer zahlt den PKV-Beitrag' },
+  { id: 'selbstständigkeit', label: 'Wechsel in die Selbstständigkeit' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const related = [
+  {
+    href: '/wechsel/versicherungspflichtgrenze/',
+    kategorie: 'Wechsel',
+    title: 'Versicherungspflichtgrenze',
+    teaser: 'Die JAEG 2026 und wann der Wechsel möglich ist.',
+    icon: 'swap_horiz',
+  },
+  {
+    href: '/wechsel/pkv-in-gkv/',
+    kategorie: 'Wechsel',
+    title: 'Zurück in die GKV',
+    teaser: 'Die 55-Jahre-Grenze und wie du zurückkehrst.',
+    icon: 'swap_horiz',
+  },
+  {
+    href: '/leistungen/basistarif-standardtarif/',
+    kategorie: 'Leistungen',
+    title: 'Basistarif und Standardtarif',
+    teaser: 'Notfall-Tarife bei Zahlungsunfaehigkeit.',
+    icon: 'shield',
+  },
+];
 ---
-<T6
-  title='Kündigung, Jobwechsel, Arbeitslosigkeit'
-  description='Was mit der PKV passiert, wenn sich die Beschäftigung ändert.'
-/>
+<T6 title='PKV bei Jobwechsel und Kündigung' description='Was bei Jobwechsel, Kündigung, Arbeitslosigkeit oder Wechsel in die Selbstständigkeit mit deiner PKV passiert. Alle Szenarien mit konkreten Optionen.' breadcrumb={{ kategorie: 'Lebenssituationen', kategorieHref: '/lebenssituationen/' }} toc={toc} date='Update April 2026' readingTime='9 Min. Lesezeit' related={related} popularRechner={[
+  { href: '/rechner/jaeg-check/', title: 'JAEG-Check', icon: 'verified' },
+  { href: '/rechner/pkv-gkv-vergleich/', title: 'GKV vs. PKV Vergleich', icon: 'compare_arrows' },
+  { href: '/rechner/langfristvergleich/', title: 'Langfristvergleich PKV vs. GKV', icon: 'timeline' },
+]}
+  faqItems={[
+    { question: `Muss ich bei Jobwechsel meine PKV kündigen?`, answer: `Nein. Die PKV laeuft weiter. Nur wenn dein neues Einkommen unter die JAEG fällt, wird dich die Versicherungspflicht GKV übernehmen. Dann kannst du dich befreien lassen.` },
+    { question: `Wer zahlt die PKV bei Arbeitslosigkeit?`, answer: `Bei ALG-I: Du stellst einen Befreiungsantrag (3-Monats-Frist), dann zahlt die Arbeitsagentur einen Zuschuss. Bei ALG-II: Das Jobcenter übernimmt bis Basistarif-Niveau, alles darüber zahlst du selbst.` },
+    { question: `Behalte ich meine Altersrückstellungen bei Jobwechsel?`, answer: `Ja, absolut. Die Altersrückstellungen sind dein persoenliches Vermoegen und folgen dir bei Jobwechsel oder Versichererwechsel. Sie gehen nicht verloren.` }
+  ]}
+>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Bei Jobwechsel <strong>laeuft die PKV weiter</strong>. Du kündigst sie nicht automatisch.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Arbeitslosigkeit + ALG-I = <strong>GKV-Pflicht</strong>, du kannst dich befreien lassen (3-Monats-Frist).</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>ALG-II: Jobcenter übernimmt PKV-Beiträge bis zum <strong>Basistarif-Niveau</strong>.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Wechsel in Selbstständigkeit: Status ändert sich, neue Versicherungspflicht möglich.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span><strong>Altersrückstellungen bleiben</strong> bei dir, egal wie oft du wechselst.</span></li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Jobwechsel und Kündigung sind kritische Momente für die PKV-Versicherung. Die Szenarien sind vielfaeltig und die rechtlichen Regeln teilweise knifflig.</p>
+  </div>
+
+  <section id='jobwechsel' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Jobwechsel: Was mit der PKV passiert</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Das Erste: Du kündigst die PKV NICHT wegen Jobwechsel. Die PKV ist eine persoenliche Versicherung, nicht an den Arbeitgeber gebunden.</p>
+      <p>Dein neuer Arbeitgeber zahlt einen neuen Arbeitgeberzuschuss, aber an denselben Versicherer. Das kann mehr oder weniger sein, je nach Unternehmen und Versicherungsmodell.</p>
+      <p>Der kritische Punkt: Nur wenn dein neues Einkommen unter der <a href='/wechsel/versicherungspflichtgrenze/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>JAEG (77.400 Euro 2026)</a> liegt, verloserst du die Versicherungsfreiheit. Dann wirst du wieder GKV-pflichtversichert, sofern du keinen Antrag auf Befreiung stellst.</p>
+      <p>Deine <a href='/kosten/altersrueckstellung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Altersrückstellungen</a> bleiben übrigens bei deinem Versicherer, egal ob du den Arbeitgeber wechselst.</p>
+    </div>
+  </section>
+
+  <section id='arbeitslosigkeit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Arbeitslosigkeit und PKV</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Es gibt zwei Szenarien: ALG-I (Arbeitslosengeld Versicherungsleistung) und ALG-II (Grundsicherung).</p>
+      <p><strong>ALG-I:</strong> Du bist 12 bis 24 Monate arbeitslos, erhältst Arbeitslosengeld von der Arbeitsagentur. Das ist eine begrenzte Leistung, und deine Versicherungspflicht ändert sich.</p>
+      <p><strong>ALG-II:</strong> Wenn ALG-I auslaeuft oder dein Einkommen zu niedrig ist, kommt das Jobcenter ins Spiel. Das ist Hartz IV.</p>
+    </div>
+  </section>
+
+  <section id='algi' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>ALG-I: Befreiung oder GKV-Pflicht</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Wenn du ALG-I erhältst, wirst du automatisch in die GKV-Versicherungspflicht versetzt. Die Arbeitsagentur meldet dich an. Das bedeutet: Du kannst NICHT bei deiner PKV bleiben, ohne etwas zu tun.</p>
+      <p>ABER: Du kannst dich befreien. Du hast 3 Monate Zeit, einen Befreiungsantrag zu stellen (§ 8 SGB V). Mit diesem Antrag kannst du in der PKV bleiben und erhältst einen Zuschuss von der Arbeitsagentur zu deinen PKV-Beiträgen.</p>
+      <p>Der Zuschuss ist meist deutlich niedriger als dein voller Beitrag, aber immerhin etwas. Du zahlst die Differenz selbst.</p>
+    </div>
+  </section>
+
+  <section id='algii' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>ALG-II: Wer zahlt den PKV-Beitrag</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Bei ALG-II (Jobcenter) ist die Situation anders. Das Jobcenter übernimmt nur den Basistarif-Beitrag als Höchstgrenze. Das ist 2026 etwa 1.017 Euro monatlich.</p>
+      <p>Wenn dein PKV-Beitrag darüber liegt, zahlst DU die Differenz. Das ist oft nicht zu leisten. Viele wechseln in der Praxis in den Basistarif, wenn ALG-II beginnt.</p>
+      <p>Der <a href='/leistungen/basistarif-standardtarif/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Basistarif</a> ist eine Notfall-Versicherung mit GKV-Niveau-Leistungen. Es ist nicht optimal, aber besser als nichts.</p>
+    </div>
+  </section>
+
+  <section id='selbstständigkeit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wechsel in die Selbstständigkeit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Wenn du von Angestellter zu Selbstständiger wechselst, ändert sich dein Versicherungsstatus. Deine bisherige Angestellten-PKV ist nicht mehr sinnvoll.</p>
+      <p>Du hast zwei Optionen:</p>
+      <p><strong>Option 1:</strong> Wechsel zu einem Selbstständigen-Tarif bei deinem jetzigen Versicherer. Dieser ist normalerweise teurer und erfordert keine neue Gesundheitsprüfung (meist Tarifwechsel, nicht Neuantrag).</p>
+      <p><strong>Option 2:</strong> Wechsel in die GKV, wenn dein Einkommen unter der JAEG liegt. Das ist als Selbstständiger oft eine Option.</p>
+      <p>Deine Altersrückstellungen bleiben bei dir, auch wenn du den Versicherer wechselst oder zur GKV gehst.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Jobwechsel, Kündigung und Arbeitslosigkeit sind komplexe Szenarien. Der wichtigste Punkt: Handle proaktiv. Wartezeit ist dein Feind. Vor allem bei ALG-I hast du nur 3 Monate zur Befreiung.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Muss ich bei Jobwechsel meine PKV kündigen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein. Die PKV laeuft weiter. Nur wenn dein neues Einkommen unter die JAEG fällt, wird dich die Versicherungspflicht GKV übernehmen. Dann kannst du dich befreien lassen.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wer zahlt die PKV bei Arbeitslosigkeit?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Bei ALG-I: Du stellst einen Befreiungsantrag (3-Monats-Frist), dann zahlt die Arbeitsagentur einen Zuschuss. Bei ALG-II: Das Jobcenter übernimmt bis Basistarif-Niveau, alles darüber zahlst du selbst.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Behalte ich meine Altersrückstellungen bei Jobwechsel?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, absolut. Die Altersrückstellungen sind dein persoenliches Vermoegen und folgen dir bei Jobwechsel oder Versichererwechsel. Sie gehen nicht verloren.</div>
+      </details>
+    </div>
+  </section>
+</T6>

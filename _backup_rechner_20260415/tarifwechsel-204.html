@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>§ 204 Tarifwechsel-Sparrechner 2026 · PKV für Angestellte</title>
+<style>
+  :root {
+    --primary: #002046;
+    --accent: #ea580c;
+    --accent-dark: #b45309;
+    --surface: #FAF7F2;
+    --on-surface: #1a1f2e;
+    --on-surface-variant: #515a6b;
+    --outline: #cfd2d8;
+    --warn: #dc2626;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--on-surface);
+    background: var(--surface);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
+  h1 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.6rem; margin: 0 0 4px; }
+  .lead { color: var(--on-surface-variant); font-size: .95rem; margin: 0 0 20px; }
+  .card {
+    background: #fff;
+    border: 1px solid rgba(0,32,70,.08);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+    margin-bottom: 20px;
+  }
+  .card h2 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.15rem; margin: 0 0 14px; }
+  .input-row { position: relative; margin-bottom: 16px; }
+  .input-row label { display: block; font-size: .85rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
+  input[type="number"] {
+    width: 100%; padding: 11px 90px 11px 14px; border: 1px solid var(--outline);
+    border-radius: 8px; background: #fff; font-size: 1.05rem; font-weight: 600;
+    color: var(--on-surface); outline: none; transition: border-color .15s;
+    -moz-appearance: textfield;
+  }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+  }
+  input:focus { border-color: var(--primary); }
+  .suffix {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--on-surface-variant); font-weight: 600; font-size: .9rem; pointer-events: none;
+  }
+  .result { margin-top: 16px; padding: 16px; border-radius: 8px; background: #fef3c7; border: 1px solid #fcd34d; }
+  .result strong { color: var(--warn); }
+  .result .big { display: block; font-size: 1.5rem; font-weight: 700; margin: 8px 0; color: var(--warn); }
+  .cta-box {
+    margin-top: 24px; background: var(--primary); color: #fff;
+    padding: 30px; border-radius: 12px; text-align: center;
+  }
+  .cta-box .text p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.82); }
+  .cta-box .text strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; color: #fff; margin-bottom: 8px; }
+  .cta-buttons {
+    display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--accent); color: #fff; font-weight: 600; font-size: .95rem;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none;
+    transition: background .15s; cursor: pointer; flex: 1; min-width: 200px;
+  }
+  @media (max-width: 600px) { .cta-buttons { flex-direction: column; } .cta-btn { min-width: 100%; } }
+  .cta-btn:hover { background: var(--accent-dark); }
+  .trust-badges {
+    margin-top: 14px; display: flex; gap: 16px; justify-content: center;
+    flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.85);
+  }
+  .trust-badges span { display: flex; align-items: center; gap: 4px; }
+  .trust-badges span::before { content: "✓"; font-weight: bold; color: #4ade80; }
+  .note { margin-top: 20px; font-size: .78rem; color: var(--on-surface-variant); line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>💡 § 204 Tarifwechsel: Clever sparen</h1>
+  <p class="lead">Ohne neue Gesundheitsprüfung zu einem günstigeren Tarif wechseln? § 204 macht's möglich. Berechne dein Sparpotenzial.</p>
+
+  <div class="card">
+    <h2>Deine Situation</h2>
+
+    <div class="input-row">
+      <label for="jetziger">Dein jetziger PKV-Beitrag (monatlich)</label>
+      <div style="position: relative;">
+        <input type="number" id="jetziger" min="0" step="10" value="550" />
+        <span class="suffix">€ / Monat</span>
+      </div>
+      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
+        Was du aktuell zahlst (steht auf der Rechnung)
+      </div>
+    </div>
+
+    <div class="input-row">
+      <label for="neuer">Angebot für einen neuen Tarif</label>
+      <div style="position: relative;">
+        <input type="number" id="neuer" min="0" step="10" value="420" />
+        <span class="suffix">€ / Monat</span>
+      </div>
+      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
+        Das bringen dir andere Versicherer oder bessere Tarife
+      </div>
+    </div>
+
+    <div id="result" class="result hidden">
+      <span style="font-size: .85rem;">Dein jährliches Sparpotenzial:</span>
+      <div class="big" id="sparpotential">—</div>
+      <div style="font-size: .9rem; margin-top: 8px;">
+        <strong>Ohne dass deine Leistungen schlechter werden!</strong> Das ist der § 204 Vorteil.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💡 Was ist § 204?</h2>
+    <p style="margin: 0; font-size: .95rem; color: var(--on-surface-variant); line-height: 1.6;">
+      <strong>Das Problem:</strong> Du hast eine gute PKV, aber der Beitrag ist über die Jahre gestiegen. Ein Wechsel zu einem billigeren Versicherer kostet eine neue Gesundheitsprüfung.<br><br>
+      <strong>Die Lösung (§ 204 VVG):</strong> Du darfst innerhalb deines Versicherers in einen günstigeren Tarif mit gleicher oder besserer Leistung wechseln — ohne Gesundheitsprüfung!<br><br>
+      <strong>Das Ergebnis:</strong> Du sparst Geld und verlierst nicht deine Altersrückstellungen, die du über Jahre aufgebaut hast.<br><br>
+      <strong>Die Voraussetzung:</strong> Es muss einen § 204-fähigen Tarif beim gleichen Versicherer geben. Das ist oft der Fall.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>❓ Häufige Fragen</h2>
+    <p style="margin: 0; font-size: .92rem; color: var(--on-surface-variant); line-height: 1.7;">
+      <strong>Q: Verliere ich meine Altersrückstellung?</strong><br>
+      A: Nein! Die bleibt bestehen und wird mitgenommen. Das ist der § 204 Vorteil.<br><br>
+      <strong>Q: Verschlechtert sich meine Leistung?</strong><br>
+      A: Nein, die bleibt gleich oder wird sogar besser (das ist eine Bedingung).<br><br>
+      <strong>Q: Muss ich eine neue Gesundheitsprüfung machen?</strong><br>
+      A: Nein! Das ist das ganze Konzept von § 204 — keine Prüfung, kein Warten.
+    </p>
+  </div>
+
+  <div class="cta-box">
+    <div class="text">
+      <strong>Nutze § 204 und spare Geld</strong>
+      <p>Wenn du bei uns anfragst, prüfen wir, ob und wie viel du sparen kannst — und vermitteln den Wechsel.</p>
+    </div>
+    <div class="cta-buttons">
+      <button class="cta-btn" id="send-result">
+        → Ergebnis per E-Mail senden
+      </button>
+      <button class="cta-btn" id="cta-termin">
+        → Termin buchen
+      </button>
+    </div>
+    <div class="trust-badges">
+      <span>Kostenfrei</span>
+      <span>Unverbindlich</span>
+      <span>Vertraulich</span>
+    </div>
+  </div>
+
+  <p class="note">
+    Quelle: § 204 Versicherungsvertragsgesetz (VVG). § 204 Tarifwechsel ist dem Versicherer vorzuschlagen.
+    Die Akzeptanz und Bedingungen können variieren — wir prüfen das kostenlos für dich.
+  </p>
+</div>
+
+<script>
+function calculate() {
+  const jetziger = parseFloat(document.getElementById('jetziger').value) || 550;
+  const neuer = parseFloat(document.getElementById('neuer').value) || 420;
+
+  if (neuer >= jetziger) {
+    document.getElementById('result').classList.add('hidden');
+    return;
+  }
+
+  const ersparnis = (jetziger - neuer) * 12;
+  document.getElementById('sparpotential').textContent = `${Math.round(ersparnis)} € / Jahr`;
+  document.getElementById('result').classList.remove('hidden');
+}
+
+function sendResults(e) {
+  e.preventDefault();
+  const jetziger = document.getElementById('jetziger').value;
+  const neuer = document.getElementById('neuer').value;
+  const ersparnis = Math.round((parseFloat(jetziger) - parseFloat(neuer)) * 12);
+
+  const lines = [];
+  lines.push("Rechner: § 204 Tarifwechsel-Planer");
+  lines.push("");
+  lines.push("Mein aktueller Beitrag: " + jetziger + " €/Monat");
+  lines.push("Angebot neuer Tarif: " + neuer + " €/Monat");
+  lines.push("Sparpotenzial: " + ersparnis + " €/Jahr");
+  lines.push("");
+  lines.push("Ich möchte wissen, ob ein § 204 Wechsel für mich möglich und sinnvoll ist.");
+
+  const subject = encodeURIComponent("Rechner-Ergebnis: § 204 Tarifwechsel");
+  const body = encodeURIComponent(lines.join("\n"));
+  const mailtoUrl = "mailto:beratung@angestellt-pkv.de?subject=" + subject + "&body=" + body;
+
+  const a = document.createElement("a");
+  a.href = mailtoUrl;
+  a.target = "_top";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+document.getElementById('jetziger').addEventListener('input', calculate);
+document.getElementById('neuer').addEventListener('input', calculate);
+document.getElementById('send-result').addEventListener('click', sendResults);
+document.getElementById('cta-termin').addEventListener('click', () => {
+  window.open('https://calendly.com/pkv-welt/', '_blank');
+});
+
+calculate();
+</script>
+</body>
+</html>

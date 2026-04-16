@@ -1,7 +1,30 @@
 ---
-import T3 from '../../layouts/T3.astro';
+import CategoryHub from '../../layouts/CategoryHub.astro';
+
+const faq = [
+  {
+    q: 'Was passiert mit der PKV, wenn ich in Rente gehe?',
+    a: 'Der PKV-Vertrag läuft weiter, ohne Arbeitgeberzuschuss, aber mit Anspruch auf hälftigen Zuschuss der Deutschen Rentenversicherung bis zur GKV-Obergrenze. Altersrückstellungen greifen zusätzlich. Wichtig: Tarifwechsel nach § 204 VVG oder ein Beitragsentlastungstarif können den Ruhestandsbeitrag deutlich senken.',
+  },
+  {
+    q: 'Was ändert sich bei Jobwechsel oder Kündigung?',
+    a: 'Der PKV-Vertrag bleibt unabhängig vom Arbeitgeber bestehen, solange das neue Gehalt über der JAEG liegt. Bei Arbeitslosigkeit besteht GKV-Pflicht, der PKV-Vertrag muss gekündigt oder ruhend gestellt werden. Der Rückweg in die PKV ist aber möglich, sobald das Gehalt wieder über JAEG liegt.',
+  },
+  {
+    q: 'Wie funktioniert PKV im öffentlichen Dienst und bei Beamten?',
+    a: 'Beamte erhalten Beihilfe (meist 50 bis 70% der Behandlungskosten) und brauchen nur eine ergänzende PKV. Diese "Beihilfetarife" sind deutlich günstiger als Volltarife. Für Angestellte im öffentlichen Dienst ohne Beamtenstatus gelten die regulären PKV-Regeln.',
+  },
+  {
+    q: 'Kann ich vom Angestellten- zum Selbstständigen-Status die PKV behalten?',
+    a: 'Ja, der Vertrag läuft unverändert weiter. Allerdings entfällt der Arbeitgeberzuschuss, du trägst den Beitrag komplett selbst. Umgekehrt kannst du bei gutem Gesundheitsstatus auch in der GKV freiwillig bleiben. Der Statuswechsel selbst zwingt nicht zum Versicherungswechsel.',
+  },
+];
 ---
-<T3
-  title='Lebenssituationen'
-  description='PKV in Rente, nach Jobwechsel, im öffentlichen Dienst.'
+<CategoryHub
+  kategorieSlug='lebenssituationen'
+  title='Lebenssituationen in der PKV'
+  description='PKV in Rente, nach Jobwechsel, im öffentlichen Dienst und beim Wechsel in die Selbstständigkeit. Die PKV an den Kipppunkten des Lebens.'
+  keyword='Lebenssituationen'
+  intro='Die PKV begleitet dich über Jahrzehnte, durch Rente, Jobwechsel, Selbstständigkeit, Beamtenstatus. Dieser Bereich erklärt, was an jedem dieser Kipppunkte mit dem Vertrag passiert, wo Zuschüsse wegfallen oder einspringen und welche Weichenstellungen sich wann lohnen.'
+  faq={faq}
 />

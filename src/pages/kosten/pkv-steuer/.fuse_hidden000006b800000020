@@ -1,0 +1,164 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'was-absetzbar', label: 'Was steuerlich absetzbar ist' },
+  { id: 'basis-vs-gesamt', label: 'Basisbeitrag vs. Gesamtbeitrag' },
+  { id: 'elstam', label: 'Das neue ELStAM-Verfahren ab 2026' },
+  { id: 'rechenbeispiel', label: 'Rechenbeispiel: Steuerersparnis als Angestellter' },
+  { id: 'nicht-absetzbar', label: 'Was du nicht absetzen kannst' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const related = [
+  {
+    href: '/kosten/pkv-kosten-übersicht/',
+    kategorie: 'Kosten',
+    title: 'PKV-Kosten für Angestellte: Komplett-Übersicht',
+    teaser: 'Alle Kostenbestandteile auf einen Blick.',
+    icon: 'balance',
+  },
+  {
+    href: '/kosten/arbeitgeberzuschuss/',
+    kategorie: 'Kosten',
+    title: 'Arbeitgeberzuschuss PKV 2026: Höhe und Berechnung',
+    teaser: 'Maximal 508,59 Euro KV plus 104,63 Euro Pflege.',
+    icon: 'payments',
+  },
+  {
+    href: '/kosten/selbstbeteiligung/',
+    kategorie: 'Kosten',
+    title: 'PKV-Selbstbeteiligung: Höhe, Wirkung, Empfehlung',
+    teaser: 'Selbstbeteiligung senkt den Beitrag um 10 bis 30 Prozent.',
+    icon: 'calculate',
+  },
+];
+---
+<T6
+  title='PKV-Beitrag steuerlich absetzen (Angestellte)'
+  description='Den PKV-Basisbeitrag kannst du als Sonderausgabe absetzen. Was 2026 gilt, wie das ELStAM-Verfahren funktioniert und ein Rechenbeispiel.'
+  breadcrumb={{ kategorie: 'Kosten', kategorieHref: '/kosten/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='7 Min. Lesezeit'
+  related={related}
+>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span><strong>Der Basisbeitrag</strong> ist als Sonderausgabe absetzbar, nicht die volle Praemie. Das ist der Anteil nach Abzug des AG-Zuschusses.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Ab 2026 gilt das <strong>ELStAM-Verfahren:</strong> Die PKV meldet die Basisbeiträge direkt an die Steuerbeh=rde, keine manuellen Belege mehr noetig.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Steuerersparnis typisch: Bei 500 Euro Jahres-Basisbeitrag und 42 % Steuersatz sparst du ca. <strong>210 Euro Steuern pro Jahr</strong>.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Selbstbeteiligung ist NICHT absetzbar. Beitragserhöhungen durch BET-Tarife nur teilweise.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der AG-Zuschuss ist bereits steuerfrei verrechnet, wird nicht nochmal als Sonderausgabe abgesetzt.</span>
+      </li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Der PKV-Beitrag ist nicht vollständig absetzbar, aber der Basisbeitrag (also der Anteil nach AG-Zuschuss) ist eine Sonderausgabe. Das ist oft missverstanden. Dieser Artikel erklaert genau, was absetzbar ist und wie viel Steuern du sparst.</p>
+  </div>
+
+  <section id='was-absetzbar' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was steuerlich absetzbar ist</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Absetzbar:</strong> Der Basisbeitrag zur PKV als Sonderausgaben, also der Anteil, den du selbst zahlst (nach Abzug des AG-Zuschusses).</p>
+      <p><strong>Nicht absetzbar:</strong></p>
+      <p>• Der vom Arbeitgeber bezahlte Anteil (der ist bereits in vollem Umfang steuerfrei)</p>
+      <p>• Selbstbeteiligung</p>
+      <p>• Beiträge für Angehörige (Ehegatten, Kinder)</p>
+      <p>• BET-Zusatzbeiträge (nur begrenzt)</p>
+      <p>• Zahnzusatzversicherung (oft nicht, haengt vom Tarif ab)</p>
+      <p><strong>Die Regelung:</strong> Paragraph 10 Abs. 1 Nr. 3 EStG: PKV-Beiträge sind Sonderausgaben. Das unterscheidet sich von GKV-Beiträgen, die ebenfalls Sonderausgaben sind, aber in GKV die Haelfte haeIftIg vom AG kommt.</p>
+    </div>
+  </section>
+
+  <section id='basis-vs-gesamt' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Basisbeitrag vs. Gesamtbeitrag</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Gesamtbeitrag:</strong> Der volle Beitrag, den dein Versicherer von dir erhaelt. Beispiel: 500 Euro monatlich.</p>
+      <p><strong>Basisbeitrag:</strong> Der Anteil, den du selbst zahlst nach Abzug des AG-Zuschusses. Beispiel: 500 Euro minus 508,59 Euro maximum = meist 0 Euro direkter Eigenanteil (aber ca. 80 Euro Pflegepflicht monatlich kommt hinzu).</p>
+      <p><strong>Praktisch bedeutet das:</strong> Wenn dein Gesamtbeitrag unter dem max. AG-Zuschuss von 613 Euro liegt (was bei jungen Angestellten typisch ist), zahlst du direkten Eigenanteil 0 Euro. Aber die Pflegepflichtversicherung (ca. 100 bis 150 Euro jährlich) ist dein Basisbeitrag und absetzbar.</p>
+      <p><strong>Beispiel 50-Jaehriger:</strong> Gesamtbeitrag 750 Euro. AG zahlt 613 Euro. Eigenanteil 137 Euro. Dieser Eigenanteil plus Pflegepflicht insgesamt ca. 250 Euro Basisbeitrag = ist absetzbar.</p>
+    </div>
+  </section>
+
+  <section id='elstam' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Das neue ELStAM-Verfahren ab 2026</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>2026 kommt eine große Vereinfachung: Das ELStAM-Verfahren (Elektronische Lohnsteuerabzugsmerkmale).</p>
+      <p><strong>Alter Ablauf (bis 2025):</strong> Du kriegst von der PKV eine Bescheinigung über deinen Beitrag, schickst diese an deinen Arbeitgeber oder sammelst sie für die Steuererklaerung.</p>
+      <p><strong>Neuer Ablauf (ab 2026):</strong> Die PKV meldet die Beitragswerte direkt an das Bundeszentralamt für Steuern (BZSt). Dein Arbeitgeber ruft diese Werte automatisch ab und beruecksichtigt sie bei der Lohnsteuer. Du musst keine Belege einreichen.</p>
+      <p><strong>Was wird gemeldet:</strong> Zwei Werte: (1) Beitrag für den steuerfreien AG-Zuschuss, (2) Basisbeitrag für die Sonderausgaben.</p>
+      <p><strong>Wichtig:</strong> Du kannst dieser Datenuebermittlung widersprechen, wenn du will, aber das ist eher selten sinnvoll.</p>
+    </div>
+  </section>
+
+  <section id='rechenbeispiel' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Rechenbeispiel: Steuerersparnis als Angestellter</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Szenario:</strong> Du verdienst 80.000 Euro, zahlst 500 Euro monatlich PKV, AG zahlt 500 Euro, dein Eigenanteil ca. 500 Euro Basisbeitrag jährlich.</p>
+      <p><strong>Steuerberechnung:</strong></p>
+      <p>• Basisbeitrag: 500 Euro jährlich</p>
+      <p>• Dein Grenzsteuersatz: 42 % (ab ca. 60.000 Euro Einkommen)</p>
+      <p>• Steuerersparnis: 500 Euro × 42 % = <strong>210 Euro Steuern gespart pro Jahr</strong></p>
+      <p><strong>Wirkung auf Netto-Beitrag:</strong></p>
+      <p>• Du zahlst 500 Euro Basisbeitrag</p>
+      <p>• Steuerersparnis: minus 210 Euro</p>
+      <p>• Effektiver Netto-Beitrag: 290 Euro pro Jahr für PKV-Eigenanteil</p>
+      <p><strong>Wichtig:</strong> Das ist eine Vereinfachung. Genaue Berechnung haengt ab von: Kinderfreibetraegen, anderen Sonderausgaben, Bundesland.</p>
+    </div>
+  </section>
+
+  <section id='nicht-absetzbar' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was du nicht absetzen kannst</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Selbstbeteiligung:</strong> Wenn du eine Selbstbeteiligung von 600 Euro pro Jahr waehlst, um den Beitrag zu senken, ist diese Selbstbeteiligung NICHT absetzbar. Das ist eine Versicherungswaehlung, keine Sonderausgabe.</p>
+      <p><strong>Beitragsentlastungstarife (BET):</strong> Der Zusatzbeitrag für BET-Tarife (27 bis 49 Euro monatlich) ist teilweise absetzbar, aber kompliziert kalkuliert. Verbraucherzentralen raten davon ab.</p>
+      <p><strong>PKV-Beiträge der Angehörigen:</strong> Dein Ehegatte oder deine Kinder zahlen ihre Beiträge, die du nicht absetzen kannst. Nur dein eigner Beitrag.</p>
+      <p><strong>Zahnzusatz:</strong> Zaehlt als separate Versicherung, meist nicht absetzbar.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die steuerliche Absetzbarkeit des PKV-Basisbeitrags spart typisch 100 bis 300 Euro Steuern pro Jahr, je nach Einkommen. Das ist ein willkommener Nebeneffekt, aber nicht das Kernargument für oder gegen PKV.</p>
+      <p>Ab 2026 wird die Administration durch ELStAM deutlich einfacher. Du brauchst dich nicht mehr selbst um Belege kuemmern.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ist der AG-Zuschuss steuerfrei?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, komplett. Der Arbeitgeberzuschuss ist nicht steuerpflichtig und entfällt nicht auf dein Einkommen. Das ist ein großer Vorteil gegenüber einem entsprechenden Gehaltsaufschlag, der besteuert würde.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich auch die PKV meiner Kinder absetzen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein. Die PKV-Beiträge deiner Kinder sind eine Ausgabe für Angehörige, keine Sonderausgabe. Du kannst nur deinen eigenen Beitrag absetzen. Das ist ein großer Unterschied zur GKV, wo Kinder beitragsfrei mitversichert sind.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wo trage ich die PKV in der Steuererklaerung ein?<span class='material-symbols-outlined text-amber-accent-dark group-open:transfer-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>In Anlage Sonderausgaben (Zeile für Krankenversicherungsbeiträge). Ab 2026 wird das durch ELStAM automatisiert und du brauchst meist nichts manuell eintragen. Wenn du trotzdem eine Erklaerung machst, wird es automatisch beruecksichtigt.</div>
+      </details>
+    </div>
+  </section>
+</T6>

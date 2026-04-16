@@ -1,7 +1,235 @@
 ---
-import T5 from '../../../layouts/T5.astro';
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'was-bedeutet-sb', label: 'Was Selbstbeteiligung bedeutet' },
+  { id: 'stufen', label: 'Typische Stufen und Beitragsersparnis' },
+  { id: 'rechenbeispiel', label: 'Rechenbeispiel: 300 vs. 600 vs. 1.200 Euro' },
+  { id: 'wann-lohnt', label: 'Wann sich welche Stufe lohnt' },
+  { id: 'sb-und-ag-zuschuss', label: 'Selbstbeteiligung und Arbeitgeberzuschuss' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const related = [
+  {
+    href: '/kosten/pkv-kosten-uebersicht/',
+    kategorie: 'Kosten',
+    title: 'PKV-Kosten für Angestellte',
+    teaser: 'Alle Kostenbestandteile der PKV auf einen Blick: Grundbeitrag, Pflege, Zusatzbausteine.',
+    icon: 'payments',
+  },
+  {
+    href: '/kosten/arbeitgeberzuschuss/',
+    kategorie: 'Kosten',
+    title: 'Arbeitgeberzuschuss PKV 2026',
+    teaser: 'Maximal 508,59 Euro KV plus 104,63 Euro Pflege. So wird der Zuschuss berechnet.',
+    icon: 'account_balance',
+  },
+  {
+    href: '/leistungen/tarifbausteine/',
+    kategorie: 'Leistungen',
+    title: 'PKV-Tarifbausteine erklärt',
+    teaser: 'Welche Leistungsbausteine es gibt und worauf du bei der Tarifwahl achten solltest.',
+    icon: 'dashboard_customize',
+  },
+];
 ---
-<T5
-  title='Selbstbeteiligung in der PKV'
-  description='Beitragsersparnis durch Selbstbeteiligung — Rechner und Richtwerte.'
-/>
+<T6
+  title='PKV-Selbstbeteiligung: Höhe, Wirkung, Empfehlung'
+  description='Mit einer PKV-Selbstbeteiligung von 300 bis 1.000 Euro jährlich kannst du den Monatsbeitrag deutlich senken. Wann sich welche Stufe wirklich lohnt.'
+  breadcrumb={{ kategorie: 'Kosten', kategorieHref: '/kosten/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='8 Min. Lesezeit'
+  related={related}
+  faqItems={[
+    { question: `Kann ich die Selbstbeteiligung nachträglich ändern?`, answer: `Ja, bei den meisten Anbietern ist eine Anpassung der SB möglich. Typischerweise kannst du einmal jährlich zum Vertragsjubiläum oder zum Jahresende wechseln. Eine Erhöhung der SB ist in der Regel ohne Gesundheitsprüfung möglich, eine Senkung kann eine erneute Prüfung erfordern. Die genauen Bedingungen stehen in deinen Tarifbedingungen.` },
+    { question: `Wird die SB jährlich oder pro Rechnung abgezogen?`, answer: `In der Regel jährlich. Die SB bezieht sich auf das Kalenderjahr: Du trägst die ersten 300 (oder 600, 1.200) Euro deiner ambulanten Arztkosten im Jahr selbst. Sobald die SB erreicht ist, erstattet der Versicherer alle weiteren Kosten. Im neuen Jahr beginnt die SB wieder bei null. Bei einigen Tarifen gibt es auch eine SB pro Rechnungsfall, das ist aber seltener.` },
+    { question: `Lohnt sich hohe SB wenn ich selten zum Arzt gehe?`, answer: `In den meisten Fällen ja. Wenn du nur ein bis zwei Arztbesuche pro Jahr hast, schöpfst du die SB oft nicht aus. Die Beitragsersparnis von 100 bis 150 Euro monatlich (1.200 bis 1.800 Euro jährlich) übersteigt dann deine tatsächlichen Arztkosten deutlich. Bedenke aber, dass sich das in einem Jahr mit unerwarteter Krankheit schnell ändern kann. Stationäre Kosten sind bei den meisten Tarifen von der SB ausgenommen.` }
+  ]}
+>
+  <!-- Zusammenfassung -->
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die Selbstbeteiligung (SB) ist der jährliche Betrag, den du <strong>selbst trägst</strong>, bevor der Versicherer zahlt. Typisch sind 300 bis 1.000 Euro.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Eine höhere SB <strong>senkt den Monatsbeitrag</strong> deutlich. Die Ersparnis beträgt je nach Tarif 40 bis 150 Euro pro Monat.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die <strong>Break-even-Rechnung</strong> zeigt: Wer weniger als 2 bis 3 Arztbesuche pro Jahr hat, fährt mit höherer SB oft günstiger.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Der <strong>Arbeitgeberzuschuss</strong> bezieht sich auf den Gesamtbeitrag. Eine höhere SB senkt den Beitrag und damit auch den Zuschuss.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Einleitung -->
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Die Selbstbeteiligung ist einer der stärksten Hebel, um den PKV-Beitrag zu steuern. Je mehr du selbst trägst, desto weniger zahlt der Versicherer, und desto niedriger wird die Prämie. Doch die Entscheidung hat Nebenwirkungen: Eine hohe SB bedeutet auch ein höheres finanzielles Risiko bei häufigen Arztbesuchen. Dieser Artikel zeigt mit konkreten Rechenbeispielen, welche Stufe für welche Situation passt.</p>
+  </div>
+
+  <!-- Was bedeutet SB -->
+  <section id='was-bedeutet-sb' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was Selbstbeteiligung in der PKV bedeutet</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Selbstbeteiligung (auch Selbstbehalt oder Eigenanteil) ist der Betrag, den du pro Versicherungsjahr selbst zahlst, bevor die Versicherung einspringt. Erst wenn deine Behandlungskosten die vereinbarte SB übersteigen, erstattet der Versicherer den Rest.</p>
+      <p>Die SB bezieht sich in der Regel auf das Kalenderjahr und auf den ambulanten Bereich. Stationäre Leistungen (Krankenhaus) sind bei vielen Tarifen von der SB ausgenommen. Das ist ein wichtiger Punkt: Auch mit hoher SB bist du bei schweren Erkrankungen oder Unfällen geschützt.</p>
+      <p>Die SB wird bei Vertragsabschluss festgelegt. In vielen Tarifen kannst du sie nachträglich anpassen, meist in vorgegebenen Stufen. Details zur Tarifanpassung findest du unter <a href='/leistungen/tarifbausteine/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-Tarifbausteine</a>.</p>
+    </div>
+  </section>
+
+  <!-- Stufen -->
+  <section id='stufen' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Typische Stufen und ihre Beitragsersparnis</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die meisten PKV-Anbieter bieten drei bis fünf SB-Stufen an. Die gängigsten Varianten und ihre ungefähre Beitragsersparnis gegenüber einem Tarif ohne SB:</p>
+    </div>
+
+    <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+      <table class='w-full text-left border-collapse min-w-[520px]'>
+        <thead>
+          <tr class='bg-surface-container'>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>SB-Stufe (jährlich)</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Typische Ersparnis/Monat</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Ersparnis/Jahr</th>
+          </tr>
+        </thead>
+        <tbody class='text-sm text-on-surface'>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4'>0 Euro (kein SB)</td>
+            <td class='p-4'>Referenzwert</td>
+            <td class='p-4'>Referenzwert</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4'>300 Euro</td>
+            <td class='p-4'>40 bis 70 Euro</td>
+            <td class='p-4'>480 bis 840 Euro</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4'>600 Euro</td>
+            <td class='p-4'>70 bis 110 Euro</td>
+            <td class='p-4'>840 bis 1.320 Euro</td>
+          </tr>
+          <tr>
+            <td class='p-4'>1.200 Euro</td>
+            <td class='p-4'>100 bis 150 Euro</td>
+            <td class='p-4'>1.200 bis 1.800 Euro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Ersparnis ist nicht proportional: Der Sprung von 0 auf 300 Euro SB bringt relativ viel, der Sprung von 600 auf 1.200 Euro bringt relativ weniger zusätzliche Ersparnis. Das liegt daran, dass die meisten Versicherten ohnehin nur wenige hundert Euro pro Jahr an ambulanten Kosten verursachen.</p>
+    </div>
+  </section>
+
+  <!-- Rechenbeispiel -->
+  <section id='rechenbeispiel' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Rechenbeispiel: 300 vs. 600 vs. 1.200 Euro</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Angenommen, dein Grundbeitrag ohne SB liegt bei 550 Euro monatlich. Du hast im Jahr ambulante Arztkosten von 500 Euro. Wie sieht die Rechnung mit verschiedenen SB-Stufen aus?</p>
+    </div>
+
+    <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+      <table class='w-full text-left border-collapse min-w-[520px]'>
+        <thead>
+          <tr class='bg-surface-container'>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Position</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Ohne SB</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>300 Euro SB</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>600 Euro SB</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>1.200 Euro SB</th>
+          </tr>
+        </thead>
+        <tbody class='text-sm text-on-surface'>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4'>Jahresbeitrag</td>
+            <td class='p-4'>6.600 Euro</td>
+            <td class='p-4'>5.940 Euro</td>
+            <td class='p-4'>5.520 Euro</td>
+            <td class='p-4'>5.100 Euro</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4'>Selbst getragene Arztkosten</td>
+            <td class='p-4'>0 Euro</td>
+            <td class='p-4'>300 Euro</td>
+            <td class='p-4'>500 Euro</td>
+            <td class='p-4'>500 Euro</td>
+          </tr>
+          <tr>
+            <td class='p-4 font-medium'>Gesamtkosten/Jahr</td>
+            <td class='p-4 font-medium'>6.600 Euro</td>
+            <td class='p-4 font-medium'>6.240 Euro</td>
+            <td class='p-4 font-medium'>6.020 Euro</td>
+            <td class='p-4 font-medium'>5.600 Euro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Bei 500 Euro Arztkosten pro Jahr sparst du mit der 300-Euro-SB rund 360 Euro, mit der 600-Euro-SB rund 580 Euro und mit der 1.200-Euro-SB rund 1.000 Euro gegenüber dem Tarif ohne SB. Die 1.200-Euro-SB lohnt sich allerdings nur, wenn du die SB nicht voll ausschöpfst. In einem Jahr mit 1.200 Euro Arztkosten wäre die Ersparnis auf 300 Euro geschrumpft.</p>
+    </div>
+  </section>
+
+  <!-- Wann lohnt sich welche Stufe -->
+  <section id='wann-lohnt' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wann sich welche Stufe lohnt</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Keine SB (0 Euro):</strong> Sinnvoll für Menschen, die regelmäßig zum Arzt gehen, chronische Erkrankungen haben oder das finanzielle Risiko nicht tragen wollen. Nachteil: höchster Monatsbeitrag.</p>
+      <p><strong>300 Euro SB:</strong> Der Klassiker. Deckt die meisten Routinebesuche (Hausarzt, Vorsorge) ab und senkt den Beitrag spürbar. Für die meisten Angestellten ein guter Kompromiss.</p>
+      <p><strong>600 bis 1.000 Euro SB:</strong> Geeignet für gesunde Angestellte, die selten zum Arzt gehen und bereit sind, Routinekosten selbst zu tragen. Die Beitragsersparnis ist deutlich, das Risiko im Krankheitsfall überschaubar (stationäre Kosten meist ausgenommen).</p>
+      <p><strong>1.200 Euro und mehr:</strong> Nur sinnvoll für Personen, die sehr selten ambulante Leistungen in Anspruch nehmen und eine hohe Risikotoleranz haben. Die zusätzliche Ersparnis gegenüber 600 Euro SB ist relativ gering.</p>
+    </div>
+  </section>
+
+  <!-- SB und AG-Zuschuss -->
+  <section id='sb-und-ag-zuschuss' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Selbstbeteiligung und Arbeitgeberzuschuss</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Ein oft übersehener Punkt: Die SB senkt deinen PKV-Beitrag, und der Arbeitgeberzuschuss berechnet sich aus dem tatsächlichen Beitrag (maximal 50 %). Wenn dein Beitrag durch eine hohe SB sinkt, sinkt auch der Zuschuss deines Arbeitgebers.</p>
+      <p>Beispiel: Bei 550 Euro Beitrag zahlt der AG 275 Euro (50 %), du zahlst 275 Euro. Bei 450 Euro Beitrag (mit SB) zahlt der AG 225 Euro, du zahlst 225 Euro. Die Beitragsersparnis von 100 Euro teilst du also mit deinem Arbeitgeber. Netto sparst du nur 50 Euro monatlich statt 100 Euro.</p>
+      <p>Trotzdem lohnt sich die SB in den meisten Fällen, weil du zusätzlich die SB-Kosten nur in Jahren mit tatsächlichen Arztbesuchen trägst, die Beitragsersparnis aber jeden Monat greift. Bei der Entscheidung solltest du die SB immer gegen die Nettoersparnis (nach AG-Zuschuss) rechnen, nicht gegen die Bruttoersparnis.</p>
+      <p>Mehr zur Berechnung des AG-Zuschusses unter <a href='/kosten/arbeitgeberzuschuss/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Arbeitgeberzuschuss PKV 2026</a>.</p>
+    </div>
+  </section>
+
+  <!-- Fazit -->
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Selbstbeteiligung ist ein wirksames Instrument zur Beitragssenkung. Typische Stufen liegen bei 300 bis 1.000 Euro jährlich und senken den Monatsbeitrag um 40 bis 150 Euro. Für die meisten Angestellten ist eine SB von 300 bis 600 Euro ein sinnvoller Kompromiss zwischen Ersparnis und Risiko.</p>
+      <p>Zum Vergleich: Der GKV-Höchstbeitrag liegt 2026 bei 1.229,35 Euro monatlich. Ein PKV-Tarif mit moderater SB von 300 bis 600 Euro kann je nach Alter deutlich darunter liegen. Rechne immer die Nettoersparnis nach Arbeitgeberzuschuss und berücksichtige, dass stationäre Kosten in der Regel von der SB ausgenommen sind. Die SB lässt sich bei vielen Anbietern nachträglich anpassen, falls sich deine Situation ändert. Wie sich PKV-Beiträge langfristig entwickeln, zeigt der Artikel zur <a href='/kosten/beitragsanpassung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-Beitragsanpassung</a>.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich die Selbstbeteiligung nachträglich ändern?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, bei den meisten Anbietern ist eine Anpassung der SB möglich. Typischerweise kannst du einmal jährlich zum Vertragsjubiläum oder zum Jahresende wechseln. Eine Erhöhung der SB ist in der Regel ohne Gesundheitsprüfung möglich, eine Senkung kann eine erneute Prüfung erfordern. Die genauen Bedingungen stehen in deinen Tarifbedingungen.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wird die SB jährlich oder pro Rechnung abgezogen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>In der Regel jährlich. Die SB bezieht sich auf das Kalenderjahr: Du trägst die ersten 300 (oder 600, 1.200) Euro deiner ambulanten Arztkosten im Jahr selbst. Sobald die SB erreicht ist, erstattet der Versicherer alle weiteren Kosten. Im neuen Jahr beginnt die SB wieder bei null. Bei einigen Tarifen gibt es auch eine SB pro Rechnungsfall, das ist aber seltener.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Lohnt sich hohe SB wenn ich selten zum Arzt gehe?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>In den meisten Fällen ja. Wenn du nur ein bis zwei Arztbesuche pro Jahr hast, schöpfst du die SB oft nicht aus. Die Beitragsersparnis von 100 bis 150 Euro monatlich (1.200 bis 1.800 Euro jährlich) übersteigt dann deine tatsächlichen Arztkosten deutlich. Bedenke aber, dass sich das in einem Jahr mit unerwarteter Krankheit schnell ändern kann. Stationäre Kosten sind bei den meisten Tarifen von der SB ausgenommen.</div>
+      </details>
+    </div>
+  </section>
+</T6>

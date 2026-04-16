@@ -1,7 +1,30 @@
 ---
-import T3 from '../../layouts/T3.astro';
+import CategoryHub from '../../layouts/CategoryHub.astro';
+
+const faq = [
+  {
+    q: 'Worin liegt der Kern-Unterschied zwischen GKV und PKV für Angestellte?',
+    a: 'Die GKV rechnet einkommensabhängig, die PKV risikobasiert. In der GKV steigt der Beitrag mit dem Gehalt, in der PKV hängt er von Eintrittsalter, Gesundheit und Tarifwahl ab. Entsprechend anders fällt auch die Langfrist-Kalkulation aus.',
+  },
+  {
+    q: 'Ab wann darf ich als Angestellter in die PKV wechseln?',
+    a: 'Wenn dein Bruttojahresgehalt über der Versicherungspflichtgrenze (JAEG) liegt. 2026 liegt sie bei 77.400 Euro brutto pro Jahr (6.450 Euro im Monat). Wer drunter bleibt, ist pflichtversichert in der GKV.',
+  },
+  {
+    q: 'Wann lohnt sich die PKV tatsächlich?',
+    a: 'Wenn Gehalt dauerhaft über der JAEG liegt, wenig Kinder geplant sind, Gesundheit gut ist und ein langfristiger Horizont besteht. Wer in unsicheren Lebenssituationen ist, sollte den Wechsel genau prüfen, denn der Weg zurück in die GKV ist eng.',
+  },
+  {
+    q: 'Gibt es den "einen" PKV-Tarif, oder variiert das stark?',
+    a: 'Es variiert stark. Tarife unterscheiden sich in Leistungsumfang (ambulant, stationär, zahn), Selbstbeteiligung, Beitragsentlastung und Altersrückstellungen. Seriös bewertet werden kann ein Tarif nur mit konkretem Gesundheits- und Gehaltsprofil.',
+  },
+];
 ---
-<T3
+<CategoryHub
+  kategorieSlug='grundlagen'
   title='Grundlagen der PKV für Angestellte'
-  description='Einstieg: Unterschied GKV und PKV, Lohnt sich die PKV, Vor- und Nachteile.'
+  description='Unterschied GKV und PKV, wann sich die PKV lohnt, Vor- und Nachteile. Der Einstieg in die private Krankenversicherung für Festangestellte.'
+  keyword='den Grundlagen'
+  intro='Bevor es um Tarife, Rechner oder Anbieter geht, braucht es ein klares Bild davon, wie GKV und PKV sich im System unterscheiden und ab wann ein Wechsel überhaupt in Frage kommt. Dieser Bereich beantwortet die Ja/Nein-Fragen, bevor du in die Details gehst.'
+  faq={faq}
 />

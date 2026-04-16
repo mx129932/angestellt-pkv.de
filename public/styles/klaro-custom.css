@@ -1,0 +1,56 @@
+/**
+ * Klaro Cookie Consent – Custom CSS für angestellt-pkv.de
+ * Farbschema: Primary Navy (#002046) + Accent Amber (#D4A017)
+ */
+
+/* Hauptfarben überschreiben */
+.klaro .cookie-notice,
+.klaro .cookie-modal {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.klaro .cookie-notice .cn-body .cn-buttons .cm-btn.cm-btn-success,
+.klaro .cookie-modal .cm-footer .cm-btn.cm-btn-success {
+  background-color: #D4A017;
+  border-color: #D4A017;
+}
+
+.klaro .cookie-notice .cn-body .cn-buttons .cm-btn.cm-btn-success:hover,
+.klaro .cookie-modal .cm-footer .cm-btn.cm-btn-success:hover {
+  background-color: #B8860B;
+  border-color: #B8860B;
+}
+
+.klaro .cookie-notice .cn-body .cn-buttons .cm-btn.cm-btn-info,
+.klaro .cookie-modal .cm-footer .cm-btn.cm-btn-info {
+  background-color: #002046;
+  border-color: #002046;
+  color: #fff;
+}
+
+/* Toggle-Schalter */
+.klaro .cookie-modal .cm-list-input:checked + .cm-list-label .slider {
+  background-color: #1b365d;
+}
+
+/* "Ablehnen"-Button ausblenden */
+.klaro .cookie-notice .cn-body .cn-buttons .cm-btn.cm-btn-danger,
+.klaro .cookie-modal .cm-footer .cm-btn.cm-btn-danger {
+  display: none !important;
+}
+
+/* "Realisiert mit Klaro!" Footer ausblenden */
+.klaro .cookie-modal .cm-footer .cm-powered-by {
+  display: none !important;
+}
+
+/* Links */
+.klaro .cookie-notice a,
+.klaro .cookie-modal a {
+  color: #D4A017;
+}
+
+.klaro .cookie-notice a:hover,
+.klaro .cookie-modal a:hover {
+  color: #B8860B;
+}

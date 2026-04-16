@@ -1,0 +1,95 @@
+{
+  "_meta": {
+    "stand": "2026-04-15",
+    "quelle_primary": "aktuelle-zahlen-2026.md (IA-Ordner)",
+    "hinweis": "Single Source of Truth für alle Rechner und Content. Später Migration in Google Spreadsheet mit gleicher Struktur. Bei Änderungen IMMER auch aktuelle-zahlen-2026.md synchron halten."
+  },
+  "jahr": 2026,
+  "jaeg": {
+    "allgemein_jahr": 77400,
+    "allgemein_monat": 6450,
+    "besondere_jahr": 69750
+  },
+  "bbg_kv": {
+    "jahr": 69750,
+    "monat": 5812.50
+  },
+  "gkv": {
+    "beitrag_allgemein": 0.146,
+    "zusatzbeitrag_durchschnitt": 0.029,
+    "zusatzbeitrag_min": 0.0218,
+    "zusatzbeitrag_max": 0.0439,
+    "gesamt_rechnerisch": 0.175,
+    "hoechstbeitrag_monat": 1229.35,
+    "hoechstbeitrag_kv_only_monat": 1017.19
+  },
+  "ag_zuschuss": {
+    "hoechst_kv_monat": 508.59,
+    "hoechst_pv_monat": 104.63,
+    "hoechst_kv_jahr": 6103.08,
+    "formel": "50% des rechnerischen GKV-Höchstbeitrags (BBG × Beitragssatz), max. so hoch wie tatsächlicher PKV-Beitrag"
+  },
+  "pflege": {
+    "spv_satz": 0.036,
+    "spv_kinderlos_zuschlag": 0.006,
+    "spv_kind_abschlag_pro_kind": 0.0025,
+    "spv_kind_abschlag_max_kinder": 5,
+    "ppv_standard_monat": 122.64,
+    "ppv_sozialhilfe_monat": 56.50
+  },
+  "bezugsgroesse": {
+    "monat": 3955,
+    "familienversicherung_limit": 565,
+    "minijob_grenze": 603,
+    "mindesteinkommen_freiwillig": 1318.33
+  },
+  "basistarif": {
+    "kv_monat": 1017.18,
+    "pv_monat": 209.25,
+    "halbierung_bei_hilfebeduerftigkeit": true
+  },
+  "freiwillig_gkv": {
+    "mindestbeitrag_ohne_krankengeld_monat": 270.26,
+    "hoechstbeitrag_monat": 1261.31,
+    "hoechstbeitrag_jahr": 15135.72
+  },
+  "beihilfe": {
+    "bund": {
+      "aktiv_ohne_oder_1_kind": 0.50,
+      "aktiv_ab_2_kinder": 0.70,
+      "pensionaer": 0.70,
+      "ehegatte": 0.70,
+      "kind": 0.80,
+      "ehegatte_einkommensgrenze": 20000
+    }
+  },
+  "pkv_marktdaten": {
+    "vollversicherte_gesamt_mio": 8.7,
+    "alterungsrueckstellungen_mrd_eur_2024": 339,
+    "alterungsrueckstellungen_mrd_eur_stand_09_2025": 351,
+    "ruecklage_pro_versichertem_eur": 38800,
+    "finanzreserven_reichweite_jahre": 9,
+    "beitrag_spar_anteil_durchschnitt": 0.30
+  },
+  "gkv_marktdaten": {
+    "versicherte_gesamt_mio": 74.3,
+    "finanzreserven_mrd_eur_ende_2024": 2.1,
+    "finanzreserven_reichweite_tage": 3,
+    "defizit_2025_mrd_eur": 46.7
+  },
+  "entwicklung_hoechstbeitrag": {
+    "einheit": "€/Monat, inkl. Pflege, Gesamtbeitrag",
+    "serie": {
+      "2017": 789.53,
+      "2018": 803.14,
+      "2019": 841.71,
+      "2020": 878.91,
+      "2021": 916.71,
+      "2022": 916.71,
+      "2023": 960.10,
+      "2024": 1019.48,
+      "2025": 1130.07,
+      "2026": 1229.35
+    }
+  }
+}

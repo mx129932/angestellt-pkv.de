@@ -1,0 +1,7 @@
+---
+import T2 from '../../layouts/T2.astro';
+---
+<T2
+  title='Beratung anfragen'
+  description='Kostenfreie, unabhängige Erstberatung zur PKV für Angestellte.'
+/>

@@ -1,0 +1,344 @@
+---
+/**
+ * Home / index.astro — custom gebaute Homepage (nicht T1-Stitch-Export).
+ * Entkoppelt von T1, damit Design-Anpassungen hier leben und die Stitch-
+ * Vorlage sauber bleibt.
+ */
+import Base from '../layouts/Base.astro';
+import ia from '../data/ia.json';
+
+// Kategorien-Grid: alle 8 Themen-Hubs + Rechner-Hub
+const kategorieIcons: Record<string, string> = {
+  grundlagen: 'foundation',
+  wechsel: 'swap_horiz',
+  kosten: 'payments',
+  leistungen: 'medical_services',
+  aufnahme: 'assignment_ind',
+  absicherung: 'health_and_safety',
+  familie: 'family_restroom',
+  lebenssituationen: 'timeline',
+  rechner: 'calculate',
+};
+
+const kategorieSummaries: Record<string, string> = {
+  grundlagen: 'GKV vs. PKV, Eignung, Vor- und Nachteile: die Basis.',
+  wechsel: 'JAEG, Ablauf, Fristen, Rückwechsel und § 204 Tarifwechsel.',
+  kosten: 'Beitragsentwicklung, Arbeitgeberzuschuss, Altersrückstellungen, Steuer.',
+  leistungen: 'Tarifbausteine, Top-PKV im Vergleich, Basis- und Standardtarif.',
+  aufnahme: 'Gesundheitsprüfung, Risikovoranfrage, Zuschläge, Wartezeiten.',
+  absicherung: 'Krankentagegeld, BU-Abgrenzung, Mutterschutz.',
+  familie: 'Kinder in der PKV, Elternzeit-Strategien.',
+  lebenssituationen: 'Rente, Jobwechsel, Nebentätigkeit, öffentlicher Dienst, bKV.',
+  rechner: 'Alle Rechner im Überblick: Beitrag, Zuschuss, JAEG, Vergleich.',
+};
+
+const kategorien = ia
+  .filter((x: any) => x.ebene === 1 && ['grundlagen','wechsel','kosten','leistungen','aufnahme','absicherung','familie','lebenssituationen','rechner'].includes(x.kategorie))
+  .map((x: any) => ({
+    href: x.url,
+    title: x.title,
+    icon: kategorieIcons[x.kategorie] ?? 'article',
+    summary: kategorieSummaries[x.kategorie] ?? '',
+    kategorie: x.kategorie,
+  }));
+
+// "Expertise zur PKV für Angestellte" — 3 handverlesene Ebene-2-Artikel als Dummy-Teaser.
+const expertise = [
+  {
+    href: '/kosten/beitragsanpassung/',
+    kicker: 'Beitragsentwicklung',
+    title: 'Beitragsanpassungen in der PKV: Was wirklich hinter den Erhöhungen steckt',
+    summary: 'Warum PKV-Beiträge steigen, wie der Mechanismus funktioniert und was du als Angestellter konkret tun kannst.',
+    readingTime: '10 Min',
+    date: '2026',
+  },
+  {
+    href: '/kosten/arbeitgeberzuschuss/',
+    kicker: 'Arbeitgeberzuschuss',
+    title: 'Arbeitgeberzuschuss zur PKV 2026: So viel zahlt dein Arbeitgeber',
+    summary: 'Wer Anspruch hat, wie hoch der Zuschuss 2026 ausfällt und wie du ihn für die PKV optimal nutzt.',
+    readingTime: '8 Min',
+    date: '2026',
+  },
+  {
+    href: '/grundlagen/gkv-vs-pkv/',
+    kicker: 'Systemvergleich',
+    title: 'GKV vs. PKV für Angestellte: Welches System passt zu dir?',
+    summary: 'Beitrag, Leistung, Flexibilität: Ein strukturierter Vergleich beider Systeme mit konkreten Zahlen für 2026.',
+    readingTime: '12 Min',
+    date: '2026',
+  },
+];
+
+const faq = [
+  {
+    q: 'Kann ich jederzeit zurück in die gesetzliche Krankenkasse?',
+    a: 'Ein Rückwechsel ist grundsätzlich nur möglich, wenn das Bruttogehalt unter die Versicherungspflichtgrenze fällt oder bestimmte Lebenssituationen eintreten. Ab 55 Jahren ist der Rückweg in die GKV praktisch ausgeschlossen.',
+  },
+  {
+    q: 'Wie wirken sich Gehaltssprünge auf meinen PKV-Beitrag aus?',
+    a: 'Anders als in der GKV ist der PKV-Beitrag einkommensunabhängig. Gehaltssprünge verändern deinen Beitrag nicht, wohl aber den Arbeitgeberzuschuss (bis zur Höchstgrenze der GKV-Beitragsbemessung).',
+  },
+  {
+    q: 'Sind meine Kinder automatisch mitversichert?',
+    a: 'Nein. In der PKV gibt es keine beitragsfreie Familienversicherung. Jedes Kind benötigt einen eigenen Vertrag, dafür können Kinder mit eigenen, oft günstigen Tarifen versichert werden.',
+  },
+  {
+    q: 'Was passiert bei Arbeitslosigkeit oder Sabbatical?',
+    a: 'Bei ALG-I-Bezug bleibst du i. d. R. in der PKV; die Agentur für Arbeit zahlt einen Zuschuss. Bei unbezahltem Sabbatical läuft die PKV weiter, der volle Beitrag ist dann selbst zu tragen.',
+  },
+];
+---
+<Base
+  title='PKV für Angestellte | Unabhängiges Fachportal'
+  description='Private Krankenversicherung für Angestellte: Entscheidungshilfe, Rechner und Fachartikel zu Beitrag, Wechsel und Leistungen. Unabhängig und datenbasiert.'
+>
+  <main>
+    <!-- HERO — Mobile-Reihenfolge: Text → Bild → CTAs; Desktop: links Text+CTAs, rechts Bild -->
+    <section class='relative bg-[#FAF7F2] overflow-hidden py-14 md:py-20'>
+      <div class='max-w-7xl mx-auto px-6 md:px-8 w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16 md:gap-y-8 items-start'>
+        <!-- 1) Text -->
+        <div class='order-1 md:order-1 md:col-span-7 md:col-start-1 md:row-start-1 flex flex-col'>
+          <span class='self-start py-1 px-3 bg-white text-on-surface-variant text-[0.7rem] md:text-[0.75rem] font-medium tracking-wider mb-6 md:mb-8 rounded-sm border border-outline-variant/20 uppercase'>
+            Independent Review 2026
+          </span>
+          <h1 class='text-[2.15rem] leading-[1.1] md:text-[4rem] lg:text-[5rem] md:leading-[1] font-serif text-primary mb-5 md:mb-8'>
+            Echte Klarheit für deine <span class='italic text-primary-container'>Private Krankenversicherung.</span>
+          </h1>
+          <p class='text-base md:text-xl text-secondary mb-2 md:mb-0 max-w-lg leading-relaxed'>
+            Wann die PKV sich für dich lohnt, was sie wirklich kostet, wie du wechselst. Klare Fakten für Gutverdiener.
+          </p>
+        </div>
+
+        <!-- 2) Bild (Desktop: rechte Spalte, überspannt beide Rows) -->
+        <div class='order-2 md:order-2 md:col-span-5 md:col-start-8 md:row-start-1 md:row-span-2 md:self-center relative flex items-center justify-end'>
+          <div class='relative w-full max-w-md aspect-[5/4] flex items-center'>
+            <div class='absolute -inset-4 bg-white/40 blur-3xl rounded-full'></div>
+            <img
+              alt='PKV-Preisentwicklung Chart'
+              loading='eager'
+              class='relative z-10 w-full h-auto object-contain shadow-[0_32px_64px_-16px_rgba(0,32,70,0.12)] border border-white/50 rounded-lg'
+              src='/images/beitragsentwicklung-pkv-gkv.svg'
+            />
+          </div>
+        </div>
+
+        <!-- 3) CTAs (Mobile: unter Bild; Desktop: unter Text) -->
+        <div class='order-3 md:order-3 md:col-span-6 md:col-start-1 md:row-start-2'>
+          <div class='flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 mb-5 md:mb-6'>
+            <a
+              href='/rechner/pkv-beitrag/'
+              class='inline-flex items-center justify-center gap-2 bg-amber-accent hover:bg-amber-accent-dark text-white px-6 md:px-8 py-4 rounded-md font-semibold transition-all shadow-lg shadow-amber-900/10'
+            >
+              Beitrag berechnen
+              <span class='material-symbols-outlined text-[18px]'>arrow_forward</span>
+            </a>
+            <a
+              href='/pkv-angestellte/'
+              class='inline-flex items-center justify-center border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 md:px-8 py-4 rounded-md font-semibold transition-all'
+            >
+              Guide lesen
+            </a>
+          </div>
+          <p class='text-[0.75rem] text-on-surface-variant flex items-center gap-2'>
+            <span class='material-symbols-outlined text-[16px]'>verified_user</span>
+            Unabhängig. Keine Provisionen. Daten aus offiziellen Quellen 2026.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <section class='bg-surface-container-low py-8 border-y border-outline-variant/10'>
+      <div class='max-w-7xl mx-auto px-6 md:px-8'>
+        <div class='grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8'>
+          <div class='flex items-center gap-3 text-secondary'>
+            <span class='material-symbols-outlined text-primary'>calculate</span>
+            <span class='text-xs md:text-sm font-medium'>10 kostenlose Rechner</span>
+          </div>
+          <div class='flex items-center gap-3 text-secondary'>
+            <span class='material-symbols-outlined text-primary'>workspace_premium</span>
+            <span class='text-xs md:text-sm font-medium'>10 Jahre Expertise</span>
+          </div>
+          <div class='flex items-center gap-3 text-secondary'>
+            <span class='material-symbols-outlined text-primary'>person</span>
+            <span class='text-xs md:text-sm font-medium'>Speziell für Angestellte</span>
+          </div>
+          <div class='flex items-center gap-3 text-secondary'>
+            <span class='material-symbols-outlined text-primary'>star</span>
+            <span class='text-xs md:text-sm font-medium'>Top bewertet (5/5)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KATEGORIEN-GRID — alle 9 Kategorien aus ia.json -->
+    <section class='py-20 md:py-24 bg-surface'>
+      <div class='max-w-7xl mx-auto px-6 md:px-8'>
+        <div class='max-w-2xl mb-12 md:mb-16'>
+          <h2 class='text-3xl md:text-4xl font-serif text-primary mb-4'>Mehr über die private Krankenversicherung</h2>
+          <p class='text-on-surface-variant'>Strukturierte Analysen zu den wichtigsten Themen für festangestellte High-Performer.</p>
+        </div>
+        <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8'>
+          {kategorien.map((k) => (
+            <a
+              href={k.href}
+              class='group relative flex flex-col bg-surface-container-lowest p-8 border border-outline-variant/30 hover:border-amber-accent/60 hover:shadow-xl hover:shadow-primary/5 transition-all'
+            >
+              <span class='material-symbols-outlined text-3xl text-amber-accent mb-6 transition-transform group-hover:scale-110'>
+                {k.icon}
+              </span>
+              <h3 class='text-2xl font-serif text-primary mb-4 leading-tight group-hover:text-amber-accent-dark transition-colors'>
+                {k.title}
+              </h3>
+              <p class='text-on-surface-variant mb-8 text-sm leading-relaxed'>{k.summary}</p>
+              <span class='mt-auto inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all'>
+                Entdecken
+                <span class='material-symbols-outlined text-[16px]'>arrow_forward</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- RECHNER-TEASER (kein Live-Rechner, sondern Sprung auf GKV-vs-PKV) -->
+    <section class='bg-primary py-20 md:py-24 overflow-hidden relative'>
+      <div class='max-w-7xl mx-auto px-6 md:px-8 relative z-10'>
+        <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center'>
+          <div class='text-white'>
+            <span class='inline-block text-amber-accent font-bold text-xs uppercase tracking-widest mb-4'>Interaktiver Vergleich</span>
+            <h2 class='text-3xl md:text-4xl lg:text-5xl font-serif leading-tight mb-6 md:mb-8'>
+              GKV oder PKV: Was ist für dich als Angestellter günstiger?
+            </h2>
+            <p class='text-primary-fixed-dim text-base md:text-lg mb-8 md:mb-10 max-w-md'>
+              Keine Verkaufsgespräche. Nur ein präzises Vergleichsmodell auf Basis aktueller Branchendaten 2026, inkl. Arbeitgeberzuschuss.
+            </p>
+            <a
+              href='/rechner/pkv-gkv-vergleich/'
+              class='inline-flex items-center gap-2 bg-amber-accent hover:bg-amber-accent-dark text-primary font-bold px-8 md:px-10 py-4 md:py-5 rounded-md transition-all shadow-xl shadow-black/20 active:scale-95'
+            >
+              Jetzt vergleichen
+              <span class='material-symbols-outlined'>arrow_forward</span>
+            </a>
+          </div>
+          <!-- Rechner-Preview als statische Vorschau-Karte -->
+          <a href='/rechner/pkv-gkv-vergleich/' class='relative block group'>
+            <div class='bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-10 rounded-2xl shadow-2xl transition-all group-hover:bg-white/10 group-hover:border-white/20'>
+              <div class='flex items-center justify-between mb-6'>
+                <span class='text-white/60 text-xs font-semibold uppercase tracking-wider'>Vorschau</span>
+                <span class='material-symbols-outlined text-amber-accent'>calculate</span>
+              </div>
+              <div class='space-y-5'>
+                <div class='flex items-center justify-between pb-3 border-b border-white/10'>
+                  <span class='text-white/70 text-sm'>Bruttogehalt (mtl.)</span>
+                  <span class='text-white text-lg font-serif'>€ 6.540</span>
+                </div>
+                <div class='flex items-center justify-between pb-3 border-b border-white/10'>
+                  <span class='text-white/70 text-sm'>GKV-Beitrag (AN-Anteil)</span>
+                  <span class='text-white text-lg font-serif'>€ 432,00</span>
+                </div>
+                <div class='flex items-center justify-between pb-3 border-b border-white/10'>
+                  <span class='text-white/70 text-sm'>PKV-Beitrag (AN-Anteil)</span>
+                  <span class='text-white text-lg font-serif'>€ 312,40</span>
+                </div>
+                <div class='mt-4 p-4 bg-amber-accent/10 rounded-lg border border-amber-accent/20'>
+                  <p class='text-amber-accent text-xs font-semibold uppercase tracking-wider mb-1'>Dein monatlicher Vorteil</p>
+                  <p class='text-amber-accent text-2xl md:text-3xl font-serif'>€ 119,60 / Monat</p>
+                </div>
+              </div>
+              <p class='text-white/50 text-xs mt-6 flex items-center gap-2 group-hover:text-white/80 transition-colors'>
+                Zum interaktiven Rechner
+                <span class='material-symbols-outlined text-[14px]'>arrow_forward</span>
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class='absolute -right-20 -bottom-20 w-96 h-96 bg-tertiary-container/30 rounded-full blur-[100px] pointer-events-none'></div>
+    </section>
+
+    <!-- EXPERTISE (vormals "Aktuelle Dossiers & Analysen") -->
+    <section class='py-20 md:py-24 bg-[#FAF7F2]'>
+      <div class='max-w-7xl mx-auto px-6 md:px-8'>
+        <div class='mb-10 md:mb-12'>
+          <h2 class='text-3xl md:text-4xl font-serif text-primary'>Expertise zur PKV für Angestellte</h2>
+        </div>
+        <div class='grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12'>
+          {expertise.map((a) => (
+            <a href={a.href} class='group flex flex-col'>
+              <span class='text-amber-accent font-bold text-xs uppercase tracking-widest mb-4'>{a.kicker}</span>
+              <h3 class='text-xl md:text-2xl font-serif text-primary mb-4 leading-snug group-hover:text-amber-accent-dark transition-colors'>
+                {a.title}
+              </h3>
+              <p class='text-on-surface-variant text-sm line-clamp-3'>{a.summary}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ — CSS-only Akkordeon -->
+    <section class='py-20 md:py-24 bg-white'>
+      <div class='max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16'>
+        <div class='lg:col-span-5'>
+          <h2 class='text-3xl md:text-4xl font-serif text-primary mb-6'>Die häufigsten Fragen</h2>
+          <p class='text-on-surface-variant text-base md:text-lg mb-8'>
+            Wir haben die komplexesten Sachverhalte einfach und rechtssicher für dich aufbereitet.
+          </p>
+          <div class='p-6 bg-surface-container-low rounded-lg border-l-4 border-amber-accent'>
+            <p class='italic text-primary font-serif'>
+              "Die PKV ist kein Produkt, das man kauft, sondern eine finanzielle Entscheidung, die man für den Rest seines Lebens plant."
+            </p>
+          </div>
+        </div>
+        <div class='lg:col-span-7 space-y-3'>
+          {faq.map((it, i) => {
+            const id = `home-faq-${i}`;
+            return (
+              <div class='bg-[#FAF7F2] rounded-md overflow-hidden'>
+                <input type='checkbox' id={id} class='hidden peer' />
+                <label
+                  for={id}
+                  class='flex justify-between items-center gap-4 cursor-pointer p-5 md:p-6 hover:bg-surface-container transition-colors'
+                >
+                  <h4 class='text-base md:text-lg font-serif text-primary pr-4'>{it.q}</h4>
+                  <span class='material-symbols-outlined text-primary transition-transform duration-200 peer-checked:rotate-45 shrink-0'>add</span>
+                </label>
+                <div class='grid grid-rows-[0fr] peer-checked:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out'>
+                  <div class='overflow-hidden'>
+                    <p class='px-5 md:px-6 pb-5 md:pb-6 text-on-surface-variant text-sm md:text-base leading-relaxed'>{it.a}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT TEASER -->
+    <section class='py-20 md:py-24 bg-[#FAF7F2]'>
+      <div class='max-w-[640px] mx-auto px-6 md:px-8 text-center'>
+        <div class='w-24 h-24 mx-auto mb-8 rounded-full overflow-hidden border-2 border-amber-accent p-1'>
+          <picture>
+            <source srcset='/images/tim-avatar.webp' type='image/webp' />
+            <img
+              alt='Tim Bökemeier, PKV-Experte'
+              class='w-full h-full object-cover rounded-full'
+              src='/images/tim-avatar.png'
+            />
+          </picture>
+        </div>
+        <h3 class='text-2xl md:text-3xl font-serif text-primary mb-6'>Spezialisiert auf Angestellte</h3>
+        <p class='text-on-surface-variant leading-relaxed mb-8'>
+          Wir beschäftigen uns ausschließlich mit der privaten Krankenversicherung für Angestellte. Alle Inhalte, Rechner und Beispiele sind genau auf deine Situation zugeschnitten.
+        </p>
+        <a href='/ueber-uns/' class='inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all'>
+          Mehr über uns
+          <span class='material-symbols-outlined text-[18px]'>arrow_forward</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</Base>

@@ -1,0 +1,26 @@
+{
+  "project": {
+    "name": "angestellt-pkv.de",
+    "rootDir": "C:\\Users\\DEIN-USER\\Pfad\\zum\\Projekt",
+    "distDir": "dist",
+    "contentDir": "src\\content",
+    "publicDir": "public"
+  },
+  "ftp": {
+    "host": "HIER_EINTRAGEN",
+    "user": "HIER_EINTRAGEN",
+    "password": "HIER_EINTRAGEN",
+    "port": 21,
+    "targets": {
+      "test": {
+        "remotePath": "/test.angestellt-pkv.de/",
+        "description": "Test-Umgebung (Standard)"
+      },
+      "live": {
+        "remotePath": "/angestellt-pkv.de/",
+        "description": "LIVE – angestellt-pkv.de (nur mit --live Flag!)"
+      }
+    },
+    "defaultTarget": "test"
+  }
+}

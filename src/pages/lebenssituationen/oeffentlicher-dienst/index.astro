@@ -1,7 +1,124 @@
 ---
 import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'beihilfe', label: 'Keine Beihilfe für Angestellte im oeD' },
+  { id: 'jaeg', label: 'Gleiche JAEG-Regel wie in der Privatwirtschaft' },
+  { id: 'tvoed', label: 'TVoeD-Gehälter und JAEG: Ab welcher Stufe' },
+  { id: 'oeffnungsaktionen', label: 'Öffnungsaktionen: Vereinfachte Aufnahme' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const related = [
+  {
+    href: '/grundlagen/lohnt-sich-pkv/',
+    kategorie: 'Grundlagen',
+    title: 'Lohnt sich die PKV?',
+    teaser: 'Datenbasierte Entscheidungshilfe für Angestellte.',
+    icon: 'trending_up',
+  },
+  {
+    href: '/wechsel/versicherungspflichtgrenze/',
+    kategorie: 'Wechsel',
+    title: 'Versicherungspflichtgrenze 2026',
+    teaser: '77.400 Euro: Wer in die PKV kann.',
+    icon: 'swap_horiz',
+  },
+  {
+    href: '/kosten/arbeitgeberzuschuss/',
+    kategorie: 'Kosten',
+    title: 'Arbeitgeberzuschuss PKV 2026',
+    teaser: '508,59 Euro KV + 104,63 Euro PV. Die Berechnung.',
+    icon: 'payments',
+  },
+];
 ---
-<T6
-  title='Angestellte im öffentlichen Dienst'
-  description='Beihilfe-Analogie, Öffnungsaktionen und PKV-Wahl im ÖD.'
-/>
+<T6 title='PKV für Angestellte im öffentlichen Dienst' description='Angestellte im öffentlichen Dienst bekommen keine Beihilfe. Ob sich die PKV trotzdem lohnt, wann Öffnungsaktionen helfen und was TVoeD-Gehälter bedeuten.' breadcrumb={{ kategorie: 'Lebenssituationen', kategorieHref: '/lebenssituationen/' }} toc={toc} date='Update April 2026' readingTime='8 Min. Lesezeit' related={related}
+  faqItems={[
+    { question: `Bekommen Angestellte im oeD Beihilfe?`, answer: `Nein. Nur Beamte bekommen Beihilfe. Angestellte im oeD zählen 100 Prozent ihrer Krankenkosten selbst, wie in der Privatwirtschaft. Das macht PKV für oED-Angestellte schwerer zu rechnen als für Beamte.` },
+    { question: `Ab welcher TVoeD-Stufe kann ich in die PKV?`, answer: `Wenn dein Jahresbrutto die JAEG von 77.400 Euro übersteigt. Das ist typically ab Besoldungsgruppe E12 oder höheren Verdienstgruppen. Spezifische Zahlen erhältst du vom Arbeitgeber.` },
+    { question: `Was ist eine Öffnungsaktion?`, answer: `Eine Aktion der PKV, in der neue Kunden ohne Gesundheitsprüfung aufgenommen werden. Das ist wichtig, wenn du Vorerkrankungen hast. Öffnungsaktionen sind zeitlich begrenzt und kosten eine Aufnahmegebühr von 20 bis 50 Euro.` }
+  ]}
+>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span><strong>Keine Beihilfe</strong> für Angestellte im oeD, nur für Beamte.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die <strong>JAEG 77.400 Euro</strong> gilt genauso wie in der Privatwirtschaft.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>TVoeD-Angestellte mit hoherem Verdienst können die JAEG uebersteigen.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span><strong>Öffnungsaktionen</strong> ermöglichen PKV-Aufnahme ohne Gesundheitsprüfung.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>PKV rechnet sich für oED-Angestellte meist ab <strong>Besoldungsgruppe 12 aufwaerts</strong>.</span></li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Die Verwirrung ist gross: Beamte im oeD haben Beihilfe und versichern sich privat. Angestellte im oeD haben KEINE Beihilfe, zählen aber wie Privatsektor-Angestellte. Das ist die zentrale Unterscheidung.</p>
+  </div>
+
+  <section id='beihilfe' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Keine Beihilfe für Angestellte im oeD</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Das ist der kritische Punkt: Im oeD arbeiten etwa 5,4 Millionen Menschen. Davon sind 36 Prozent Beamte (mit Beihilfe), der Rest sind Angestellte (ohne Beihilfe).</p>
+      <p>Die Beamten zahlen etwa 50 Prozent ihrer Krankenkosten privat, der Rest wird von der Beihilfe gedeckt. Das macht PKV für Beamte oft wirtschaftlich sinnvoll. <a href='/grundlagen/vor-und-nachteile/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Mehr zu den Vorteilen der PKV</a>.</p>
+      <p>Die Angestellten zählen 100 Prozent selbst. Sie haben die gleichen Versicherungsregeln wie in der Privatwirtschaft.</p>
+      <p>Das bedeutet: Angestellte im oeD müssen PKV deutlich kritischer kalkeln als Beamte.</p>
+    </div>
+  </section>
+
+  <section id='jaeg' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Gleiche JAEG-Regel wie in der Privatwirtschaft</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Jahresarbeitsentgeltgrenze (JAEG) von 77.400 Euro (2026) ist ein oeD-weit geltendes Schwellenwert. Wenn dein TVoeD-Gehalt unter dieser Grenze liegt, bist du GKV-pflichtversichert.</p>
+      <p>Wenn es darüber liegt, hast du die Wahl: GKV oder PKV.</p>
+      <p>Das ist die gleiche Regel wie im Privatsektor. Der oeD ist in diesem Punkt nicht sonderreguliert.</p>
+    </div>
+  </section>
+
+  <section id='tvoed' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>TVoeD-Gehälter und JAEG: Ab welcher Stufe</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der TVoeD (Tarifvertrag öffentlicher Dienst) ist in Branchen und Stufen unterteilt. Für den Bund und große Laender gibt es Standard-Tabellen.</p>
+      <p>Grobe Orientierung (2026): Ab Besoldungsgruppe 12 (E12) oder höheren Verdienstgruppen übersteigt dein Jahresbrutto typischerweise die JAEG von 77.400 Euro.</p>
+      <p>Das ist abhängig von Erfahrungsstufe, Bundesland und Branche. Faustregel: Wissenschaftler, Oberreferenten, Sachgebietsleiter uebersteigen die JAEG often. Einfache Angestellte selten.</p>
+      <p>Spezifische Zahlen erhältst du von deinem Personalrat oder Arbeitgeber.</p>
+    </div>
+  </section>
+
+  <section id='oeffnungsaktionen' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Öffnungsaktionen: Vereinfachte Aufnahme</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die meisten PKV-Versicherer fuehren regelmäßig <a href='/grundlagen/lohnt-sich-pkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Öffnungsaktionen</a> durch. Das sind Zeitfenster, in denen neue Kunden ohne Gesundheitsprüfung aufgenommen werden.</p>
+      <p>Das ist besonders wichtig für oED-Angestellte, die über die JAEG verdienen. Sie können in diesem Zeitfenster in die PKV wechseln, ohne dass Vorerkrankungen untersucht oder mit Zuschlägen bewertet werden.</p>
+      <p>Die Öffnungsaktionen kosten meist 20 bis 50 Euro, sind aber in der Regel unbefristet, wenn du in diesem Zeitfenster aufgenommen wirst.</p>
+      <p>Achte darauf, dass die Öffnungsaktion zu deinem JAEG-Ueberschreitung passt. Wenn dein Gehalt in diesem Jahr die JAEG übersteigt, solltest du schnell aktiv werden, bevor die Aktion vorbei ist.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>PKV für oED-Angestellte rechnet sich meist erst ab mittleren Einkommen, wenn die JAEG überschritten wird UND dein Eigenanteil nach AG-Zuschuss deutlich unter dem GKV-Höchstbeitrag liegt.</p>
+      <p>Für viele oED-Angestellte ist die GKV langfristig die robustere Wahl, weil Sicherheit und fehlende Steigerungsrisiken wichtiger sind als kurzfristige Ersparnis.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Bekommen Angestellte im oeD Beihilfe?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein. Nur Beamte bekommen Beihilfe. Angestellte im oeD zählen 100 Prozent ihrer Krankenkosten selbst, wie in der Privatwirtschaft. Das macht PKV für oED-Angestellte schwerer zu rechnen als für Beamte.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ab welcher TVoeD-Stufe kann ich in die PKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Wenn dein Jahresbrutto die JAEG von 77.400 Euro übersteigt. Das ist typically ab Besoldungsgruppe E12 oder höheren Verdienstgruppen. Spezifische Zahlen erhältst du vom Arbeitgeber.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was ist eine Öffnungsaktion?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Eine Aktion der PKV, in der neue Kunden ohne Gesundheitsprüfung aufgenommen werden. Das ist wichtig, wenn du Vorerkrankungen hast. Öffnungsaktionen sind zeitlich begrenzt und kosten eine Aufnahmegebühr von 20 bis 50 Euro.</div>
+      </details>
+    </div>
+  </section>
+</T6>

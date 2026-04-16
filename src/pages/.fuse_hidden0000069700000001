@@ -1,0 +1,7 @@
+---
+import T7 from '../layouts/T7.astro';
+---
+<T7
+  title='Seite nicht gefunden'
+  description='Die aufgerufene Seite existiert nicht.'
+/>

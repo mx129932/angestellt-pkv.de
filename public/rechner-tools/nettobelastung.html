@@ -1,231 +1,367 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Nettobelastung PKV 2026 · PKV für Angestellte</title>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netto-Belastungs-Rechner 2026 · PKV fuer Angestellte</title>
 <style>
   :root {
-    --primary: #002046;
-    --accent: #00261c;
-    --accent-light: #bcedda;
-    --surface: #FAF7F2;
-    --on-surface: #1a1f2e;
-    --on-surface-variant: #515a6b;
-    --outline: #cfd2d8;
+    --bd: #002046; --bm: #1b365d; --bl: #e3ebf5; --or: #D4A017;
+    --bg: #F7F9FC; --tx: #4A4A4A; --mu: #666; --bo: #cfd6e3;
+    --gr: #1E7D4B; --gb: #EAF7EF; --rd: #C0392B; --rb: #FDEDEC;
+    --r: 8px; --sh: 0 2px 12px rgba(31,78,121,.10);
   }
-  * { box-sizing: border-box; }
-  html, body {
-    margin: 0; padding: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: var(--on-surface);
-    background: var(--surface);
-    line-height: 1.55;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--tx); line-height: 1.6; }
+
+  
+
+  @media (max-width: 520px) {
+    .wrap { padding: 12px 8px 32px !important; }
+    .hdr { padding: 20px 16px !important; }
+    .hdr h1 { font-size: 1.2rem !important; }
+    .wrap .card { padding: 16px 12px !important; }
+    .wrap .rb { min-width: 80px !important; }
+    .wrap .rb label { padding: 8px 4px !important; font-size: .75rem !important; }
+    .wrap .rval { min-width: 72px !important; font-size: .95rem !important; }
+    .wrap .f label span { display: block !important; margin-left: 0 !important; margin-top: 2px !important; }
+    .res-grid { grid-template-columns: 1fr !important; }
+    .compare-grid { grid-template-columns: 1fr !important; }
+    .cta { padding: 14px 10px !important; }
   }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
-  h1 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.6rem; margin: 0 0 4px; }
-  .lead { color: var(--on-surface-variant); font-size: .95rem; margin: 0 0 20px; }
-  .card {
-    background: #fff;
-    border: 1px solid rgba(0,32,70,.08);
-    border-radius: 12px;
-    padding: 22px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.03);
-    margin-bottom: 20px;
-  }
-  .card h2 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.15rem; margin: 0 0 14px; }
-  .input-row { position: relative; margin-bottom: 16px; }
-  .input-row label { display: block; font-size: .85rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
-  input[type="number"] {
-    width: 100%; padding: 11px 90px 11px 14px; border: 1px solid var(--outline);
-    border-radius: 8px; background: #fff; font-size: 1.05rem; font-weight: 600;
-    color: var(--on-surface); outline: none; transition: border-color .15s;
-    -moz-appearance: textfield;
-  }
-  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-    -webkit-appearance: none; margin: 0;
-  }
-  input:focus { border-color: var(--primary); }
-  .suffix {
-    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-    color: var(--on-surface-variant); font-weight: 600; font-size: .9rem; pointer-events: none;
-  }
-  .result-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;
-  }
-  .result-box {
-    padding: 16px; border-radius: 8px; text-align: center; background: #f0fdf4; border: 1px solid #dcfce7;
-  }
-  .result-box strong { display: block; font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 8px 0; }
-  .result-box .label { font-size: .85rem; color: var(--accent); font-weight: 600; }
-  .breakdown {
-    background: #fafafa; border: 1px solid var(--outline); border-radius: 8px; padding: 12px;
-    font-size: .9rem; margin-top: 12px;
-  }
-  .breakdown-row {
-    display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #e5e7eb;
-  }
-  .breakdown-row:last-child { border: none; }
-  .breakdown-row strong { color: var(--primary); }
-  .cta-box {
-    margin-top: 24px; background: var(--primary); color: #fff;
-    padding: 30px; border-radius: 12px; text-align: center;
-  }
-  .cta-box .text p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.82); }
-  .cta-box .text strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; color: #fff; margin-bottom: 8px; }
-  .cta-buttons {
-    display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;
-  }
-  .cta-btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    background: var(--accent); color: #fff; font-weight: 600; font-size: .95rem;
-    padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none;
-    transition: background .15s; cursor: pointer; flex: 1; min-width: 200px;
-  }
-  @media (max-width: 600px) { .cta-buttons { flex-direction: column; } .cta-btn { min-width: 100%; } .result-grid { grid-template-columns: 1fr; } }
-  .cta-btn:hover { background: var(--primary); }
-  .trust-badges {
-    margin-top: 14px; display: flex; gap: 16px; justify-content: center;
-    flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.85);
-  }
-  .trust-badges span { display: flex; align-items: center; gap: 4px; }
-  .trust-badges span::before { content: "✓"; font-weight: bold; color: #4ade80; }
-  .note { margin-top: 20px; font-size: .78rem; color: var(--on-surface-variant); line-height: 1.5; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+  .hdr { background: linear-gradient(135deg, var(--bd) 0%, var(--bm) 100%);
+    border-radius: var(--r); padding: 28px 32px; color: #fff; margin-bottom: 20px; }
+  .hdr h1 { font-size: 1.5rem !important; font-weight: 700 !important; margin-bottom: 6px !important; color: #fff !important; line-height: 1.3 !important; }
+  .hdr p  { font-size: .9rem !important; opacity: .88; color: #fff !important; line-height: 1.5 !important; }
+  .badge { display: inline-block; background: var(--or); color: #fff; font-size: .72rem;
+    font-weight: 700; padding: 2px 8px; border-radius: 12px; margin-left: 10px; letter-spacing: .5px; }
+
+  .card { background: #fff; border: 1px solid var(--bo); border-radius: var(--r);
+    padding: 22px; margin-bottom: 14px; box-shadow: var(--sh); }
+  .card h2 { font-size: 1rem; font-weight: 700; color: var(--bd); margin-bottom: 14px;
+    padding-bottom: 7px; border-bottom: 2px solid var(--bl); }
+
+  .f { margin-bottom: 16px; }
+  .f label { display: block; font-size: .85rem; font-weight: 600; color: var(--bd); margin-bottom: 5px; }
+  .f label span { font-weight: 400; color: var(--mu); font-size: .78rem; margin-left: 4px; }
+  .rrow { display: flex; align-items: center; gap: 10px; }
+  .rval { min-width: 90px; text-align: right; font-size: 1.08rem; font-weight: 700;
+    color: var(--bd); background: var(--bl); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--bo); }
+  input[type=range] { width: 100%; accent-color: var(--bm); cursor: pointer; min-height: 44px; }
+  select { width: 100%; padding: 11px 12px; border: 1px solid var(--bo);
+    border-radius: 6px; font-size: 1rem; background: #fff; color: var(--tx); cursor: pointer; min-height: 44px; }
+
+  .radio-group { display: flex; gap: 8px; flex-wrap: wrap; }
+  .rb { flex: 1; min-width: 100px; }
+  .rb input { display: none; }
+  .rb label { display: block; text-align: center; padding: 10px 8px; border: 2px solid var(--bo);
+    border-radius: 6px; cursor: pointer; font-size: .82rem; font-weight: 600; color: var(--mu); transition: all .18s; }
+  .rb input:checked + label { border-color: var(--bm); background: var(--bl); color: var(--bd); }
+
+  .res { display: none; margin-top: 14px; }
+  .res.on { display: block; }
+
+  .aha-banner { background: linear-gradient(135deg, var(--bd), var(--bm));
+    border-radius: var(--r); padding: 24px; color: #fff; text-align: center; margin-bottom: 14px; }
+  .aha-banner .sub { font-size: .85rem; opacity: .85; margin-bottom: 10px; }
+  .aha-banner .main-val { font-size: 2.2rem; font-weight: 900; }
+  .aha-banner .main-label { font-size: .8rem; opacity: .8; margin-top: 4px; }
+
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .cbox { border-radius: 6px; padding: 16px; text-align: center; }
+  .cbox.pkv { background: var(--gb); border: 2px solid var(--gr); }
+  .cbox.gkv { background: var(--bl); border: 2px solid var(--bm); }
+  .cbox .lbl { font-size: .73rem; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; margin-bottom: 6px; }
+  .cbox.pkv .lbl { color: var(--gr); }
+  .cbox.gkv .lbl { color: var(--bd); }
+  .cbox .brutto { font-size: .8rem; color: var(--mu); margin-bottom: 2px; }
+  .cbox .netto { font-size: 1.5rem; font-weight: 900; }
+  .cbox.pkv .netto { color: var(--gr); }
+  .cbox.gkv .netto { color: var(--bd); }
+  .cbox .diff { font-size: .78rem; margin-top: 6px; font-weight: 600; }
+
+  .detail-table { width: 100%; border-collapse: collapse; font-size: .84rem; margin-top: 12px; }
+  .detail-table th { background: var(--bd); color: #fff; padding: 8px 10px; text-align: left; }
+  .detail-table td { padding: 8px 10px; border-bottom: 1px solid #e8f0f8; }
+  .detail-table tr:nth-child(even) td { background: #f8fbfe; }
+  .detail-table .total td { font-weight: 700; border-top: 2px solid var(--bd); background: var(--bl); }
+
+  .ersparnis-box { background: var(--gb); border: 2px solid var(--gr); border-radius: var(--r);
+    padding: 16px 20px; text-align: center; margin-top: 14px; }
+  .ersparnis-box .val { font-size: 1.6rem; font-weight: 900; color: var(--gr); }
+  .ersparnis-box .lbl { font-size: .8rem; color: var(--mu); margin-top: 4px; }
+
+  .cta { background: linear-gradient(135deg, var(--bd), var(--bm));
+    border-radius: var(--r); padding: 20px 24px; text-align: center; color: #fff; margin-top: 14px; }
+  .cta p { font-size: .87rem !important; opacity: .9; margin-bottom: 10px; color: #fff !important; }
+  .cbtn { display: inline-block; background: var(--or); color: #fff; padding: 14px 28px;
+    border-radius: 6px; font-weight: 700; text-decoration: none; font-size: .95rem; transition: opacity .2s; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  .cbtn:hover { opacity: .88; }
+  .note { font-size: .73rem; color: var(--mu); text-align: center; margin-top: 10px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>📊 PKV Nettobelastung 2026</h1>
-  <p class="lead">Was kostet dich PKV wirklich? Nach Steuern, Arbeitgeberzuschuss und allen Faktoren — echte Nettobelastung berechnen.</p>
+<div class="hdr">
+  <h1>💶 Netto-Belastungs-Rechner <span class="badge">2026</span></h1>
+  <p>So viel PKV-Beitrag zahlst du als Angestellter wirklich — nach Arbeitgeber-Zuschuss und Steuervorteil. Dein echter Netto-Aufwand pro Monat.</p>
+</div>
 
-  <div class="card">
-    <h2>Deine Situation</h2>
+<div class="card">
+  <h2>Deine Angaben</h2>
 
-    <div class="input-row">
-      <label for="brutto">Dein Brutto-Jahresgehalt</label>
-      <div style="position: relative;">
-        <input type="number" id="brutto" min="0" step="1000" value="70000" />
-        <span class="suffix">€ / Jahr</span>
-      </div>
-    </div>
-
-    <div class="input-row">
-      <label for="pkv-beitrag">Geschätzter PKV-Monatsbeitrag</label>
-      <div style="position: relative;">
-        <input type="number" id="pkv-beitrag" min="0" step="10" value="400" />
-        <span class="suffix">€ / Monat</span>
-      </div>
-      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
-        Schätzung oder von deinem Versicherer
-      </div>
-    </div>
-
-    <div class="result-grid">
-      <div class="result-box">
-        <div class="label">GKV-Kosten (zum Vergleich)</div>
-        <strong id="gkv-kosten">≈ 850 €/Mo</strong>
-        <div style="font-size: .8rem; opacity: .8;">Brutto berechnet</div>
-      </div>
-      <div class="result-box">
-        <div class="label">PKV Netto (nach Zuschuss)</div>
-        <strong id="pkv-netto">≈ 200 €/Mo</strong>
-        <div style="font-size: .8rem; opacity: .8;">Nach Arbeitgeberzuschuss</div>
-      </div>
+  <div class="f">
+    <label>Monatliches Bruttoeinkommen <span>(dein Brutto-Gehalt)</span></label>
+    <div class="rrow">
+      <input type="range" id="einkommen" min="1500" max="12000" step="100" value="5000" oninput="calc()">
+      <span class="rval" id="einkommen_v">5.000 €</span>
     </div>
   </div>
 
-  <div class="card">
-    <h2>💡 So funktioniert die Rechnung</h2>
-    <p style="margin: 0; font-size: .95rem; color: var(--on-surface-variant); line-height: 1.6;">
-      <strong>Brutto-Gedanke:</strong> "PKV kostet 400 € monatlich — das sieht teuer aus."<br><br>
-      <strong>Aber die Realität:</strong><br>
-      • Dein Arbeitgeber zahlt 50% des PKV-Beitrags mit (= 200 €)<br>
-      • Die PKV ist eine Betriebsausgabe und senkt dein zu versteuerndes Einkommen<br>
-      • Einsparvorteil nach Steuern: ca. 40 €<br>
-      • <strong>Am Ende zahlst du selbst nur ca. 160 € monatlich</strong><br><br>
-      Beim GKV-Vergleich musst du also "Äpfel mit Äpfeln" vergleichen — nicht Brutto-PKV mit Netto-GKV!
-    </p>
-  </div>
-
-  <div class="cta-box">
-    <div class="text">
-      <strong>Deine echten Kosten klären</strong>
-      <p>Die Nettobelastung ist oft geringer als erwartet. Lass uns gemeinsam durchrechnen, was PKV wirklich kostet.</p>
-    </div>
-    <div class="cta-buttons">
-      <button class="cta-btn" id="send-result">
-        → Ergebnis per E-Mail senden
-      </button>
-      <button class="cta-btn" id="cta-termin">
-        → Termin buchen
-      </button>
-    </div>
-    <div class="trust-badges">
-      <span>Kostenfrei</span>
-      <span>Unverbindlich</span>
-      <span>Vertraulich</span>
+  <div class="f">
+    <label>Dein Status</label>
+    <div class="radio-group">
+      <div class="rb"><input type="radio" id="st_a" name="status" value="angestellt" checked onchange="calc()"><label for="st_a">Angestellt</label></div>
+      <div class="rb"><input type="radio" id="st_s" name="status" value="selbst" onchange="calc()"><label for="st_s">Selbstständig</label></div>
     </div>
   </div>
 
-  <p class="note">
-    Quelle: Einkommensteuergesetz (EStG), Betriebsausgabenfähigkeit Krankenversicherung.
-    Steuervorteil hängt von deinem persönlichen Steuersatz ab (individuell unterschiedlich).
-  </p>
+  <div class="f">
+    <label>Anzahl Kinder</label>
+    <div class="radio-group">
+      <div class="rb"><input type="radio" id="k0" name="kinder" value="0" onchange="calc()"><label for="k0">Keine</label></div>
+      <div class="rb"><input type="radio" id="k1" name="kinder" value="1" checked onchange="calc()"><label for="k1">1</label></div>
+      <div class="rb"><input type="radio" id="k2" name="kinder" value="2" onchange="calc()"><label for="k2">2</label></div>
+      <div class="rb"><input type="radio" id="k3" name="kinder" value="3" onchange="calc()"><label for="k3">3+</label></div>
+    </div>
+  </div>
+
+  <div class="f">
+    <label>Grenzsteuersatz <span>(deinen Steuersatz finden du im letzten Steuerbescheid)</span></label>
+    <div class="rrow">
+      <input type="range" id="steuer" min="20" max="45" step="1" value="42" oninput="calc()">
+      <span class="rval" id="steuer_v">42 %</span>
+    </div>
+  </div>
+
+  <div class="f">
+    <label>PKV-Bruttobeitrag <span>(inkl. Krankentagegeld, Pflegeversicherung etc.)</span></label>
+    <div class="rrow">
+      <input type="range" id="pkv_brutto" min="200" max="1500" step="10" value="600" oninput="calc()">
+      <span class="rval" id="pkv_v">600 €</span>
+    </div>
+  </div>
+
+  <div class="f">
+    <label>Basisschutz-Anteil PKV <span>(steht in deiner Steuerbescheinigung, typisch 79 %)</span></label>
+    <div class="rrow">
+      <input type="range" id="basis_pct" min="60" max="95" step="1" value="79" oninput="calc()">
+      <span class="rval" id="basis_v">79 %</span>
+    </div>
+  </div>
+</div>
+
+<div class="res on" id="result">
+  <div class="aha-banner" id="aha_box">
+    <div class="sub">Dein PKV-Beitrag nach Steuervorteil</div>
+    <div class="main-val" id="pkv_netto_big">– €</div>
+    <div class="main-label">effektiver Monatsbeitrag (statt <span id="pkv_brutto_ref">600 €</span> brutto)</div>
+  </div>
+
+  <div class="compare-grid">
+    <div class="cbox pkv">
+      <div class="lbl">Private Krankenversicherung</div>
+      <div class="brutto">Brutto: <span id="r_pkv_brutto">–</span></div>
+      <div class="netto" id="r_pkv_netto">– €</div>
+      <div class="diff">effektiv / Monat</div>
+    </div>
+    <div class="cbox gkv">
+      <div class="lbl">Gesetzliche Krankenversicherung</div>
+      <div class="brutto">Brutto: <span id="r_gkv_brutto">–</span></div>
+      <div class="netto" id="r_gkv_netto">– €</div>
+      <div class="diff">effektiv / Monat</div>
+    </div>
+  </div>
+
+  <div class="ersparnis-box" id="ersparnis_box">
+    <div class="val" id="ersparnis_val">– €</div>
+    <div class="lbl" id="ersparnis_lbl">Ersparnis pro Monat mit PKV</div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h2>Detailberechnung</h2>
+    <table class="detail-table">
+      <thead><tr><th>Position</th><th style="text-align:right">PKV</th><th style="text-align:right">GKV</th></tr></thead>
+      <tbody>
+        <tr><td>KV-Bruttobeitrag</td><td style="text-align:right" id="d_pkv_kv">–</td><td style="text-align:right" id="d_gkv_kv">–</td></tr>
+        <tr><td>Pflegeversicherung</td><td style="text-align:right" id="d_pkv_pv">(inkl.)</td><td style="text-align:right" id="d_gkv_pv">–</td></tr>
+        <tr><td>Bruttobeitrag gesamt</td><td style="text-align:right" id="d_pkv_brutto">–</td><td style="text-align:right" id="d_gkv_brutto">–</td></tr>
+        <tr><td>AG-Zuschuss</td><td style="text-align:right" id="d_pkv_ag">–</td><td style="text-align:right" id="d_gkv_ag">–</td></tr>
+        <tr><td>Eigenanteil brutto</td><td style="text-align:right" id="d_pkv_eigen">–</td><td style="text-align:right" id="d_gkv_eigen">–</td></tr>
+        <tr><td>Steuerlich absetzbar</td><td style="text-align:right" id="d_pkv_absetz">–</td><td style="text-align:right" id="d_gkv_absetz">–</td></tr>
+        <tr><td>Steuerersparnis</td><td style="text-align:right" id="d_pkv_steuer">–</td><td style="text-align:right" id="d_gkv_steuer">–</td></tr>
+        <tr class="total"><td>Effektivbeitrag / Monat</td><td style="text-align:right" id="d_pkv_eff">–</td><td style="text-align:right" id="d_gkv_eff">–</td></tr>
+        <tr class="total"><td>Effektivbeitrag / Jahr</td><td style="text-align:right" id="d_pkv_eff_j">–</td><td style="text-align:right" id="d_gkv_eff_j">–</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cta">
+    <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:6px;">Ergebnis mit einem Experten besprechen?</h3>
+    <p>Gerne analysieren wir dein Ergebnis und melden uns bei dir - klären du offene Fragen einfach mit unseren Experten.</p>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <a id="mailto_cta" href="#" class="cbtn" onclick="sendResults(event)">→ Ergebnis per E-Mail senden</a>
+      <a href="https://calendly.com/pkv-welt/" target="_blank" rel="noopener" class="cbtn" style="background:var(--bm);">→ Termin buchen</a>
+    </div>
+    <div style="display:flex;gap:16px;justify-content:center;margin-top:12px;font-size:.78rem;opacity:.85;">
+      <span>✓ Kostenfrei</span><span>✓ Unverbindlich</span><span>✓ Vertraulich</span>
+    </div>
+  </div>
+</div>
+
+<div class="note">Alle Werte basieren auf den gesetzlichen Vorgaben 2026. Steuerberechnung ist vereinfacht (Grenzsteuersatz). Kein Ersatz für Steuerberatung.</div>
 </div>
 
 <script>
-function calculate() {
-  const brutto = parseFloat(document.getElementById('brutto').value) || 70000;
-  const pkvMonat = parseFloat(document.getElementById('pkv-beitrag').value) || 400;
-  const pkvJahr = pkvMonat * 12;
+// Fakten 2026
+const BBG = 5812.50;
+const GKV_ALLG = 14.6;
+const GKV_ZUS = 2.9;
+const GKV_MINDST = 1318.33;
+const PV = { 0: 4.2, 1: 3.6, 2: 3.35, 3: 3.1 };
+const AG_MAX = 508.59;
 
-  // GKV (zum Vergleich)
-  const gkvJahr = brutto * 0.146;
-  const gkvMonat = Math.round(gkvJahr / 12);
+function fmt(n) { return n.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €'; }
+function fmtInt(n) { return Math.round(n).toLocaleString('de-DE') + ' €'; }
 
-  // PKV Netto (nach Zuschuss + Steuervorteil)
-  const agZuschuss = pkvMonat * 0.5;
-  const eigenanteilBrutto = pkvMonat - agZuschuss;
-  const steuerersparnis = eigenanteilBrutto * 0.42; // vereinfacht: 42% Steuersatz
-  const eigenanteilNetto = Math.round(eigenanteilBrutto - steuerersparnis);
+function calc() {
+  const einkommen = parseFloat(document.getElementById('einkommen').value);
+  const status = document.querySelector('input[name="status"]:checked').value;
+  const kinder = parseInt(document.querySelector('input[name="kinder"]:checked').value);
+  const steuersatz = parseFloat(document.getElementById('steuer').value) / 100;
+  const pkvBrutto = parseFloat(document.getElementById('pkv_brutto').value);
+  const basisPct = parseFloat(document.getElementById('basis_pct').value) / 100;
 
-  document.getElementById('gkv-kosten').textContent = `≈ ${gkvMonat} €/Mo`;
-  document.getElementById('pkv-netto').textContent = `≈ ${eigenanteilNetto} €/Mo`;
+  // Update displays
+  document.getElementById('einkommen_v').textContent = fmtInt(einkommen);
+  document.getElementById('steuer_v').textContent = Math.round(steuersatz * 100) + ' %';
+  document.getElementById('pkv_v').textContent = fmtInt(pkvBrutto);
+  document.getElementById('basis_v').textContent = Math.round(basisPct * 100) + ' %';
+
+  // === GKV Berechnung ===
+  const gkvBasis = Math.max(GKV_MINDST, Math.min(einkommen, BBG));
+  const gkvKV = gkvBasis * (GKV_ALLG + GKV_ZUS) / 100;
+  const pvSatz = PV[Math.min(kinder, 3)];
+  const gkvPV = gkvBasis * pvSatz / 100;
+  const gkvBrutto = gkvKV + gkvPV;
+
+  // GKV AG-Zuschuss
+  const gkvAG = status === 'angestellt' ? Math.min(gkvBrutto / 2, AG_MAX) : 0;
+  const gkvEigen = gkvBrutto - gkvAG;
+
+  // GKV steuerlich absetzbar (Basisbeitrag 96% + PV 100%)
+  const gkvAbsetzbar = gkvKV * 0.96 + gkvPV;
+  const gkvSteuerersparnis = (gkvAbsetzbar - gkvAG) * steuersatz;
+  const gkvEffektiv = gkvEigen - gkvSteuerersparnis;
+
+  // === PKV Berechnung ===
+  const pkvAG = status === 'angestellt' ? Math.min(pkvBrutto / 2, AG_MAX) : 0;
+  const pkvEigen = pkvBrutto - pkvAG;
+
+  // PKV steuerlich absetzbar (Basisanteil)
+  const pkvAbsetzbar = pkvBrutto * basisPct;
+  const pkvSteuerersparnis = Math.max(0, (pkvAbsetzbar - pkvAG)) * steuersatz;
+  const pkvEffektiv = pkvEigen - pkvSteuerersparnis;
+
+  // Ersparnis
+  const ersparnis = gkvEffektiv - pkvEffektiv;
+
+  // === Display ===
+  document.getElementById('pkv_netto_big').textContent = fmt(pkvEffektiv);
+  document.getElementById('pkv_brutto_ref').textContent = fmtInt(pkvBrutto);
+
+  document.getElementById('r_pkv_brutto').textContent = fmt(pkvBrutto);
+  document.getElementById('r_pkv_netto').textContent = fmt(pkvEffektiv);
+  document.getElementById('r_gkv_brutto').textContent = fmt(gkvBrutto);
+  document.getElementById('r_gkv_netto').textContent = fmt(gkvEffektiv);
+
+  // Ersparnis
+  const erspBox = document.getElementById('ersparnis_box');
+  const erspVal = document.getElementById('ersparnis_val');
+  const erspLbl = document.getElementById('ersparnis_lbl');
+  if (ersparnis > 0) {
+    erspVal.textContent = fmt(ersparnis);
+    erspLbl.textContent = 'Ersparnis pro Monat mit PKV (netto)';
+    erspBox.style.background = 'var(--gb)';
+    erspBox.style.borderColor = 'var(--gr)';
+    erspVal.style.color = 'var(--gr)';
+  } else {
+    erspVal.textContent = fmt(Math.abs(ersparnis));
+    erspLbl.textContent = 'GKV ist günstiger pro Monat (netto)';
+    erspBox.style.background = 'var(--bl)';
+    erspBox.style.borderColor = 'var(--bm)';
+    erspVal.style.color = 'var(--bd)';
+  }
+
+  // Detail table
+  document.getElementById('d_pkv_kv').textContent = fmt(pkvBrutto);
+  document.getElementById('d_gkv_kv').textContent = fmt(gkvKV);
+  document.getElementById('d_gkv_pv').textContent = fmt(gkvPV);
+  document.getElementById('d_pkv_brutto').textContent = fmt(pkvBrutto);
+  document.getElementById('d_gkv_brutto').textContent = fmt(gkvBrutto);
+  document.getElementById('d_pkv_ag').textContent = status === 'angestellt' ? '-' + fmt(pkvAG) : '0 € (Selbstständig)';
+  document.getElementById('d_gkv_ag').textContent = status === 'angestellt' ? '-' + fmt(gkvAG) : '0 € (Selbstständig)';
+  document.getElementById('d_pkv_eigen').textContent = fmt(pkvEigen);
+  document.getElementById('d_gkv_eigen').textContent = fmt(gkvEigen);
+  document.getElementById('d_pkv_absetz').textContent = fmt(pkvAbsetzbar);
+  document.getElementById('d_gkv_absetz').textContent = fmt(gkvAbsetzbar);
+  document.getElementById('d_pkv_steuer').textContent = '-' + fmt(pkvSteuerersparnis);
+  document.getElementById('d_gkv_steuer').textContent = '-' + fmt(gkvSteuerersparnis);
+  document.getElementById('d_pkv_eff').textContent = fmt(pkvEffektiv);
+  document.getElementById('d_gkv_eff').textContent = fmt(gkvEffektiv);
+  document.getElementById('d_pkv_eff_j').textContent = fmtInt(pkvEffektiv * 12);
+  document.getElementById('d_gkv_eff_j').textContent = fmtInt(gkvEffektiv * 12);
 }
 
 function sendResults(e) {
   e.preventDefault();
-  const brutto = document.getElementById('brutto').value;
-  const pkv = document.getElementById('pkv-beitrag').value;
-
   const lines = [];
-  lines.push("Rechner: Nettobelastung PKV");
-  lines.push("");
-  lines.push("Mein Gehalt: " + brutto + " €/Jahr");
-  lines.push("PKV-Beitrag: " + pkv + " €/Monat");
-  lines.push("");
-  lines.push("Ich möchte meine echte Nettobelastung verstehen.");
+  lines.push('Rechner: PKV Effektivbeitrags-Rechner');
+  lines.push('');
+  lines.push('Meine Eingaben:');
+  lines.push('Monatliches Bruttoeinkommen: ' + document.getElementById('einkommen_v').textContent);
+  lines.push('Status: ' + document.querySelector('input[name="status"]:checked').parentElement.textContent.trim());
+  lines.push('Anzahl Kinder: ' + document.querySelector('input[name="kinder"]:checked').parentElement.textContent.trim());
+  lines.push('Grenzsteuersatz: ' + document.getElementById('steuer_v').textContent);
+  lines.push('PKV-Bruttobeitrag: ' + document.getElementById('pkv_v').textContent);
+  lines.push('Basisschutz-Anteil PKV: ' + document.getElementById('basis_v').textContent);
+  lines.push('');
+  lines.push('Ergebnis:');
+  lines.push('PKV-Netto (Effektivbeitrag): ' + document.getElementById('pkv_netto_big').textContent);
+  lines.push('PKV Brutto: ' + document.getElementById('r_pkv_brutto').textContent);
+  lines.push('PKV Netto: ' + document.getElementById('r_pkv_netto').textContent);
+  lines.push('GKV Brutto: ' + document.getElementById('r_gkv_brutto').textContent);
+  lines.push('GKV Netto: ' + document.getElementById('r_gkv_netto').textContent);
+  lines.push('Ersparnis: ' + document.getElementById('ersparnis_val').textContent);
+  lines.push('');
+  lines.push('Ich möchte mein Ergebnis gerne mit einem Experten besprechen.');
 
-  const subject = encodeURIComponent("Rechner-Ergebnis: Nettobelastung");
-  const body = encodeURIComponent(lines.join("\n"));
-  const mailtoUrl = "mailto:beratung@angestellt-pkv.de?subject=" + subject + "&body=" + body;
-
-  const a = document.createElement("a");
+  const subject = encodeURIComponent('Rechner-Ergebnis: PKV Effektivbeitrag');
+  const body = encodeURIComponent(lines.join('\n'));
+  var mailtoUrl = 'mailto:beratung@angestellt-pkv.de?subject=' + subject + '&body=' + body;
+  var a = document.createElement('a');
   a.href = mailtoUrl;
-  a.target = "_top";
+  a.target = '_top';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
 }
 
-document.getElementById('brutto').addEventListener('input', calculate);
-document.getElementById('pkv-beitrag').addEventListener('input', calculate);
-document.getElementById('send-result').addEventListener('click', sendResults);
-document.getElementById('cta-termin').addEventListener('click', () => {
-  window.open('https://calendly.com/pkv-welt/', '_blank');
-});
-
-calculate();
+calc();
 </script>
 </body>
 </html>

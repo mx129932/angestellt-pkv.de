@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Krankentagegeld-Rechner 2026 · PKV für Angestellte</title>
+<style>
+  :root {
+    --primary: #002046;
+    --accent: #1b365d;
+    --accent-light: #87a0cd;
+    --surface: #FAF7F2;
+    --on-surface: #1a1f2e;
+    --on-surface-variant: #515a6b;
+    --outline: #cfd2d8;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--on-surface);
+    background: var(--surface);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
+  h1 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.6rem; margin: 0 0 4px; }
+  .lead { color: var(--on-surface-variant); font-size: .95rem; margin: 0 0 20px; }
+  .card {
+    background: #fff;
+    border: 1px solid rgba(0,32,70,.08);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.03);
+    margin-bottom: 20px;
+  }
+  .card h2 { font-family: "Playfair Display", Georgia, serif; color: var(--primary); font-size: 1.15rem; margin: 0 0 14px; }
+  .input-row { position: relative; margin-bottom: 16px; }
+  .input-row label { display: block; font-size: .85rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
+  input[type="number"], input[type="range"] {
+    width: 100%; padding: 11px 14px; border: 1px solid var(--outline);
+    border-radius: 8px; background: #fff; font-size: 1rem;
+    color: var(--on-surface); outline: none; transition: border-color .15s;
+  }
+  input[type="number"] { -moz-appearance: textfield; font-weight: 600; }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+  }
+  input:focus { border-color: var(--primary); }
+  .suffix {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--on-surface-variant); font-weight: 600; font-size: .9rem; pointer-events: none;
+  }
+  .result { margin-top: 20px; padding: 16px; border-radius: 8px; font-size: .95rem; background: var(--accent-light); color: #fff; text-align: center; }
+  .result .big { display: block; font-size: 1.6rem; font-weight: 700; margin: 6px 0; }
+  .result.hidden { display: none; }
+  .cta-box {
+    margin-top: 24px; background: var(--primary); color: #fff;
+    padding: 30px; border-radius: 12px; text-align: center;
+  }
+  .cta-box .text p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.82); }
+  .cta-box .text strong { display: block; font-family: "Playfair Display", Georgia, serif; font-size: 1.25rem; color: #fff; margin-bottom: 8px; }
+  .cta-buttons {
+    display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--accent); color: #fff; font-weight: 600; font-size: .95rem;
+    padding: 14px 28px; border-radius: 8px; text-decoration: none; border: none;
+    transition: background .15s; cursor: pointer; flex: 1; min-width: 200px;
+  }
+  @media (max-width: 600px) { .cta-buttons { flex-direction: column; } .cta-btn { min-width: 100%; } }
+  .cta-btn:hover { background: var(--primary); }
+  .trust-badges {
+    margin-top: 14px; display: flex; gap: 16px; justify-content: center;
+    flex-wrap: wrap; font-size: .82rem; color: rgba(255,255,255,.85);
+  }
+  .trust-badges span { display: flex; align-items: center; gap: 4px; }
+  .trust-badges span::before { content: "✓"; font-weight: bold; color: #4ade80; }
+  .note { margin-top: 20px; font-size: .78rem; color: var(--on-surface-variant); line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🏥 Krankentagegeld: Lohnfortzahlung absichern</h1>
+  <p class="lead">Wer zahlt wenn du krank bist und nicht arbeiten kannst? Mit Krankentagegeld in der PKV sicherst du dein Einkommen ab — und das zahlt sich oft aus.</p>
+
+  <div class="card">
+    <h2>Deine Zahlen</h2>
+
+    <div class="input-row">
+      <label for="gehalt">Dein Nettogehalt (monatlich)</label>
+      <div style="position: relative;">
+        <input type="number" id="gehalt" min="0" step="100" value="3000" />
+        <span class="suffix">€ / Monat</span>
+      </div>
+      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
+        Was kommt bei dir am Ende an (nach Steuern & Versicherung)
+      </div>
+    </div>
+
+    <div class="input-row">
+      <label for="tage">Wie lange brauchst du Absicherung?</label>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <input type="range" id="tage" min="14" max="365" step="1" value="30" style="flex:1;" />
+        <span style="min-width: 60px; text-align: right; font-weight: 600; color: var(--primary);" id="tage-label">30 Tage</span>
+      </div>
+      <div style="font-size: .75rem; color: var(--on-surface-variant); margin-top: 4px;">
+        Krankentagegeld springt ein, wenn die Lohnfortzahlung vom Arbeitgeber endet
+      </div>
+    </div>
+
+    <div id="result" class="result hidden">
+      <span style="font-size: .85rem; opacity: .95;">Krankentagegeld bei Bedarf:</span>
+      <div class="big" id="result-text">—</div>
+      <div style="font-size: .85rem; opacity: .88; margin-top: 8px;">Diesen Betrag zahlt die PKV pro Tag — steuerfrei!</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💡 Was ist Krankentagegeld?</h2>
+    <p style="margin: 0; font-size: .95rem; color: var(--on-surface-variant); line-height: 1.6;">
+      <strong>Situation:</strong> Du wirst krank, kannst nicht arbeiten. Dein Chef zahlt den Lohn 6 Wochen lang (gesetzlich garantiert).<br><br>
+      <strong>Nach 6 Wochen:</strong> Der Lohn endet, deine Miete läuft aber weiter. Hier springt Krankentagegeld ein.<br><br>
+      <strong>Der Deal:</strong> Du zahlst einen Zusatzbeitrag zur PKV. Im Krankheitsfall erhältst du Tagesentschädigungen — meist 50-75% des Nettos.<br><br>
+      <strong>Wichtig:</strong> Angestellte im öffentlichen Dienst oder mit besonderer Sicherung durch den Arbeitgeber brauchen Krankentagegeld oft nicht.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>❓ Häufige Fragen</h2>
+    <p style="margin: 0; font-size: .92rem; color: var(--on-surface-variant); line-height: 1.7;">
+      <strong>Q: Brauchst du wirklich Krankentagegeld?</strong><br>
+      A: Kommt drauf an. Wenn du GKV mit Krankentagegeld-Leistung hast oder dein Arbeitgeber über 6 Wochen hinaus zahlt: nein. Sonst: Ja, es sichert dich ab.<br><br>
+      <strong>Q: Wie lang dauert es, bis es ausgezahlt wird?</strong><br>
+      A: Nach ärztlicher Diagnose und Meldung in der Regel 3-5 Werktage auf dem Konto.<br><br>
+      <strong>Q: Kann ich unterschiedliche Beträge pro Tag wählen?</strong><br>
+      A: Ja, oft zwischen 30-100 € täglich. Je höher, desto höher der Zusatzbeitrag.
+    </p>
+  </div>
+
+  <div class="cta-box">
+    <div class="text">
+      <strong>Die richtige Absicherung wählen</strong>
+      <p>Krankentagegeld kann überraschend sinnvoll sein. Wir zeigen dir, ob und wie du es brauchst.</p>
+    </div>
+    <div class="cta-buttons">
+      <button class="cta-btn" id="send-result">
+        → Ergebnis per E-Mail senden
+      </button>
+      <button class="cta-btn" id="cta-termin">
+        → Termin buchen
+      </button>
+    </div>
+    <div class="trust-badges">
+      <span>Kostenfrei</span>
+      <span>Unverbindlich</span>
+      <span>Vertraulich</span>
+    </div>
+  </div>
+
+  <p class="note">
+    Quelle: § 44 SGB V (Anspruch auf Krankengeld), § 199 VVG (Versicherungsvertragsgesetz).
+    Leistungen sind Richtwerte und hängen von der Tarifwahl ab.
+  </p>
+</div>
+
+<script>
+function updateTageLabel() {
+  const val = document.getElementById('tage').value;
+  document.getElementById('tage-label').textContent = val + ' Tage';
+  calcResult();
+}
+
+function calcResult() {
+  const gehalt = parseFloat(document.getElementById('gehalt').value) || 3000;
+  const tage = parseInt(document.getElementById('tage').value) || 30;
+
+  const tagessatz = Math.round((gehalt * 0.6) / 30);
+  const totalschutz = tagessatz * tage;
+
+  const result = document.getElementById('result');
+  document.getElementById('result-text').innerHTML = `${tagessatz} € / Tag<span style="font-size: .6em; display: block; margin-top: 4px;">→ insgesamt ${totalschutz} € bei ${tage} Tagen Krankheit</span>`;
+  result.classList.remove('hidden');
+}
+
+function sendResults(e) {
+  e.preventDefault();
+  const gehalt = document.getElementById('gehalt').value;
+  const tage = document.getElementById('tage').value;
+
+  const lines = [];
+  lines.push("Rechner: Krankentagegeld-Planer");
+  lines.push("");
+  lines.push("Mein Nettogehalt: " + gehalt + " €/Monat");
+  lines.push("Wunsch-Absicherung: " + tage + " Tage");
+  lines.push("");
+  lines.push("Ich möchte wissen, ob und wie Krankentagegeld für mich Sinn macht.");
+
+  const subject = encodeURIComponent("Rechner-Ergebnis: Krankentagegeld");
+  const body = encodeURIComponent(lines.join("\n"));
+  const mailtoUrl = "mailto:beratung@angestellt-pkv.de?subject=" + subject + "&body=" + body;
+
+  const a = document.createElement("a");
+  a.href = mailtoUrl;
+  a.target = "_top";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+document.getElementById('tage').addEventListener('input', updateTageLabel);
+document.getElementById('gehalt').addEventListener('input', calcResult);
+document.getElementById('send-result').addEventListener('click', sendResults);
+document.getElementById('cta-termin').addEventListener('click', () => {
+  window.open('https://calendly.com/pkv-welt/', '_blank');
+});
+
+calcResult();
+</script>
+</body>
+</html>

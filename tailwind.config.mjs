@@ -53,7 +53,11 @@ export default {
         'outline-variant': '#c4c6cf',
 
         error: '#ba1a1a',
-        'error-container': '#ffdad6'
+        'error-container': '#ffdad6',
+
+        // Accents (Stitch)
+        'amber-accent': '#D4A017',
+        'amber-accent-dark': '#B8860B'
       },
       fontFamily: {
         display: ['Newsreader', 'Georgia', 'serif'],

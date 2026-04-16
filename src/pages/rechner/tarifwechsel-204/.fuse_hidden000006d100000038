@@ -1,0 +1,10 @@
+---
+import T5 from '../../../layouts/T5.astro';
+---
+<T5
+  title='Tarifwechsel § 204 Sparrechner'
+  description='Berechne dein Sparpotenzial durch Tarifwechsel nach § 204 VVG.'
+  intro='§ 204 VVG erlaubt dir, innerhalb deines Versicherers in einen günstigeren Tarif zu wechseln, ohne Gesundheitsprüfung und mit Anrechnung deiner Altersrückstellungen. Dieser Rechner zeigt dein mögliches Sparpotenzial.'
+  iframeSrc='/rechner-tools/tarifwechsel-204.html'
+  iframeInitialHeight={1200}
+/>

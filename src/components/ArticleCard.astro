@@ -1,0 +1,56 @@
+---
+/**
+ * ArticleCard.astro — Teaser für einzelne Beiträge (Artikel, Vergleiche, Landings).
+ * Minimale API: href, title. Optional: kicker, summary, readingTime, date, image.
+ */
+export interface Props {
+  href: string;
+  title: string;
+  kicker?: string;
+  summary?: string;
+  readingTime?: string;
+  date?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const { href, title, kicker, summary, readingTime, date, image, imageAlt } = Astro.props;
+---
+
+<a
+  href={href}
+  class='group flex flex-col h-full bg-surface-container-lowest border border-outline-variant/20 hover:border-amber-accent/50 rounded-lg overflow-hidden transition-all hover:shadow-xl hover:shadow-primary/5'
+>
+  {image && (
+    <div class='relative aspect-[16/10] bg-surface-container overflow-hidden'>
+      <img
+        src={image}
+        alt={imageAlt ?? title}
+        loading='lazy'
+        class='w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500'
+      />
+    </div>
+  )}
+  <div class='flex flex-col flex-1 p-6'>
+    {kicker && (
+      <span class='text-amber-accent font-bold text-xs uppercase tracking-widest mb-3'>{kicker}</span>
+    )}
+    <h3 class='text-xl md:text-2xl font-serif text-primary mb-3 leading-snug group-hover:text-amber-accent-dark transition-colors'>
+      {title}
+    </h3>
+    {summary && (
+      <p class='text-on-surface-variant text-sm mb-5 leading-relaxed line-clamp-3'>{summary}</p>
+    )}
+    <div class='mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/20'>
+      <div class='flex items-center gap-3 text-xs text-secondary'>
+        {readingTime && <span>{readingTime}</span>}
+        {readingTime && date && <span class='w-1 h-1 bg-outline-variant rounded-full'></span>}
+        {date && <span>{date}</span>}
+      </div>
+      <span class='text-amber-accent-dark text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all'>
+        Lesen
+        <span class='material-symbols-outlined text-[16px]'>arrow_forward</span>
+      </span>
+    </div>
+  </div>
+</a>

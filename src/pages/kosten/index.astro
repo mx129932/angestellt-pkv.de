@@ -1,7 +1,30 @@
 ---
-import T3 from '../../layouts/T3.astro';
+import CategoryHub from '../../layouts/CategoryHub.astro';
+
+const faq = [
+  {
+    q: 'Wie setzt sich der PKV-Beitrag überhaupt zusammen?',
+    a: 'Der Beitrag hängt von Eintrittsalter, Gesundheitszustand, Tarifumfang und Selbstbeteiligung ab. Dazu kommen ein gesetzlicher Zuschlag fürs Alter (10%) und bei vielen Anbietern eine Beitragsentlastungskomponente. Das Einkommen spielt (anders als in der GKV) für den Beitrag keine Rolle.',
+  },
+  {
+    q: 'Wie hoch ist der Arbeitgeberzuschuss für Angestellte 2026?',
+    a: 'Der Arbeitgeber zahlt die Hälfte des Beitrags, maximal aber bis zur GKV-Obergrenze. 2026 liegt der maximale Zuschuss bei bis zu 508,59 Euro monatlich für die Krankenversicherung plus 104,63 Euro für die Pflegeversicherung. Der genaue Betrag hängt vom GKV-Höchstbeitrag des Jahres ab.',
+  },
+  {
+    q: 'Warum steigen PKV-Beiträge teils stark an?',
+    a: 'Drei Treiber: medizinischer Fortschritt, steigende Lebenserwartung und gesetzliche Kalkulationsvorschriften (§ 203 VAG). Anpassungen erfolgen erst, wenn Rechnungszins oder Leistungsausgaben deutlich von der Kalkulation abweichen. Stabile Tarife erkennt man an einer sauberen Historie über mindestens 10 Jahre.',
+  },
+  {
+    q: 'Was passiert mit meinen Beiträgen im Alter?',
+    a: 'Ein Teil jedes Beitrags fließt in die Altersrückstellung, um den Anstieg im Ruhestand abzufedern. Zusätzlich können Beitragsentlastungstarife gezielt dagegenwirken. Komplett flach bleiben die Beiträge im Alter aber nicht, realistisch ist ein moderater Anstieg.',
+  },
+];
 ---
-<T3
+<CategoryHub
+  kategorieSlug='kosten'
   title='Kosten und Beiträge in der PKV'
-  description='Beiträge, Arbeitgeberzuschuss, Beitragsanpassung, Altersrückstellung.'
+  description='Beitragsberechnung, Arbeitgeberzuschuss, Beitragsanpassung und Altersrückstellung. Alle finanziellen Fakten zur PKV für Angestellte 2026.'
+  keyword='Kosten und Beiträgen'
+  intro='Der PKV-Beitrag ist nicht gehaltsabhängig, sondern wird individuell kalkuliert und entwickelt sich über Jahrzehnte dynamisch. Dieser Bereich zeigt, wie der Beitrag zustande kommt, was der Arbeitgeber übernimmt, warum Anpassungen passieren und wie sich die Kosten im Alter einordnen lassen.'
+  faq={faq}
 />

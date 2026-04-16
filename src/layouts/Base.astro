@@ -1,21 +1,183 @@
 ---
+/**
+ * Base.astro — Shell für alle Seiten.
+ * Enthält den zentralen Schema.org @graph (JSON-LD).
+ * Layouts (T1–T7, CategoryHub) reichen Schema-Props durch.
+ */
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface BreadcrumbItem {
+  label: string;
+  href: string;
+}
+
+interface SchemaGraph {
+  '@type': string;
+  [key: string]: any;
+}
 
 interface Props {
   title?: string;
   description?: string;
   canonical?: string;
   bodyClass?: string;
+  /** Bei true werden Header + Footer NICHT gerendert (z.B. für /preview/*-Seiten mit eigenem Stitch-Chrome) */
+  bareShell?: boolean;
+  // ── Schema.org Props ──
+  /** ISO-Datum, z.B. "2026-04-15" */
+  publishDate?: string;
+  /** ISO-Datum */
+  updateDate?: string;
+  author?: string;
+  ogImage?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  faqItems?: { question: string; answer: string }[];
+  schemaType?: 'Article' | 'WebPage' | 'FAQPage' | 'CollectionPage' | 'AboutPage';
+  /** Zusätzliche Schema.org-Objekte die im @graph erscheinen sollen */
+  schemaExtra?: SchemaGraph[];
 }
 
 const {
   title = 'PKV für Angestellte',
   description = 'Unabhängiges Fachportal zur privaten Krankenversicherung für Angestellte',
   canonical,
-  bodyClass = 'text-on-background selection:bg-primary-container selection:text-white'
+  bodyClass = 'text-on-background selection:bg-primary-container selection:text-white',
+  bareShell = false,
+  publishDate,
+  updateDate,
+  author = 'Tim Bökemeier',
+  ogImage = '/images/og-default.jpg',
+  breadcrumbs,
+  faqItems,
+  schemaType = 'WebPage',
+  schemaExtra = [],
 } = Astro.props;
 
-const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+const siteUrl = Astro.site?.toString() ?? 'https://angestellt-pkv.de/';
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://angestellt-pkv.de').href;
+const isDev = import.meta.env.DEV;
+
+// ── @graph aufbauen ──
+const graph: Record<string, any>[] = [
+  // 1. WebSite (sitewide)
+  {
+    "@type": "WebSite",
+    "@id": `${siteUrl}#website`,
+    "url": siteUrl,
+    "name": "PKV für Angestellte",
+    "publisher": { "@id": `${siteUrl}ueber-uns/#organization` },
+    "inLanguage": "de"
+  },
+  // 2. Organization (sitewide)
+  {
+    "@type": "Organization",
+    "@id": `${siteUrl}ueber-uns/#organization`,
+    "name": "PKV für Angestellte",
+    "url": siteUrl,
+    "description": "Unabhängiges Fachportal zur privaten Krankenversicherung für Angestellte. Klare Fakten, neutrale Rechner und fundierte Ratgeber für Gutverdiener.",
+    "areaServed": { "@type": "Country", "name": "DE" },
+    "knowsAbout": [
+      "Private Krankenversicherung für Angestellte",
+      "Arbeitgeberzuschuss PKV",
+      "Versicherungspflichtgrenze",
+      "Jahresarbeitsentgeltgrenze",
+      "PKV-GKV-Vergleich",
+      "Krankentagegeld",
+      "Tarifwechsel § 204 VVG"
+    ],
+    "logo": {
+      "@type": "ImageObject",
+      "@id": `${siteUrl}#logo`,
+      "url": `${siteUrl}images/logo.webp`,
+      "contentUrl": `${siteUrl}images/logo.webp`,
+      "caption": "PKV für Angestellte"
+    },
+    "image": { "@id": `${siteUrl}#logo` },
+    "founder": {
+      "@type": "Person",
+      "@id": `${siteUrl}ueber-uns/#founder`,
+      "name": "Tim Bökemeier",
+      "jobTitle": "PKV-Experte",
+      "worksFor": { "@id": `${siteUrl}ueber-uns/#organization` },
+      "url": `${siteUrl}ueber-uns/`
+    },
+    "sameAs": []
+  },
+  // 3. WebPage (aktuelle Seite)
+  {
+    "@type": schemaType === 'Article' ? 'WebPage' : schemaType,
+    "@id": `${canonicalUrl}#webpage`,
+    "url": canonicalUrl,
+    "name": title,
+    "description": description,
+    "inLanguage": "de",
+    "isPartOf": { "@id": `${siteUrl}#website` },
+    "about": { "@id": `${siteUrl}ueber-uns/#organization` },
+    "publisher": { "@id": `${siteUrl}ueber-uns/#organization` },
+    ...(publishDate && { "datePublished": publishDate }),
+    ...(updateDate && { "dateModified": updateDate })
+  },
+];
+
+// 4. Article (nur bei Artikeln)
+if (schemaType === 'Article' && publishDate) {
+  graph.push({
+    "@type": "Article",
+    "@id": `${canonicalUrl}#article`,
+    "isPartOf": { "@id": `${canonicalUrl}#webpage` },
+    "headline": title,
+    "description": description,
+    "image": new URL(ogImage, siteUrl).toString(),
+    "datePublished": publishDate,
+    ...(updateDate && { "dateModified": updateDate }),
+    "author": {
+      "@type": "Person",
+      "@id": `${siteUrl}ueber-uns/#founder`,
+      "name": author,
+      "url": `${siteUrl}ueber-uns/`
+    },
+    "publisher": { "@id": `${siteUrl}ueber-uns/#organization` },
+    "mainEntityOfPage": { "@id": `${canonicalUrl}#webpage` }
+  });
+}
+
+// 5. BreadcrumbList
+if (breadcrumbs && breadcrumbs.length > 0) {
+  graph.push({
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalUrl}#breadcrumb`,
+    "itemListElement": breadcrumbs.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.label,
+      ...(item.href && { "item": new URL(item.href, siteUrl).toString() })
+    }))
+  });
+}
+
+// 6. FAQPage
+if (faqItems && faqItems.length > 0) {
+  graph.push({
+    "@type": "FAQPage",
+    "@id": `${canonicalUrl}#faq`,
+    "isPartOf": { "@id": `${canonicalUrl}#webpage` },
+    "mainEntity": faqItems.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  });
+}
+
+// 7. Template-spezifische Extras
+graph.push(...schemaExtra);
+
+const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": graph.filter(Boolean) });
 ---
 <!DOCTYPE html>
 <html lang="de">
@@ -26,14 +188,52 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- Material Symbols aktuell noch remote, Ersatz durch Inline-SVG ist Phase 4 -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-    />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#002046" />
+    <!-- Material Symbols – lokal gehostet (DSGVO, kein Google-CDN-Call) -->
+    <link rel="stylesheet" href="/fonts/material-symbols.css" />
+
+    <!-- Klaro Cookie Consent (Open Source, Config selbst gehostet) -->
+    <link rel="stylesheet" href="/styles/klaro-custom.css" />
+    <script defer type="text/javascript" src="/scripts/klaro-config.js"></script>
+    <script defer type="text/javascript"
+      src="https://cdn.kiprotect.com/klaro/v0.7.11/klaro.js"></script>
+
+    <!-- Google Analytics 4 – wird NUR geladen wenn Nutzer via Klaro zustimmt -->
+    <script type="text/plain" data-type="text/javascript" data-name="google-analytics"
+      data-src="https://www.googletagmanager.com/gtag/js?id=G-F69BLRVVLN"></script>
+    <script type="text/plain" data-type="text/javascript" data-name="google-analytics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-F69BLRVVLN', { anonymize_ip: true });
+    </script>
+
+    <!-- Schema.org JSON-LD (@graph-basiert) -->
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body class={bodyClass}>
+    {!bareShell && <Header />}
     <slot />
+    {!bareShell && <Footer />}
+
+    {isDev && (
+      <!-- Test-Template-Switcher (nur in Dev-Builds sichtbar) -->
+      <div style="position:fixed;bottom:8px;right:8px;z-index:9999;background:#002046;color:#fff;font:500 12px/1 Inter,system-ui,sans-serif;padding:6px 8px;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,.3);display:flex;gap:6px;align-items:center;">
+        <span style="opacity:.75;margin-right:4px;">Templates:</span>
+        <a href="/preview/t1/" style="color:#fff;text-decoration:none;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.1);">T1</a>
+        <a href="/preview/t2/" style="color:#fff;text-decoration:none;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.1);">T2</a>
+        <a href="/preview/t3/" style="color:#fff;text-decoration:none;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.1);">T3</a>
+        <a href="/preview/t4/" style="color:#fff;text-decoration:none;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.1);">T4</a>
+        <a href="/preview/t5/" style="color:#fff;text-decoration:none;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.1);">T5</a>
+        <a href="/preview/t6/" style="color:#fff;text-decoration:none;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.1);">T6</a>
+        <a href="/preview/t7/" style="color:#fff;text-decoration:none;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.1);">T7</a>
+        <a href="/preview/" style="color:#fff;text-decoration:none;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.2);margin-left:4px;">Übersicht</a>
+      </div>
+    )}
   </body>
 </html>

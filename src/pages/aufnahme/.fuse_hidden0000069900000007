@@ -1,0 +1,30 @@
+---
+import CategoryHub from '../../layouts/CategoryHub.astro';
+
+const faq = [
+  {
+    q: 'Wie läuft die PKV-Gesundheitsprüfung ab?',
+    a: 'Der Versicherer stellt Fragen zu Vorerkrankungen, Behandlungen, Operationen und laufenden Medikamenten der letzten 3 bis 10 Jahre. Die Angaben müssen wahrheitsgemäß und vollständig sein, denn falsche Angaben können auch Jahre später zum Rücktritt vom Vertrag führen. Prüfzeitraum variiert je Anbieter und Frage.',
+  },
+  {
+    q: 'Was ist eine Risikovoranfrage und warum ist sie wichtig?',
+    a: 'Bei der Risikovoranfrage klärt ein unabhängiger Makler anonym mit mehreren Versicherern, ob und zu welchen Konditionen ein Vertrag zustande käme. Dadurch bleibt die offizielle Antragshistorie sauber, falls ein Versicherer ablehnen oder Zuschläge verlangen würde. Standard-Empfehlung vor jedem Antrag.',
+  },
+  {
+    q: 'Was passiert bei Risikozuschlägen oder Leistungsausschlüssen?',
+    a: 'Statt abzulehnen, kann der Versicherer einen Beitragsaufschlag verlangen (z.B. 20% für Rückenleiden) oder bestimmte Leistungen ausschließen. Zuschläge sind meist unbefristet, Ausschlüsse können später geprüft und entfernt werden. Beides sollte vor Vertragsabschluss verstanden und verhandelt werden.',
+  },
+  {
+    q: 'Welche Wartezeiten gelten in der PKV?',
+    a: 'Allgemeine Wartezeit: 3 Monate für volle Leistungen. Besondere Wartezeiten: 8 Monate für Zahnersatz, Entbindung und Psychotherapie. Kommt man aus einer Vorversicherung (GKV oder PKV) ohne Lücke, verzichten die meisten Versicherer auf Wartezeiten.',
+  },
+];
+---
+<CategoryHub
+  kategorieSlug='aufnahme'
+  title='Aufnahme und Gesundheitsprüfung'
+  description='Gesundheitsfragen, Risikovoranfrage, Zuschläge, Ausschlüsse und Wartezeiten. Der komplette Weg vom PKV-Antrag bis zur Police.'
+  keyword='Aufnahme und Gesundheitsprüfung'
+  intro='Der Antrag ist die Schlüsselstelle jeder PKV-Entscheidung. Falsche Angaben führen zu Rücktritt, Zuschläge zu dauerhaft höheren Beiträgen, Ausschlüsse zu Leistungslücken. Dieser Bereich erklärt, wie du sauber durch die Gesundheitsprüfung kommst und warum eine anonyme Risikovoranfrage der erste Schritt sein sollte.'
+  faq={faq}
+/>

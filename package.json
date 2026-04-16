@@ -10,17 +10,28 @@
     "astro": "astro",
     "quality": "node scripts/quality-gate.js",
     "deploy:test": "npm run build && node scripts/upload.js",
-    "deploy:live": "npm run build && node scripts/upload.js --live"
+    "deploy:test:dry": "npm run build && node scripts/upload.js --dry-run",
+    "deploy:test:full": "npm run build && node scripts/upload.js --full",
+    "deploy:live": "npm run build && node scripts/upload.js --live",
+    "deploy:live:dry": "npm run build && node scripts/upload.js --live --dry-run",
+    "images": "node scripts/generate-images.js",
+    "images:list": "node scripts/generate-images.js --list",
+    "images:alt": "node scripts/generate-images.js --export-alt",
+    "images:convert": "node scripts/generate-images.js --convert"
   },
   "dependencies": {
-    "astro": "^4.16.18",
     "@astrojs/tailwind": "^5.1.4",
-    "tailwindcss": "^3.4.17",
     "@fontsource/inter": "^5.1.0",
-    "@fontsource/newsreader": "^5.1.0"
+    "@fontsource/newsreader": "^5.1.0",
+    "astro": "^4.16.18",
+    "openai": "^6.34.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
-    "basic-ftp": "^5.0.5",
-    "dotenv": "^16.4.5"
+    "basic-ftp": "^5.0.5"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.60.1"
   }
 }

@@ -12,24 +12,8 @@ interface Props {
 
 const { title, description, canonical } = Astro.props;
 ---
-<Base title={title} description={description} canonical={canonical}>
-  <Fragment set:html={`<!-- TopNavBar Implementation from JSON -->
-<header class="bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur-md docked full-width top-0 sticky z-50 shadow-[0_12px_40px_rgba(25,28,29,0.06)]">
-<nav class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
-<div class="text-2xl font-serif italic text-blue-900 dark:text-blue-200">PKV Insight</div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-300" href="#">Analyses</a>
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-300" href="#">Private Health</a>
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-300" href="#">Compare</a>
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-300" href="#">Company Ratings</a>
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-200 transition-colors duration-300" href="#">Policyholder Rights</a>
-</div>
-<div class="flex items-center gap-6">
-<button class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium hover:scale-95 duration-150 ease-in-out">Consultation</button>
-</div>
-</nav>
-</header>
-<main>
+<Base title={title} description={description} canonical={canonical} schemaType='WebPage'>
+  <Fragment set:html={`<main>
 <!-- HERO SECTION -->
 <section class="relative min-h-[800px] flex items-center bg-[#FAF7F2] overflow-hidden py-20">
 <div class="max-w-7xl mx-auto px-8 w-full grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
@@ -57,7 +41,7 @@ const { title, description, canonical } = Astro.props;
 <div class="md:col-span-6 relative h-full flex items-center justify-end">
 <div class="relative w-full aspect-square md:aspect-[4/5] lg:aspect-square flex items-center">
 <div class="absolute -inset-4 bg-white/40 blur-3xl rounded-full"></div>
-<img alt="PKV-Preisentwicklung Chart" class="relative z-10 w-full h-auto object-contain shadow-[0_32px_64px_-16px_rgba(0,32,70,0.12)] border border-white/50 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoi7c0xuEfJsqrpgzC14PC0kzWtcE6ST739kSdeAMZo-A-zlow8twZsN1L-TZo632pnYMwo6iX9rQx_N3TzNb_Lp4p4NU7bjGdnfncKx92_sQ0Kz2io9Rs8toZ8SxIJaWoCq-rmKsH1LFVbuSjLRcfJRQM6qqgpqJcnUD6Z0YLJKL9W3OuGq1ItyAxVIHxnx5JyE5OWWCB52z0vCawRFhl7Rwu0CPJXnq49r0oB_WMIixPAoaHrWcKvNU-OhEwOLHZDuW6tO-7"/>
+<img alt="PKV-Preisentwicklung Chart" class="relative z-10 w-full h-auto object-contain shadow-[0_32px_64px_-16px_rgba(0,32,70,0.12)] border border-white/50 rounded-lg" src="/images/beitragsentwicklung-pkv-gkv.svg"/>
 </div>
 </div>
 </div>
@@ -276,33 +260,18 @@ const { title, description, canonical } = Astro.props;
 <section class="py-24 border-t border-outline-variant/10">
 <div class="max-w-[640px] mx-auto px-8 text-center">
 <div class="w-24 h-24 mx-auto mb-8 rounded-full overflow-hidden border-2 border-amber-accent p-1">
-<img alt="portrait of a professional financial expert in a dark suit with a calm authoritative expression" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxPfjuQoOZ5YMfKuZZt7AaNHK62oo76EomJVWFu-8Wa4KCoVehrSXkZgEhhqs9_2ds5EwXTRZb-tYqW1QXCY2T9LLcwsnwVCw-PuYLc4arq110LsqZcCeL_U8g-FuqwN1OMlEx9LD3aCzymn0HZeCKdAwFV3LBPsuguQvYkcIo5FYEi5uKG8Sj64A_BkAwW29fJziqSYVlzT7kOcdVPmG7Wh6SZOrYBWFse89v1vk3YR4sAfY7iiJIHIW3gCo5p-6YCDHphgve"/>
+<img alt="Tim Bökemeier, PKV-Experte" class="w-full h-full object-cover rounded-full" src="/images/tim-avatar.webp"/>
 </div>
-<h3 class="text-3xl font-serif text-primary mb-6">Warum dieses Portal existiert</h3>
+<h3 class="text-3xl font-serif text-primary mb-6">Spezialisiert auf Angestellte</h3>
 <p class="text-on-surface-variant leading-relaxed mb-8">
-                    Nach 15 Jahren in der Finanzjournalistik habe ich gesehen, wie viel Intransparenz im PKV-Market herrscht. 'PKV Insight' ist mein Versuch, Angestellten eine unabhängige Plattform zu bieten, die keine Leads verkauft, sondern Wissen vermittelt. Wir sind der Kompass im Tarifdschungel.
+                    angestellt-pkv.de ist das Spezialportal der PKV-Welt, das sich ausschließlich mit der privaten Krankenversicherung für Angestellte beschäftigt. Alle Inhalte, Rechner und Beispiele sind auf deine Situation zugeschnitten.
                 </p>
 <div class="flex justify-center gap-2 italic font-serif text-primary">
-<span>— Marc-Oliver Neumann,</span>
-<span class="text-on-surface-variant">Chefredakteur</span>
+<span>Tim Bökemeier,</span>
+<span class="text-on-surface-variant">PKV-Experte und Autor</span>
 </div>
 </div>
 </section>
 </main>
-<!-- Footer Implementation from JSON -->
-<footer class="bg-slate-100 dark:bg-slate-900 full-width mt-12 py-12">
-<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-<div>
-<div class="text-xl font-serif text-blue-900 dark:text-blue-300 mb-4">PKV Insight</div>
-<p class="text-slate-500 dark:text-slate-500 text-[0.75rem]">© 2024 PKV Insight Editorial. Independent Financial Journalism.</p>
-</div>
-<div class="flex flex-wrap justify-end gap-6">
-<a class="text-slate-500 dark:text-slate-500 hover:text-blue-700 dark:hover:text-blue-200 transition-opacity opacity-80 hover:opacity-100 text-sm" href="#">Editorial Standards</a>
-<a class="text-slate-500 dark:text-slate-500 hover:text-blue-700 dark:hover:text-blue-200 transition-opacity opacity-80 hover:opacity-100 text-sm" href="#">Privacy Policy</a>
-<a class="text-slate-500 dark:text-slate-500 hover:text-blue-700 dark:hover:text-blue-200 transition-opacity opacity-80 hover:opacity-100 text-sm" href="#">Imprint</a>
-<a class="text-slate-500 dark:text-slate-500 hover:text-blue-700 dark:hover:text-blue-200 transition-opacity opacity-80 hover:opacity-100 text-sm" href="#">Methodology</a>
-<a class="text-slate-500 dark:text-slate-500 hover:text-blue-700 dark:hover:text-blue-200 transition-opacity opacity-80 hover:opacity-100 text-sm" href="#">Contact</a>
-</div>
-</div>
-</footer>`} />
+`} />
 </Base>

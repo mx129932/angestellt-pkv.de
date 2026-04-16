@@ -1,0 +1,192 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'was-sind-ar', label: 'Was Altersrückstellungen sind' },
+  { id: 'aufbau', label: 'So werden sie aufgebaut' },
+  { id: 'dimension', label: '351 Milliarden Euro: Die Dimension' },
+  { id: 'beitrag-im-alter', label: 'Wie Rückstellungen den Beitrag senken' },
+  { id: 'vergleich-gkv', label: 'Vergleich: GKV-Reserven vs. PKV' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'FAQ' },
+];
+
+const related = [
+  {
+    href: '/kosten/pkv-im-alter/',
+    kategorie: 'Kosten',
+    title: 'PKV im Alter',
+    teaser: 'Was Altersrückstellungen und der gesetzliche Zuschlag konkret für deinen Beitrag im Ruhestand bedeuten.',
+    icon: 'elderly',
+  },
+  {
+    href: '/kosten/beitragsanpassung/',
+    kategorie: 'Kosten',
+    title: 'PKV-Beitragsanpassung',
+    teaser: 'Wie Beitragsanpassungen nach § 203 VVG funktionieren und was sie für deine Prämie bedeuten.',
+    icon: 'trending_up',
+  },
+  {
+    href: '/wechsel/tarifwechsel-204/',
+    kategorie: 'Wechsel',
+    title: 'Tarifwechsel nach § 204 VVG',
+    teaser: 'Wie du innerhalb deines Anbieters den Tarif wechselst und deine Rückstellungen behältst.',
+    icon: 'swap_horiz',
+  },
+];
+---
+<T6
+  title='Altersrückstellungen in der PKV erklärt'
+  description='Rund 30 Prozent deines PKV-Beitrags fließt in Altersrückstellungen. Wie sie funktionieren, was sie bringen und warum 351 Milliarden Euro angespart sind.'
+  breadcrumb={{ kategorie: 'Kosten', kategorieHref: '/kosten/' }}
+  toc={toc}
+  date='Update April 2026'
+  readingTime='9 Min. Lesezeit'
+  related={related}
+>
+  <!-- Zusammenfassung -->
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Rund <strong>30 Prozent</strong> deines PKV-Beitrags fließt in Altersrückstellungen, die deinen Beitrag im Alter dämpfen sollen.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die PKV-Branche hält aktuell <strong>351 Milliarden Euro</strong> an Altersrückstellungen. Das entspricht durchschnittlich <strong>38.800 Euro pro Versichertem</strong>.</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Die GKV hat dagegen nur <strong>2,1 Milliarden Euro</strong> Finanzreserven, genug für knapp 3 Tage Leistungsausgaben (BMG 03/2025).</span>
+      </li>
+      <li class='flex items-start gap-3'>
+        <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
+        <span>Ab 65 entfällt der gesetzliche 10-Prozent-Zuschlag, ab 80 sinkt der Beitrag weiter. Die Rückstellungen werden mit rund <strong>3,5 Prozent</strong> pro Jahr verzinst.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Einleitung -->
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Altersrückstellungen sind das Herzstück der privaten Krankenversicherung. Sie sind der Mechanismus, der verhindern soll, dass der PKV-Beitrag im Alter unbezahlbar wird. Trotzdem verstehen viele PKV-Versicherte nicht genau, wie sie funktionieren und wie viel Geld tatsächlich für sie arbeitet. Dieser Artikel erklärt den Mechanismus mit konkreten Zahlen.</p>
+  </div>
+
+  <!-- Was sind Altersrückstellungen -->
+  <section id='was-sind-ar' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was Altersrückstellungen sind</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>In jungen Jahren sind die Gesundheitskosten niedrig, im Alter steigen sie. In der GKV spielt das keine Rolle, weil der Beitrag einkommensabhängig ist. In der PKV wird der Beitrag nach dem individuellen Risiko kalkuliert, und das Risiko steigt mit dem Alter.</p>
+      <p>Altersrückstellungen lösen dieses Problem durch einen Spartrick: In jungen Jahren zahlst du mehr als dein aktuelles Risiko erfordert. Der Überschuss wird verzinslich angelegt. Im Alter, wenn die Gesundheitskosten dein eigentliches Risiko übersteigen, werden die Rückstellungen aufgelöst und dämpfen den Beitrag.</p>
+      <p>Das Geld gehört nicht dir persönlich, sondern deiner Tarifgemeinschaft (dem Kollektiv aller Versicherten im selben Tarif). Es wird treuhänderisch verwaltet und steht zweckgebunden für die Beitragsentlastung im Alter zur Verfügung.</p>
+    </div>
+  </section>
+
+  <!-- Aufbau -->
+  <section id='aufbau' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>So werden sie aufgebaut</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Der Aufbau der Altersrückstellungen folgt einem gesetzlich festgelegten Schema. Drei Bausteine spielen zusammen:</p>
+      <p><strong>Kalkulation im Beitrag:</strong> Dein PKV-Beitrag enthält von Anfang an einen Sparanteil. Im Durchschnitt fließen rund 30 Prozent deines Beitrags in die Altersrückstellungen. Dieser Anteil ist nicht separat ausgewiesen, sondern in der Gesamtprämie enthalten.</p>
+      <p><strong>Gesetzlicher 10-Prozent-Zuschlag:</strong> Zwischen dem 21. und 60. Lebensjahr wird ein zusätzlicher Zuschlag von 10 Prozent auf den Beitrag erhoben (§§ 149 bis 150 VAG). Dieser Zuschlag fließt vollständig in die Altersrückstellungen. Ab dem 65. Lebensjahr entfällt der Zuschlag, und die angesammelten Mittel werden zur Beitragsreduzierung eingesetzt.</p>
+      <p><strong>Verzinsung:</strong> Die angesparten Rückstellungen werden am Kapitalmarkt angelegt. Die gesetzlich vorgeschriebene Mindestverzinsung liegt aktuell bei rund 3,5 Prozent pro Jahr. Die tatsächliche Nettoverzinsung der PKV-Branche lag in den vergangenen Jahren häufig darüber.</p>
+    </div>
+  </section>
+
+  <!-- 351 Milliarden -->
+  <section id='dimension' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>351 Milliarden Euro: Die Dimension</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die PKV-Branche hat über Jahrzehnte ein enormes Kapitalpolster aufgebaut. Stand September 2025 belaufen sich die Altersrückstellungen aller PKV-Versicherer auf rund 351 Milliarden Euro (PKV-Verband).</p>
+    </div>
+
+    <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
+      <table class='w-full text-left border-collapse min-w-[520px]'>
+        <thead>
+          <tr class='bg-surface-container'>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Kennzahl</th>
+            <th class='p-4 text-sm font-semibold text-primary border-b border-outline-variant/20'>Wert</th>
+          </tr>
+        </thead>
+        <tbody class='text-sm text-on-surface'>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4'>Gesamtvolumen Altersrückstellungen</td>
+            <td class='p-4 font-medium'>351 Mrd. Euro (Stand 09/2025)</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4'>Durchschnitt pro Versichertem</td>
+            <td class='p-4 font-medium'>38.800 Euro</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10'>
+            <td class='p-4'>Monatlicher Zufluss (branchenweit)</td>
+            <td class='p-4 font-medium'>ca. 1 Mrd. Euro</td>
+          </tr>
+          <tr class='border-b border-outline-variant/10 bg-surface-container/30'>
+            <td class='p-4'>Sparanteil am Beitrag</td>
+            <td class='p-4 font-medium'>durchschnittlich ca. 30 %</td>
+          </tr>
+          <tr>
+            <td class='p-4'>Finanzielle Reichweite</td>
+            <td class='p-4 font-medium'>über 9 Jahre Leistungsausgaben</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Entwicklung über die letzten Jahre zeigt ein stetiges Wachstum: 2012 lagen die Rückstellungen bei 182 Milliarden Euro, 2018 bei 260 Milliarden, 2022 bei 314 Milliarden. Der Zuwachs kommt aus laufenden Beiträgen und der Kapitalverzinsung (PKV-Verband, PKV-Zahlenportal).</p>
+    </div>
+  </section>
+
+  <!-- Beitragssenkung im Alter -->
+  <section id='beitrag-im-alter' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wie Rückstellungen deinen Beitrag im Alter senken</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Beitragssenkung erfolgt in zwei Stufen:</p>
+      <p><strong>Ab 65:</strong> Der gesetzliche 10-Prozent-Zuschlag entfällt. Die angesammelten Mittel aus diesem Zuschlag werden aufgelöst und zur Beitragsreduzierung eingesetzt. Das senkt den Beitrag typischerweise um 10 bis 15 Prozent.</p>
+      <p><strong>Ab 80:</strong> Die Altersrückstellungen aus der normalen Kalkulation erreichen ihr Maximum und werden verstärkt aufgelöst. Der Beitrag kann weiter sinken, sofern die Rückstellungen ausreichend hoch sind und die Leistungsausgaben nicht stärker steigen als kalkuliert.</p>
+      <p>Die IGES-Langzeitstudie (Debeka-Portfolio, 2003 bis 2023) zeigt: Für Angestellte und Selbstständige stiegen die Beiträge im Durchschnitt um 3,3 Prozent pro Jahr. Die Beitragslast erreicht ihren Höhepunkt meist um das 60. Lebensjahr und sinkt danach. Versicherte im Alter von 70 bis 80 ohne Beihilfe zahlten im Debeka-Portfolio im Durchschnitt rund 600 Euro monatlich (IGES-Studie 2023).</p>
+      <p>Wichtig: Altersrückstellungen verhindern nicht jede Beitragserhöhung. Wenn die Leistungsausgaben stärker steigen als kalkuliert (etwa durch medizinischen Fortschritt oder steigende Lebenserwartung), können Beitragsanpassungen trotz Rückstellungen nötig werden. Details dazu unter <a href='/kosten/beitragsanpassung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-Beitragsanpassung</a>.</p>
+    </div>
+  </section>
+
+  <!-- Vergleich GKV -->
+  <section id='vergleich-gkv' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Vergleich: GKV-Reserven vs. PKV-Rückstellungen</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die GKV funktioniert nach dem Umlageverfahren: Einnahmen aus Beiträgen werden unmittelbar für aktuelle Leistungen ausgegeben. Nennenswerte Rücklagen gibt es nicht.</p>
+      <p>Ende 2024 lagen die Finanzreserven der gesetzlichen Krankenkassen bei nur 2,1 Milliarden Euro. Das entspricht den Leistungsausgaben von knapp 3 Tagen (BMG, Pressemitteilung März 2025). Im selben Zeitraum hielt die PKV-Branche 351 Milliarden Euro an Altersrückstellungen, genug für über 9 Jahre Leistungsausgaben.</p>
+      <p>Die GKV ist damit vollständig abhängig vom laufenden Beitragsaufkommen der Erwerbstätigen. Wenn die Baby-Boomer-Jahrgänge in den Ruhestand gehen (bis 2040 alle über 70), sinkt die Zahl der Beitragszahler, während die Ausgaben steigen. Prognosen des Sachverständigenrats Wirtschaft zeigen GKV-Beitragssätze zwischen 19 und 30 Prozent bis 2050.</p>
+      <p>Die PKV ist durch die Kapitaldeckung demografisch robuster: Jeder Jahrgang spart für seine eigenen künftigen Kosten. Das bedeutet nicht, dass PKV-Beiträge nicht steigen können, aber der demografische Druck fällt geringer aus als in der GKV. Einen umfassenden Vergleich beider Systeme findest du unter <a href='/grundlagen/gkv-vs-pkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>GKV vs. PKV</a>.</p>
+    </div>
+  </section>
+
+  <!-- Fazit -->
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Altersrückstellungen sind das zentrale Instrument der PKV gegen steigende Beiträge im Alter. Mit 351 Milliarden Euro und durchschnittlich 38.800 Euro pro Versichertem hat die Branche ein erhebliches Kapitalpolster aufgebaut, das in der GKV kein Gegenstück hat.</p>
+      <p>Die Rückstellungen senken den Beitrag im Alter, beseitigen aber nicht jedes Steigerungsrisiko. Für Angestellte, die langfristig in der PKV bleiben wollen, ist ein Tarif mit nachweislich stabiler Beitragsentwicklung und einer hohen RfB-Quote die beste Grundlage. Wer über einen Anbieterwechsel nachdenkt, sollte wissen, dass Altersrückstellungen dabei nur teilweise mitgenommen werden können (Basistarif-Anteil). Beim internen Tarifwechsel nach <a href='/wechsel/tarifwechsel-204/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>§ 204 VVG</a> bleiben sie vollständig erhalten.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich meine Altersrückstellungen mitnehmen bei Anbieterwechsel?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Teilweise. Seit 2009 kannst du beim Anbieterwechsel den Teil der Altersrückstellungen mitnehmen, der dem Basistarif-Niveau entspricht. Die darüber hinausgehenden Rückstellungen (aus höherwertigen Tarifen) verfallen beim Anbieterwechsel. Beim internen Tarifwechsel nach § 204 VVG bleiben dagegen alle Rückstellungen erhalten.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Fällt der 10-Prozent-Zuschlag irgendwann weg?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja. Der gesetzliche 10-Prozent-Zuschlag wird zwischen dem 21. und 60. Lebensjahr erhoben und entfällt ab dem 65. Lebensjahr. Die bis dahin angesammelten Mittel werden dann zur Beitragsreduzierung eingesetzt. Das senkt den PKV-Beitrag ab 65 typischerweise um 10 bis 15 Prozent.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was passiert mit den Rückstellungen bei GKV-Rückkehr?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Bei einer Rückkehr in die GKV gehen die Altersrückstellungen vollständig verloren. Das angesparte Kapital verbleibt im Kollektiv deines bisherigen Tarifs und kommt den verbleibenden Versicherten zugute. Diesen Verlust solltest du bei der Entscheidung über einen Systemwechsel unbedingt einkalkulieren.</div>
+      </details>
+    </div>
+  </section>
+</T6>

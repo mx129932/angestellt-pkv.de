@@ -1,0 +1,116 @@
+---
+import T6 from '../../../layouts/T6.astro';
+
+const toc = [
+  { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
+  { id: 'zeitlich', label: 'Zeitliche Abfolge: Lohnfortzahlung, KTG, BU' },
+  { id: 'versorgungsluecke', label: 'Die Versorgungsluecke als PKV-Versicherter' },
+  { id: 'hu_rente', label: 'BU-Rente: Wie hoch sollte sie sein' },
+  { id: 'beitragsbefreiung', label: 'Beitragsbefreiung als PKV-Zusatzbaustein' },
+  { id: 'fazit', label: 'Fazit' },
+  { id: 'faq', label: 'Häufige Fragen' },
+];
+
+const related = [
+  {
+    href: '/absicherung/krankentagegeld/',
+    kategorie: 'Absicherung',
+    title: 'Krankentagegeld in der PKV',
+    teaser: 'Krankentagegeld sichert dein Einkommen ab dem 43. Tag Krankheit ab.',
+    icon: 'shield',
+  },
+  {
+    href: '/kosten/pkv-kosten-übersicht/',
+    kategorie: 'Kosten',
+    title: 'PKV-Kosten Übersicht',
+    teaser: 'Alle Kostenkomponenten der privaten Krankenversicherung im Überblick.',
+    icon: 'payments',
+  },
+  {
+    href: '/leistungen/tarifbausteine/',
+    kategorie: 'Leistungen',
+    title: 'PKV-Tarifbausteine',
+    teaser: 'Optionale Zusaetze wie Beitragsbefreiung und was sie kosten.',
+    icon: 'trending_up',
+  },
+];
+---
+<T6 title='Berufsunfähigkeit und PKV für Angestellte' description='Berufsunfähigkeit, Krankentagegeld und PKV greifen zeitlich ineinander. Wie du die Versorgungsluecke schließen kannst.' breadcrumb={{ kategorie: 'Absicherung', kategorieHref: '/absicherung/' }} toc={toc} date='Update April 2026' readingTime='7 Min. Lesezeit' related={related}>
+  <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
+    <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
+    <ul class='space-y-3 text-on-surface'>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Krankheit laeuft zeitlich in drei Phasen ab: <strong>6 Wochen Lohnfortzahlung</strong>, dann Krankentagegeld, dann Berufsunfähigkeit.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die PKV zahlt <strong>nicht</strong>, wenn du von der Beruf unf.hig bist. Die Krankenversicherung und die BU-Versicherung sind getrennt.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>PKV-Versicherte brauchen eine <strong>separate BU-Versicherung</strong> um die Einkommenslücke zu schließen.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>BU-Rente sollte <strong>60 bis 80 Prozent deines Netto</strong> abdecken.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span><strong>Beitragsbefreiung</strong> ist ein sinnvoller PKV-Zusatzbaustein bei BU.</span></li>
+    </ul>
+  </section>
+
+  <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
+    <p>Berufsunfähigkeit ist für Angestellte ein kritisches Risiko. Viele verwechseln die PKV mit einer BU-Versicherung. Die PKV zahlt für medizinische Leistungen, die BU-Versicherung zahlt Rente, wenn du nicht mehr arbeiten kannst. Das sind zwei verschiedene Vertrag.</p>
+  </div>
+
+  <section id='zeitlich' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Zeitliche Abfolge: Lohnfortzahlung, KTG, BU</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p><strong>Phase 1: Tage 1 bis 42 (6 Wochen)</strong> Du bekommst deinen Lohn weitergezahlt, auch wenn du krank bist. Der Arbeitgeber zahlt. Das ist rechtsiche Pflicht nach BGB 3.</p>
+      <p><strong>Phase 2: Tag 43 bis zum Ende der Krankheit</strong> Ab Tag 43 zahlst du Krankentagegeld aus deiner Versicherung, falls du einen Vertrag hast. Die PKV zahlt hier nicht automatisch, das ist eine optionale Zusatzversicherung.</p>
+      <p><strong>Phase 3: BU tritt ein</strong> Wenn du langfristig nicht arbeiten kannst, zahlt die BU-Versicherung eine monatliche Rente. Die PKV hat damit nichts zu tun.</p>
+      <p>Die Luecke: Zwischen Lohnfortzahlung und einer anerkannten Berufsunfähigkeit liegen oft Monate. In dieser Zeit zahlst du ohne KTG aus eigener Tasche.</p>
+    </div>
+  </section>
+
+  <section id='versorgungsluecke' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Die Versorgungsluecke als PKV-Versicherter</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>PKV-Versicherte haben keine gesetzlichen Krankengeldansprüche wie GKV-Versicherte. Die GKV zahlt ab Woche 4 bis Woche 78 ein gesetzliches Krankengeld in Höhe von 70 Prozent des Bruttoeinkommens (max. BBG). PKV-Versicherte zählen auf private Verträge.</p>
+      <p>Das bedeutet: Ohne freiwilliges Krankentagegeld zahlst du als PKV-Versicherter während einer langfristigen Krankheit, die noch nicht als Berufsunfähigkeit diagnostiziert ist, selber. Das kann schnell zu einer Ersparnis-Krise fuehren.</p>
+      <p>Daher ist das Krankentagegeld für PKV-Versicherte nicht optional, sondern quasi verpflichtend.</p>
+    </div>
+  </section>
+
+  <section id='hu_rente' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>BU-Rente: Wie hoch sollte sie sein</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Daumenregel: Die BU-Rente sollte 60 bis 80 Prozent deines Netto-Einkommens abdecken. Das reicht aus, um den Lebensstandard zu sichern, ohne in Verschuldung zu fallen.</p>
+      <p>Bei einem Bruttoeinkommen von 4.000 Euro liegt das Netto bei etwa 2.600 bis 2.800 Euro (je nach Steuersatz und Sozialabgaeben). Eine BU-Rente von 1.600 bis 2.200 Euro wäre angemessen.</p>
+      <p>Eine BU-Police ist teuer. Mit 35 Jahren zahlst du für 2.000 Euro monatliche BU-Rente etwa 40 bis 60 Euro monatlich, mit 45 Jahren etwa 80 bis 120 Euro monatlich. Mit Beitragsbefreiung steigt der Beitrag um etwa 20 bis 30 Prozent.</p>
+    </div>
+  </section>
+
+  <section id='beitragsbefreiung' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Beitragsbefreiung als PKV-Zusatzbaustein</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>Die Beitragsbefreiung ist ein Zusatzbaustein in der PKV: Wenn du berufsunfaehig wirst, zahlt die Versicherung deine PKV-Beiträge ab sofort. Das klingt logisch, wird aber oft vergessen.</p>
+      <p>Ohne Beitragsbefreiung zahlt deine BU-Rente dein Leben, aber du zahlst immer noch deinen PKV-Beitrag (600 bis 800 Euro monatlich), obwohl dein Einkommen weg ist. Das reduziert die BU-Rente um diese Summe.</p>
+      <p>Mit Beitragsbefreiung ist es umgekehrt: Die PKV springt ein und bezahlt alle Beiträge ab der Anerkennung der Berufsunfähigkeit. Das bedeutet 200 bis 250 Euro mehr monatlich in deiner BU-Rente.</p>
+      <p>Die Beitragsbefreiung kostet etwa 20 bis 30 Prozent mehr beim BU-Beitrag, rechnet sich aber bei langfristiger BU.</p>
+    </div>
+  </section>
+
+  <section id='fazit' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
+    <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
+      <p>PKV-Versicherte brauchen zur vollständigen Absicherung drei Bausteine: Krankentagegeld, BU-Versicherung und Beitragsbefreiung. Zusammen kosten diese etwa 100 bis 150 Euro monatlich, sichern dich aber gegen das größte finanzielle Risiko ab.</p>
+    </div>
+  </section>
+
+  <section id='faq' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
+    <div class='space-y-6'>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Brauche ich als Angestellter eine BU neben der PKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, absolut. Die PKV ist Krankenversicherung, nicht Einkommensicherung. Ohne BU-Versicherung haest du bei Berufsunfähigkeit ein Einkommensrisiko, das du nicht tragen kannst.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was passiert mit dem PKV-Beitrag bei Berufsunfähigkeit?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ohne Beitragsbefreiung musst du deinen PKV-Beitrag selbst zahlen, auch wenn dein Einkommen weg ist. Mit Beitragsbefreiung springt die Versicherung ein. Das solltest du beim Abschluss mitnehmen.</div>
+      </details>
+      <details class='group bg-white border border-outline-variant/20 rounded-lg'>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Zahlt die PKV bei Berufsunfähigkeit?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein, die PKV zahlt nicht bei Berufsunfähigkeit. Die PKV zahlt für medizinische Leistungen. Bei Berufsunfähigkeit zahlst du BU-Versicherung. Das sind zwei Verträge.</div>
+      </details>
+    </div>
+  </section>
+</T6>
