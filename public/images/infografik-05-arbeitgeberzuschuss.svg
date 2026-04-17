@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" width="920" height="460">
+<defs><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap');
+text { font-family: 'Inter', system-ui, sans-serif; }
+</style></defs>
+<rect width="920" height="460" rx="12" fill="#FFFFFF"/>
+<text x="460" y="42" fill="#002046" font-size="20" font-weight="700" text-anchor="middle">Arbeitgeberzuschuss zur PKV 2026</text>
+
+<!-- Big number -->
+<text x="460" y="185" fill="#D4A017" font-size="72" font-weight="800" text-anchor="middle">613 €</text>
+<text x="460" y="220" fill="#44474e" font-size="16" font-weight="600" text-anchor="middle">maximaler Zuschuss pro Monat</text>
+
+<!-- Two boxes -->
+<rect x="140" y="260" width="280" height="64" rx="10" fill="#002046"/>
+<text x="280" y="288" fill="white" font-size="14" font-weight="600" text-anchor="middle">Krankenversicherung</text>
+<text x="280" y="310" fill="#D4A017" font-size="18" font-weight="800" text-anchor="middle">508,59 €</text>
+
+<text x="440" y="296" fill="#74777f" font-size="22" text-anchor="middle">+</text>
+
+<rect x="500" y="260" width="280" height="64" rx="10" fill="#1b365d"/>
+<text x="640" y="288" fill="white" font-size="14" font-weight="600" text-anchor="middle">Pflegeversicherung</text>
+<text x="640" y="310" fill="#D4A017" font-size="18" font-weight="800" text-anchor="middle">104,63 €</text>
+
+<text x="460" y="365" fill="#44474e" font-size="13" text-anchor="middle">Dein Arbeitgeber zahlt bis zu 50 % deines PKV-Beitrags.</text>
+
+</svg>

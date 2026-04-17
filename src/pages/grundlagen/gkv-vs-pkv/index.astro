@@ -48,7 +48,7 @@ const related = [
   faqItems={[
     { question: `Ab welchem Gehalt kann ich als Angestellter in die PKV?`, answer: `Ab einem regelmäßigen Bruttojahresgehalt über der Jahresarbeitsentgeltgrenze (JAEG). 2026 liegt sie bei 77.400 Euro, das sind 6.450 Euro im Monat. Dein Gehalt muss diese Grenze dauerhaft überschreiten, nicht nur einmalig durch Sonderzahlungen.` },
     { question: `Ist die PKV wirklich günstiger als die GKV?`, answer: `Für junge, gesunde Angestellte ohne Familie oft ja. Der Einstiegsbeitrag liegt häufig bei 400 bis 550 Euro, deutlich unter dem GKV-Höchstbeitrag. Für Paare mit Kindern oder bei Vorerkrankungen kann die PKV jedoch teurer sein, weil jede Person einen eigenen Vertrag braucht und Risikozuschläge anfallen können.` },
-    { question: `Was passiert mit meiner PKV wenn ich unter die JAEG falle?`, answer: `Wenn dein Gehalt unter die JAEG von 77.400 Euro fällt (etwa durch Jobwechsel oder Teilzeit), wirst du wieder versicherungspflichtig in der GKV. Du kannst dich nach § 8 SGB V innerhalb von drei Monaten von dieser Pflicht befreien lassen und in der PKV bleiben. Diese Befreiung gilt jedoch nur für den konkreten Anlass und ist nicht widerrufbar.` }
+    { question: `Was passiert mit meiner PKV, wenn ich unter die JAEG falle?`, answer: `Wenn dein Gehalt unter die JAEG von 77.400 Euro fällt (etwa durch Jobwechsel oder Teilzeit), wirst du wieder versicherungspflichtig in der GKV. Du kannst dich nach § 8 SGB V innerhalb von drei Monaten von dieser Pflicht befreien lassen und in der PKV bleiben. Diese Befreiung gilt jedoch nur für den konkreten Anlass und ist nicht widerrufbar.` }
   ]}
 >
   <!-- Zusammenfassung -->
@@ -61,7 +61,7 @@ const related = [
       </li>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
-        <span>Der GKV-Höchstbeitrag 2026 liegt bei <strong>1.229,35 Euro</strong> monatlich (inkl. Pflege). In der PKV variiert der Beitrag je nach Alter, Gesundheit und Tarif.</span>
+        <span>Der <a href='/kosten/gkv-hoechstbeitrag/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>GKV-Höchstbeitrag</a> 2026 liegt bei <strong>1.229,35 Euro</strong> monatlich (inkl. Pflege). In der PKV variiert der Beitrag je nach Alter, Gesundheit und Tarif.</span>
       </li>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
@@ -153,7 +153,7 @@ const related = [
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
       <p>Die langfristige Beitragsentwicklung ist der zweite große Faktor. Beide Systeme werden teurer, aber auf unterschiedliche Weise.</p>
       <p><strong>In der GKV</strong> steigt der Beitrag nicht direkt, aber der Beitragssatz und die Bemessungsgrenzen werden jährlich angepasst. Der GKV-Höchstbeitrag (inkl. Pflege) ist zwischen 2017 und 2026 von 789,53 Euro auf 1.229,35 Euro gestiegen. Das entspricht einem Anstieg von rund 56 Prozent in zehn Jahren. Allein von 2021 bis 2026 lag die jährliche Steigerung bei durchschnittlich 6,91 Prozent (BMG/eigene Berechnungen). Im Rentenalter fällt die Belastung, weil der Beitrag mit dem Einkommen sinkt.</p>
-      <p><strong>In der PKV</strong> wird nach § 203 VAG nur dann angepasst, wenn bestimmte Auslöser überschritten sind: mindestens 10 Prozent Abweichung bei den Leistungsausgaben oder 5 Prozent bei der Sterblichkeit. Die Anpassungen kommen dann oft sprunghaft. Die WIP-Studie 2024 zeigt für den Zeitraum 2015 bis 2025: PKV-Beiträge stiegen um durchschnittlich 3,9 Prozent pro Jahr, GKV-Beiträge um 4,1 Prozent pro Jahr. Über den längeren Zeitraum 2005 bis 2025 liegt die PKV bei 3,1 Prozent jährlich, die GKV bei 3,8 Prozent (WIP-Kurzanalyse 2024; Interessenlage beachten: WIP ist das Forschungsinstitut der PKV).</p>
+      <p><strong>In der PKV</strong> wird nach § 203 VVG nur dann angepasst, wenn bestimmte Auslöser überschritten sind: mindestens 10 Prozent Abweichung bei den Leistungsausgaben oder 5 Prozent bei der Sterblichkeit. Die Anpassungen kommen dann oft sprunghaft. Die WIP-Studie 2024 zeigt für den Zeitraum 2015 bis 2025: PKV-Beiträge stiegen um durchschnittlich 3,9 Prozent pro Jahr, GKV-Beiträge um 4,1 Prozent pro Jahr. Über den längeren Zeitraum 2005 bis 2025 liegt die PKV bei 3,1 Prozent jährlich, die GKV bei 3,8 Prozent (WIP-Kurzanalyse 2024; Interessenlage beachten: WIP ist das Forschungsinstitut der PKV).</p>
       <p>Im Alter steigt der PKV-Beitrag weiter, gedämpft durch Altersrückstellungen. Die PKV-Branche hält aktuell rund 351 Milliarden Euro an Altersrückstellungen, das entspricht durchschnittlich 38.800 Euro pro Versichertem (PKV-Verband 09/2025). Zum Vergleich: Die GKV-Finanzreserven lagen Ende 2024 bei nur 2,1 Milliarden Euro, genug für knapp 3 Tage Leistungsausgaben (BMG 03/2025).</p>
       <p>Trotz der Rückstellungen gilt: Auch als Rentner zahlst du als PKV-Versicherter denselben Beitrag wie zuletzt. Das Einkommen ist im Ruhestand halbiert, der Beitrag nicht. Dieser Effekt ist der Hauptgrund, warum viele PKV-Versicherte im Ruhestand über ihre Beiträge klagen. Mehr dazu unter <a href='/kosten/pkv-im-alter/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV im Alter</a>.</p>
     </div>
@@ -187,15 +187,15 @@ const related = [
     <div class='space-y-6'>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ab welchem Gehalt kann ich als Angestellter in die PKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ab einem regelmäßigen Bruttojahresgehalt über der Jahresarbeitsentgeltgrenze (JAEG). 2026 liegt sie bei 77.400 Euro, das sind 6.450 Euro im Monat. Dein Gehalt muss diese Grenze dauerhaft überschreiten, nicht nur einmalig durch Sonderzahlungen.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Ab einem regelmäßigen Bruttojahresgehalt über der Jahresarbeitsentgeltgrenze (JAEG). 2026 liegt sie bei 77.400 Euro, das sind 6.450 Euro im Monat. Dein Gehalt muss diese Grenze dauerhaft überschreiten, nicht nur einmalig durch Sonderzahlungen.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ist die PKV wirklich günstiger als die GKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Für junge, gesunde Angestellte ohne Familie oft ja. Der Einstiegsbeitrag liegt häufig bei 400 bis 550 Euro, deutlich unter dem GKV-Höchstbeitrag. Für Paare mit Kindern oder bei Vorerkrankungen kann die PKV jedoch teurer sein, weil jede Person einen eigenen Vertrag braucht und Risikozuschläge anfallen können.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Für junge, gesunde Angestellte ohne Familie oft ja. Der Einstiegsbeitrag liegt häufig bei 400 bis 550 Euro, deutlich unter dem GKV-Höchstbeitrag. Für Paare mit Kindern oder bei Vorerkrankungen kann die PKV jedoch teurer sein, weil jede Person einen eigenen Vertrag braucht und Risikozuschläge anfallen können.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
-        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was passiert mit meiner PKV wenn ich unter die JAEG falle?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Wenn dein Gehalt unter die JAEG von 77.400 Euro fällt (etwa durch Jobwechsel oder Teilzeit), wirst du wieder versicherungspflichtig in der GKV. Du kannst dich nach § 8 SGB V innerhalb von drei Monaten von dieser Pflicht befreien lassen und in der PKV bleiben. Diese Befreiung gilt jedoch nur für den konkreten Anlass und ist nicht widerrufbar.</div>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was passiert mit meiner PKV, wenn ich unter die JAEG falle?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Wenn dein Gehalt unter die JAEG von 77.400 Euro fällt (etwa durch Jobwechsel oder Teilzeit), wirst du wieder versicherungspflichtig in der GKV. Du kannst dich nach § 8 SGB V innerhalb von drei Monaten von dieser Pflicht befreien lassen und in der PKV bleiben. Diese Befreiung gilt jedoch nur für den konkreten Anlass und ist nicht widerrufbar.</div>
       </details>
     </div>
   </section>

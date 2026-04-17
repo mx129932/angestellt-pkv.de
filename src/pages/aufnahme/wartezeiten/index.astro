@@ -29,7 +29,7 @@ const related = [
     href: '/leistungen/uebersicht/',
     kategorie: 'Leistungen',
     title: 'Leistungsübersicht der PKV',
-    teaser: 'Was die PKV zählt und unter welchen Bedingungen Wartezeiten ausnahmsweise nicht gelten.',
+    teaser: 'Was die PKV zahlt und unter welchen Bedingungen Wartezeiten ausnahmsweise nicht gelten.',
     icon: 'description',
   },
 ];
@@ -37,26 +37,26 @@ const related = [
 
 <T6
   title='PKV-Wartezeiten: Dauer und Ausnahmen'
-  description='In der PKV gelten allgemeine Wartezeiten von 3 Monaten und besondere von 8 Monaten. Wann sie entfallen und was für Angestellte gilt.'
+  description='In der PKV gelten allgemeine Wartezeiten von 3 Monaten und besondere von 8 Monaten. Wann sie entfallen, welche Ausnahmen greifen und was für Angestellte gilt.'
   breadcrumb={{ kategorie: 'Aufnahme', kategorieHref: '/aufnahme/' }}
   toc={toc}
   date='Update April 2026'
   readingTime='6 Min. Lesezeit'
   related={related}
   faqItems={[
-    { question: `Muss ich Wartezeiten einhalten wenn ich aus der GKV komme?`, answer: `Nein, nicht wenn der Wechsel nahtlos erfolgt. Das heisst: Kein Tag Versicherungslücke zwischen GKV und PKV. Wenn deine GKV am 30. Juni endet und deine PKV am 1. Juli beginnt, entfallen alle Wartezeiten. Du hast vom ersten Tag an vollen Schutz. Das ist ein großer Vorteil des Wechsels aus der GKV.` },
+    { question: `Muss ich Wartezeiten einhalten, wenn ich aus der GKV komme?`, answer: `Nein, nicht wenn der Wechsel nahtlos erfolgt. Das heißt: Kein Tag Versicherungslücke zwischen GKV und PKV. Wenn deine GKV am 30. Juni endet und deine PKV am 1. Juli beginnt, entfallen alle Wartezeiten. Du hast vom ersten Tag an vollen Schutz. Das ist ein großer Vorteil des Wechsels aus der GKV.` },
     { question: `Gilt die Wartezeit auch für Vorsorgeuntersuchungen?`, answer: `Ja, meistens. Vorsorgeuntersuchungen wie Zahnprophylaxe oder Krebsvorsorge unterliegen der allgemeinen oder besonderen Wartezeit, je nachdem, um welche Leistung es geht. Zahnprophylaxe unterliegt der besonderen 8-Monats-Wartezeit. Eine Kolposkopie (Gebärmutterhalskrebsvorsorge) unterliegt der allgemeinen 3-Monats-Wartezeit. Planbare Vorsorgeleistungen in den ersten 3 bis 8 Monaten können ein Problem sein.` },
-    { question: `Kann ich Wartezeiten verkuerzen?`, answer: `Nein, es gibt da keinen Verhandlungsspielraum. Wartezeiten sind gesetzlich oder tariflich vorgegeben. Du kannst sie nicht verkürzen. Die einzige Lösung ist, wie beschrieben, ein nahtloser Wechsel aus der GKV oder zu warten, bis die Wartezeit abgelaufen ist.` }
+    { question: `Kann ich Wartezeiten verkürzen?`, answer: `Nein, es gibt da keinen Verhandlungsspielraum. Wartezeiten sind gesetzlich oder tariflich vorgegeben. Du kannst sie nicht verkürzen. Die einzige Lösung ist, wie beschrieben, ein nahtloser Wechsel aus der GKV oder zu warten, bis die Wartezeit abgelaufen ist.` }
   ]}
 >
   <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
     <h2 class='font-serif text-xl md:text-2xl text-primary mb-4'>Für dich zusammengefasst</h2>
     <ul class='space-y-3 text-on-surface'>
-      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die allgemeine Wartezeit in der PKV beträgt 3 Monate. In dieser Zeit zahlst du keine Beiträge, aber der Versicherer zahlt auch nicht.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die allgemeine Wartezeit in der PKV beträgt 3 Monate. In dieser Zeit zahlst du bereits Beiträge, aber der Versicherer leistet noch nicht.</span></li>
       <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Besondere Wartezeiten für bestimmte Leistungen liegen bei 8 Monaten.</span></li>
       <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Wartezeiten entfallen beim nahtlosen Wechsel aus der GKV ohne Versicherungslücke.</span></li>
       <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Eine Zahnbehandlung, die vor dem nahtlosen Wechsel geplant war, unterliegt keiner Wartezeit.</span></li>
-      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Akute medizinische Notfaelle sind von Wartezeiten ausgenommen.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Akute medizinische Notfälle sind von Wartezeiten ausgenommen.</span></li>
     </ul>
   </section>
 
@@ -68,7 +68,7 @@ const related = [
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Allgemeine und besondere Wartezeiten</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
       <p>Es gibt zwei Arten von Wartezeiten in der PKV:</p>
-      <p><strong>Allgemeine Wartezeit: 3 Monate.</strong> Diese beginnt am Tag der Anmeldung und gilt für die meisten Leistungen. Während dieser 3 Monate zahlt der Versicherer keine Leistungen. Du zahlst aber auch keine Beiträge. Der Vertrag läuft, aber die Versicherungsleistung ist suspendiert. Nach 3 Monaten greift der Schutz.</p>
+      <p><strong>Allgemeine Wartezeit: 3 Monate.</strong> Diese beginnt am Tag der Anmeldung und gilt für die meisten Leistungen. Während dieser 3 Monate zahlt der Versicherer keine Leistungen. Du zahlst aber bereits Beiträge. Der Vertrag läuft, aber die Versicherungsleistung ist für betroffene Bereiche suspendiert. Nach 3 Monaten greift der Schutz.</p>
       <p><strong>Besondere Wartezeiten: 8 Monate.</strong> Diese sind längere Wartezeiten für bestimmte Leistungen. Das sind typischerweise Zahnbehandlungen (Zahnersatz, Implantate), Implantate allgemein und manchmal auch psychotherapeutische Behandlungen. Die besondere Wartezeit beginnt ebenfalls am Tag der Anmeldung.</p>
       <p>Beispiel: Du meldest dich am 1. Januar in der PKV an. Am 15. Januar hast du plötzlich Zahnschmerzen. Der Zahnarzt schlägt eine neue Krone vor. Diese Krone ist eine prothetische Leistung und unterliegt der besonderen 8-Monats-Wartezeit. Die 8 Monate sind noch nicht vorbei. Der Versicherer zahlt nicht. Du musst selbst zahlen.</p>
       <p>Am 1. September (nach 8 Monaten) greifen die Zahnarztleistungen. Ab dann zahlt dein Versicherer Zahnersatz.</p>
@@ -79,7 +79,7 @@ const related = [
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wann Wartezeiten entfallen</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
       <p>Es gibt zwei wichtige Ausnahmen, bei denen Wartezeiten nicht gelten:</p>
-      <p><strong>1. Nahtloser Wechsel aus der GKV.</strong> Wenn du direkt aus der GKV in die PKV wechselst ohne Versicherungslücke, entfallen alle Wartezeiten. Das heisst: Deine GKV-Police endet am 30. Juni, deine <a href='/aufnahme/gesundheitspruefung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV</a>-Police beginnt am 1. Juli. Das ist nahtlos. Dann sind die 3 und 8 Monate Wartezeit irrelevant. Du hast vom Tag des Wechsels an vollen Schutz.</p>
+      <p><strong>1. Nahtloser Wechsel aus der GKV.</strong> Wenn du direkt aus der GKV in die PKV wechselst ohne Versicherungslücke, entfallen alle Wartezeiten. Das heißt: Deine GKV-Police endet am 30. Juni, deine PKV-Police beginnt am 1. Juli. Das ist nahtlos. Dann sind die 3 und 8 Monate Wartezeit irrelevant. Du hast vom Tag des Wechsels an vollen Schutz.</p>
       <p>Dies ist ein massiver Vorteil. Deshalb ist die Koordination beim Wechsel so wichtig. Du brauchst keinen Tag Lücke.</p>
       <p><strong>2. Akute medizinische Notfälle.</strong> Notfallleistungen werden bezahlt, auch wenn die Wartezeit noch läuft. Ein Herzinfarkt, ein Unfall mit Fraktur, eine akute Appendizitis: Der Versicherer zahlt, weil es ein Notfall ist.</p>
       <p>Beispiel: Du meldest dich am 1. Januar an. Am 10. Januar brichst du dir das Bein bei einem Sturz. Der Versicherer zahlt die Notfall-OP und Behandlung, obwohl die 3-Monats-Wartezeit noch nicht vorbei ist. Grund: Notfall.</p>
@@ -108,16 +108,16 @@ const related = [
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
     <div class='space-y-6'>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
-        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Muss ich Wartezeiten einhalten wenn ich aus der GKV komme?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein, nicht wenn der Wechsel nahtlos erfolgt. Das heisst: Kein Tag Versicherungslücke zwischen GKV und PKV. Wenn deine GKV am 30. Juni endet und deine PKV am 1. Juli beginnt, entfallen alle Wartezeiten. Du hast vom ersten Tag an vollen Schutz. Das ist ein großer Vorteil des Wechsels aus der GKV.</div>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Muss ich Wartezeiten einhalten, wenn ich aus der GKV komme?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Nein, nicht wenn der Wechsel nahtlos erfolgt. Das heißt: Kein Tag Versicherungslücke zwischen GKV und PKV. Wenn deine GKV am 30. Juni endet und deine PKV am 1. Juli beginnt, entfallen alle Wartezeiten. Du hast vom ersten Tag an vollen Schutz. Das ist ein großer Vorteil des Wechsels aus der GKV.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Gilt die Wartezeit auch für Vorsorgeuntersuchungen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, meistens. Vorsorgeuntersuchungen wie Zahnprophylaxe oder Krebsvorsorge unterliegen der allgemeinen oder besonderen Wartezeit, je nachdem, um welche Leistung es geht. Zahnprophylaxe unterliegt der besonderen 8-Monats-Wartezeit. Eine Kolposkopie (Gebärmutterhalskrebsvorsorge) unterliegt der allgemeinen 3-Monats-Wartezeit. Planbare Vorsorgeleistungen in den ersten 3 bis 8 Monaten können ein Problem sein.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Ja, meistens. Vorsorgeuntersuchungen wie Zahnprophylaxe oder Krebsvorsorge unterliegen der allgemeinen oder besonderen Wartezeit, je nachdem, um welche Leistung es geht. Zahnprophylaxe unterliegt der besonderen 8-Monats-Wartezeit. Eine Kolposkopie (Gebärmutterhalskrebsvorsorge) unterliegt der allgemeinen 3-Monats-Wartezeit. Planbare Vorsorgeleistungen in den ersten 3 bis 8 Monaten können ein Problem sein.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
-        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich Wartezeiten verkuerzen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein, es gibt da keinen Verhandlungsspielraum. Wartezeiten sind gesetzlich oder tariflich vorgegeben. Du kannst sie nicht verkürzen. Die einzige Lösung ist, wie beschrieben, ein nahtloser Wechsel aus der GKV oder zu warten, bis die Wartezeit abgelaufen ist.</div>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich Wartezeiten verkürzen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Nein, es gibt da keinen Verhandlungsspielraum. Wartezeiten sind gesetzlich oder tariflich vorgegeben. Du kannst sie nicht verkürzen. Die einzige Lösung ist, wie beschrieben, ein nahtloser Wechsel aus der GKV oder zu warten, bis die Wartezeit abgelaufen ist.</div>
       </details>
     </div>
   </section>

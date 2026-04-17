@@ -4,8 +4,8 @@ import T6 from '../../../layouts/T6.astro';
 const toc = [
   { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
   { id: 'bedeutung', label: 'Was ein Leistungsausschluss bedeutet' },
-  { id: 'typische-ausschluesse', label: 'Typische Ausschluesse in der PKV' },
-  { id: 'ausschluss-vs-zuschlag', label: 'Ausschluss vs. Risikozuschlag: Abwaegung' },
+  { id: 'typische-ausschluesse', label: 'Typische Ausschlüsse in der PKV' },
+  { id: 'ausschluss-vs-zuschlag', label: 'Ausschluss vs. Risikozuschlag: Abwägung' },
   { id: 'formulierung', label: 'Formulierung entscheidet über Tragweite' },
   { id: 'fazit', label: 'Fazit' },
   { id: 'faq', label: 'Häufige Fragen' },
@@ -45,7 +45,7 @@ const related = [
   readingTime='7 Min. Lesezeit'
   related={related}
   faqItems={[
-    { question: `Kann ein Leistungsausschluss aufgehoben werden?`, answer: `Ja, Leistungsausschluesse können aufgehoben werden, aber nur unter Bedingungen. Typischerweise frühestens nach 3 bis 5 Jahren symptomloser Zeit. Du musst dann einen neuen ärztlichen Bericht einreichen, der zeigt, dass die Erkrankung stabil ist oder abgeheilt ist. Der Versicherer kann die Aufhebung ablehnen oder an eine Prämienerhöhung knüpfen.` },
+    { question: `Kann ein Leistungsausschluss aufgehoben werden?`, answer: `Ja, Leistungsausschlüsse können aufgehoben werden, aber nur unter Bedingungen. Typischerweise frühestens nach 3 bis 5 Jahren symptomloser Zeit. Du musst dann einen neuen ärztlichen Bericht einreichen, der zeigt, dass die Erkrankung stabil ist oder abgeheilt ist. Der Versicherer kann die Aufhebung ablehnen oder an eine Prämienerhöhung knüpfen.` },
     { question: `Welche Diagnosen werden typisch ausgeschlossen?`, answer: `Chronische Erkrankungen wie Arthrose, Rückenschmerzen, Bluthochdruck und Diabetes werden häufig ausgeschlossen. Psychische Erkrankungen wie leichtere Depressionen kommen auch vor. Schwere Erkrankungen wie Krebs wird der Versicherer eher ablehnen oder einen hohen Zuschlag nehmen, statt einen Ausschluss zu gewähren.` },
     { question: `Gilt der Ausschluss auch bei Tarifwechsel?`, answer: `Das kommt auf den Grund des Tarifwechsels an. Wenn du innerhalb des gleichen Versicherers einen besseren Tarif buchst (sogenannter 204er-Wechsel), bleibt der Ausschluss meist bestehen. Das ist ein großer Nachteil des Ausschlusses: Er hält dich an den Versicherer gebunden. Wenn du später aussteigen willst, hast du ein Problem.` }
   ]}
@@ -55,29 +55,29 @@ const related = [
     <ul class='space-y-3 text-on-surface'>
       <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Ein Leistungsausschluss bedeutet: Der Versicherer nimmt dich auf, zahlt aber für eine bestimmte Diagnose nicht.</span></li>
       <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Der Ausschluss ist typischerweise zeitlich unbegrenzt, kann aber nach Jahren aufgehoben werden.</span></li>
-      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Häufig werden Leistungsausschluesse bei chronischen Erkrankungen angeboten, die nicht sofort wieder weg sind.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Häufig werden Leistungsausschlüsse bei chronischen Erkrankungen angeboten, die nicht sofort wieder weg sind.</span></li>
       <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Manchmal lohnt sich ein Ausschluss finanziell besser als ein Risikozuschlag, manchmal nicht. Vergleichen ist Pflicht.</span></li>
       <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die genaue Formulierung im Vertrag ist entscheidend: "Arthrose Knie" ist anders als "Erkrankungen des Bewegungsapparats".</span></li>
     </ul>
   </section>
 
   <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
-    <p>Bei der PKV-Aufnahme gibt es neben Normalannahme und Risikozuschlag noch eine dritte Variante: den Leistungsausschluss. Dieser wird oft übersehen, obwohl er bei Vorerkrankungen eine wichtige Alternative ist. Hier lernst du, wie Leistungsausschluesse funktionieren, wann sie sinnvoll sind und wie du damit umgehen solltest.</p>
+    <p>Bei der PKV-Aufnahme gibt es neben Normalannahme und Risikozuschlag noch eine dritte Variante: den Leistungsausschluss. Dieser wird oft übersehen, obwohl er nach der <a href='/aufnahme/gesundheitspruefung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Gesundheitsprüfung</a> eine wichtige Alternative ist. Hier lernst du, wie Leistungsausschlüsse funktionieren, wann sie sinnvoll sind und wie du damit umgehen solltest.</p>
   </div>
 
   <section id='bedeutung' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was ein Leistungsausschluss bedeutet</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
       <p>Ein Leistungsausschluss ist eine Einschränkung deines Versicherungsschutzes. Der Versicherer nimmt dich auf, zahlt aber für eine bestimmte Erkrankung oder Körperregion nicht. Das ist anders als ein Risikozuschlag, bei dem der Versicherer dich normal aufnimmt, aber mit Aufpreis.</p>
-      <p>Konkrete Beispiele: Du hast Bluthochdruck, aber mit deinem aktuellen Medikament stabilisiert sich das Blutdruck gut. Der Versicherer könnte sagen: "Wir nehmen dich auf, schließen aber alle Folgeerkrankungen des Bluthochdrucks aus, also Herzinfarkt, Schlaganfall, Nierenschäden." Oder: "Deine Arthrose im Knie ist uns zu riskant. Wir zahlen nicht für Kniebehandlungen, alles andere OK."</p>
+      <p>Konkrete Beispiele: Du hast Bluthochdruck, aber mit deinem aktuellen Medikament stabilisiert sich der Blutdruck gut. Der Versicherer könnte sagen: "Wir nehmen dich auf, schließen aber alle Folgeerkrankungen des Bluthochdrucks aus, also Herzinfarkt, Schlaganfall, Nierenschäden." Oder: "Deine Arthrose im Knie ist uns zu riskant. Wir zahlen nicht für Kniebehandlungen, alles andere OK."</p>
       <p>In der Versicherungspolice wird das dann meist so formuliert: "Ausgeschlossene Diagnose: Arthrose des Knies, ICD-Code M17." Von dem Tag an sind alle Behandlungen dieser Diagnose Leistungen des privaten Versicherten, nicht des Versicherers.</p>
     </div>
   </section>
 
   <section id='typische-ausschluesse' class='scroll-mt-28 mb-12'>
-    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Typische Ausschluesse in der PKV</h2>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Typische Ausschlüsse in der PKV</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Leistungsausschluesse werden besonders häufig bei chronischen Erkrankungen angeboten, die lange bestehen und regelmäßige Kosten verursachen. Typische Beispiele:</p>
+      <p>Leistungsausschlüsse werden besonders häufig bei chronischen Erkrankungen angeboten, die lange bestehen und regelmäßige Kosten verursachen. Typische Beispiele:</p>
       <ul class='list-disc list-inside space-y-2 ml-2'>
         <li>Bluthochdruck und Folgeerkrankungen</li>
         <li>Arthrose (Knie, Hüfte, Wirbelsäule)</li>
@@ -93,7 +93,7 @@ const related = [
   </section>
 
   <section id='ausschluss-vs-zuschlag' class='scroll-mt-28 mb-12'>
-    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Ausschluss vs. Risikozuschlag: Abwaegung</h2>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Ausschluss vs. Risikozuschlag: Abwägung</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
       <p>Wenn du einen Leistungsausschluss angeboten bekommst, ist die zentrale Frage: Ist das besser oder schlechter als ein Risikozuschlag?</p>
       <p><strong>Leistungsausschluss:</strong> Du zahlst den regulären Beitrag. Aber die ausgeschlossene Diagnose zahlst du privat aus der eigenen Tasche. Langfristig kann das teuer werden, wenn die Diagnose regelmäßige Therapien braucht.</p>
@@ -115,8 +115,8 @@ const related = [
           </tbody>
         </table>
       </div>
-      <p>In diesem Beispiel ist der Ausschluss günstiger, wenn die Kniebehandlung nur 600 Euro im Jahr kostet. Aber wenn die Physio, MRT, Orthopäde und eventuell eine OP zusammen 2.000 Euro im Jahr kosten, ist der Zuschlag besser: 6.900 Euro (mit Zuschlag) gegen 6.500 Euro (500 Euro monatlich plus 2.000 Euro privat).</p>
-      <p>Das Fazit: Immer beide Optionen durchrechnen. Frag den Versicherer, welche monatlichen Kosten er bei einem Zuschlag will, und rechne dann durch, wie oft die Diagnose Therapien braucht. Dann entscheiden.</p>
+      <p>In diesem Beispiel ist der Ausschluss günstiger, wenn die Kniebehandlung nur 600 Euro im Jahr kostet. Aber wenn die Physio, MRT, Orthopäde und eventuell eine OP zusammen 2.000 Euro im Jahr kosten, ist der Zuschlag besser: 6.900 Euro (mit Zuschlag) gegen 8.000 Euro (500 Euro monatlich plus 2.000 Euro privat).</p>
+      <p>Das Fazit: Immer beide Optionen durchrechnen. Frag den Versicherer über eine <a href='/aufnahme/risikovoranfrage/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Risikovoranfrage</a>, welche monatlichen Kosten er bei einem Zuschlag will, und rechne dann durch, wie oft die Diagnose Therapien braucht. Dann entscheiden.</p>
     </div>
   </section>
 
@@ -127,14 +127,14 @@ const related = [
       <p><strong>Enger Ausschluss:</strong> "Ausgeschlossen: Arthrose des rechten Knies." Das ist super eng. Nur das rechte Knie ist ausgeschlossen. Wenn dein linkes Knie später arthritisch wird, zahlt der Versicherer. Das ist ideal.</p>
       <p><strong>Mittlerer Ausschluss:</strong> "Ausgeschlossen: Arthrose." Jetzt ist jede Arthrose irgendwo im Körper ausgeschlossen. Knie, Hüfte, Wirbelsäule, alles. Das ist breiter und nachteiliger.</p>
       <p><strong>Breiter Ausschluss:</strong> "Ausgeschlossen: Erkrankungen des Bewegungsapparats." Das ist sehr breit. Jetzt fallen Arthrose, Rückenschmerzen, Sehnenschmerzen, Muskelzerrungen und alles andere auch drunter rein.</p>
-      <p>Immer in deinem Vertrag nachschauen, wie die Formulierung lautet. Je enger, desto besser für dich. Verhandel mit dem Versicherer. Manchmal lässt sich die Formulierung präzisieren.</p>
+      <p>Immer in deinem Vertrag nachschauen, wie die Formulierung lautet. Je enger, desto besser für dich. Verhandle mit dem Versicherer. Manchmal lässt sich die Formulierung präzisieren.</p>
     </div>
   </section>
 
   <section id='fazit' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Ein Leistungsausschluss kann die wirtschaftlich bessere Variante sein als ein Risikozuschlag, wenn die ausgeschlossene Diagnose selten Behandlungen braucht. Verhandel immer beide Optionen aus, achte auf die genaue Formulierung des Ausschlusses und bedenke: Ein Ausschluss bindet dich längerfristig an deinen Versicherer.</p>
+      <p>Ein Leistungsausschluss kann die wirtschaftlich bessere Variante sein als ein Risikozuschlag, wenn die ausgeschlossene Diagnose selten Behandlungen braucht. Verhandle immer beide Optionen aus, achte auf die genaue Formulierung des Ausschlusses und bedenke: Ein Ausschluss bindet dich längerfristig an deinen Versicherer.</p>
     </div>
   </section>
 
@@ -143,15 +143,15 @@ const related = [
     <div class='space-y-6'>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ein Leistungsausschluss aufgehoben werden?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, Leistungsausschluesse können aufgehoben werden, aber nur unter Bedingungen. Typischerweise frühestens nach 3 bis 5 Jahren symptomloser Zeit. Du musst dann einen neuen ärztlichen Bericht einreichen, der zeigt, dass die Erkrankung stabil ist oder abgeheilt ist. Der Versicherer kann die Aufhebung ablehnen oder an eine Prämienerhöhung knüpfen.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Ja, Leistungsausschlüsse können aufgehoben werden, aber nur unter Bedingungen. Typischerweise frühestens nach 3 bis 5 Jahren symptomloser Zeit. Du musst dann einen neuen ärztlichen Bericht einreichen, der zeigt, dass die Erkrankung stabil ist oder abgeheilt ist. Der Versicherer kann die Aufhebung ablehnen oder an eine Prämienerhöhung knüpfen.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Welche Diagnosen werden typisch ausgeschlossen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Chronische Erkrankungen wie Arthrose, Rückenschmerzen, Bluthochdruck und Diabetes werden häufig ausgeschlossen. Psychische Erkrankungen wie leichtere Depressionen kommen auch vor. Schwere Erkrankungen wie Krebs wird der Versicherer eher ablehnen oder einen hohen Zuschlag nehmen, statt einen Ausschluss zu gewähren.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Chronische Erkrankungen wie Arthrose, Rückenschmerzen, Bluthochdruck und Diabetes werden häufig ausgeschlossen. Psychische Erkrankungen wie leichtere Depressionen kommen auch vor. Schwere Erkrankungen wie Krebs wird der Versicherer eher ablehnen oder einen hohen Zuschlag nehmen, statt einen Ausschluss zu gewähren.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Gilt der Ausschluss auch bei Tarifwechsel?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Das kommt auf den Grund des Tarifwechsels an. Wenn du innerhalb des gleichen Versicherers einen besseren Tarif buchst (sogenannter 204er-Wechsel), bleibt der Ausschluss meist bestehen. Das ist ein großer Nachteil des Ausschlusses: Er hält dich an den Versicherer gebunden. Wenn du später aussteigen willst, hast du ein Problem.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Das kommt auf den Grund des Tarifwechsels an. Wenn du innerhalb des gleichen Versicherers einen besseren Tarif buchst (sogenannter 204er-Wechsel), bleibt der Ausschluss meist bestehen. Das ist ein großer Nachteil des Ausschlusses: Er hält dich an den Versicherer gebunden. Wenn du später aussteigen willst, hast du ein Problem.</div>
       </details>
     </div>
   </section>

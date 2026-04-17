@@ -3,10 +3,10 @@ import T6 from '../../../layouts/T6.astro';
 
 const toc = [
   { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
-  { id: 'größte-sorge', label: 'Die größte Sorge beim PKV-Wechsel' },
+  { id: 'groesste-sorge', label: 'Die größte Sorge beim PKV-Wechsel' },
   { id: 'beitrag-im-alter', label: 'Was im Alter mit dem PKV-Beitrag passiert' },
   { id: 'entlastungsmechanismen', label: 'Drei Entlastungsmechanismen im Detail' },
-  { id: 'drv-zuschuss', label: 'DRV-Zuschuss fuer PKV-Rentner' },
+  { id: 'drv-zuschuss', label: 'DRV-Zuschuss für PKV-Rentner' },
   { id: 'beitragsentlastungstarif', label: 'Beitragsentlastungstarif: Lohnt sich das?' },
   { id: 'konkrete-zahlen', label: 'Konkrete Zahlen: PKV-Beitrag mit 70' },
   { id: 'fazit', label: 'Fazit' },
@@ -17,14 +17,14 @@ const related = [
   {
     href: '/kosten/altersrueckstellung/',
     kategorie: 'Kosten',
-    title: 'Altersrückstellungen in der PKV erklaert',
+    title: 'Altersrückstellungen in der PKV erklärt',
     teaser: '351 Milliarden Euro und was sie dir bringen.',
     icon: 'balance',
   },
   {
     href: '/kosten/beitragsanpassung/',
     kategorie: 'Kosten',
-    title: 'PKV-Beitragsanpassung erklaert',
+    title: 'PKV-Beitragsanpassung erklärt',
     teaser: 'Warum Beiträge steigen und was zu tun ist.',
     icon: 'trending_up',
   },
@@ -39,7 +39,7 @@ const related = [
 ---
 <T6
   title='PKV im Alter: Bleibt der Beitrag bezahlbar?'
-  description='PKV-Beiträge im Alter beschaeftigen jeden Angestellten vor dem Wechsel. Wie Altersrückstellungen, Zuschlag-Wegfall und DRV-Zuschuss zusammenspielen.'
+  description='PKV-Beiträge im Alter beschäftigen jeden Angestellten vor dem Wechsel. Wie Altersrückstellungen, Zuschlag-Wegfall und DRV-Zuschuss zusammenspielen.'
   breadcrumb={{ kategorie: 'Kosten', kategorieHref: '/kosten/' }}
   toc={toc}
   date='Update April 2026'
@@ -52,8 +52,8 @@ const related = [
   ]}
   faqItems={[
     { question: `Wie hoch ist der PKV-Beitrag mit 70?`, answer: `Für Angestellte ca. 600 Euro monatlich (IGES-Debeka). Das ist oft niedriger als mit 50 Jahren. Beamte mit 70% Beihilfe zahlen ca. 230 Euro.` },
-    { question: `Zahlt die Rentenversicherung Zuschuss zur PKV?`, answer: `Ja, 8,15 % der Bruttorente (max. 50 % Beitrag). Bei 2.000 Euro Rente max. 163 Euro. Oft zu wenig, aber besser als nichts.` },
-    { question: `Kann ich im Alter in GKV zurückkehren?`, answer: `Ab 55 Jahren faktisch unmöglich (§ 6 Abs. 3a SGB V). Ausnahmen: Arbeitslose, Versicherungspflicht durch Einkommen unter JAEG. PKV ist weitgehend irreversibel.` }
+    { question: `Zahlt die Rentenversicherung Zuschuss zur PKV?`, answer: `Ja, 8,75 % der Bruttorente (max. 50 % Beitrag). Bei 2.000 Euro Rente max. 175 Euro. Oft zu wenig, aber besser als nichts.` },
+    { question: `Kann ich im Alter in den Basistarif wechseln?`, answer: `Ja. Jeder PKV-Versicherte hat per Gesetz das Recht, in den Basistarif seines Versicherers zu wechseln (§ 152 VAG). Der Höchstbeitrag liegt 2026 bei 1.017,18 Euro monatlich. Deine bisherigen Altersrückstellungen werden angerechnet, sodass der tatsächliche Beitrag oft deutlich niedriger ausfällt. Die Leistungen entsprechen dem GKV-Niveau.` }
   ]}
 >
   <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
@@ -65,7 +65,7 @@ const related = [
       </li>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
-        <span>Drei Entlastungsmechanismen wirken: Wegfall 10-Prozent-Zuschlag, Altersrückstellungen, DRV-Zuschuss (8,15 Prozent Rente, max 50 Prozent Beitrag)</span>
+        <span>Drei Entlastungsmechanismen wirken: Wegfall 10-Prozent-Zuschlag, Altersrückstellungen, DRV-Zuschuss (8,75 Prozent Rente, max 50 Prozent Beitrag)</span>
       </li>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
@@ -73,7 +73,7 @@ const related = [
       </li>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
-        <span>Beitragsentlastungstarife sind oft intransparent. Die regelmassigen Altersrückstellungen genuegen</span>
+        <span>Beitragsentlastungstarife sind oft intransparent. Die regelmäßigen Altersrückstellungen genügen</span>
       </li>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
@@ -83,14 +83,14 @@ const related = [
   </section>
 
   <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
-    <p>Die Frage nach der PKV im Alter ist die wichtigste bei der Entscheidung zum Wechsel. Sie verdient eine ehrliche Antwort: Ja, PKV wird im Alter teurer als die GKV für Durchschnittsverdiener. Aber nein, es ist nicht das Horrorzenario, das viele befuerchten. Altersrückstellungen, Zuschlag-Wegfall und DRV-Zuschuss wirken zusammen.</p>
+    <p>Die Frage nach der PKV im Alter ist die wichtigste bei der Entscheidung zum Wechsel. Sie verdient eine ehrliche Antwort: Ja, PKV wird im Alter teurer als die GKV für Durchschnittsverdiener. Aber nein, es ist nicht das Horrorszenario, das viele befürchten. Altersrückstellungen, Zuschlag-Wegfall und DRV-Zuschuss wirken zusammen.</p>
   </div>
 
-  <section id='größte-sorge' class='scroll-mt-28 mb-12'>
+  <section id='groesste-sorge' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Die größte Sorge beim PKV-Wechsel</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Umfragen zeigen: Die Angst vor hohen PKV-Beiträgen im Alter ist das größte Hindernis. Das ist verstaendlich aber teilweise ein Mythos. Die PKV ist strukturell besser ausgeruested für das Alter als die GKV.</p>
-      <p><strong>Vergleich:</strong> Ein GKV-Rentner mit 2.000 Euro Rente zahlt ca. 350 bis 400 Euro GKV-Beitrag. Ein PKV-Rentner mit 600 Euro Beitrag zahlt absolut mehr, aber die Praemie ist durch <a href='/kosten/altersrueckstellung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Altersrückstellungen</a> schon 40 bis 50 Prozent reduziert. Ohne diese wäre sie 1.000 bis 1.200 Euro.</p>
+      <p>Umfragen zeigen: Die Angst vor hohen PKV-Beiträgen im Alter ist das größte Hindernis. Das ist verständlich, aber teilweise ein Mythos. Die PKV ist strukturell besser ausgerüstet für das Alter als die GKV.</p>
+      <p><strong>Vergleich:</strong> Ein GKV-Rentner mit 2.000 Euro Rente zahlt ca. 350 bis 400 Euro GKV-Beitrag. Ein PKV-Rentner mit 600 Euro Beitrag zahlt absolut mehr, aber die Prämie ist durch <a href='/kosten/altersrueckstellung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Altersrückstellungen</a> schon 40 bis 50 Prozent reduziert. Ohne diese wäre sie 1.000 bis 1.200 Euro.</p>
     </div>
   </section>
 
@@ -107,26 +107,26 @@ const related = [
   <section id='entlastungsmechanismen' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Drei Entlastungsmechanismen im Detail</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p><strong>1. Wegfall des 10-Prozent-Zuschlags:</strong> Mit 60 Jahren entfällt dieser Zuschuss. Das spart ca. 10 Prozent des Beitrags sofort (z.B. 70 Euro bei 700 Euro Beitrag).</p>
+      <p><strong>1. Wegfall des 10-Prozent-Zuschlags:</strong> Mit 60 Jahren entfällt dieser Zuschlag. Das spart ca. 10 Prozent des Beitrags sofort (z.B. 70 Euro bei 700 Euro Beitrag).</p>
       <p><strong>2. Verrechnung der Altersrückstellung:</strong> Ab Renteneintritt verrechnet der Versicherer deine Rückstellung monatlich gegen die Leistungsausgaben. Das reduziert den Eigenanteil um 20 bis 40 Prozent laut IGES-Studie.</p>
-      <p><strong>3. DRV-Rentnerzuschuss:</strong> Die Deutsche Rentenversicherung zahlt 8,15 Prozent der Bruttorente (max. 50 Prozent Beitrag). Bei 2.000 Euro Rente sind das max. 163 Euro monatlich. Oft zu wenig, aber besser als nichts.</p>
+      <p><strong>3. DRV-Rentnerzuschuss:</strong> Die Deutsche Rentenversicherung zahlt 8,75 Prozent der Bruttorente (max. 50 Prozent Beitrag). Bei 2.000 Euro Rente sind das max. 175 Euro monatlich. Oft zu wenig, aber besser als nichts. Mehr dazu unter <a href='/lebenssituationen/rente/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV in der Rente</a>.</p>
     </div>
   </section>
 
   <section id='drv-zuschuss' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>DRV-Zuschuss für PKV-Rentner</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p><strong>Rechenbeispiel:</strong> Rente 2.000 Euro, PKV-Beitrag 600 Euro. DRV-Zuschuss: 2.000 × 8,15 % = 163 Euro. Du zahlst 600 - 163 = 437 Euro selbst.</p>
-      <p>Das Problem: Der DRV-Zuschuss ist oft zu niedrig. Bei kleiner Rente (1.200 Euro) zahlst du immer noch 500+ Euro selbst. Bei GKV-Rentner ist der Zuschuss oft ausreichend, weil die Gesamtbeiträge flacher sind.</p>
+      <p><strong>Rechenbeispiel:</strong> Rente 2.000 Euro, PKV-Beitrag 600 Euro. DRV-Zuschuss: 2.000 × 8,75 % = 175 Euro. Du zahlst 600 - 175 = 425 Euro selbst.</p>
+      <p>Das Problem: Der DRV-Zuschuss ist oft zu niedrig. Bei kleiner Rente (1.200 Euro) zahlst du immer noch 500+ Euro selbst. Beim GKV-Rentner ist der Zuschuss oft ausreichend, weil die Gesamtbeiträge flacher sind.</p>
     </div>
   </section>
 
   <section id='beitragsentlastungstarif' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Beitragsentlastungstarif: Lohnt sich das?</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>BET-Tarife versprechen: Zahlst du heute 27 bis 49 Euro Zusatz, spaerst du im Ruhestand ca. 100 Euro monatlich.</p>
-      <p><strong>Aber:</strong> Stiftung Warentest und Verbraucherzentralen bewerten BET kritisch. Oft intransparent, selten rentabel. Die normalen Altersrückstellungen genuegen.</p>
-      <p><strong>Besser:</strong> Sparen über die regelmassigen <a href='/kosten/altersrueckstellung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Altersrückstellungen</a>. Diese sind gesetzlich garantiert und transparent.</p>
+      <p>BET-Tarife versprechen: Zahlst du heute 27 bis 49 Euro Zusatz, sparst du im Ruhestand ca. 100 Euro monatlich.</p>
+      <p><strong>Aber:</strong> Stiftung Warentest und Verbraucherzentralen bewerten BET kritisch. Oft intransparent, selten rentabel. Die normalen Altersrückstellungen genügen.</p>
+      <p><strong>Besser:</strong> Sparen über die regelmäßigen <a href='/kosten/altersrueckstellung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Altersrückstellungen</a>. Diese sind gesetzlich garantiert und transparent.</p>
     </div>
   </section>
 
@@ -162,14 +162,14 @@ const related = [
           </tbody>
         </table>
       </div>
-      <p>Das Ueberraschungsergebnis: Mit 70 Jahren ist der Beitrag oft NIEDRIGER als mit 50, obwohl dein Einkommen halb ist. Altersrückstellungen wirken voll.</p>
+      <p>Das Überraschungsergebnis: Mit 70 Jahren ist der Beitrag oft niedriger als mit 50, obwohl dein Einkommen halb ist. Altersrückstellungen wirken voll.</p>
     </div>
   </section>
 
   <section id='fazit' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>PKV im Alter ist kein Horrorzenario. Drei solide Entlastungsmechanismen reduzieren die Belastung um 40 bis 50 Prozent. Das größte Risiko: Nicht frueh Altersrückstellungen aufbauen.</p>
+      <p>PKV im Alter ist kein Horrorszenario. Drei solide Entlastungsmechanismen reduzieren die Belastung um 40 bis 50 Prozent. Das größte Risiko: Nicht früh Altersrückstellungen aufbauen.</p>
       <p>Wichtig: <a href='/wechsel/pkv-in-gkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Rückkehr in die GKV</a> ist ab 55 Jahren praktisch unmöglich (§ 6 Abs. 3a SGB V). Die PKV-Entscheidung ist weitgehend irreversibel. Das sollte klar sein, bevor du wechselst.</p>
     </div>
   </section>
@@ -179,15 +179,15 @@ const related = [
     <div class='space-y-6'>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie hoch ist der PKV-Beitrag mit 70?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Für Angestellte ca. 600 Euro monatlich (IGES-Debeka). Das ist oft niedriger als mit 50 Jahren. Beamte mit 70% Beihilfe zahlen ca. 230 Euro.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Für Angestellte ca. 600 Euro monatlich (IGES-Debeka). Das ist oft niedriger als mit 50 Jahren. Beamte mit 70% Beihilfe zahlen ca. 230 Euro.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Zahlt die Rentenversicherung Zuschuss zur PKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, 8,15 % der Bruttorente (max. 50 % Beitrag). Bei 2.000 Euro Rente max. 163 Euro. Oft zu wenig, aber besser als nichts.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Ja, 8,75 % der Bruttorente (max. 50 % Beitrag). Bei 2.000 Euro Rente max. 175 Euro. Oft zu wenig, aber besser als nichts.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
-        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich im Alter in GKV zurückkehren?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ab 55 Jahren faktisch unmöglich (§ 6 Abs. 3a SGB V). Ausnahmen: Arbeitslose, Versicherungspflicht durch Einkommen unter JAEG. PKV ist weitgehend irreversibel.</div>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich im Alter in den Basistarif wechseln?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Ja. Jeder PKV-Versicherte hat per Gesetz das Recht, in den Basistarif seines Versicherers zu wechseln (§ 152 VAG). Der Höchstbeitrag liegt 2026 bei 1.017,18 Euro monatlich. Deine bisherigen Altersrückstellungen werden angerechnet, sodass der tatsächliche Beitrag oft deutlich niedriger ausfällt. Die Leistungen entsprechen dem GKV-Niveau.</div>
       </details>
     </div>
   </section>

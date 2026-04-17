@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 720" width="400" height="720">
+<defs><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap');
+text { font-family: 'Inter', system-ui, sans-serif; }
+</style></defs>
+<rect width="400" height="720" rx="12" fill="#FFFFFF"/>
+<text x="200" y="36" fill="#002046" font-size="18" font-weight="700" text-anchor="middle">Altersrückstellungen in der PKV</text>
+<text x="200" y="56" fill="#44474e" font-size="11" text-anchor="middle">So bleibt dein Beitrag im Alter bezahlbar</text>
+
+<!-- Phase 1 -->
+<rect x="30" y="80" width="340" height="160" rx="10" fill="#f3f4f5"/>
+<text x="200" y="112" fill="#002046" font-size="15" font-weight="700" text-anchor="middle">Einstieg (25 bis 45)</text>
+<rect x="46" y="130" width="187" height="26" rx="4" fill="#D4A017"/>
+<text x="139" y="148" fill="white" font-size="11" font-weight="600" text-anchor="middle">70 % Leistung</text>
+<rect x="237" y="130" width="129" height="26" rx="4" fill="#1b365d"/>
+<text x="301" y="148" fill="white" font-size="11" font-weight="600" text-anchor="middle">30 % Sparen</text>
+<text x="200" y="190" fill="#44474e" font-size="12" text-anchor="middle">30 % jeder Prämie bilden</text>
+<text x="200" y="208" fill="#44474e" font-size="12" text-anchor="middle">dein persönliches Polster</text>
+
+<!-- Arrow 1 -->
+<text x="200" y="256" fill="#D4A017" font-size="24" text-anchor="middle">↓</text>
+
+<!-- Phase 2 -->
+<rect x="30" y="264" width="340" height="160" rx="10" fill="#f3f4f5"/>
+<text x="200" y="296" fill="#002046" font-size="15" font-weight="700" text-anchor="middle">Aufbau (45 bis 60)</text>
+<text x="200" y="346" fill="#D4A017" font-size="32" font-weight="800" text-anchor="middle">38.800 €</text>
+<text x="200" y="372" fill="#44474e" font-size="13" font-weight="600" text-anchor="middle">Rückstellungen pro Kopf</text>
+<text x="200" y="396" fill="#44474e" font-size="12" text-anchor="middle">Kapital wächst durch Zinsen</text>
+
+<!-- Arrow 2 -->
+<text x="200" y="440" fill="#D4A017" font-size="24" text-anchor="middle">↓</text>
+
+<!-- Phase 3 -->
+<rect x="30" y="448" width="340" height="160" rx="10" fill="#f3f4f5"/>
+<text x="200" y="480" fill="#002046" font-size="15" font-weight="700" text-anchor="middle">Ruhestand (ab 65)</text>
+<text x="200" y="528" fill="#00261c" font-size="15" font-weight="700" text-anchor="middle">Rückstellungen federn</text>
+<text x="200" y="548" fill="#00261c" font-size="15" font-weight="700" text-anchor="middle">Kostensteigerung ab</text>
+<text x="200" y="580" fill="#44474e" font-size="12" text-anchor="middle">Beitrag sinkt, Zuschlag entfällt</text>
+
+</svg>

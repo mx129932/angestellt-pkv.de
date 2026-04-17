@@ -196,14 +196,14 @@ const hasSlotContent = Astro.slots.has('default');
             <!-- Beratung CTA -->
             <section>
               <p class='text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-4'>Beratung</p>
-              <a href='/beratung/' class='block bg-primary text-white rounded-xl p-6 hover:brightness-110 transition-all group'>
+              <button data-contact-trigger class='block w-full text-left bg-primary text-white rounded-xl p-6 hover:brightness-110 transition-all group cursor-pointer'>
                 <p class='font-serif text-lg leading-tight mb-2'>Unsicher beim Wechsel?</p>
-                <p class='text-primary-fixed-dim text-xs mb-4'>Kostenloses Erstgespräch, unabhängig, ohne Provision.</p>
+                <p class='text-primary-fixed-dim text-xs mb-4'>Kostenloses Erstgespräch, unabhängig, ohne Versicherungsbindung.</p>
                 <span class='inline-flex items-center gap-1 bg-amber-accent group-hover:bg-amber-accent-dark text-white font-semibold text-sm px-4 py-2 rounded-md transition-all'>
-                  Termin anfragen
-                  <span class='material-symbols-outlined text-[16px]'>arrow_forward</span>
+                  Experte kontaktieren
+                  <span class='material-symbols-outlined text-[16px]'>support_agent</span>
                 </span>
-              </a>
+              </button>
             </section>
           </div>
         </aside>
@@ -358,14 +358,14 @@ const hasSlotContent = Astro.slots.has('default');
       <!-- MOBILE: Sidebar-CTA ganz am Ende -->
       <section class='lg:hidden mt-16'>
         <p class='font-serif text-2xl text-primary mb-6'>Beratung</p>
-        <a href='/beratung/' class='block bg-primary text-white rounded-xl p-6 hover:brightness-110 transition-all group'>
+        <button data-contact-trigger class='block w-full text-left bg-primary text-white rounded-xl p-6 hover:brightness-110 transition-all group cursor-pointer'>
           <p class='font-serif text-lg leading-tight mb-2'>Unsicher beim Wechsel?</p>
-          <p class='text-primary-fixed-dim text-xs mb-4'>Kostenloses Erstgespräch, unabhängig, ohne Provision.</p>
+          <p class='text-primary-fixed-dim text-xs mb-4'>Kostenloses Erstgespräch, unabhängig, ohne Versicherungsbindung.</p>
           <span class='inline-flex items-center gap-1 bg-amber-accent group-hover:bg-amber-accent-dark text-white font-semibold text-sm px-4 py-2 rounded-md transition-all'>
-            Termin anfragen
-            <span class='material-symbols-outlined text-[16px]'>arrow_forward</span>
+            Experte kontaktieren
+            <span class='material-symbols-outlined text-[16px]'>support_agent</span>
           </span>
-        </a>
+        </button>
       </section>
     </div>
   </main>

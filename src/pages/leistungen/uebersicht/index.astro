@@ -5,8 +5,8 @@ const toc = [
   { id: 'zusammenfassung', label: 'Für dich zusammengefasst' },
   { id: 'kostenerstattung', label: 'Kostenerstattungsprinzip statt Sachleistung' },
   { id: 'ambulant', label: 'Ambulante Versorgung' },
-  { id: 'stationaer', label: 'Stationaere Behandlung' },
-  { id: 'zahn', label: 'Zahnmedizin und Kieferorthopaedie' },
+  { id: 'stationär', label: 'Stationäre Behandlung' },
+  { id: 'zahn', label: 'Zahnmedizin und Kieferorthopädie' },
   { id: 'sehhilfen', label: 'Sehhilfen und alternative Medizin' },
   { id: 'tarif-unterschiede', label: 'Was gute von schlechten Tarifen unterscheidet' },
   { id: 'fazit', label: 'Fazit' },
@@ -17,8 +17,8 @@ const related = [
   {
     href: '/leistungen/tarifbausteine/',
     kategorie: 'Leistungen',
-    title: 'PKV-Tarifbausteine erklaert',
-    teaser: 'Woraus sich dein Tarif zusammensetzt und wie du die richtige Kombination wahlst.',
+    title: 'PKV-Tarifbausteine erklärt',
+    teaser: 'Woraus sich dein Tarif zusammensetzt und wie du die richtige Kombination wählst.',
     icon: 'build',
   },
   {
@@ -39,16 +39,16 @@ const related = [
 ---
 <T6
   title='PKV-Leistungen im Überblick'
-  description='Welche Leistungen die PKV für Angestellte bietet und worin sie sich von der GKV unterscheidet: ambulant, stationaer, Zahn, Sehhilfen und Psychotherapie.'
+  description='Welche Leistungen die PKV für Angestellte bietet und worin sie sich von der GKV unterscheidet: ambulant, stationär, Zahn, Sehhilfen und Psychotherapie.'
   breadcrumb={{ kategorie: 'Leistungen', kategorieHref: '/leistungen/' }}
   toc={toc}
   date='Update April 2026'
   readingTime='9 Min. Lesezeit'
   related={related}
   faqItems={[
-    { question: `Kann die PKV Leistungen kuerzen?`, answer: `Nein, nicht im laufenden Tarif. Dein Vertrag garantiert die Leistung, sie während der Laufzeit nicht gekuerzt werden duerfen. Was sich ändert: Beiträge steigen (§203 VVG), aber Leistungen bleiben gleich. Anders als in der GKV, wo der Leistungskatalog staendig angepasst wird.` },
-    { question: `Muss ich bei der PKV in Vorkasse gehen?`, answer: `Ja, beim Arztbesuch. Du zahlst die Rechnung, reicht sie bei der PKV ein und bekommst das Geld erstattet. Das dauert typischerweise eine bis vier Wochen. Manche Versicherer zahlen auch direkt an den Arzt, wenn dieser dem System mitgeteilt hat. Bargeldreserven sind noetig.` },
-    { question: `Sind Vorsorgeuntersuchungen in der PKV enthalten?`, answer: `Ja. Frueherkennung und Praevention sind in guten Tarifen unbegrenzt enthalten: Mamografie, Koloskopie, Blutdruck-Untersuchung, Zahnreinigung etc. Das ist ein Leistungsvorteil gegenüber der GKV. Manche Versicherer zahlen sogar Fitness-Kurse oder Ernaehrungsberatung. Das haengt vom Tarif ab.` }
+    { question: `Kann die PKV Leistungen kürzen?`, answer: `Nein, nicht im laufenden Tarif. Dein Vertrag garantiert die Leistung, die während der Laufzeit nicht gekürzt werden darf. Was sich ändert: Beiträge steigen (§203 VVG), aber Leistungen bleiben gleich. Anders als in der GKV, wo der Leistungskatalog ständig angepasst wird.` },
+    { question: `Muss ich bei der PKV in Vorkasse gehen?`, answer: `Ja, beim Arztbesuch. Du zahlst die Rechnung, reichst sie bei der PKV ein und bekommst das Geld erstattet. Das dauert typischerweise eine bis vier Wochen. Manche Versicherer zahlen auch direkt an den Arzt. Bargeldreserven sind nötig.` },
+    { question: `Sind Vorsorgeuntersuchungen in der PKV enthalten?`, answer: `Ja. Früherkennung und Prävention sind in guten Tarifen unbegrenzt enthalten: Mammografie, Koloskopie, Blutdruck-Untersuchung, Zahnreinigung etc. Das ist ein Leistungsvorteil gegenüber der GKV. Manche Versicherer zahlen sogar Fitness-Kurse oder Ernährungsberatung. Das hängt vom Tarif ab.` }
   ]}
 >
   <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
@@ -56,11 +56,11 @@ const related = [
     <ul class='space-y-3 text-on-surface'>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
-        <span>Die PKV zahlt nach dem Kostenerstattungsprinzip, die GKV nach dem Sachleistungsprinzip. Das erklaert große Unterschiede.</span>
+        <span>Die PKV zahlt nach dem Kostenerstattungsprinzip, die GKV nach dem Sachleistungsprinzip. Das erklärt große Unterschiede.</span>
       </li>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
-        <span>PKV-Versicherte warten auf Facharzttermine durchschnittlich 9 Tage, GKV-Versicherte 10 Tage. 64 Prozent der PKV-Versicherten haben Termin innerhahl von 3 Tagen.</span>
+        <span>PKV-Versicherte warten auf Facharzttermine durchschnittlich 9 Tage, GKV-Versicherte 10 Tage. 64 Prozent der PKV-Versicherten haben Termin innerhalb von 3 Tagen.</span>
       </li>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
@@ -84,9 +84,9 @@ const related = [
   <section id='kostenerstattung' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Kostenerstattungsprinzip statt Sachleistung</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Das ist die zentrale Unterscheidung, aus der alle anderen folgen. In der GKV ist der Arzt Dienstleister der Kasse. Du zeigst die Versichertenkarte, die Kasse zahlt dem Arzt sein Honorar nach dem Einheitlichen Bewertungsmassstab (EBM). Der Arzt ist gebunden, du bist frei.</p>
-      <p>In der PKV ist der Arzt Unternehmer. Du bekommst die Rechnung nach der Gebührenordnung für Ärzte (GOAE), zahlst selbst oder reicht ein. Die PKV erstattet den Betrag dann nach deinen Tarifbedingungen. Der Arzt ist frei, du warst dich um die Kostenerschlusses und Erstattung.</p>
-      <p>Die GOAE-Saetze liegen typischerweise 20 bis 40 Prozent über dem EBM. Deshalb haben PKV-Versicherte bessere Zugang zu Fachärzten: Der Arzt verdient mehr, spart sich Buerogratie mit Kassenabrechnung, und kann sich mehr Zeit nehmen. Das erklaert, warum Wartezeiten in der PKV kuerzer sind.</p>
+      <p>Das ist die zentrale Unterscheidung, aus der alle anderen folgen. In der GKV ist der Arzt Dienstleister der Kasse. Du zeigst die Versichertenkarte, die Kasse zahlt dem Arzt sein Honorar nach dem Einheitlichen Bewertungsmaßstab (EBM). Der Arzt ist gebunden, du bist frei.</p>
+      <p>In der PKV ist der Arzt Unternehmer. Du bekommst die Rechnung nach der Gebührenordnung für Ärzte (GOÄ), zahlst selbst oder reichst ein. Die PKV erstattet den Betrag dann nach deinen Tarifbedingungen. Der Arzt ist frei, du kümmerst dich um die Kostenerstattung.</p>
+      <p>Die GOÄ-Sätze liegen typischerweise 20 bis 40 Prozent über dem EBM. Deshalb haben PKV-Versicherte besseren Zugang zu Fachärzten: Der Arzt verdient mehr, spart sich Bürokratie mit Kassenabrechnung und kann sich mehr Zeit nehmen. Das erklärt, warum Wartezeiten in der PKV kürzer sind.</p>
       <p>Wichtig: Kostenerstattung bedeutet nicht Vollerstattung. Dein Tarif definiert Höchsthonorare und Leistungsgrenzen. In schlechten Tarifen zahlst du Differenzen selbst. In guten Tarifen wird das volle Arzthonorar übernommen.</p>
     </div>
   </section>
@@ -94,58 +94,58 @@ const related = [
   <section id='ambulant' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Ambulante Versorgung</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Das ist die taeglich wahrgenommene Leistung: Hausarzt, Facharzt, Zahnarzt, Psychotherapeut, spezialisierte Behandlungen. In der PKV ist die Leistungstiefe meist höher als in der GKV. Der Grund ist das Kostenerstattungsprinzip.</p>
-      <p>Du gehst zum Arzt oder Therapeut deiner Wahl, ohne Genehmigungspflicht (in guten Tarifen). Du bekommst die Rechnung, sendest sie ein, bekommst das Geld zurück. Manche Versicherer zahlen direkt an den Arzt, wenn dieser dem Tarif mitteilt. Das ist transparenter, kommt aber nicht ueberall vor.</p>
-      <p>Die Wartezeit auf Facharztermine ist in der PKV kurzer. Laut GKV-Spitzenverband warten gesetzlich Versicherte median 10 Tage, 25 Prozent länger als 30 Tage. PKV-Versicherte: Durchschnitt 9 Tage, 64 Prozent Termin innerhalb von 3 Tagen. Das ist kein Zufall, das ist Marktsignal.</p>
-      <p>Bei psychotherapeutischen Leistungen ist der Unterschied noch größer. In der GKV dauert die Wartezeit auf Psychotherapie median 142 Tage, in der PKV gibt es bei vielen Tarifen keine Genehmigungspflicht und direkter Zugang zum Therapeut. Das ist ein quantitativ bedeutsamer Vorteil der PKV.</p>
+      <p>Das ist die täglich wahrgenommene Leistung: Hausarzt, Facharzt, Zahnarzt, Psychotherapeut, spezialisierte Behandlungen. In der PKV ist die Leistungstiefe meist höher als in der GKV. Der Grund ist das Kostenerstattungsprinzip.</p>
+      <p>Du gehst zum Arzt oder Therapeut deiner Wahl, ohne Genehmigungspflicht (in guten Tarifen). Du bekommst die Rechnung, sendest sie ein, bekommst das Geld zurück. Manche Versicherer rechnen direkt mit dem Arzt ab, sodass du nicht in Vorkasse gehen musst. Das ist bequemer, kommt aber nicht bei allen Tarifen vor.</p>
+      <p>Die Wartezeit auf Facharztermine ist in der PKV kürzer. Laut GKV-Spitzenverband warten gesetzlich Versicherte median 10 Tage, 25 Prozent länger als 30 Tage. PKV-Versicherte: Durchschnitt 9 Tage, 64 Prozent Termin innerhalb von 3 Tagen. Das ist kein Zufall, das ist Marktsignal.</p>
+      <p>Bei psychotherapeutischen Leistungen ist der Unterschied noch größer. In der GKV dauert die Wartezeit auf Psychotherapie median 142 Tage, in der PKV gibt es bei vielen Tarifen keine Genehmigungspflicht und direkten Zugang zum Therapeuten. Das ist ein quantitativ bedeutsamer Vorteil der PKV.</p>
     </div>
   </section>
 
-  <section id='stationaer' class='scroll-mt-28 mb-12'>
-    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Stationaere Behandlung</h2>
+  <section id='stationär' class='scroll-mt-28 mb-12'>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Stationäre Behandlung</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Im Krankenhaus wird der Unterschied zwischen GKV und PKV am sichtbarsten. In der GKV bekommst du ein Mehrbett- oder höchstens Zweibettzimmer, es sei denn, du zahlst einen Hotelzusatzbeitrag. Dein Arzt ist meist nicht dein Hausarzt, sondern der Stationaarzt.</p>
-      <p>In der PKV enthaelt ein guter Tarif das Recht auf Einfachzimmer und Chefarztbehandlung. Das heisst, dein Arzt darf als Chefaerzt das Krankenhaus leiten oder waehlt sich einen Chefarzt seiner Wahl, ohne dass dir ein Zusatzbeitrag entsteht. In der GKV zahlst du das private.</p>
-      <p>Schrittweise Versorgung ist in beiden Systemen gleich. Die Operationen, Bestrahlungen, Medikamente folgen den gleichen medizinischen Standards. Der Unterschied ist der Komfort und die ärztliche Kontinuitaet. Für deine Genesung ist das psychologisch relevant, ändert aber nicht die Erfolgsquoten.</p>
-      <p>Wichtig: Der stationaere Baustein ist nicht optional. Jeder PKV-Vertrag für Angestellte muss einen definierten stationaeren Schutz enthalten. Die Frage ist nur: Mit welchem Komfortniveau.</p>
+      <p>Im Krankenhaus wird der Unterschied zwischen GKV und PKV am sichtbarsten. In der GKV bekommst du ein Mehrbett- oder höchstens Zweibettzimmer, es sei denn, du zahlst einen Hotelzusatzbeitrag. Dein Arzt ist meist nicht dein Hausarzt, sondern der Stationsarzt.</p>
+      <p>In der PKV enthält ein guter Tarif das Recht auf Einbettzimmer und Chefarztbehandlung. Das heißt, der erfahrenste Arzt der Abteilung behandelt dich persönlich, ohne dass dir ein Zusatzbeitrag entsteht. In der GKV zahlst du Chefarztbehandlung und Einbettzimmer privat.</p>
+      <p>Schrittweise Versorgung ist in beiden Systemen gleich. Die Operationen, Bestrahlungen, Medikamente folgen den gleichen medizinischen Standards. Der Unterschied ist der Komfort und die ärztliche Kontinuität. Für deine Genesung ist das psychologisch relevant, ändert aber nicht die Erfolgsquoten.</p>
+      <p>Wichtig: Der stationäre Baustein ist nicht optional. Jeder PKV-Vertrag für Angestellte muss einen definierten stationären Schutz enthalten. Die Frage ist nur: Mit welchem Komfortniveau.</p>
     </div>
   </section>
 
   <section id='zahn' class='scroll-mt-28 mb-12'>
-    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Zahnmedizin und Kieferorthopaedie</h2>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Zahnmedizin und Kieferorthopädie</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Das ist die Leistungskategorie, in der PKV und GKV am weitesten auseinanderklaffen. In der GKV zahlst du Zahnbehandlung größtenteils selbst. Zahnersatz ist auf ein Pauschale von etwa 70 Prozent des Regelkostenersatzes begrenzt. Kieferorthopaedie ist nur für Kinder mit groessen Fehlstellungen Kassenleistung.</p>
-      <p>In der PKV ist Zahnbehandlung vollwaendig erstattungsfaehig. Zahnersatz (Bruecke, Krone, Implantat) ist je nach Tarif 75 bis 100 Prozent ersstattet. Kieferorthopaedie ist oft inbegriffen. Das bedeutet: Der Unterschied zwischen einem kaputten Zahn und seiner Rettung kann Hunderttausende Euro sparen.</p>
-      <p>Allerdings: Das größte Sparpotenzial liegt auch hier. Manche PKV-Tarife schließen Implantate ganz aus oder limitieren die Jahreserstattung. Die Dentallaborkosten werden nicht immer vollständig erstattet. Stiftung Warentest hat wiederholt schlecht bewertete Tarife gefunden, die Zahnleistungen versprechen, aber im Krankheitsfall massiv prüfbare Einspaerungen vornehmen.</p>
-      <p>Rechnung: Eine professionelle Zahnreinigung kostet etwa 100 bis 200 Euro pro Jahr, ist Privatleistung in GKV und PKV. Im Laufe eines Lebens bedeutet das bei guter PKV-Zahnabdeckung Ersparnisse im fuenf bis sechsstelligen Bereich gegenüber GKV-Standardabdeckung.</p>
+      <p>Das ist die Leistungskategorie, in der PKV und GKV am weitesten auseinanderklaffen. In der GKV zahlst du Zahnbehandlung größtenteils selbst. Zahnersatz ist auf eine Pauschale von etwa 70 Prozent des Regelkostenersatzes begrenzt. Kieferorthopädie ist nur für Kinder mit großen Fehlstellungen Kassenleistung.</p>
+      <p>In der PKV ist Zahnbehandlung vollständig erstattungsfähig. Zahnersatz (Brücke, Krone, Implantat) ist je nach Tarif 75 bis 100 Prozent erstattet. Kieferorthopädie ist oft inbegriffen. Das bedeutet: Der Unterschied zwischen einem kaputten Zahn und seiner Rettung kann Tausende Euro sparen.</p>
+      <p>Allerdings: Das größte Sparpotenzial liegt auch hier. Manche PKV-Tarife schließen Implantate ganz aus oder limitieren die Jahreserstattung. Die Dentallaborkosten werden nicht immer vollständig erstattet. Stiftung Warentest hat wiederholt schlecht bewertete Tarife gefunden, die Zahnleistungen versprechen, aber im Krankheitsfall massiv Einsparungen vornehmen.</p>
+      <p>Rechnung: Eine professionelle Zahnreinigung kostet etwa 100 bis 200 Euro pro Jahr, ist Privatleistung in GKV und PKV. Im Laufe eines Lebens bedeutet das bei guter PKV-Zahnabdeckung Ersparnisse im fünf- bis sechsstelligen Bereich gegenüber GKV-Standardabdeckung.</p>
     </div>
   </section>
 
   <section id='sehhilfen' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Sehhilfen und alternative Medizin</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Sehhilfen (Brille, Kontaktlinsen) sind in der GKV nicht versichert. Du zahlst selbst, ausser für Kinder und unter besimmten seltenen Bedingungen. In guten PKV-Tarifen wird ein Zuschuss auf Brille und Kontaktlinsen gezahlt, oft bis zu 200 Euro alle zwei Jahre.</p>
-      <p>Alternative Heilverfahren sind in der GKV explizit nicht versichert. Homoeopathie, Osteopathie, Eigenbluttherapie zahlst du selbst. In der PKV gibt es Tarife mit Abdeckung, die einen Zuschuss auf diese Leistungen vorsehen. Das ist ein Nischenvorteil für bestimmte Versicherte, nicht der große Unterschied.</p>
-      <p>Logopaedie und Ergotzerapie sind in der GKV begrenzt (Verordnung durch Arzt, Genehmigungspflicht, 10 Therapieeinheiten pro Jahr). In der PKV ohne Genehmigungspflicht in guten Tarifen. Das ist ein realer Vorteil für Patienten mit chronischen Erkrankungen oder Sprachstoerungen.</p>
-      <p>Reiseversicherung im Ausland ist in der PKV fast immer erwerblich. Die GKV leistet im Ausland selten und wenig. Für Reisen ist die PKV massiv attraktiver.</p>
+      <p>Sehhilfen (Brille, Kontaktlinsen) sind in der GKV nicht versichert. Du zahlst selbst, außer für Kinder und unter bestimmten seltenen Bedingungen. In guten PKV-Tarifen wird ein Zuschuss auf Brille und Kontaktlinsen gezahlt, oft bis zu 200 Euro alle zwei Jahre.</p>
+      <p>Alternative Heilverfahren sind in der GKV explizit nicht versichert. Homöopathie, Osteopathie, Eigenbluttherapie zahlst du selbst. In der PKV gibt es Tarife mit Abdeckung, die einen Zuschuss auf diese Leistungen vorsehen. Das ist ein Nischenvorteil für bestimmte Versicherte, nicht der große Unterschied.</p>
+      <p>Logopädie und Ergotherapie sind in der GKV begrenzt (Verordnung durch Arzt, Genehmigungspflicht, 10 Therapieeinheiten pro Jahr). In der PKV ohne Genehmigungspflicht in guten Tarifen. Das ist ein realer Vorteil für Patienten mit chronischen Erkrankungen oder Sprachstörungen.</p>
+      <p>Reiseversicherung im Ausland ist in der PKV fast immer eingeschlossen. Die GKV leistet im Ausland selten und wenig. Für Reisen ist die PKV massiv attraktiver.</p>
     </div>
   </section>
 
   <section id='tarif-unterschiede' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was gute von schlechten Tarifen unterscheidet</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Die größten Unterschiede entstehen nicht durch PKV vs. GKV, sondern durch guter PKV-Tarif vs. schlechter PKV-Tarif. Stiftung Warentest hat 2025 insgesamt 1.245 Tarifkombinationen geteilt und 384 PKV-Tarife bewertet. Viele davon wurden als nicht empfehlenswert eingestuft.</p>
-      <p><strong>Gute Tarife haben:</strong> Keine Genehmigungspflicht für Facharztbesuche. Zahnersatz-Abdeckung (nicht nur Behandlung). Höhe Erstattungsquoten (90 bis 100 Prozent der Arzthonorar nach GOAE). Unbegrenzte Jahresleistung für ambulant. Einfachbett im Krankenhaus. Psychotherapie ohne Genehmigung. Notlagentarif im Alter, wenn Beiträge zu hoch werden.</p>
+      <p>Die größten Unterschiede entstehen nicht durch PKV vs. GKV, sondern durch guten PKV-Tarif vs. schlechten PKV-Tarif. Stiftung Warentest hat 2025 insgesamt 1.245 Tarifkombinationen getestet und 384 PKV-Tarife bewertet. Viele davon wurden als nicht empfehlenswert eingestuft.</p>
+      <p><strong>Gute Tarife haben:</strong> Keine Genehmigungspflicht für Facharztbesuche. Zahnersatz-Abdeckung (nicht nur Behandlung). Hohe Erstattungsquoten (90 bis 100 Prozent der Arzthonorare nach GOÄ). Unbegrenzte Jahresleistung für ambulant. Einfachbett im Krankenhaus. Psychotherapie ohne Genehmigung. Notlagentarif im Alter, wenn Beiträge zu hoch werden.</p>
       <p><strong>Schlechte Tarife haben:</strong> Genehmigungspflicht für alles möglich. Zahnersatz unter 50 Prozent oder ganz ausgeschlossen. Höchstgrenzen für ambulante Leistungen. Lange Ausschlussfristen für Zahnersatz (acht bis zehn Jahre). Mehrbettzimmer im Krankenhaus als Standard. Psychotherapie nur nach Genehmigung. Zu hohe Selbstbehalte, die den Leistungsvorteil aufzehren.</p>
-      <p>Die Bitrags-Unterschiede sind gross. Ein Billig-Tarif mit 300 Euro monatlich kann im Krankheitsfall deutlich weniger leisten als ein 400-Euro-Tarif eines renommierten Anbieters. Die Auswahl ist entscheidend. Nutze externe Vergleichsseiten oder Fachberatung, keine Maklerseiten der Versicherer selbst.</p>
+      <p>Die Beitrags-Unterschiede sind groß. Ein Billig-Tarif mit 300 Euro monatlich kann im Krankheitsfall deutlich weniger leisten als ein 400-Euro-Tarif eines renommierten Anbieters. Die Auswahl ist entscheidend. Nutze unabhängige Vergleichsportale oder <a href='/leistungen/beste-pkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Fachberatung</a>, nicht die Seiten der Versicherer selbst.</p>
     </div>
   </section>
 
   <section id='fazit' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Die PKV bietet ein anderes Leistungsversprechen als die <a href='/grundlagen/gkv-vs-pkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>GKV</a>. Das ist nicht automatisch besser, aber strukturell anderes. Du bekommst schnellere Termine, hoehwertigere Zahnabdeckung, mehr Komfort im Krankenhaus, freiere Arztwaahl.</p>
-      <p>Der Gegenwert ist: Höherer Beitrag im Einzelnen (nicht für Familien), keine Familienversicherung, Beiträge im Alter, Gesundheitsprüfung beim Antrag. Und ein Risiko: Wenn der Tarif schlecht gewaehlt ist, zahlst du für Leistungen, die nicht ankommen.</p>
+      <p>Die PKV bietet ein anderes Leistungsversprechen als die <a href='/grundlagen/gkv-vs-pkv/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>GKV</a>. Das ist nicht automatisch besser, aber strukturell anders. Du bekommst schnellere Termine, höherwertige Zahnabdeckung, mehr Komfort im Krankenhaus, freiere Arztwahl.</p>
+      <p>Der Gegenwert ist: Höherer Beitrag im Einzelnen (nicht für Familien), keine Familienversicherung, Beiträge im Alter, Gesundheitsprüfung beim Antrag. Und ein Risiko: Wenn der Tarif schlecht gewählt ist, zahlst du für Leistungen, die nicht ankommen.</p>
       <p>Für Entscheidung brauchst du konkrete Zahlen für deine Situation. Lies, wie du <a href='/leistungen/tarifbausteine/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Tarifbausteine</a> richtig kombinierst, oder nutze unseren <a href='/rechner/pkv-gkv-vergleich/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-GKV-Vergleichsrechner</a> für konkrete Zahlen.</p>
     </div>
   </section>
@@ -154,16 +154,16 @@ const related = [
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
     <div class='space-y-6'>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
-        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann die PKV Leistungen kuerzen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein, nicht im laufenden Tarif. Dein Vertrag garantiert die Leistung, sie während der Laufzeit nicht gekuerzt werden duerfen. Was sich ändert: Beiträge steigen (§203 VVG), aber Leistungen bleiben gleich. Anders als in der GKV, wo der Leistungskatalog staendig angepasst wird.</div>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann die PKV Leistungen kürzen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Nein, nicht im laufenden Tarif. Dein Vertrag garantiert die Leistung, die während der Laufzeit nicht gekürzt werden darf. Was sich ändert: Beiträge steigen (§203 VVG), aber Leistungen bleiben gleich. Anders als in der GKV, wo der Leistungskatalog ständig angepasst wird.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Muss ich bei der PKV in Vorkasse gehen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja, beim Arztbesuch. Du zahlst die Rechnung, reicht sie bei der PKV ein und bekommst das Geld erstattet. Das dauert typischerweise eine bis vier Wochen. Manche Versicherer zahlen auch direkt an den Arzt, wenn dieser dem System mitgeteilt hat. Bargeldreserven sind noetig.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Ja, beim Arztbesuch. Du zahlst die Rechnung, reichst sie bei der PKV ein und bekommst das Geld erstattet. Das dauert typischerweise eine bis vier Wochen. Manche Versicherer zahlen auch direkt an den Arzt. Bargeldreserven sind nötig.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Sind Vorsorgeuntersuchungen in der PKV enthalten?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja. Frueherkennung und Praevention sind in guten Tarifen unbegrenzt enthalten: Mamografie, Koloskopie, Blutdruck-Untersuchung, Zahnreinigung etc. Das ist ein Leistungsvorteil gegenüber der GKV. Manche Versicherer zahlen sogar Fitness-Kurse oder Ernaehrungsberatung. Das haengt vom Tarif ab.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Ja. Früherkennung und Prävention sind in guten Tarifen unbegrenzt enthalten: Mammografie, Koloskopie, Blutdruck-Untersuchung, Zahnreinigung etc. Das ist ein Leistungsvorteil gegenüber der GKV. Manche Versicherer zahlen sogar Fitness-Kurse oder Ernährungsberatung. Das hängt vom Tarif ab.</div>
       </details>
     </div>
   </section>

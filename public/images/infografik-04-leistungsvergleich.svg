@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" width="920" height="460">
+<defs><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap');
+text { font-family: 'Inter', system-ui, sans-serif; }
+</style></defs>
+<rect width="920" height="460" rx="12" fill="#FFFFFF"/>
+<text x="460" y="42" fill="#002046" font-size="20" font-weight="700" text-anchor="middle">Leistungen im Vergleich</text>
+<text x="460" y="64" fill="#44474e" font-size="13" text-anchor="middle">PKV-Volltarif vs. GKV-Standard</text>
+<rect x="48" y="82" width="824" height="38" rx="0" fill="#002046"/>
+<text x="68" y="106" fill="white" font-size="14" font-weight="600">Leistung</text>
+<text x="620" y="106" fill="#D4A017" font-size="14" font-weight="700" text-anchor="middle">PKV</text>
+<text x="800" y="106" fill="#87a0cd" font-size="14" font-weight="600" text-anchor="middle">GKV</text>
+<rect x="48" y="120" width="824" height="42" fill="#f3f4f5"/>
+<text x="68" y="146" fill="#002046" font-size="14" font-weight="500">Chefarztbehandlung</text>
+<text x="620" y="147" fill="#166534" font-size="17" font-weight="700" text-anchor="middle">✓</text>
+<text x="800" y="147" fill="#991b1b" font-size="17" font-weight="700" text-anchor="middle">✗</text>
+<rect x="48" y="162" width="824" height="42" fill="#FFFFFF"/>
+<text x="68" y="188" fill="#002046" font-size="14" font-weight="500">Einzelzimmer</text>
+<text x="620" y="189" fill="#166534" font-size="17" font-weight="700" text-anchor="middle">✓</text>
+<text x="800" y="189" fill="#991b1b" font-size="17" font-weight="700" text-anchor="middle">✗</text>
+<rect x="48" y="204" width="824" height="42" fill="#f3f4f5"/>
+<text x="68" y="230" fill="#002046" font-size="14" font-weight="500">Zahnersatz 80 bis 100 %</text>
+<text x="620" y="231" fill="#166534" font-size="17" font-weight="700" text-anchor="middle">✓</text>
+<text x="800" y="231" fill="#44474e" font-size="17" font-weight="700" text-anchor="middle">60 %</text>
+<rect x="48" y="246" width="824" height="42" fill="#FFFFFF"/>
+<text x="68" y="272" fill="#002046" font-size="14" font-weight="500">Heilpraktiker</text>
+<text x="620" y="273" fill="#166534" font-size="17" font-weight="700" text-anchor="middle">✓</text>
+<text x="800" y="273" fill="#991b1b" font-size="17" font-weight="700" text-anchor="middle">✗</text>
+<rect x="48" y="288" width="824" height="42" fill="#f3f4f5"/>
+<text x="68" y="314" fill="#002046" font-size="14" font-weight="500">Sehhilfen</text>
+<text x="620" y="315" fill="#166534" font-size="17" font-weight="700" text-anchor="middle">✓</text>
+<text x="800" y="315" fill="#991b1b" font-size="17" font-weight="700" text-anchor="middle">✗</text>
+<rect x="48" y="330" width="824" height="42" fill="#FFFFFF"/>
+<text x="68" y="356" fill="#002046" font-size="14" font-weight="500">Freie Arztwahl weltweit</text>
+<text x="620" y="357" fill="#166534" font-size="17" font-weight="700" text-anchor="middle">✓</text>
+<text x="800" y="357" fill="#991b1b" font-size="17" font-weight="700" text-anchor="middle">✗</text>
+<rect x="48" y="372" width="824" height="42" fill="#f3f4f5"/>
+<text x="68" y="398" fill="#002046" font-size="14" font-weight="500">Kurze Wartezeiten</text>
+<text x="620" y="399" fill="#166534" font-size="17" font-weight="700" text-anchor="middle">✓</text>
+<text x="800" y="399" fill="#991b1b" font-size="17" font-weight="700" text-anchor="middle">✗</text>
+
+</svg>

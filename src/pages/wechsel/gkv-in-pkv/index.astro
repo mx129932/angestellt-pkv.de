@@ -7,7 +7,7 @@ const toc = [
   { id: 'ablauf', label: 'Schritt für Schritt: So läuft der Wechsel' },
   { id: 'fristen', label: 'Fristen und Kündigungstermine' },
   { id: 'sonderfall', label: 'Sonderfälle: Jobwechsel und Gehaltsänderung' },
-  { id: 'rueckfall', label: 'Was passiert wenn du unter die JAEG fällst' },
+  { id: 'rueckfall', label: 'Was passiert, wenn du unter die JAEG fällst' },
   { id: 'fazit', label: 'Fazit' },
   { id: 'faq', label: 'Häufige Fragen' },
 ];
@@ -38,14 +38,14 @@ const related = [
 ---
 <T6
   title='Von der GKV in die PKV wechseln als Angestellter'
-  description='Schritt für Schritt von der GKV in die PKV wechseln als Angestellter: Voraussetzungen, Ablauf, Fristen und was bei JAEG-Rückfall passiert.'
+  description='Von der GKV in die PKV wechseln als Angestellter: Voraussetzungen, Ablauf, Fristen und was bei einem Gehaltsrückfall unter die JAEG passiert.'
   breadcrumb={{ kategorie: 'Wechsel', kategorieHref: '/wechsel/' }}
   toc={toc}
   date='Update April 2026'
   readingTime='9 Min. Lesezeit'
   related={related}
   faqItems={[
-    { question: `Muss ich sofort wechseln wenn ich über die JAEG komme?`, answer: `Nein. Die Versicherungspflicht endet, wenn die Grenze überschritten wird, aber du kannst freiwillig in der GKV bleiben. Nur die Möglichkeit des Wechsels entsteht. Eine Pflicht zum Wechsel gibt es nicht. Viele Angestellte mit Familie entscheiden sich bewusst dafür, freiwillig in der GKV zu bleiben, weil die Familienversicherung wirtschaftlicher ist.` },
+    { question: `Muss ich sofort wechseln, wenn ich über die JAEG komme?`, answer: `Nein. Die Versicherungspflicht endet, wenn die Grenze überschritten wird, aber du kannst freiwillig in der GKV bleiben. Nur die Möglichkeit des Wechsels entsteht. Eine Pflicht zum Wechsel gibt es nicht. Viele Angestellte mit Familie entscheiden sich bewusst dafür, freiwillig in der GKV zu bleiben, weil die Familienversicherung wirtschaftlicher ist.` },
     { question: `Kann mein Arbeitgeber den Wechsel ablehnen?`, answer: `Nein, dein Arbeitgeber hat kein Mitspracherecht bei deiner Krankenversicherungswahl. Allerdings muss dein Arbeitgeber dich korrekt bei der neuen Krankenkasse abmelden und anmelden. Dies erfolgt über die elektronischen Verfahren (ab 2026 über ELStAM). Dein Arbeitgeber hat hier nur administrative Aufgaben, keine Entscheidungsbefugnisse.` },
     { question: `Was passiert bei Teilzeitarbeit mit der PKV?`, answer: `Teilzeitarbeit ändert nichts an den Regeln. Es geht um dein Jahresbruttogehalt. Wenn dieses über 77.400 Euro liegt, bist du versicherungsfrei. Wenn es darunter sinkt, wirst du wieder versicherungspflichtig. Die PKV selbst kümmert sich nicht darum, ob du Vollzeit oder Teilzeit arbeitest. Nur die Höhe des Einkommens zählt.` }
   ]}
@@ -94,7 +94,7 @@ const related = [
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
       <p><strong>Schritt 1: Angebot von der PKV einholen</strong>. Recherchiere mehrere Anbieter. Die Stiftung Warentest hat regelmäßig PKV-Tarife im Test. Wichtig: Verlange ein schriftliches Angebot mit Beitrag, Leistungsumfang und Tarifdetails. Mündliche Zusagen sind später nicht bindend.</p>
       <p><strong>Schritt 2: Gesundheitsfragebogen ausfüllen</strong>. Die PKV wird dich nach Vorerkrankungen, Operationen und Behandlungen in den letzten zehn Jahren fragen. Sei hier absolut ehrlich und vollständig. Jede falsche oder verschwiegene Angabe kann später zu Leistungsausschlüssen oder sogar zur Kündigung des Vertrags führen. Wenn du unsicher bist, nutze eine anonyme Risikovoranfrage, um zu prüfen, ob du überhaupt aufgenommen wirst und mit welchen Zuschlägen zu rechnen ist.</p>
-      <p><strong>Schritt 3: Versicherer wählen und Antrag stellen</strong>. Erst nachdem du dich für einen Versicherer entschieden hast, musst du die PKV kündigen. Der Vertrag wird erst rechtskräftig mit deiner Unterschrift. Der Versicherer wird die Annahme schriftlich bestätigen.</p>
+      <p><strong>Schritt 3: Versicherer wählen und Antrag stellen</strong>. Erst nachdem du dich für einen Versicherer entschieden hast, stellst du den Antrag. Der Vertrag wird erst rechtskräftig mit deiner Unterschrift. Der Versicherer wird die Annahme schriftlich bestätigen.</p>
       <p><strong>Schritt 4: GKV kündigen</strong>. Dies ist ein wichtiger Punkt: Du kannst die GKV nur kündigen, wenn bereits ein Annahmeschreiben der PKV vorliegt. Die Kündigungsfrist zur GKV beträgt einen Monat zum Ende eines Kalendermonats. Das heißt, wenn du am 15. März deine Kündigung einreichst, endet die GKV zum 30. April. Die PKV muss zum 1. Mai beginnen oder später. Es darf keine Lücke entstehen.</p>
       <p><strong>Schritt 5: Versicherungsbescheinigung organisieren</strong>. Teile deinem Arbeitgeber mit, dass du die Krankenversicherung wechselst. Ab 2026 erfolgt die Meldung digital über ELStAM (Elektronische Lohnsteuerabzugsmerkmale) automatisch an dein Finanzamt und deinen Arbeitgeber. Du brauchst dies als Nachweis für die Besteuerung.</p>
     </div>
@@ -114,20 +114,20 @@ const related = [
   <section id='sonderfall' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Sonderfälle: Jobwechsel und Gehaltsänderung</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p><strong>Wechsel zu neuem Arbeitgeber mit höherem Gehalt</strong>. Wenn du die Stelle wechselst und dein Gehalt über die JAEG steigt, hast du erneut das Recht, die GKV zu verlassen. Die Kündigungsfrist bleibt ein Monat zum Ende eines Kalendermonats. Achte darauf, dass der neue Arbeitsvertrag schriftlich die verbindliche Gehaltsangabe enthält. Versicherer können nachfragen, ob der Lohn tatsächlich wie angekündigt gezahlt wird.</p>
+      <p><strong>Wechsel zu neuem Arbeitgeber mit höherem Gehalt</strong>. Wenn du die Stelle wechselst und dein Gehalt über die JAEG steigt, hast du erneut das Recht, die GKV zu verlassen. Die Kündigungsfrist bleibt ein Monat zum Ende eines Kalendermonats. Achte darauf, dass der neue Arbeitsvertrag schriftlich die verbindliche Gehaltsangabe enthält. Der <a href='/kosten/arbeitgeberzuschuss/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Arbeitgeberzuschuss</a> muss beim neuen Arbeitgeber erneut beantragt werden. Versicherer können nachfragen, ob der Lohn tatsächlich wie angekündigt gezahlt wird.</p>
       <p><strong>Beförderung im gleichen Unternehmen</strong>. Wenn dein Gehalt durch eine Beförderung die Grenze überschreitet, gelten die gleichen Fristen. Die GKV kann monatlich gekündigt werden. Es ist eine gute Idee, die Beförderungsurkunde oder das Schreiben zur Gehaltserhöhung mit ins PKV-Dossier zu nehmen.</p>
       <p><strong>Befristeter Kontrakt mit hohem Gehalt</strong>. Hier ist Vorsicht geboten. Wenn dein Arbeitsverhältnis beispielsweise auf zwei Jahre befristet ist und danach endet, solltest du bereits mit der Planung deines Rückwegs beginnen, lange bevor das Verhältnis endet. Die Rückkehr in die GKV unter 55 Jahren ist möglich, wenn dein Einkommen wieder unter 77.400 Euro fällt. Ab 55 wird es problematisch.</p>
     </div>
   </section>
 
   <section id='rueckfall' class='scroll-mt-28 mb-12'>
-    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was passiert wenn du unter die JAEG fällst</h2>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Was passiert, wenn du unter die JAEG fällst</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
       <p>Szenario: Du bist privat versichert, wechselst die Stelle oder reduzierst deine Stunden, und dein Einkommen sinkt unter 77.400 Euro. Was passiert?</p>
-      <p><strong>Automatische Versicherungspflicht</strong>. Die GKV wird dich automatisch versicherungspflichtig. Der neue Arbeitgeber oder deine aktuelle Krankenversicherung erhält den Bescheid. Du wirst wieder in eine gesetzliche Kasse aufgenommen. Dies ist nicht optional.</p>
+      <p><strong>Automatische Versicherungspflicht</strong>. Du wirst automatisch wieder versicherungspflichtig in der GKV. Der neue Arbeitgeber oder deine aktuelle Krankenversicherung erhält den Bescheid. Du wirst wieder in eine gesetzliche Kasse aufgenommen. Dies ist nicht optional.</p>
       <p><strong>Befreiungsmöglichkeit</strong>. Du hast jedoch ein Recht nach § 8 SGB V: Innerhalb von drei Monaten nach Beginn dieser neuen Versicherungspflicht kannst du einen Antrag auf Befreiung stellen und in der PKV bleiben. Dieser Antrag muss schriftlich bei der GKV eingereicht werden. Die Befreiung gilt für dein ganzes Leben und kann nicht widerrufen werden, solange dein Gehalt unter der Grenze bleibt.</p>
       <p><strong>Fristen einhalten</strong>. Dies ist kritisch. Die drei Monate sind absolute Deadline. Viele Angestellte übersehen diese Frist und landen ungewollt zurück in der GKV. Es ist eine gute Praxis, sich diesen Termin im Kalender zu notieren, sobald die Versicherungspflicht eintritt.</p>
-      <p><strong>Besonderheit: ALG I und Rückkehrwege</strong>. Fällst du unter die JAEG und bekommst danach Arbeitslosengeld I, wird dies automatisch versicherungspflichtig in der GKV. Die PKV-Befreiung nach § 8 SGB V gilt hier nicht, weil ALG I eine andere Versicherungspflicht auslöst. Du müsstest dann in der GKV versichert sein. Dies ist einer der Gründe, warum die 55-Jahre-Grenze so kritisch ist: Älter als 55 und arbeitslos? Dann bleibt nur noch die GKV.</p>
+      <p><strong>Besonderheit: ALG I und Rückkehrwege</strong>. Fällst du unter die JAEG und bekommst danach Arbeitslosengeld I, wirst du automatisch in der GKV versicherungspflichtig. Die PKV-Befreiung nach § 8 SGB V gilt hier nicht, weil ALG I eine andere Versicherungspflicht auslöst. Du müsstest dann in der GKV versichert sein. Dies ist einer der Gründe, warum die 55-Jahre-Grenze so kritisch ist: Älter als 55 und arbeitslos? Dann bleibt nur noch die GKV.</p>
     </div>
   </section>
 
@@ -142,16 +142,16 @@ const related = [
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
     <div class='space-y-6'>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
-        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Muss ich sofort wechseln wenn ich über die JAEG komme?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein. Die Versicherungspflicht endet, wenn die Grenze überschritten wird, aber du kannst freiwillig in der GKV bleiben. Nur die Möglichkeit des Wechsels entsteht. Eine Pflicht zum Wechsel gibt es nicht. Viele Angestellte mit Familie entscheiden sich bewusst dafür, freiwillig in der GKV zu bleiben, weil die Familienversicherung wirtschaftlicher ist.</div>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Muss ich sofort wechseln, wenn ich über die JAEG komme?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Nein. Die Versicherungspflicht endet, wenn die Grenze überschritten wird, aber du kannst freiwillig in der GKV bleiben. Nur die Möglichkeit des Wechsels entsteht. Eine Pflicht zum Wechsel gibt es nicht. Viele Angestellte mit Familie entscheiden sich bewusst dafür, freiwillig in der GKV zu bleiben, weil die Familienversicherung wirtschaftlicher ist.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann mein Arbeitgeber den Wechsel ablehnen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein, dein Arbeitgeber hat kein Mitspracherecht bei deiner Krankenversicherungswahl. Allerdings muss dein Arbeitgeber dich korrekt bei der neuen Krankenkasse abmelden und anmelden. Dies erfolgt über die elektronischen Verfahren (ab 2026 über ELStAM). Dein Arbeitgeber hat hier nur administrative Aufgaben, keine Entscheidungsbefugnisse.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Nein, dein Arbeitgeber hat kein Mitspracherecht bei deiner Krankenversicherungswahl. Allerdings muss dein Arbeitgeber dich korrekt bei der neuen Krankenkasse abmelden und anmelden. Dies erfolgt über die elektronischen Verfahren (ab 2026 über ELStAM). Dein Arbeitgeber hat hier nur administrative Aufgaben, keine Entscheidungsbefugnisse.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was passiert bei Teilzeitarbeit mit der PKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Teilzeitarbeit ändert nichts an den Regeln. Es geht um dein Jahresbruttogehalt. Wenn dieses über 77.400 Euro liegt, bist du versicherungsfrei. Wenn es darunter sinkt, wirst du wieder versicherungspflichtig. Die PKV selbst kümmert sich nicht darum, ob du Vollzeit oder Teilzeit arbeitest. Nur die Höhe des Einkommens zählt.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Teilzeitarbeit ändert nichts an den Regeln. Es geht um dein Jahresbruttogehalt. Wenn dieses über 77.400 Euro liegt, bist du versicherungsfrei. Wenn es darunter sinkt, wirst du wieder versicherungspflichtig. Die PKV selbst kümmert sich nicht darum, ob du Vollzeit oder Teilzeit arbeitest. Nur die Höhe des Einkommens zählt.</div>
       </details>
     </div>
   </section>

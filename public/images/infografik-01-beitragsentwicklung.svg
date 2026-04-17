@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" width="920" height="460">
+<defs><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap');
+text { font-family: 'Inter', system-ui, sans-serif; }
+</style></defs>
+<rect width="920" height="460" rx="12" fill="#FFFFFF"/>
+<text x="460" y="42" fill="#002046" font-size="20" font-weight="700" text-anchor="middle">Beitragsentwicklung PKV vs. GKV</text>
+<text x="460" y="64" fill="#44474e" font-size="13" text-anchor="middle">Indexiert je Versicherten (2005 = 100)</text>
+
+<defs>
+  <linearGradient id="pkv-fill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#D4A017" stop-opacity="0.12"/>
+    <stop offset="100%" stop-color="#D4A017" stop-opacity="0.01"/>
+  </linearGradient>
+  <linearGradient id="gkv-fill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#6B7280" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#6B7280" stop-opacity="0.01"/>
+  </linearGradient>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+    <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.06"/>
+  </filter>
+</defs>
+
+<!-- Legend -->
+<line x1="55" y1="82" x2="79" y2="82" stroke="#D4A017" stroke-width="2.5" stroke-linecap="round"/>
+<text x="85" y="86" fill="#44474e" font-size="11" font-weight="500">PKV</text>
+<line x1="130" y1="82" x2="154" y2="82" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round"/>
+<text x="160" y="86" fill="#44474e" font-size="11" font-weight="500">GKV*</text>
+
+<!-- Grid lines -->
+<line x1="55" y1="380" x2="860" y2="380" stroke="#CBD5E1" stroke-width="1"/>
+<text x="47" y="384" fill="#9CA3AF" font-size="10" text-anchor="end">100</text>
+<line x1="55" y1="332" x2="860" y2="332" stroke="#E5E7EB" stroke-width="0.7"/>
+<text x="47" y="336" fill="#9CA3AF" font-size="10" text-anchor="end">120</text>
+<line x1="55" y1="284" x2="860" y2="284" stroke="#E5E7EB" stroke-width="0.7"/>
+<text x="47" y="288" fill="#9CA3AF" font-size="10" text-anchor="end">140</text>
+<line x1="55" y1="236" x2="860" y2="236" stroke="#E5E7EB" stroke-width="0.7"/>
+<text x="47" y="240" fill="#9CA3AF" font-size="10" text-anchor="end">160</text>
+<line x1="55" y1="188" x2="860" y2="188" stroke="#E5E7EB" stroke-width="0.7"/>
+<text x="47" y="192" fill="#9CA3AF" font-size="10" text-anchor="end">180</text>
+<line x1="55" y1="140" x2="860" y2="140" stroke="#E5E7EB" stroke-width="0.7"/>
+<text x="47" y="144" fill="#9CA3AF" font-size="10" text-anchor="end">200</text>
+<line x1="55" y1="92" x2="860" y2="92" stroke="#E5E7EB" stroke-width="0.7"/>
+<text x="47" y="96" fill="#9CA3AF" font-size="10" text-anchor="end">220</text>
+
+<!-- X axis labels -->
+<text x="55" y="410" fill="#9CA3AF" font-size="11" font-weight="500" text-anchor="middle">2005</text>
+<line x1="55" y1="92" x2="55" y2="395" stroke="#E5E7EB" stroke-width="0.5" stroke-dasharray="4,4"/>
+<text x="256" y="410" fill="#9CA3AF" font-size="11" font-weight="500" text-anchor="middle">2010</text>
+<line x1="256" y1="92" x2="256" y2="395" stroke="#E5E7EB" stroke-width="0.5" stroke-dasharray="4,4"/>
+<text x="457" y="410" fill="#9CA3AF" font-size="11" font-weight="500" text-anchor="middle">2015</text>
+<line x1="457" y1="92" x2="457" y2="395" stroke="#E5E7EB" stroke-width="0.5" stroke-dasharray="4,4"/>
+<text x="659" y="410" fill="#9CA3AF" font-size="11" font-weight="500" text-anchor="middle">2020</text>
+<line x1="659" y1="92" x2="659" y2="395" stroke="#E5E7EB" stroke-width="0.5" stroke-dasharray="4,4"/>
+<text x="860" y="410" fill="#9CA3AF" font-size="11" font-weight="500" text-anchor="middle">2025</text>
+<line x1="860" y1="92" x2="860" y2="395" stroke="#E5E7EB" stroke-width="0.5" stroke-dasharray="4,4"/>
+
+<!-- Area fills -->
+<path d="M55,380 L95,372 L136,363 L176,355 L216,346 L256,336 L296,327 L337,317 L377,306 L417,295 L458,284 L498,271 L538,256 L578,241 L618,226 L659,209 L699,192 L739,175 L780,156 L820,137 L860,117 L860,395 L55,395 Z" fill="url(#gkv-fill)"/>
+<path d="M55,380 L95,375 L136,369 L176,364 L216,358 L256,352 L296,346 L337,340 L377,333 L417,327 L458,320 L498,309 L538,296 L578,284 L618,271 L659,257 L699,243 L739,228 L780,212 L820,196 L860,180 L860,395 L55,395 Z" fill="url(#pkv-fill)"/>
+
+<!-- GKV line -->
+<path d="M55,380 L95,372 L136,363 L176,355 L216,346 L256,336 L296,327 L337,317 L377,306 L417,295 L458,284 L498,271 L538,256 L578,241 L618,226 L659,209 L699,192 L739,175 L780,156 L820,137 L860,117" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<!-- PKV line -->
+<path d="M55,380 L95,375 L136,369 L176,364 L216,358 L256,352 L296,346 L337,340 L377,333 L417,327 L458,320 L498,309 L538,296 L578,284 L618,271 L659,257 L699,243 L739,228 L780,212 L820,196 L860,180" fill="none" stroke="#D4A017" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<!-- End dots -->
+<circle cx="860" cy="117" r="4" fill="#6B7280" stroke="white" stroke-width="2"/>
+<circle cx="860" cy="180" r="4" fill="#D4A017" stroke="white" stroke-width="2"/>
+
+<!-- Rate labels -->
+<rect x="270" y="262" width="180" height="32" rx="6" fill="#F0F1F3" stroke="#D1D5DB" stroke-width="0.7" filter="url(#shadow)"/>
+<text x="360" y="283" fill="#6B7280" font-size="12" font-weight="700" text-anchor="middle">GKV: ⌀ 3,8 % pro Jahr</text>
+
+<rect x="510" y="238" width="176" height="32" rx="6" fill="#FDF6E3" stroke="#E5D9B8" stroke-width="0.7" filter="url(#shadow)"/>
+<text x="598" y="259" fill="#B8860B" font-size="12" font-weight="700" text-anchor="middle">PKV: ⌀ 3,1 % pro Jahr</text>
+
+<!-- End values -->
+<text x="866" y="113" fill="#6B7280" font-size="12" font-weight="700">209,3</text>
+<text x="866" y="194" fill="#B8860B" font-size="12" font-weight="700">183,5</text>
+
+<!-- Footer -->
+<text x="55" y="438" fill="#9CA3AF" font-size="9">*ohne Bundeszuschuss</text>
+<text x="55" y="450" fill="#9CA3AF" font-size="9">Quelle: WIP-Kurzanalyse 2024 (BMG, BAS, GBE, PKV-Verband). 2024/2025 extrapoliert.</text>
+
+</svg>

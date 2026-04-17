@@ -37,7 +37,7 @@ const related = [
 ---
 <T6
   title='PKV-Beitragsanpassung: Wie stark steigen die Beiträge?'
-  description='PKV-Beiträge steigen im Schnitt 3 bis 4 Prozent pro Jahr, 2025 waren es 10,6 Prozent. Warum, wie oft und was du dagegen tun kannst.'
+  description='PKV-Beiträge steigen im Schnitt 3 bis 4 Prozent pro Jahr, 2025 waren es sogar 10,6 Prozent. Warum Beiträge steigen und was du dagegen tun kannst.'
   breadcrumb={{ kategorie: 'Kosten', kategorieHref: '/kosten/' }}
   toc={toc}
   date='Update April 2026'
@@ -49,9 +49,9 @@ const related = [
     { href: '/rechner/tarifwechsel-204/', title: 'Tarifwechsel-Rechner §204', icon: 'swap_horiz' },
   ]}
   faqItems={[
-    { question: `Wie oft darf die PKV den Beitrag erhöhen?`, answer: `Theoretisch jährlich, wenn die Schwellenwerte von Paragraph 203 VVG überschritten werden. Praktisch passiert dies im Schnitt alle 2,5 bis 3 Jahre. Einige Versicherer nutzen optional einen reduzierteren Schwellenwert, was zu häufigeren, kleineren Anpassungen staett seltene, größere Sprung führt.` },
-    { question: `Steigt der GKV-Beitrag genauso stark?`, answer: `Langfristig ähnlich (beide ca. 3,5 Prozent pro Jahr), aber anders. GKV erhöhert kontinuierlich jährlich, PKV sprunghaft, wenn Schwellenwerte überschritten. In Jahren wie 2025 (GKV +6,5%, PKV +10,6%) ist die PKV stärker. Aber nicht immer.` },
-    { question: `Kann ich bei Beitragserhöhung sofort kündigen?`, answer: `Ja. Bei Beitragserhöhung von mindestens 10 Prozent hast du ein Sonderkündigungsrecht (meist innerhalb von 1 Monat ab Mittteilung). Aber bedenke: Kündigung bedeutet, deine Altersrückstellungen sind weg. Tarifwechsel im selben Haus ist meist besser.` }
+    { question: `Wie oft darf die PKV den Beitrag erhöhen?`, answer: `Theoretisch jährlich, wenn die Schwellenwerte von Paragraph 203 VVG überschritten werden. Praktisch passiert dies im Schnitt alle 2,5 bis 3 Jahre. Einige Versicherer nutzen optional einen reduzierten Schwellenwert, was zu häufigeren, kleineren Anpassungen statt seltenen, größeren Sprüngen führt.` },
+    { question: `Steigt der GKV-Beitrag genauso stark?`, answer: `Langfristig ähnlich (beide ca. 3,5 Prozent pro Jahr), aber anders. Die GKV erhöht kontinuierlich jährlich, die PKV sprunghaft, wenn Schwellenwerte überschritten werden. In Jahren wie 2025 (GKV +6,5 Prozent, PKV +10,6 Prozent) ist die PKV stärker. Aber nicht immer.` },
+    { question: `Kann ich bei Beitragserhöhung sofort kündigen?`, answer: `Ja. Bei jeder Beitragserhöhung hast du ein Sonderkündigungsrecht nach § 205 Abs. 4 VVG (innerhalb von 2 Monaten ab Mitteilung). Aber bedenke: Bei einem Anbieterwechsel geht ein Teil deiner Altersrückstellungen verloren. Ein Tarifwechsel beim selben Versicherer ist daher meist die bessere Wahl.` }
   ]}
 >
   <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
@@ -75,34 +75,34 @@ const related = [
       </li>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
-        <span>Gegenüber steigende Leistungsausgaben und hohes Durchschnittsalter der PKV-Versicherten sind die Haupttreiber für Anpassungen.</span>
+        <span>Steigende Leistungsausgaben und ein hohes Durchschnittsalter der PKV-Versicherten sind die <strong>Haupttreiber</strong> für Anpassungen.</span>
       </li>
     </ul>
   </section>
 
   <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75] mb-12'>
-    <p>Beitragsanpassungen sind der Angstszenario vieler PKV-Versicherter. Die Sorge ist berechtig: Eine zweistellige Erhöhung kann das Haushaltbudget massiv belasten. Aber wie oft passiert das wirklich, wie wird es berechnet und was kannst du dagegen tun?</p>
-    <p>Dieser Artikel beantwortet diese Fragen auf Basis von aktuellen Studien und Markdaten.</p>
+    <p>Beitragsanpassungen sind das Angstszenario vieler PKV-Versicherter. Die Sorge ist berechtigt: Eine zweistellige Erhöhung kann das Haushaltsbudget massiv belasten. Aber wie oft passiert das wirklich, wie wird es berechnet und was kannst du dagegen tun?</p>
+    <p>Dieser Artikel beantwortet diese Fragen auf Basis von aktuellen Studien und Marktdaten. Du erfährst auch, wie die <a href='/kosten/pkv-kosten-uebersicht/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-Kosten insgesamt</a> aufgebaut sind und welche <a href='/grundlagen/vor-und-nachteile/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Vor- und Nachteile der PKV</a> bei deiner Entscheidung eine Rolle spielen.</p>
   </div>
 
   <section id='funktionsweise' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wie die PKV-Beitragsanpassung funktioniert</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Anders als die GKV, wo Beitragsanpassungen jährlich erfolgen, ist bei der PKV ein Mechanismus eingebaut, der Beitragsstaebilitaet anstrebt.</p>
-      <p><strong>Paragraph 203 VVG</strong> regelt die Anpassungsvoraussetzungen. Eine Anpassung ist verpflichtend nur dann erforderlich, wenn:</p>
-      <p>• Die tatsächlichen Leistungsausgaben um mehr als 10 Prozent (im positiven oder negativen Sinne) vom Kalkuel abweichen, oder</p>
-      <p>• Die tatsächliche Sterblichkeit um mehr als 5 Prozent unter den Prognosen liegt (das spaert Kosten, führt aber oft nicht zu Senkungen, sondern zu Stabilitaet).</p>
-      <p><strong>Kontrolle und Transparenz:</strong> Jede PKV-Anpassung wird ueberprüft durch einen unabhängigen Treuhaender (bei Aktiengesellschaften) oder durch einen speziellen Ausschuss des Aufsichtsrats (bei Gegenseitigkeitsvereinigungen). Das ist ein Kontrollmechanismus, der es verhindern soll, dass Versicherer willkuerlich erhöhen.</p>
-      <p><strong>Optionaler Schwellenwert:</strong> PKV-Unternehmen können auch einen reduzierten Schwellenwert von 5 Prozent wir wenn die Anpassung für stabilitaet besser ist. Das führt dazu, dass kleinere, regelmäßigere Anpassungen statt seltene Sprung-Anpassungen kommen.</p>
+      <p>Anders als die GKV, wo Beitragsanpassungen jährlich erfolgen, ist bei der PKV ein Mechanismus eingebaut, der <strong>Beitragsstabilität</strong> anstrebt.</p>
+      <p><strong>Paragraph 203 VVG</strong> regelt die Anpassungsvoraussetzungen. Eine Anpassung ist nur dann verpflichtend erforderlich, wenn:</p>
+      <p>• Die tatsächlichen Leistungsausgaben um mehr als 10 Prozent vom Kalkül abweichen, oder</p>
+      <p>• Die tatsächliche Sterblichkeit um mehr als 5 Prozent unter den Prognosen liegt (das spart Kosten, führt aber oft nicht zu Senkungen, sondern zu Stabilität).</p>
+      <p><strong>Kontrolle und Transparenz:</strong> Jede PKV-Anpassung wird überprüft durch einen unabhängigen Treuhänder (bei Aktiengesellschaften) oder durch einen speziellen Ausschuss des Aufsichtsrats (bei Gegenseitigkeitsvereinigungen). Das ist ein Kontrollmechanismus, der verhindern soll, dass Versicherer willkürlich erhöhen.</p>
+      <p><strong>Optionaler Schwellenwert:</strong> PKV-Unternehmen können auch einen reduzierten Schwellenwert von 5 Prozent wählen, wenn häufigere, kleinere Anpassungen für die Stabilität besser sind. Das führt dazu, dass kleinere, regelmäßigere Anpassungen statt seltener Sprunganpassungen kommen.</p>
     </div>
   </section>
 
   <section id='zahlen' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Zahlen: So stark stiegen PKV-Beiträge zuletzt</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p><strong>2025 war ein Rekordjahr für Beitragsanpassungen:</strong> Für Angestellte lag die durchschnittliche Erhöhung bei <strong>10,6 Prozent</strong>. Das ist die höchste Quote seit mindestens 25 Jahren. Die Spannbreite war enorm: Die günstigsten Anbieter erhöhten um 2 Prozent, die teuersten um über 31 Prozent (MAP-Report 2024).</p>
-      <p><strong>Beamte waren leicht bessergestellt:</strong> Sie zahlten im Schnitt +7,8 Prozent 2025. Das ist immer noch ueberdurchschnittlich, aber weniger als Angestellte.</p>
-      <p><strong>Langfristtrend:</strong> Während sich die Jahrgaenge 2015 bis 2024 auf einem Durchschnitt von etwa 3,9 Prozent pro Jahr beweg, zeigt 2025 einen Spike. Grund sind gestiegene Leistungsausgaben nach Corona und ein demographisch älteres Versichertenkollektiv.</p>
+      <p><strong>2025 war ein Rekordjahr für Beitragsanpassungen:</strong> Für Angestellte lag die durchschnittliche Erhöhung bei <strong>10,6 Prozent</strong>. Das ist die höchste Quote seit mindestens 25 Jahren. Die Spannbreite war enorm: Die günstigsten Anbieter erhöhten um 2 Prozent, die teuersten um über 31 Prozent (MAP-Report 2025).</p>
+      <p><strong>Beamte waren leicht bessergestellt:</strong> Sie zahlten im Schnitt +7,8 Prozent 2025. Das ist immer noch überdurchschnittlich, aber weniger als Angestellte.</p>
+      <p><strong>Langfristtrend:</strong> Während sich die Jahrgänge 2015 bis 2024 auf einem Durchschnitt von etwa 3,9 Prozent pro Jahr bewegten, zeigt 2025 einen deutlichen Ausreißer. Grund sind gestiegene Leistungsausgaben nach Corona und ein demografisch älteres Versichertenkollektiv.</p>
       <div class='overflow-x-auto rounded-xl border border-outline-variant/20 bg-white mt-6 mb-6'>
         <table class='w-full text-left border-collapse min-w-[520px]'>
           <thead>
@@ -139,9 +139,9 @@ const related = [
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
       <p><strong>Der langfristige Vergleich (WIP-Studie 2024):</strong></p>
       <p>Über die gesamten 20 Jahre (2005 bis 2025) stieg die PKV um durchschnittlich 3,1 Prozent pro Jahr, die <a href='/kosten/gkv-hoechstbeitrag/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>GKV um 3,8 Prozent</a>. Das bedeutet, dass langfristig die GKV stärker gestiegen ist als die PKV.</p>
-      <p><strong>Aber die Struktur ist unterschiedlich:</strong> Die GKV erhöhert kontinuierlich und vorhersehbar jährlich über Zusatzbeitrag und BBG-Erhöhungen. Die PKV erhöhert seltener, aber oft stärker, wenn es passiert. Das ist das Risiko: Du hast Jahre mit Stille, dann ploetzlich eine 15-prozentige Erhöhung.</p>
-      <p><strong>2025 hatte die GKV +6,5 Prozent, PKV +10,6 Prozent.</strong> Das zeigt, dass in Spike-Jahren die PKV deutlich stärker anpasst als die GKV. Es ist aber nicht repraesentativ für den Durchschnitt.</p>
-      <p><strong>Grund für PKV-Erhöhungen:</strong> Haupttreiber sind steigende Arztkaosten, höhere Medikamentenpreise, mehr Behandlungen (mehr Ältere, mehr chronische Erkrankungen) und versichertenmixtechnische Effekte (die PKV wird durchschnittlich älter).</p>
+      <p><strong>Aber die Struktur ist unterschiedlich:</strong> Die GKV erhöht kontinuierlich und vorhersehbar jährlich über Zusatzbeitrag und BBG-Erhöhungen. Die PKV erhöht seltener, aber oft stärker, wenn es passiert. Das ist das Risiko: Du hast Jahre mit Stille, dann plötzlich eine 15-prozentige Erhöhung.</p>
+      <p><strong>2025 hatte die GKV +6,5 Prozent, PKV +10,6 Prozent.</strong> Das zeigt, dass in Ausreißerjahren die PKV deutlich stärker anpasst als die GKV. Es ist aber nicht repräsentativ für den Durchschnitt.</p>
+      <p><strong>Grund für PKV-Erhöhungen:</strong> Haupttreiber sind steigende Arztkosten, höhere Medikamentenpreise, mehr Behandlungen (mehr Ältere, mehr chronische Erkrankungen) und Effekte im Versichertenmix (die PKV wird durchschnittlich älter).</p>
     </div>
   </section>
 
@@ -149,20 +149,21 @@ const related = [
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Drei Strategien gegen steigende Beiträge</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
       <p><strong>Strategie 1: Tarifwechsel nach Paragraph 204 VVG</strong></p>
-      <p>Das ist die wahrscheinlich wichtigste Waffe. <a href='/wechsel/tarifwechsel-204/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Paragraph 204 VVG</a> gibt dir das Recht, innerhalb deines Versicherers in einen günstigeren oder gleichwertigen Tarif zu wechseln. Deine Altersrückstellungen gehen mit. Das ist entscheidend: Wenn dein bisheriger Tarif 12 Prozent erhöhung kriegt, du aber einen vergleichbaren Tarif mit nur 5 Prozent hast, sparst du die Differenz sofort ein. Solche Wechsel passieren oft unbemerkt, weil viele Versicherte nicht wissen, dass sie das Recht haben.</p>
+      <p>Das ist das wahrscheinlich wichtigste Werkzeug. <a href='/wechsel/tarifwechsel-204/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Paragraph 204 VVG</a> gibt dir das Recht, innerhalb deines Versicherers in einen günstigeren oder gleichwertigen Tarif zu wechseln. Deine <strong>Altersrückstellungen gehen mit</strong>.</p>
+      <p>Das ist entscheidend: Wenn dein bisheriger Tarif 12 Prozent Erhöhung bekommt, du aber einen vergleichbaren Tarif mit nur 5 Prozent findest, sparst du die Differenz sofort ein. Solche Wechsel passieren oft unbemerkt, weil viele Versicherte nicht wissen, dass sie dieses Recht haben.</p>
       <p><strong>Strategie 2: Selbstbeteiligung erhöhen</strong></p>
-      <p>Indem du die <a href='/kosten/selbstbeteiligung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Selbstbeteiligung</a> von zum Beispiel 300 Euro auf 600 oder 1.200 Euro pro Jahr erhöhst, kannst du oft 10 bis 20 Prozent Beitrag sparen. Das macht Sinn, wenn du selten zum Arzt gehst und das Risiko selbst tragen moechtest. Allerdings: Das verschiebt nur das Problem, es loest es nicht.</p>
+      <p>Indem du die <a href='/kosten/selbstbeteiligung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Selbstbeteiligung</a> von zum Beispiel 300 Euro auf 600 oder 1.200 Euro pro Jahr erhöhst, kannst du oft 10 bis 20 Prozent Beitrag sparen. Das ist sinnvoll, wenn du selten zum Arzt gehst und das Risiko selbst tragen möchtest. Allerdings: Das verschiebt nur das Problem, es löst es nicht.</p>
       <p><strong>Strategie 3: Anbieterwechsel (mit Vorsicht)</strong></p>
-      <p>Ein Wechsel zu einem anderen Versicherer ist möglich, kostet dich aber deine Altersrückstellungen. Das ist ein enormer Nachteil. Es lohnt sich nur in extremen Faellen, zum Beispiel wenn dein bisheriger Versicherer 25 Prozent erhöhert und ein anderer Anbieter deutlich günstiger ist. Aber Vorsicht: Du staertest mit neuen Altersrückstellungen von null.</p>
+      <p>Ein Wechsel zu einem anderen Versicherer ist möglich, kostet dich aber einen Teil deiner Altersrückstellungen. Das ist ein enormer Nachteil. Es lohnt sich nur in extremen Fällen, zum Beispiel wenn dein bisheriger Versicherer 25 Prozent erhöht und ein anderer Anbieter deutlich günstiger ist. Aber Vorsicht: Du startest mit neuen Altersrückstellungen von null.</p>
     </div>
   </section>
 
   <section id='fazit' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Beitragsanpassungen in der PKV sind nicht exzeptionell haufig, aber wenn sie kommen, sind sie oft deutlicher als in der GKV. Der Langfristvergleich zeigt, dass die Systeme ähnlich schnell teurer werden, aber mit unterschiedlichen Rhythmen.</p>
-      <p>Das wichtigste Instrumentarium bei Erhöhung ist der <a href='/wechsel/tarifwechsel-204/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Tarifwechsel nach Paragraph 204 VVG</a>. Dieses Recht sollte du aktiv nutzen, wenn dein Tarif stark erhöhung wird.</p>
-      <p>Beitragsanpassungen sollten nicht alleine ausschlaggebend für oder gegen die PKV sein. Sie sind ein Faktor unter vielen (Altersrückstellungen, AG-Zuschuss, Leistungen, Familienverhaeltnisse). Wer die PKV waehlt, sollte sich aber bewusst sein, dass Anpassungen eine wiederkehrende Realitaet sind.</p>
+      <p>Beitragsanpassungen in der PKV sind nicht außergewöhnlich häufig, aber wenn sie kommen, sind sie oft deutlicher als in der GKV. Der Langfristvergleich zeigt, dass beide Systeme ähnlich schnell teurer werden, aber mit unterschiedlichen Rhythmen.</p>
+      <p>Das wichtigste Instrument bei einer Erhöhung ist der <a href='/wechsel/tarifwechsel-204/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Tarifwechsel nach Paragraph 204 VVG</a>. Dieses Recht solltest du aktiv nutzen, wenn dein Tarif stark erhöht wird.</p>
+      <p>Beitragsanpassungen sollten nicht alleine ausschlaggebend für oder gegen die PKV sein. Sie sind ein Faktor unter vielen (Altersrückstellungen, AG-Zuschuss, Leistungen, Familienverhältnisse). Wer die PKV wählt, sollte sich aber bewusst sein, dass Anpassungen eine wiederkehrende Realität sind.</p>
     </div>
   </section>
 
@@ -171,15 +172,15 @@ const related = [
     <div class='space-y-6'>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Wie oft darf die PKV den Beitrag erhöhen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Theoretisch jährlich, wenn die Schwellenwerte von Paragraph 203 VVG überschritten werden. Praktisch passiert dies im Schnitt alle 2,5 bis 3 Jahre. Einige Versicherer nutzen optional einen reduzierteren Schwellenwert, was zu häufigeren, kleineren Anpassungen staett seltene, größere Sprung führt.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Theoretisch jährlich, wenn die Schwellenwerte von Paragraph 203 VVG überschritten werden. Praktisch passiert dies im Schnitt alle 2,5 bis 3 Jahre. Einige Versicherer nutzen optional einen reduzierten Schwellenwert, was zu häufigeren, kleineren Anpassungen statt seltenen, größeren Sprüngen führt.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Steigt der GKV-Beitrag genauso stark?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Langfristig ähnlich (beide ca. 3,5 Prozent pro Jahr), aber anders. GKV erhöhert kontinuierlich jährlich, PKV sprunghaft, wenn Schwellenwerte überschritten. In Jahren wie 2025 (GKV +6,5%, PKV +10,6%) ist die PKV stärker. Aber nicht immer.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Langfristig ähnlich (beide ca. 3,5 Prozent pro Jahr), aber anders. Die GKV erhöht kontinuierlich jährlich, die PKV sprunghaft, wenn Schwellenwerte überschritten werden. In Jahren wie 2025 (GKV +6,5 Prozent, PKV +10,6 Prozent) ist die PKV stärker. Aber nicht immer.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich bei Beitragserhöhung sofort kündigen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja. Bei Beitragserhöhung von mindestens 10 Prozent hast du ein Sonderkündigungsrecht (meist innerhalb von 1 Monat ab Mittteilung). Aber bedenke: Kündigung bedeutet, deine Altersrückstellungen sind weg. Tarifwechsel im selben Haus ist meist besser.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Ja. Bei jeder Beitragserhöhung hast du ein Sonderkündigungsrecht nach § 205 Abs. 4 VVG (innerhalb von 2 Monaten ab Mitteilung). Aber bedenke: Bei einem Anbieterwechsel geht ein Teil deiner Altersrückstellungen verloren. Ein Tarifwechsel beim selben Versicherer ist daher meist die bessere Wahl.</div>
       </details>
     </div>
   </section>

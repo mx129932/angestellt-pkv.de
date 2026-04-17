@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" width="920" height="460">
+<defs><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap');
+text { font-family: 'Inter', system-ui, sans-serif; }
+</style></defs>
+<rect width="920" height="460" rx="12" fill="#FFFFFF"/>
+<text x="460" y="42" fill="#002046" font-size="20" font-weight="700" text-anchor="middle">Finanzielle Stabilität</text>
+
+<!-- PKV side -->
+<rect x="48" y="85" width="400" height="330" rx="10" fill="#f3f4f5"/>
+<text x="248" y="120" fill="#002046" font-size="15" font-weight="700" text-anchor="middle">Private Krankenversicherung</text>
+<text x="248" y="190" fill="#D4A017" font-size="52" font-weight="800" text-anchor="middle">351 Mrd. €</text>
+<text x="248" y="222" fill="#44474e" font-size="14" font-weight="600" text-anchor="middle">Alterungsrückstellungen</text>
+
+<text x="148" y="290" fill="#002046" font-size="22" font-weight="800" text-anchor="middle">38.800 €</text>
+<text x="148" y="312" fill="#74777f" font-size="12" text-anchor="middle">pro Versichertem</text>
+<text x="348" y="290" fill="#002046" font-size="22" font-weight="800" text-anchor="middle">9 Jahre</text>
+<text x="348" y="312" fill="#74777f" font-size="12" text-anchor="middle">Reichweite</text>
+
+<!-- GKV side -->
+<rect x="472" y="85" width="400" height="330" rx="10" fill="#f3f4f5"/>
+<text x="672" y="120" fill="#74777f" font-size="15" font-weight="700" text-anchor="middle">Gesetzliche Krankenversicherung</text>
+<text x="672" y="190" fill="#74777f" font-size="52" font-weight="800" text-anchor="middle">2,1 Mrd. €</text>
+<text x="672" y="222" fill="#44474e" font-size="14" font-weight="600" text-anchor="middle">Finanzreserven</text>
+
+<text x="572" y="290" fill="#44474e" font-size="22" font-weight="800" text-anchor="middle">28 €</text>
+<text x="572" y="312" fill="#74777f" font-size="12" text-anchor="middle">pro Versichertem</text>
+<text x="772" y="290" fill="#ba1a1a" font-size="22" font-weight="800" text-anchor="middle">3 Tage</text>
+<text x="772" y="312" fill="#74777f" font-size="12" text-anchor="middle">Reichweite</text>
+
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" width="920" height="460">
+<defs><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap');
+text { font-family: 'Inter', system-ui, sans-serif; }
+</style></defs>
+<rect width="920" height="460" rx="12" fill="#FFFFFF"/>
+<text x="460" y="42" fill="#002046" font-size="20" font-weight="700" text-anchor="middle">Für wen lohnt sich die PKV?</text>
+<rect x="120" y="100" width="680" height="44" rx="8" fill="#f3f4f5"/>
+<circle cx="156" cy="122" r="14" fill="#D4A017"/>
+<text x="156" y="127" fill="white" font-size="14" font-weight="700" text-anchor="middle">✓</text>
+<text x="186" y="127" fill="#002046" font-size="15" font-weight="600">Bruttoeinkommen über 77.400 €</text>
+<rect x="120" y="152" width="680" height="44" rx="8" fill="#f3f4f5"/>
+<circle cx="156" cy="174" r="14" fill="#D4A017"/>
+<text x="156" y="179" fill="white" font-size="14" font-weight="700" text-anchor="middle">✓</text>
+<text x="186" y="179" fill="#002046" font-size="15" font-weight="600">Guter Gesundheitszustand</text>
+<rect x="120" y="204" width="680" height="44" rx="8" fill="#f3f4f5"/>
+<circle cx="156" cy="226" r="14" fill="#D4A017"/>
+<text x="156" y="231" fill="white" font-size="14" font-weight="700" text-anchor="middle">✓</text>
+<text x="186" y="231" fill="#002046" font-size="15" font-weight="600">Langfristig angestellt</text>
+<rect x="120" y="256" width="680" height="44" rx="8" fill="#f3f4f5"/>
+<circle cx="156" cy="278" r="14" fill="#D4A017"/>
+<text x="156" y="283" fill="white" font-size="14" font-weight="700" text-anchor="middle">✓</text>
+<text x="186" y="283" fill="#002046" font-size="15" font-weight="600">Wenig oder keine Kinder geplant</text>
+<rect x="120" y="308" width="680" height="44" rx="8" fill="#f3f4f5"/>
+<circle cx="156" cy="330" r="14" fill="#D4A017"/>
+<text x="156" y="335" fill="white" font-size="14" font-weight="700" text-anchor="middle">✓</text>
+<text x="186" y="335" fill="#002046" font-size="15" font-weight="600">Idealerweise unter 40 Jahre</text>
+
+</svg>

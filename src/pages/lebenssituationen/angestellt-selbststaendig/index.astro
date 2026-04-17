@@ -6,7 +6,7 @@ const toc = [
   { id: 'abgrenzung', label: 'Hauptberuflich vs. nebenberuflich: Die Abgrenzung' },
   { id: 'gkv', label: 'Wann die GKV-Pflicht gilt' },
   { id: 'beitrag', label: 'PKV-Beitrag bei Mischstatus' },
-  { id: 'szenarien', label: 'Typische Szenarien mit Loesung' },
+  { id: 'szenarien', label: 'Typische Szenarien mit Lösung' },
   { id: 'fazit', label: 'Fazit' },
   { id: 'faq', label: 'Häufige Fragen' },
 ];
@@ -35,15 +35,15 @@ const related = [
   },
 ];
 ---
-<T6 title='PKV bei Anstellung und Selbstständigkeit' description='Angestellt und gleichzeitig selbstständig? Wann die GKV-Pflicht greift, wann die PKV möglich ist und wie der Mischstatus funktioniert.' breadcrumb={{ kategorie: 'Lebenssituationen', kategorieHref: '/lebenssituationen/' }} toc={toc} date='Update April 2026' readingTime='8 Min. Lesezeit' related={related} popularRechner={[
+<T6 title='PKV bei Anstellung und Selbstständigkeit' description='Angestellt und gleichzeitig selbstständig? Wann die GKV-Pflicht greift, wann die PKV möglich ist und wie Beitrag und Zuschuss beim Mischstatus funktionieren.' breadcrumb={{ kategorie: 'Lebenssituationen', kategorieHref: '/lebenssituationen/' }} toc={toc} date='Update April 2026' readingTime='8 Min. Lesezeit' related={related} popularRechner={[
   { href: '/rechner/jaeg-check/', title: 'JAEG-Check', icon: 'verified' },
   { href: '/rechner/pkv-gkv-vergleich/', title: 'GKV vs. PKV Vergleich', icon: 'compare_arrows' },
   { href: '/rechner/nettobelastung/', title: 'Nettobelastung berechnen', icon: 'account_balance' },
 ]}
   faqItems={[
     { question: `Ab wann gelte ich als hauptberuflich selbstständig?`, answer: `Wenn du über 20 Stunden pro Woche selbstständig arbeitest ODER wenn dein Selbstständigen-Einkommen größer als dein Angestellten-Einkommen ist. Dann bist du hauptberuflich selbstständig, egal wie viel Zeit du investierst.` },
-    { question: `Muss ich zwei Krankenversicherungen zahlen?`, answer: `Nein, eine Versicherung reicht, wenn du nebenberuflich selbstständig bist. Bei hauptberuflicher Selbstständigkeit parallel zur Anstellung brauchst du zwei getrennte Verträge (Angestellten- und Selbstständigen-KV).` },
-    { question: `Was passiert wenn ich die Selbstständigkeit aufgebe?`, answer: `Wenn die Selbstständigkeit endet, verbleibt dein Versicherungsstatus wie er ist. Du zahlst weiterhin den Angestellten-Beitrag plus etwaige Zuschläge. Ein Rückgang ist nicht automatisch. Teile das deinem Versicherer mit.` }
+    { question: `Muss ich zwei Krankenversicherungen zahlen?`, answer: `Nein, du brauchst immer nur eine Krankenversicherung. Ob du nebenberuflich oder hauptberuflich selbstständig bist, ändert nur, über welchen Status du versichert bist (als Angestellter oder als Selbstständiger), nicht die Anzahl der Verträge.` },
+    { question: `Was passiert, wenn ich die Selbstständigkeit aufgebe?`, answer: `Wenn die Selbstständigkeit endet, verbleibt dein Versicherungsstatus wie er ist. Du zahlst weiterhin den Angestellten-Beitrag plus etwaige Zuschläge. Eine Rückkehr in die GKV erfolgt nicht automatisch. Teile das deinem Versicherer mit.` }
   ]}
 >
   <section id='zusammenfassung' class='scroll-mt-28 mb-12 bg-white border-l-4 border-amber-accent/60 rounded-r-xl p-6 md:p-8 shadow-sm'>
@@ -51,8 +51,8 @@ const related = [
     <ul class='space-y-3 text-on-surface'>
       <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die Abgrenzung zwischen Anstellung und Selbstständigkeit ist <strong>nicht nur eine Einkommensfrage</strong>.</span></li>
       <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span><strong>Hauptberuflich selbstständig:</strong> über 20 Stunden pro Woche ODER Selbstständigen-Einkommen größer als Angestellten-Einkommen.</span></li>
-      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die <strong>JAEG 2026 liegt bei 77.400 Euro</strong> und gilt für das Gesamteinkommen (Anstellung plus Selbstständigkeit).</span></li>
-      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Nebenberufliche Selbstständigkeit <strong>erhoet nicht automatisch</strong> den Versicherungsstatus.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Die <strong>JAEG 2026 liegt bei 77.400 Euro</strong> und gilt nur für das Arbeitsentgelt aus der Anstellung.</span></li>
+      <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Nebenberufliche Selbstständigkeit <strong>erhöht nicht automatisch</strong> den Versicherungsstatus.</span></li>
       <li class='flex items-start gap-3'><span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span><span>Mehrere Szenarien sind möglich: PKV, GKV-Pflicht, Freiwilligkeit in GKV, oder zwei KV-Verträge.</span></li>
     </ul>
   </section>
@@ -64,10 +64,10 @@ const related = [
   <section id='abgrenzung' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Hauptberuflich vs. nebenberuflich: Die Abgrenzung</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Die Bundeszentralamt für Steuern (BZSt) und die Krankenkassen nutzen zwei Kriteren zur Abgrenzung:</p>
+      <p>Die Krankenkassen und Sozialversicherungsträger nutzen zwei Kriterien zur Abgrenzung:</p>
       <p><strong>Kriterium 1: Arbeitszeit</strong> - Über 20 Stunden pro Woche in der Selbstständigkeit = hauptberuflich. Darunter = nebenberuflich.</p>
       <p><strong>Kriterium 2: Einkommen</strong> - Ist das Selbstständigen-Einkommen größer als das Angestellten-Einkommen, gilt die Selbstständigkeit als hauptberuflich.</p>
-      <p>Es reicht, dass EIN Kriterium erfuellt ist, um als hauptberuflich zu gelten. Wenn du weniger als 20 Stunden pro Woche nebenberuflich arbeitest, aber trotzdem viel Geld mit der Selbstständigkeit verdienst, giltst du als Hauptselbstständiger.</p>
+      <p>Es reicht, dass EIN Kriterium erfüllt ist, um als hauptberuflich zu gelten. Wenn du weniger als 20 Stunden pro Woche nebenberuflich arbeitest, aber trotzdem viel Geld mit der Selbstständigkeit verdienst, giltst du als Hauptselbstständiger.</p>
     </div>
   </section>
 
@@ -75,33 +75,33 @@ const related = [
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Wann die GKV-Pflicht gilt</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
       <p>Die Anstellung ist der Anker. Wenn du hauptberuflich angestellt bist und unter der JAEG verdienst, bist du GKV-pflichtversichert. Das bleibt so, auch wenn du parallel nebenberuflich selbstständig bist.</p>
-      <p>Nur wenn dein Gesamteinkommen (Anstellung plus Selbstständigkeit) über die <a href='/wechsel/versicherungspflichtgrenze/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>JAEG</a> steigt (2026: 77.400 Euro), bekommst du die Wahl zwischen GKV und PKV.</p>
-      <p>Beispiel: Du verdienst 60.000 Euro angestellt und 20.000 Euro selbstständig. Gesamteinkommen 80.000 Euro. Das übersteigt die JAEG. Du kannst dauernd bleiben in GKV oder in die PKV wechseln, sofern du die Befreiung beantragsst.</p>
+      <p>Nur wenn dein Arbeitsentgelt aus der Anstellung über die <a href='/wechsel/versicherungspflichtgrenze/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>JAEG</a> steigt (2026: 77.400 Euro), bekommst du die Wahl zwischen GKV und PKV. Das Einkommen aus Selbstständigkeit zählt für die JAEG nicht.</p>
+      <p>Beispiel: Du verdienst 80.000 Euro angestellt und 15.000 Euro selbstständig. Das Angestelltengehalt übersteigt die JAEG. Du kannst in die PKV wechseln oder freiwillig in der GKV bleiben. Das Selbstständigen-Einkommen spielt für die JAEG keine Rolle.</p>
     </div>
   </section>
 
   <section id='beitrag' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>PKV-Beitrag bei Mischstatus</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Wenn du in die PKV wechselst mit Mischstatus (Anstellung plus Selbstständigkeit), zahlt der Arbeitgeber nur seinen <a href='/kosten/arbeitgeberzuschuss/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>AG-Zuschuss</a> zur Angestellten-Versicherung. Der Selbstständigen-Anteil zahlt du selbst.</p>
-      <p>Das ist ein Problem für Grenzfaelle: Du verdienst 77.500 Euro Gesamteinkommen, wechselt in die PKV mit Hoffnung auf Einsparung. Aber die PKV stellt dich als Mischstatus ein, was bedeutet: Teilweise AG-Zuschuss, teilweise Vollzahler.</p>
-      <p>Loesung: Für manche PKV-Verträge gibt es Optionen, sich als reine Angestellte zu versichern und die Selbstständigkeit nicht zu melden. Das ist individuell und Vertragswerk.</p>
+      <p>Wenn du in die PKV wechselst mit Mischstatus (Anstellung plus Selbstständigkeit), zahlt der Arbeitgeber nur seinen <a href='/kosten/arbeitgeberzuschuss/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>AG-Zuschuss</a> zur Angestellten-Versicherung. Den Selbstständigen-Anteil zahlst du selbst.</p>
+      <p>Das ist ein Problem für Grenzfälle: Du verdienst 77.500 Euro Gesamteinkommen, wechselst in die PKV mit Hoffnung auf Einsparung. Aber die PKV stuft dich als Mischstatus ein, was bedeutet: Teilweise AG-Zuschuss, teilweise Vollzahler.</p>
+      <p>Lösung: Für manche PKV-Verträge gibt es Optionen, sich rein als Angestellter zu versichern und die Selbstständigkeit nicht zu melden. Das ist individuell und Vertragswerk.</p>
     </div>
   </section>
 
   <section id='szenarien' class='scroll-mt-28 mb-12'>
-    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Typische Szenarien mit Loesung</h2>
+    <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Typische Szenarien mit Lösung</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p><strong>Szenario 1: Angestellt 70.000 Euro, Freiberuflich 10.000 Euro</strong> Gesamt 80.000 Euro, über JAEG. Du hast PKV-Wahlrecht. Der AG zahlt KV-Zuschuss für deinen Angestellten-Teil.</p>
-      <p><strong>Szenario 2: Angestellt 50.000 Euro, Selbstständig hauptberuflich 50.000 Euro</strong> Gesamt 100.000 Euro, aber du bist HAUPTSELBSTSTAENDIG (Einkommen-Kriterium). Du brauchst eine Selbstständigen-Versicherung, nicht Angestellten-PKV. Das ist teurer.</p>
-      <p><strong>Szenario 3: Angestellt 80.000 Euro, Nebenberuflich 5.000 Euro</strong> Gesamt 85.000 Euro, nebenberuflich. Du bleibst Angestellter im Sinne der Versicherung. PKV-Wechsel ist möglich unter den normalen Regeln.</p>
+      <p><strong>Szenario 1: Angestellt 80.000 Euro, Freiberuflich 10.000 Euro</strong> Das Angestelltengehalt liegt über der JAEG. Du hast PKV-Wahlrecht. Der AG zahlt KV-Zuschuss auf Basis deines Angestelltengehalts.</p>
+      <p><strong>Szenario 2: Angestellt 50.000 Euro, Selbstständig hauptberuflich 50.000 Euro</strong> Gesamt 100.000 Euro, aber du bist HAUPTSELBSTSTÄNDIG (Einkommen-Kriterium). Du brauchst eine Selbstständigen-Versicherung, nicht Angestellten-PKV. Das ist teurer.</p>
+      <p><strong>Szenario 3: Angestellt 80.000 Euro, Nebenberuflich 5.000 Euro</strong> nebenberuflich. Das Angestelltengehalt übersteigt die JAEG. Du bleibst Angestellter im Sinne der Versicherung. PKV-Wechsel ist möglich unter den normalen Regeln.</p>
     </div>
   </section>
 
   <section id='fazit' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Fazit</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Der Mischstatus ist komplex, aber es gibt Regeln. Wichtig: Melde deinen Status korrekt deinem Versicherer und dem Finanzamt. Versteckte Selbstständigkeit kann zu Rückforderungen und Strafe fuehren.</p>
+      <p>Der Mischstatus ist komplex, aber es gibt Regeln. Wichtig: Melde deinen Status korrekt deinem Versicherer und dem Finanzamt. Versteckte Selbstständigkeit kann zu Rückforderungen und Strafen führen.</p>
     </div>
   </section>
 
@@ -110,15 +110,15 @@ const related = [
     <div class='space-y-6'>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ab wann gelte ich als hauptberuflich selbstständig?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Wenn du über 20 Stunden pro Woche selbstständig arbeitest ODER wenn dein Selbstständigen-Einkommen größer als dein Angestellten-Einkommen ist. Dann bist du hauptberuflich selbstständig, egal wie viel Zeit du investierst.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Wenn du über 20 Stunden pro Woche selbstständig arbeitest ODER wenn dein Selbstständigen-Einkommen größer als dein Angestellten-Einkommen ist. Dann bist du hauptberuflich selbstständig, egal wie viel Zeit du investierst.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Muss ich zwei Krankenversicherungen zahlen?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Nein, eine Versicherung reicht, wenn du nebenberuflich selbstständig bist. Bei hauptberuflicher Selbstständigkeit parallel zur Anstellung brauchst du zwei getrennte Verträge (Angestellten- und Selbstständigen-KV).</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Nein, du brauchst immer nur eine Krankenversicherung. Ob du nebenberuflich oder hauptberuflich selbstständig bist, ändert nur, über welchen Status du versichert bist (als Angestellter oder als Selbstständiger), nicht die Anzahl der Verträge.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
-        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was passiert wenn ich die Selbstständigkeit aufgebe?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Wenn die Selbstständigkeit endet, verbleibt dein Versicherungsstatus wie er ist. Du zahlst weiterhin den Angestellten-Beitrag plus etwaige Zuschläge. Ein Rückgang ist nicht automatisch. Teile das deinem Versicherer mit.</div>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was passiert, wenn ich die Selbstständigkeit aufgebe?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Wenn die Selbstständigkeit endet, verbleibt dein Versicherungsstatus wie er ist. Du zahlst weiterhin den Angestellten-Beitrag plus etwaige Zuschläge. Eine Rückkehr in die GKV erfolgt nicht automatisch. Teile das deinem Versicherer mit.</div>
       </details>
     </div>
   </section>

@@ -38,7 +38,7 @@ const related = [
 ---
 <T6
   title='PKV-Kosten für Angestellte: Komplett-Übersicht'
-  description='Die PKV-Kosten für Angestellte setzen sich aus Grundbeitrag, Pflegepflicht und optionalen Bausteinen zusammen. Alle Kostenfaktoren erklärt.'
+  description='PKV-Kosten für Angestellte: Grundbeitrag, Pflegepflicht, optionale Bausteine und Arbeitgeberzuschuss. Alle Kostenfaktoren 2026 im Überblick.'
   breadcrumb={{ kategorie: 'Kosten', kategorieHref: '/kosten/' }}
   toc={toc}
   date='Update April 2026'
@@ -85,7 +85,7 @@ const related = [
       <p>Dein monatlicher PKV-Beitrag enthält mehrere Bestandteile, die auf deiner Rechnung nicht immer einzeln ausgewiesen sind:</p>
       <p><strong>Grundbeitrag (Krankheitskostentarif):</strong> Der größte Posten. Er deckt die ambulante, stationäre und zahnärztliche Versorgung. Die Höhe wird nach Eintrittsalter, Gesundheitszustand und dem gewählten Leistungsumfang kalkuliert.</p>
       <p><strong>Pflegepflichtversicherung (PPV):</strong> Jeder PKV-Versicherte muss eine private Pflegepflichtversicherung abschließen. Der Beitrag liegt für Angestellte typischerweise bei rund 122,64 Euro monatlich (Richtwert 2026, tarifabhängig). Anders als in der gesetzlichen Pflegeversicherung gibt es keinen Kinderlosenzuschlag.</p>
-      <p><strong>Gesetzlicher 10-Prozent-Zuschlag:</strong> Zwischen 21 und 60 Jahren zahlst du einen verpflichtenden Zuschlag von 10 Prozent auf den Grundbeitrag. Dieser fließt in die Altersrückstellungen und entfällt ab 65. Mehr dazu unter <a href='/kosten/altersrueckstellung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Altersrückstellungen erklärt</a>.</p>
+      <p><strong>Gesetzlicher 10-Prozent-Zuschlag:</strong> Zwischen 21 und 60 Jahren zahlst du einen verpflichtenden Zuschlag von 10 Prozent auf den Grundbeitrag. Dieser fließt in die Altersrückstellungen und entfällt ab 60. Mehr dazu unter <a href='/kosten/altersrueckstellung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>Altersrückstellungen erklärt</a>.</p>
       <p><strong>Optionale Bausteine:</strong> Krankentagegeld, Beitragsentlastungstarif (BET) und Zusatzversicherungen (z. B. Auslandsschutz) können den Beitrag erhöhen, sind aber nicht in jedem Tarif enthalten.</p>
     </div>
   </section>
@@ -163,10 +163,10 @@ const related = [
   <section id='vergleich-gkv' class='scroll-mt-28 mb-12'>
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>PKV-Kosten vs. GKV-Höchstbeitrag</h2>
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
-      <p>Für Angestellte über der Versicherungspflichtgrenze ist der GKV-Höchstbeitrag die relevante Vergleichsgröße. 2026 liegt er bei 1.229,35 Euro monatlich (inkl. Pflege, Gesamtbeitrag AN + AG). Der Arbeitnehmeranteil beträgt rund 615 Euro.</p>
+      <p>Für Angestellte über der Versicherungspflichtgrenze ist der GKV-Höchstbeitrag die relevante Vergleichsgröße. 2026 liegt er bei <a href='/kosten/gkv-hoechstbeitrag/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>1.229,35 Euro monatlich</a> (inkl. Pflege, Gesamtbeitrag AN + AG). Der Arbeitnehmeranteil beträgt rund 615 Euro.</p>
       <p>Ein 32-jähriger PKV-Versicherter mit mittlerem Tarif zahlt nach AG-Zuschuss oft 300 bis 400 Euro monatlich. Die Ersparnis gegenüber der GKV beträgt also 200 bis 300 Euro pro Monat, bei gleichzeitig besserem Leistungsumfang.</p>
       <p>Diese Rechnung verschiebt sich mit dem Alter: Die PKV wird teurer (Beitragsanpassungen), die GKV wird durch steigende Bemessungsgrenzen und Zusatzbeiträge ebenfalls teurer. Die WIP-Studie 2024 zeigt, dass beide Systeme im Zeitraum 2015 bis 2025 ähnlich stark gestiegen sind: PKV +3,9 Prozent pro Jahr, GKV +4,1 Prozent pro Jahr.</p>
-      <p>Langfristig entscheidend ist die Beitragsstabilität des gewählten Tarifs. Die Spannbreite zwischen Anbietern reicht von 2,0 bis 31,2 Prozent Anpassung (MAP-Report 2024). Einen Überblick zur Beitragsentwicklung findest du unter <a href='/kosten/beitragsanpassung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-Beitragsanpassung</a>.</p>
+      <p>Langfristig entscheidend ist die Beitragsstabilität des gewählten Tarifs. Die Spannbreite zwischen Anbietern reicht von 2,0 bis 31,2 Prozent Anpassung (MAP-Report 2025). Einen Überblick zur Beitragsentwicklung findest du unter <a href='/kosten/beitragsanpassung/' class='text-primary underline decoration-amber-accent/40 hover:decoration-amber-accent transition-colors'>PKV-Beitragsanpassung</a>.</p>
     </div>
   </section>
 
@@ -185,15 +185,15 @@ const related = [
     <div class='space-y-6'>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was kostet die PKV für einen 30-jährigen Angestellten?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Bei guter Gesundheit und mittlerem Leistungsumfang liegt der Gesamtbeitrag (KV + PV + 10-%-Zuschlag) bei rund 500 bis 620 Euro monatlich. Nach Arbeitgeberzuschuss zahlst du selbst typischerweise 250 bis 310 Euro. Die genauen Kosten hängen vom Tarif, der Selbstbeteiligung und dem Anbieter ab.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Bei guter Gesundheit und mittlerem Leistungsumfang liegt der Gesamtbeitrag (KV + PV + 10-%-Zuschlag) bei rund 500 bis 620 Euro monatlich. Nach Arbeitgeberzuschuss zahlst du selbst typischerweise 250 bis 310 Euro. Die genauen Kosten hängen vom Tarif, der Selbstbeteiligung und dem Anbieter ab.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Ist die PKV mit AG-Zuschuss günstiger als die GKV?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Für junge, gesunde Angestellte ohne Familie in der Regel ja. Der GKV-Höchstbeitrag liegt 2026 bei rund 615 Euro Arbeitnehmeranteil. In der PKV zahlst du nach AG-Zuschuss oft 300 bis 400 Euro. Dieser Vorteil kann sich mit dem Alter und bei Familiengründung verschieben, weil in der GKV Familienangehörige beitragsfrei mitversichert sind.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Für junge, gesunde Angestellte ohne Familie in der Regel ja. Der GKV-Höchstbeitrag liegt 2026 bei rund 615 Euro Arbeitnehmeranteil. In der PKV zahlst du nach AG-Zuschuss oft 300 bis 400 Euro. Dieser Vorteil kann sich mit dem Alter und bei Familiengründung verschieben, weil in der GKV Familienangehörige beitragsfrei mitversichert sind.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kommen zur PKV noch Zusatzkosten dazu?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Möglich sind Zusatzkosten für Krankentagegeld (30 bis 80 Euro monatlich), einen Beitragsentlastungstarif (BET) und die jährliche Selbstbeteiligung (typisch 300 bis 1.000 Euro). Ob und welche Zusatzbausteine sinnvoll sind, hängt von deiner persönlichen Situation ab. Pflichtbestandteil ist nur die Pflegepflichtversicherung, die bereits im Gesamtbeitrag enthalten ist.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Möglich sind Zusatzkosten für Krankentagegeld (30 bis 80 Euro monatlich), einen Beitragsentlastungstarif (BET) und die jährliche Selbstbeteiligung (typisch 300 bis 1.000 Euro). Ob und welche Zusatzbausteine sinnvoll sind, hängt von deiner persönlichen Situation ab. Pflichtbestandteil ist nur die Pflegepflichtversicherung, die bereits im Gesamtbeitrag enthalten ist.</div>
       </details>
     </div>
   </section>

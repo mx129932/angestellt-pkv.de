@@ -1,0 +1,464 @@
+---
+/**
+ * HeroGallery.astro — Klickbares Hero-Bild mit Lightbox.
+ * Zeigt im Hero ein Bild mit Thumbnail-Dots darunter.
+ * Klick öffnet eine Fullscreen-Lightbox mit Pfeilen + Dots + Swipe + Keyboard.
+ *
+ * Unterstützt responsive Bilder (Desktop-Querformat / Mobile-Hochkant).
+ *
+ * Props:
+ *   images: Array<{ src: string; srcMobile?: string; alt: string }>
+ */
+export interface Props {
+  images: { src: string; srcMobile?: string; alt: string }[];
+}
+
+const { images } = Astro.props;
+const hasMultiple = images.length > 1;
+---
+
+<!-- ===== MOBILE: Inline Swipe-Slider (kein Lightbox) ===== -->
+<div class="hero-gallery-mobile md:hidden relative w-full" data-gallery-mobile>
+  <div class="relative">
+    <div class="absolute -inset-4 bg-white/40 blur-3xl rounded-full"></div>
+    <div
+      class="relative z-10 flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4"
+      data-mobile-track
+      style="scroll-behavior: smooth; -webkit-overflow-scrolling: touch;"
+    >
+      {images.map((img, i) => (
+        <div class="snap-center shrink-0 w-full" data-mobile-slide={i}>
+          <picture>
+            {img.srcMobile && (
+              <source srcset={img.srcMobile} type="image/svg+xml" />
+            )}
+            <img
+              src={img.src}
+              alt={img.alt}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              class="w-full h-auto object-contain shadow-[0_32px_64px_-16px_rgba(0,32,70,0.12)] border border-white/50 rounded-lg"
+            />
+          </picture>
+        </div>
+      ))}
+    </div>
+    {/* Swipe-Hint: Pill-Badge, verschwindet nach ~3s */}
+    {hasMultiple && (
+      <div
+        class="swipe-hint absolute top-[15%] left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 bg-primary/85 text-white text-[11px] font-semibold tracking-wide px-3.5 py-1.5 rounded-full shadow-lg pointer-events-none"
+        data-swipe-hint
+      >
+        Wischen
+        <span class="material-symbols-outlined text-[14px] swipe-arrow">arrow_forward</span>
+      </div>
+    )}
+  </div>
+  {/* Dots + Counter */}
+  {hasMultiple && (
+    <div class="flex items-center justify-center gap-2 mt-4">
+      <span class="text-on-surface-variant/50 text-[10px] font-medium tabular-nums mr-1" data-mobile-counter>1 / {images.length}</span>
+      {images.map((_, i) => (
+        <button
+          class:list={[
+            'hero-gallery-dot w-2 h-2 rounded-full transition-all duration-300',
+            i === 0 ? 'bg-primary scale-125' : 'bg-primary/30',
+          ]}
+          data-mdot-index={i}
+          aria-label={`Bild ${i + 1}`}
+        />
+      ))}
+    </div>
+  )}
+</div>
+
+<!-- ===== DESKTOP: Klickbares Bild mit Lightbox ===== -->
+<div class="hero-gallery hidden md:block relative w-full" data-gallery>
+  <button
+    class="relative w-full max-w-md aspect-[5/4] flex items-center cursor-zoom-in group"
+    data-gallery-open
+    aria-label="Galerie öffnen"
+  >
+    <div class="absolute -inset-4 bg-white/40 blur-3xl rounded-full"></div>
+    {images.map((img, i) => (
+      <picture
+        class:list={[
+          'hero-gallery-thumb relative z-10 w-full transition-opacity duration-300',
+          i === 0 ? 'block' : 'hidden',
+        ]}
+        data-thumb-index={i}
+      >
+        <img
+          src={img.src}
+          alt={img.alt}
+          loading={i === 0 ? 'eager' : 'lazy'}
+          class="w-full h-auto object-contain shadow-[0_32px_64px_-16px_rgba(0,32,70,0.12)] border border-white/50 rounded-lg"
+        />
+      </picture>
+    ))}
+    {/* Dauerhafter Badge unten rechts */}
+    <span
+      class="gallery-badge absolute bottom-3 right-3 z-20 bg-primary/80 text-white text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-md flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"
+    >
+      <span class="material-symbols-outlined text-[14px]">zoom_in</span>
+      {hasMultiple ? `${images.length} Infografiken` : 'Vergrößern'}
+    </span>
+    {/* Animierter Hint-Pill: erscheint oben, verschwindet nach ~4s */}
+    {hasMultiple && (
+      <span
+        class="desktop-hint absolute top-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 bg-primary/90 text-white text-[11px] font-semibold tracking-wide px-4 py-2 rounded-full shadow-lg pointer-events-none"
+        data-desktop-hint
+      >
+        <span class="material-symbols-outlined text-[14px]">touch_app</span>
+        Klicken für {images.length} Infografiken
+        <span class="material-symbols-outlined text-[14px] desktop-hint-arrow">arrow_forward</span>
+      </span>
+    )}
+  </button>
+
+  {hasMultiple && (
+    <div class="flex justify-center gap-2 mt-4">
+      {images.map((_, i) => (
+        <button
+          class:list={[
+            'hero-gallery-dot w-2 h-2 rounded-full transition-all duration-300',
+            i === 0 ? 'bg-primary scale-125' : 'bg-primary/30 hover:bg-primary/50',
+          ]}
+          data-dot-index={i}
+          aria-label={`Bild ${i + 1}`}
+        />
+      ))}
+    </div>
+  )}
+</div>
+
+<!-- Lightbox (Fullscreen Overlay — nur Desktop) -->
+<div
+  id="hero-lightbox"
+  class="fixed inset-0 z-[9998] hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Bildergalerie"
+>
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/90" data-lightbox-close></div>
+
+  <!-- Content -->
+  <div class="absolute inset-0 flex flex-col items-center justify-center">
+    <!-- Top Bar: Counter + Close -->
+    <div class="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-3 md:px-8 md:py-4">
+      {hasMultiple && (
+        <span class="text-white/60 text-sm font-medium tabular-nums">
+          <span data-lightbox-current>1</span> / {images.length}
+        </span>
+      )}
+      <button
+        class="ml-auto w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+        data-lightbox-close
+        aria-label="Schließen"
+      >
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+
+    <!-- Image Area (mit Swipe-Zone) -->
+    <div class="relative flex items-center justify-center w-full h-full px-12 md:px-16 py-16" data-swipe-area>
+      {/* Bilder — z-0 damit Pfeile immer darüber liegen */}
+      {images.map((img, i) => (
+        <picture
+          class:list={[
+            'lightbox-slide relative z-0 flex items-center justify-center',
+            i === 0 ? 'block' : 'hidden',
+          ]}
+          data-slide-index={i}
+        >
+          {img.srcMobile && (
+            <source media="(max-width: 767px)" srcset={img.srcMobile} type="image/svg+xml" />
+          )}
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="max-w-full max-h-[75vh] md:max-h-[80vh] object-contain rounded-lg select-none"
+            draggable="false"
+          />
+        </picture>
+      ))}
+
+      {/* Pfeile: immer sichtbar über dem Bild */}
+      {hasMultiple && (
+        <button
+          class="absolute left-1 md:left-4 z-30 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/50 md:bg-white/10 hover:bg-white/25 text-white transition-colors"
+          data-lightbox-prev
+          aria-label="Vorheriges Bild"
+        >
+          <span class="material-symbols-outlined text-xl md:text-2xl">chevron_left</span>
+        </button>
+      )}
+      {hasMultiple && (
+        <button
+          class="absolute right-1 md:right-4 z-30 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/50 md:bg-white/10 hover:bg-white/25 text-white transition-colors"
+          data-lightbox-next
+          aria-label="Nächstes Bild"
+        >
+          <span class="material-symbols-outlined text-xl md:text-2xl">chevron_right</span>
+        </button>
+      )}
+    </div>
+
+    <!-- Bottom Bar: Dots + Alt -->
+    <div class="absolute bottom-0 left-0 right-0 z-20 pb-4 md:pb-6 px-4">
+      {hasMultiple && (
+        <div class="flex justify-center gap-2 mb-2">
+          {images.map((_, i) => (
+            <button
+              class:list={[
+                'lightbox-dot w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300',
+                i === 0 ? 'bg-white scale-125' : 'bg-white/30',
+              ]}
+              data-ldot-index={i}
+              aria-label={`Bild ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
+      <p class="text-white/40 text-[11px] text-center max-w-md mx-auto leading-snug" data-lightbox-alt></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Scrollbar im Mobile-Slider ausblenden */
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+  /* ===== MOBILE: Swipe-Hint Animationen ===== */
+
+  /* Pill-Badge: Einblenden, kurz bleiben, dann ausblenden */
+  .swipe-hint {
+    animation: hintFadeInOut 3.5s ease-in-out forwards;
+  }
+  @keyframes hintFadeInOut {
+    0%   { opacity: 0; transform: translateX(-50%) translateY(4px); }
+    12%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+    70%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  }
+
+  /* Pfeil im Pill: schiebt sich wiederholt leicht nach rechts */
+  .swipe-arrow {
+    animation: arrowNudge 1s ease-in-out 0.5s 3;
+  }
+  @keyframes arrowNudge {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(4px); }
+  }
+
+  /* Nudge: Erstes Bild ruckt kurz nach links und zurueck */
+  .mobile-nudge {
+    animation: slideNudge 0.8s ease-in-out 1s 1;
+  }
+  @keyframes slideNudge {
+    0%   { transform: translateX(0); }
+    40%  { transform: translateX(-24px); }
+    100% { transform: translateX(0); }
+  }
+
+  /* ===== DESKTOP: Hint-Pill Animation ===== */
+  .desktop-hint {
+    animation: desktopHintFadeInOut 4.5s ease-in-out forwards;
+  }
+  @keyframes desktopHintFadeInOut {
+    0%   { opacity: 0; transform: translateX(-50%) scale(0.95); }
+    10%  { opacity: 1; transform: translateX(-50%) scale(1); }
+    75%  { opacity: 1; transform: translateX(-50%) scale(1); }
+    100% { opacity: 0; transform: translateX(-50%) scale(0.95); }
+  }
+
+  /* Pfeil im Desktop-Hint: pulst nach rechts */
+  .desktop-hint-arrow {
+    animation: arrowNudge 1s ease-in-out 0.8s 3;
+  }
+</style>
+
+<script is:inline>
+(function () {
+  /* ===== MOBILE: Scroll-Snap-Slider ===== */
+  var mGallery = document.querySelector('[data-gallery-mobile]');
+  if (mGallery) {
+    var track = mGallery.querySelector('[data-mobile-track]');
+    var mSlides = mGallery.querySelectorAll('[data-mobile-slide]');
+    var mDots = mGallery.querySelectorAll('[data-mdot-index]');
+    var mCounter = mGallery.querySelector('[data-mobile-counter]');
+    var swipeHint = mGallery.querySelector('[data-swipe-hint]');
+    var mTotal = mSlides.length;
+    var mCurrent = 0;
+
+    // Nudge-Animation auf erstem Slide starten
+    if (mSlides[0]) mSlides[0].classList.add('mobile-nudge');
+
+    // Swipe-Hint + Nudge nach erster Interaktion entfernen
+    function dismissMobileHints() {
+      if (swipeHint) { swipeHint.style.opacity = '0'; swipeHint.style.transition = 'opacity 0.3s'; }
+      if (mSlides[0]) mSlides[0].classList.remove('mobile-nudge');
+      track.removeEventListener('scroll', dismissMobileHints);
+    }
+    track.addEventListener('scroll', dismissMobileHints, { passive: true, once: true });
+
+    function updateMobileDots(idx) {
+      mCurrent = idx;
+      mDots.forEach(function (d, i) {
+        d.classList.toggle('bg-primary', i === idx);
+        d.classList.toggle('scale-125', i === idx);
+        d.classList.toggle('bg-primary/30', i !== idx);
+      });
+      if (mCounter) mCounter.textContent = (idx + 1) + ' / ' + mTotal;
+    }
+
+    // Scroll-Event: Aktuellen Slide erkennen
+    var scrollTimer;
+    track.addEventListener('scroll', function () {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function () {
+        var scrollLeft = track.scrollLeft;
+        var slideWidth = mSlides[0].offsetWidth;
+        var idx = Math.round(scrollLeft / slideWidth);
+        if (idx >= 0 && idx < mTotal) updateMobileDots(idx);
+      }, 50);
+    }, { passive: true });
+
+    // Dot-Klick: Zu Slide scrollen
+    mDots.forEach(function (d) {
+      d.addEventListener('click', function () {
+        var idx = +d.dataset.mdotIndex;
+        mSlides[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    });
+  }
+
+  /* ===== DESKTOP: Lightbox-Galerie ===== */
+  var gallery = document.querySelector('[data-gallery]');
+  var lightbox = document.getElementById('hero-lightbox');
+  if (!gallery || !lightbox) return;
+
+  // Desktop: Hint-Pill nach Hover oder Klick sofort ausblenden
+  var desktopHint = gallery.querySelector('[data-desktop-hint]');
+  if (desktopHint) {
+    function dismissDesktopHint() {
+      desktopHint.style.opacity = '0';
+      desktopHint.style.transition = 'opacity 0.3s';
+    }
+    gallery.addEventListener('mouseenter', dismissDesktopHint, { once: true });
+    gallery.addEventListener('click', dismissDesktopHint, { once: true });
+  }
+
+  var thumbs = gallery.querySelectorAll('[data-thumb-index]');
+  var dots = gallery.querySelectorAll('[data-dot-index]');
+  var slides = lightbox.querySelectorAll('[data-slide-index]');
+  var lDots = lightbox.querySelectorAll('[data-ldot-index]');
+  var counter = lightbox.querySelector('[data-lightbox-current]');
+  var altText = lightbox.querySelector('[data-lightbox-alt]');
+  var total = slides.length;
+  var current = 0;
+
+  function showSlide(idx) {
+    current = ((idx % total) + total) % total;
+    thumbs.forEach(function (t, i) {
+      t.classList.toggle('block', i === current);
+      t.classList.toggle('hidden', i !== current);
+    });
+    dots.forEach(function (d, i) {
+      d.classList.toggle('bg-primary', i === current);
+      d.classList.toggle('scale-125', i === current);
+      d.classList.toggle('bg-primary/30', i !== current);
+    });
+    slides.forEach(function (s, i) {
+      s.classList.toggle('block', i === current);
+      s.classList.toggle('hidden', i !== current);
+    });
+    lDots.forEach(function (d, i) {
+      d.classList.toggle('bg-white', i === current);
+      d.classList.toggle('scale-125', i === current);
+      d.classList.toggle('bg-white/30', i !== current);
+    });
+    if (counter) counter.textContent = String(current + 1);
+    if (altText && slides[current]) {
+      var img = slides[current].querySelector('img');
+      altText.textContent = img ? img.alt : '';
+    }
+  }
+
+  function openLightbox() {
+    lightbox.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    showSlide(current);
+  }
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  // Open
+  var openBtn = gallery.querySelector('[data-gallery-open]');
+  if (openBtn) openBtn.addEventListener('click', openLightbox);
+  dots.forEach(function (d) {
+    d.addEventListener('click', function () { showSlide(+d.dataset.dotIndex); });
+  });
+
+  // Close
+  lightbox.querySelectorAll('[data-lightbox-close]').forEach(function (el) {
+    el.addEventListener('click', closeLightbox);
+  });
+
+  // Nav buttons
+  var prevBtn = lightbox.querySelector('[data-lightbox-prev]');
+  var nextBtn = lightbox.querySelector('[data-lightbox-next]');
+  if (prevBtn) prevBtn.addEventListener('click', function () { showSlide(current - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { showSlide(current + 1); });
+
+  // Lightbox dots
+  lDots.forEach(function (d) {
+    d.addEventListener('click', function () { showSlide(+d.dataset.ldotIndex); });
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', function (e) {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showSlide(current - 1);
+    if (e.key === 'ArrowRight') showSlide(current + 1);
+  });
+
+  // Touch Swipe (Lightbox)
+  var swipeArea = lightbox.querySelector('[data-swipe-area]');
+  if (swipeArea) {
+    var startX = 0;
+    var startY = 0;
+    var distX = 0;
+    var distY = 0;
+
+    swipeArea.addEventListener('touchstart', function (e) {
+      var touch = e.changedTouches[0];
+      startX = touch.pageX;
+      startY = touch.pageY;
+      distX = 0;
+      distY = 0;
+    }, { passive: true });
+
+    swipeArea.addEventListener('touchmove', function (e) {
+      var touch = e.changedTouches[0];
+      distX = touch.pageX - startX;
+      distY = touch.pageY - startY;
+      if (Math.abs(distX) > Math.abs(distY) && Math.abs(distX) > 10) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    swipeArea.addEventListener('touchend', function () {
+      var minSwipe = 50;
+      if (Math.abs(distX) > Math.abs(distY) && Math.abs(distX) > minSwipe) {
+        if (distX < 0) showSlide(current + 1);
+        else showSlide(current - 1);
+      }
+    }, { passive: true });
+  }
+})();
+</script>

@@ -16,17 +16,16 @@ interface Props {
 
 const { title = 'Über uns', description, canonical } = Astro.props;
 
-// Hero-Bild fuer Ueber-uns
-const heroData = (altTexts as Record<string, { alt: string; size: string }>)['hero-ueber-uns'];
-const heroSrc = heroData ? '/img/hero-ueber-uns.webp' : '';
-const heroAlt = heroData?.alt || '';
+// Hero-Bild deaktiviert (kein Mehrwert auf Über-uns-Seite)
+const heroSrc = '';
+const heroAlt = '';
 
 const companyFacts = [
   { label: 'Spezialisierung', value: 'PKV für Angestellte' },
   { label: 'Teil von', value: 'PKV-Welt' },
   { label: 'Team', value: '8 Spezialisten' },
   { label: 'Unabhängigkeit', value: '100 %' },
-  { label: 'Provisionen', value: 'Keine' },
+  { label: 'Versicherungsbindung', value: 'Keine' },
 ];
 
 const team = [

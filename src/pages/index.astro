@@ -5,7 +5,20 @@
  * Vorlage sauber bleibt.
  */
 import Base from '../layouts/Base.astro';
+import HeroGallery from '../components/HeroGallery.astro';
 import ia from '../data/ia.json';
+
+// Hero-Galerie: Bilder für die Lightbox (Funnel-Reihenfolge)
+const heroImages = [
+  { src: '/images/infografik-01-beitragsentwicklung.svg', srcMobile: '/images/infografik-01-beitragsentwicklung-mobile.svg', alt: 'Beitragsentwicklung PKV vs. GKV: indexierte Prämien 2005 bis 2025' },
+  { src: '/images/infografik-02-voraussetzungen.svg', srcMobile: '/images/infografik-02-voraussetzungen-mobile.svg', alt: 'Voraussetzungen für den PKV-Wechsel als Angestellter' },
+  { src: '/images/infografik-03-zielgruppe.svg', srcMobile: '/images/infografik-03-zielgruppe-mobile.svg', alt: 'Für wen lohnt sich die PKV? Zielgruppen-Check' },
+  { src: '/images/infografik-04-leistungsvergleich.svg', srcMobile: '/images/infografik-04-leistungsvergleich-mobile.svg', alt: 'Leistungen im Vergleich: PKV vs. GKV' },
+  { src: '/images/infografik-05-arbeitgeberzuschuss.svg', srcMobile: '/images/infografik-05-arbeitgeberzuschuss-mobile.svg', alt: 'Arbeitgeberzuschuss zur PKV 2026: Berechnung und Höchstsätze' },
+  { src: '/images/infografik-06-finanzstabilitaet.svg', srcMobile: '/images/infografik-06-finanzstabilitaet-mobile.svg', alt: 'Finanzielle Stabilität der PKV: Beitragssicherheit im Überblick' },
+  { src: '/images/infografik-07-altersrueckstellungen.svg', srcMobile: '/images/infografik-07-altersrueckstellungen-mobile.svg', alt: 'Altersrückstellungen in der PKV: So funktioniert die Vorsorge' },
+  { src: '/images/infografik-08-prozess.svg', srcMobile: '/images/infografik-08-prozess-mobile.svg', alt: 'In 5 Schritten zur PKV: Der Wechselprozess für Angestellte' },
+];
 
 // Kategorien-Grid: alle 8 Themen-Hubs + Rechner-Hub
 const kategorieIcons: Record<string, string> = {
@@ -98,13 +111,13 @@ const faq = [
   <main>
     <!-- HERO — Mobile-Reihenfolge: Text → Bild → CTAs; Desktop: links Text+CTAs, rechts Bild -->
     <section class='relative bg-[#FAF7F2] overflow-hidden py-14 md:py-20'>
-      <div class='max-w-7xl mx-auto px-6 md:px-8 w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16 md:gap-y-8 items-start'>
+      <div class='max-w-6xl mx-auto px-6 md:px-8 w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-x-16 md:gap-y-8 items-start'>
         <!-- 1) Text -->
         <div class='order-1 md:order-1 md:col-span-7 md:col-start-1 md:row-start-1 flex flex-col'>
           <span class='self-start py-1 px-3 bg-white text-on-surface-variant text-[0.7rem] md:text-[0.75rem] font-medium tracking-wider mb-6 md:mb-8 rounded-sm border border-outline-variant/20 uppercase'>
-            Independent Review 2026
+            Unabhängige Analyse 2026
           </span>
-          <h1 class='text-[2.15rem] leading-[1.1] md:text-[4rem] lg:text-[5rem] md:leading-[1] font-serif text-primary mb-5 md:mb-8'>
+          <h1 class='text-[2.15rem] leading-[1.1] md:text-[3.5rem] lg:text-[4.25rem] md:leading-[1.05] font-serif text-primary mb-5 md:mb-8'>
             Echte Klarheit für deine <span class='italic text-primary-container'>Private Krankenversicherung.</span>
           </h1>
           <p class='text-base md:text-xl text-secondary mb-2 md:mb-0 max-w-lg leading-relaxed'>
@@ -112,17 +125,9 @@ const faq = [
           </p>
         </div>
 
-        <!-- 2) Bild (Desktop: rechte Spalte, überspannt beide Rows) -->
+        <!-- 2) Galerie (Desktop: rechte Spalte, überspannt beide Rows) -->
         <div class='order-2 md:order-2 md:col-span-5 md:col-start-8 md:row-start-1 md:row-span-2 md:self-center relative flex items-center justify-end'>
-          <div class='relative w-full max-w-md aspect-[5/4] flex items-center'>
-            <div class='absolute -inset-4 bg-white/40 blur-3xl rounded-full'></div>
-            <img
-              alt='PKV-Preisentwicklung Chart'
-              loading='eager'
-              class='relative z-10 w-full h-auto object-contain shadow-[0_32px_64px_-16px_rgba(0,32,70,0.12)] border border-white/50 rounded-lg'
-              src='/images/beitragsentwicklung-pkv-gkv.svg'
-            />
-          </div>
+          <HeroGallery images={heroImages} />
         </div>
 
         <!-- 3) CTAs (Mobile: unter Bild; Desktop: unter Text) -->
@@ -139,12 +144,12 @@ const faq = [
               href='/pkv-beratung/'
               class='inline-flex items-center justify-center border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 md:px-8 py-4 rounded-md font-semibold transition-all'
             >
-              Guide lesen
+              PKV-Beratung für Angestellte
             </a>
           </div>
           <p class='text-[0.75rem] text-on-surface-variant flex items-center gap-2'>
             <span class='material-symbols-outlined text-[16px]'>verified_user</span>
-            Unabhängig. Keine Provisionen. Daten aus offiziellen Quellen 2026.
+            Unabhängig. Keine Versicherungsbindung. Daten aus offiziellen Quellen 2026.
           </p>
         </div>
       </div>
@@ -152,7 +157,7 @@ const faq = [
 
     <!-- TRUST BAR -->
     <section class='bg-surface-container-low py-8 border-y border-outline-variant/10'>
-      <div class='max-w-7xl mx-auto px-6 md:px-8'>
+      <div class='max-w-6xl mx-auto px-6 md:px-8'>
         <div class='grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8'>
           <div class='flex items-center gap-3 text-secondary'>
             <span class='material-symbols-outlined text-primary'>calculate</span>
@@ -176,16 +181,16 @@ const faq = [
 
     <!-- KATEGORIEN-GRID — alle 9 Kategorien aus ia.json -->
     <section class='py-20 md:py-24 bg-surface'>
-      <div class='max-w-7xl mx-auto px-6 md:px-8'>
+      <div class='max-w-6xl mx-auto px-6 md:px-8'>
         <div class='max-w-2xl mb-12 md:mb-16'>
           <h2 class='text-3xl md:text-4xl font-serif text-primary mb-4'>Mehr über die private Krankenversicherung</h2>
-          <p class='text-on-surface-variant'>Strukturierte Analysen zu den wichtigsten Themen für festangestellte High-Performer.</p>
+          <p class='text-on-surface-variant'>Strukturierte Analysen zu den wichtigsten Themen für festangestellte Gutverdiener.</p>
         </div>
         <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8'>
           {kategorien.map((k) => (
             <a
               href={k.href}
-              class='group relative flex flex-col bg-surface-container-lowest p-8 border border-outline-variant/30 hover:border-amber-accent/60 hover:shadow-xl hover:shadow-primary/5 transition-all'
+              class='group relative flex flex-col bg-surface-container-lowest p-6 md:p-7 border border-outline-variant/30 hover:border-amber-accent/60 hover:shadow-xl hover:shadow-primary/5 transition-all'
             >
               <span class='material-symbols-outlined text-3xl text-amber-accent mb-6 transition-transform group-hover:scale-110'>
                 {k.icon}
@@ -206,7 +211,7 @@ const faq = [
 
     <!-- RECHNER-TEASER (kein Live-Rechner, sondern Sprung auf GKV-vs-PKV) -->
     <section class='bg-primary py-20 md:py-24 overflow-hidden relative'>
-      <div class='max-w-7xl mx-auto px-6 md:px-8 relative z-10'>
+      <div class='max-w-6xl mx-auto px-6 md:px-8 relative z-10'>
         <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center'>
           <div class='text-white'>
             <span class='inline-block text-amber-accent font-bold text-xs uppercase tracking-widest mb-4'>Interaktiver Vergleich</span>
@@ -262,7 +267,7 @@ const faq = [
 
     <!-- EXPERTISE (vormals "Aktuelle Dossiers & Analysen") -->
     <section class='py-20 md:py-24 bg-[#FAF7F2]'>
-      <div class='max-w-7xl mx-auto px-6 md:px-8'>
+      <div class='max-w-6xl mx-auto px-6 md:px-8'>
         <div class='mb-10 md:mb-12'>
           <h2 class='text-3xl md:text-4xl font-serif text-primary'>Expertise zur PKV für Angestellte</h2>
         </div>
@@ -282,7 +287,7 @@ const faq = [
 
     <!-- FAQ — CSS-only Akkordeon -->
     <section class='py-20 md:py-24 bg-white'>
-      <div class='max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16'>
+      <div class='max-w-6xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16'>
         <div class='lg:col-span-5'>
           <h2 class='text-3xl md:text-4xl font-serif text-primary mb-6'>Die häufigsten Fragen</h2>
           <p class='text-on-surface-variant text-base md:text-lg mb-8'>
@@ -309,7 +314,7 @@ const faq = [
                 </label>
                 <div class='grid grid-rows-[0fr] peer-checked:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out'>
                   <div class='overflow-hidden'>
-                    <p class='px-5 md:px-6 pb-5 md:pb-6 text-on-surface-variant text-sm md:text-base leading-relaxed'>{it.a}</p>
+                    <p class='px-5 md:px-6 pt-1 pb-6 md:pb-7 text-on-surface-variant text-sm md:text-base leading-relaxed'>{it.a}</p>
                   </div>
                 </div>
               </div>

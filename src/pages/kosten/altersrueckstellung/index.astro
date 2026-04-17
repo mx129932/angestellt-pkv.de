@@ -38,7 +38,7 @@ const related = [
 ---
 <T6
   title='Altersrückstellungen in der PKV erklärt'
-  description='Rund 30 Prozent deines PKV-Beitrags fließt in Altersrückstellungen. Wie sie funktionieren, was sie bringen und warum 351 Milliarden Euro angespart sind.'
+  description='Rund 30 Prozent deines PKV-Beitrags fließen in Altersrückstellungen. Wie sie funktionieren, was sie bringen und warum 351 Milliarden Euro angespart sind.'
   breadcrumb={{ kategorie: 'Kosten', kategorieHref: '/kosten/' }}
   toc={toc}
   date='Update April 2026'
@@ -46,7 +46,7 @@ const related = [
   related={related}
   faqItems={[
     { question: `Kann ich meine Altersrückstellungen mitnehmen bei Anbieterwechsel?`, answer: `Teilweise. Seit 2009 kannst du beim Anbieterwechsel den Teil der Altersrückstellungen mitnehmen, der dem Basistarif-Niveau entspricht. Die darüber hinausgehenden Rückstellungen (aus höherwertigen Tarifen) verfallen beim Anbieterwechsel. Beim internen Tarifwechsel nach § 204 VVG bleiben dagegen alle Rückstellungen erhalten.` },
-    { question: `Fällt der 10-Prozent-Zuschlag irgendwann weg?`, answer: `Ja. Der gesetzliche 10-Prozent-Zuschlag wird zwischen dem 21. und 60. Lebensjahr erhoben und entfällt ab dem 65. Lebensjahr. Die bis dahin angesammelten Mittel werden dann zur Beitragsreduzierung eingesetzt. Das senkt den PKV-Beitrag ab 65 typischerweise um 10 bis 15 Prozent.` },
+    { question: `Fällt der 10-Prozent-Zuschlag irgendwann weg?`, answer: `Ja. Der gesetzliche 10-Prozent-Zuschlag wird zwischen dem 21. und 60. Lebensjahr erhoben. Ab 60 entfällt die Zahlung (sofortige Ersparnis von ca. 10 Prozent). Ab dem 65. Lebensjahr werden die angesammelten Mittel zur Beitragsreduzierung eingesetzt. Das senkt den PKV-Beitrag ab 65 typischerweise um weitere 10 bis 15 Prozent.` },
     { question: `Was passiert mit den Rückstellungen bei GKV-Rückkehr?`, answer: `Bei einer Rückkehr in die GKV gehen die Altersrückstellungen vollständig verloren. Das angesparte Kapital verbleibt im Kollektiv deines bisherigen Tarifs und kommt den verbleibenden Versicherten zugute. Diesen Verlust solltest du bei der Entscheidung über einen Systemwechsel unbedingt einkalkulieren.` }
   ]}
 >
@@ -56,7 +56,7 @@ const related = [
     <ul class='space-y-3 text-on-surface'>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
-        <span>Rund <strong>30 Prozent</strong> deines PKV-Beitrags fließt in Altersrückstellungen, die deinen Beitrag im Alter dämpfen sollen.</span>
+        <span>Rund <strong>30 Prozent</strong> deines PKV-Beitrags fließen in Altersrückstellungen, die deinen Beitrag im Alter dämpfen sollen.</span>
       </li>
       <li class='flex items-start gap-3'>
         <span class='material-symbols-outlined text-amber-accent-dark mt-0.5 shrink-0'>check_circle</span>
@@ -94,7 +94,7 @@ const related = [
     <div class='space-y-5 text-base md:text-[17px] text-on-surface leading-[1.75]'>
       <p>Der Aufbau der Altersrückstellungen folgt einem gesetzlich festgelegten Schema. Drei Bausteine spielen zusammen:</p>
       <p><strong>Kalkulation im Beitrag:</strong> Dein PKV-Beitrag enthält von Anfang an einen Sparanteil. Im Durchschnitt fließen rund 30 Prozent deines Beitrags in die Altersrückstellungen. Dieser Anteil ist nicht separat ausgewiesen, sondern in der Gesamtprämie enthalten.</p>
-      <p><strong>Gesetzlicher 10-Prozent-Zuschlag:</strong> Zwischen dem 21. und 60. Lebensjahr wird ein zusätzlicher Zuschlag von 10 Prozent auf den Beitrag erhoben (§§ 149 bis 150 VAG). Dieser Zuschlag fließt vollständig in die Altersrückstellungen. Ab dem 65. Lebensjahr entfällt der Zuschlag, und die angesammelten Mittel werden zur Beitragsreduzierung eingesetzt.</p>
+      <p><strong>Gesetzlicher 10-Prozent-Zuschlag:</strong> Zwischen dem 21. und 60. Lebensjahr wird ein zusätzlicher Zuschlag von 10 Prozent auf den Beitrag erhoben (§§ 149 bis 150 VAG). Dieser Zuschlag fließt vollständig in die Altersrückstellungen. Ab dem 60. Lebensjahr entfällt die Zuschlagszahlung. Ab dem 65. Lebensjahr werden die angesammelten Mittel zur Beitragsreduzierung eingesetzt.</p>
       <p><strong>Verzinsung:</strong> Die angesparten Rückstellungen werden am Kapitalmarkt angelegt. Die gesetzlich vorgeschriebene Mindestverzinsung liegt aktuell bei rund 3,5 Prozent pro Jahr. Die tatsächliche Nettoverzinsung der PKV-Branche lag in den vergangenen Jahren häufig darüber.</p>
     </div>
   </section>
@@ -182,15 +182,15 @@ const related = [
     <div class='space-y-6'>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich meine Altersrückstellungen mitnehmen bei Anbieterwechsel?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Teilweise. Seit 2009 kannst du beim Anbieterwechsel den Teil der Altersrückstellungen mitnehmen, der dem Basistarif-Niveau entspricht. Die darüber hinausgehenden Rückstellungen (aus höherwertigen Tarifen) verfallen beim Anbieterwechsel. Beim internen Tarifwechsel nach § 204 VVG bleiben dagegen alle Rückstellungen erhalten.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Teilweise. Seit 2009 kannst du beim Anbieterwechsel den Teil der Altersrückstellungen mitnehmen, der dem Basistarif-Niveau entspricht. Die darüber hinausgehenden Rückstellungen (aus höherwertigen Tarifen) verfallen beim Anbieterwechsel. Beim internen Tarifwechsel nach § 204 VVG bleiben dagegen alle Rückstellungen erhalten.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Fällt der 10-Prozent-Zuschlag irgendwann weg?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja. Der gesetzliche 10-Prozent-Zuschlag wird zwischen dem 21. und 60. Lebensjahr erhoben und entfällt ab dem 65. Lebensjahr. Die bis dahin angesammelten Mittel werden dann zur Beitragsreduzierung eingesetzt. Das senkt den PKV-Beitrag ab 65 typischerweise um 10 bis 15 Prozent.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Ja. Der gesetzliche 10-Prozent-Zuschlag wird zwischen dem 21. und 60. Lebensjahr erhoben. Ab 60 entfällt die Zahlung (sofortige Ersparnis von ca. 10 Prozent). Ab dem 65. Lebensjahr werden die angesammelten Mittel zur Beitragsreduzierung eingesetzt. Das senkt den PKV-Beitrag ab 65 typischerweise um weitere 10 bis 15 Prozent.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Was passiert mit den Rückstellungen bei GKV-Rückkehr?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Bei einer Rückkehr in die GKV gehen die Altersrückstellungen vollständig verloren. Das angesparte Kapital verbleibt im Kollektiv deines bisherigen Tarifs und kommt den verbleibenden Versicherten zugute. Diesen Verlust solltest du bei der Entscheidung über einen Systemwechsel unbedingt einkalkulieren.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Bei einer Rückkehr in die GKV gehen die Altersrückstellungen vollständig verloren. Das angesparte Kapital verbleibt im Kollektiv deines bisherigen Tarifs und kommt den verbleibenden Versicherten zugute. Diesen Verlust solltest du bei der Entscheidung über einen Systemwechsel unbedingt einkalkulieren.</div>
       </details>
     </div>
   </section>

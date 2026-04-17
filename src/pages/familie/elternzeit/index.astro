@@ -8,7 +8,7 @@ const toc = [
   { id: 'mutterschutz-vs-elternzeit', label: 'Mutterschutz vs. Elternzeit' },
   { id: 'drei-optionen', label: 'Drei Optionen für die Elternzeit' },
   { id: 'fazit', label: 'Fazit' },
-  { id: 'faq', label: 'FAQ' },
+  { id: 'faq', label: 'Häufige Fragen' },
 ];
 
 const related = [
@@ -49,7 +49,7 @@ const related = [
     { href: '/rechner/pkv-beitrag/', title: 'PKV-Beitragsrechner', icon: 'calculate' },
   ]}
   faqItems={[
-    { question: `Bekomme ich Elterngeld wenn ich privat versichert bin?`, answer: `Ja. Elterngeld ist eine staatliche Leistung und unabhängig von der Art deiner Krankenversicherung. Du bekommst als Angestellter in der Regel 65 bis 67 Prozent deines bisherigen Nettoeinkommens, maximal 1.800 Euro monatlich. Die PKV-Versicherung hat keinen Einfluss auf die Höhe des Elterngeldes.` },
+    { question: `Bekomme ich Elterngeld, wenn ich privat versichert bin?`, answer: `Ja. Elterngeld ist eine staatliche Leistung und unabhängig von der Art deiner Krankenversicherung. Du bekommst als Angestellter in der Regel 65 bis 67 Prozent deines bisherigen Nettoeinkommens, maximal 1.800 Euro monatlich. Die PKV-Versicherung hat keinen Einfluss auf die Höhe des Elterngeldes.` },
     { question: `Kann ich für die Elternzeit in die GKV wechseln?`, answer: `Unter bestimmten Voraussetzungen ja, aber es ist komplex. Du müsstest versicherungspflichtig werden, etwa weil dein Einkommen unter die JAEG von 77.400 Euro (2026) fällt. Die Rückkehr in die PKV nach der Elternzeit erfordert dann eine neue Gesundheitsprüfung, und deine bisherigen Altersrückstellungen gehen verloren. Lass dich vor einem solchen Schritt individuell beraten.` },
     { question: `Bleibt der AG-Zuschuss im Mutterschutz?`, answer: `Ja. Während des Mutterschutzes (6 Wochen vor und 8 Wochen nach der Geburt) bleibt der Arbeitgeberzuschuss zur PKV erhalten. Das regelt § 10 MuSchG. Erst mit dem Beginn der Elternzeit entfällt der Zuschuss, weil kein laufendes Arbeitsentgelt mehr gezahlt wird.` }
   ]}
@@ -175,16 +175,16 @@ const related = [
     <h2 class='font-serif text-2xl md:text-3xl text-primary mb-6'>Häufige Fragen</h2>
     <div class='space-y-6'>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
-        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Bekomme ich Elterngeld wenn ich privat versichert bin?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja. Elterngeld ist eine staatliche Leistung und unabhängig von der Art deiner Krankenversicherung. Du bekommst als Angestellter in der Regel 65 bis 67 Prozent deines bisherigen Nettoeinkommens, maximal 1.800 Euro monatlich. Die PKV-Versicherung hat keinen Einfluss auf die Höhe des Elterngeldes.</div>
+        <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Bekomme ich Elterngeld, wenn ich privat versichert bin?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Ja. Elterngeld ist eine staatliche Leistung und unabhängig von der Art deiner Krankenversicherung. Du bekommst als Angestellter in der Regel 65 bis 67 Prozent deines bisherigen Nettoeinkommens, maximal 1.800 Euro monatlich. Die PKV-Versicherung hat keinen Einfluss auf die Höhe des Elterngeldes.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Kann ich für die Elternzeit in die GKV wechseln?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Unter bestimmten Voraussetzungen ja, aber es ist komplex. Du müsstest versicherungspflichtig werden, etwa weil dein Einkommen unter die JAEG von 77.400 Euro (2026) fällt. Die Rückkehr in die PKV nach der Elternzeit erfordert dann eine neue Gesundheitsprüfung, und deine bisherigen Altersrückstellungen gehen verloren. Lass dich vor einem solchen Schritt individuell beraten.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Unter bestimmten Voraussetzungen ja, aber es ist komplex. Du müsstest versicherungspflichtig werden, etwa weil dein Einkommen unter die JAEG von 77.400 Euro (2026) fällt. Die Rückkehr in die PKV nach der Elternzeit erfordert dann eine neue Gesundheitsprüfung, und deine bisherigen Altersrückstellungen gehen verloren. Lass dich vor einem solchen Schritt individuell beraten.</div>
       </details>
       <details class='group bg-white border border-outline-variant/20 rounded-lg'>
         <summary class='flex items-center justify-between p-5 cursor-pointer font-semibold text-primary'>Bleibt der AG-Zuschuss im Mutterschutz?<span class='material-symbols-outlined text-amber-accent-dark group-open:rotate-180 transition-transform'>expand_more</span></summary>
-        <div class='px-5 pb-5 text-on-surface-variant text-sm leading-relaxed'>Ja. Während des Mutterschutzes (6 Wochen vor und 8 Wochen nach der Geburt) bleibt der Arbeitgeberzuschuss zur PKV erhalten. Das regelt § 10 MuSchG. Erst mit dem Beginn der Elternzeit entfällt der Zuschuss, weil kein laufendes Arbeitsentgelt mehr gezahlt wird.</div>
+        <div class='px-5 pt-1 pb-6 text-on-surface-variant text-sm leading-relaxed'>Ja. Während des Mutterschutzes (6 Wochen vor und 8 Wochen nach der Geburt) bleibt der Arbeitgeberzuschuss zur PKV erhalten. Das regelt § 10 MuSchG. Erst mit dem Beginn der Elternzeit entfällt der Zuschuss, weil kein laufendes Arbeitsentgelt mehr gezahlt wird.</div>
       </details>
     </div>
   </section>

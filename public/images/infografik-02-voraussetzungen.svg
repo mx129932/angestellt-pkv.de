@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" width="920" height="460">
+<defs><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap');
+text { font-family: 'Inter', system-ui, sans-serif; }
+</style></defs>
+<rect width="920" height="460" rx="12" fill="#FFFFFF"/>
+<text x="460" y="42" fill="#002046" font-size="20" font-weight="700" text-anchor="middle">Voraussetzungen für den PKV-Wechsel</text>
+
+<!-- 3 Kreise, vertikal zentriert im verfügbaren Raum -->
+<circle cx="153" cy="210" r="60" fill="#002046"/>
+<text x="153" y="200" fill="white" font-size="13" font-weight="500" text-anchor="middle">Gehalt über</text>
+<text x="153" y="225" fill="#D4A017" font-size="20" font-weight="800" text-anchor="middle">77.400 €</text>
+
+<circle cx="460" cy="210" r="60" fill="#002046"/>
+<text x="460" y="200" fill="white" font-size="13" font-weight="500" text-anchor="middle">Mindestens</text>
+<text x="460" y="225" fill="#D4A017" font-size="20" font-weight="800" text-anchor="middle">12 Monate</text>
+
+<circle cx="767" cy="210" r="60" fill="#002046"/>
+<text x="767" y="200" fill="white" font-size="13" font-weight="500" text-anchor="middle">Gesundheits-</text>
+<text x="767" y="225" fill="#D4A017" font-size="20" font-weight="800" text-anchor="middle">prüfung</text>
+
+<text x="153" y="300" fill="#44474e" font-size="13" font-weight="600" text-anchor="middle">Jahresbrutto (JAEG 2026)</text>
+<text x="460" y="300" fill="#44474e" font-size="13" font-weight="600" text-anchor="middle">über der Grenze verdienen</text>
+<text x="767" y="300" fill="#44474e" font-size="13" font-weight="600" text-anchor="middle">Risikovoranfrage vorab möglich</text>
+
+</svg>
